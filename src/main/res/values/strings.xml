@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MEPA</string>
+    <string name="btn_menu">Menü</string>
+    <string name="txtv_info">Hier folgt noch ein Infotext!</string>
+    <string name="btn_falleingabe">Falleingabe</string>
+    <string name="imgv_logo">Festivealth Logo</string>
+    <string name="txtv_menu">Menü</string>
+    <string name="txtv_start">Start</string>
+    <string name="txtv_einstellungen">Einstellungen</string>
+    <string name="txtv_falleingabe">Falleingabe</string>
+    <string name="txtv_falluebersicht">Fallübersicht</string>
+    <string name="txtv_stammdaten">Stammdaten</string>
+    <string name="btn_menu_stammd">Menü</string>
+    <string name="txtv_kreisverband">Kreisverband</string>
+    <string name="txtv_ortsverein">Ortsverein</string>
+    <string name="txtv_ort">Ort</string>
+    <string name="txtv_veranstaltung">Veranstaltung</string>
+    <string name="txtv_hilfsstelle">Hilfsstelle</string>
+    <string name="txtv_mosan">MoSan Team</string>
+    <string name="txtv_sanw">San Wache</string>
+    <string name="btn_speichern">Speichern</string>
+    <string name="btn_verwerfen">Verwerfen</string>
+    <string name="btn_stammdat_einst">Stammdaten verwalten</string>
+    <string name="btn_löschen_einst">Lokale Daten löschen</string>
+    <string name="btn_sync_einst">Daten synchronisieren</string>
+    <string name="btn_impr_einst">Impressum</string>
+</resources>
