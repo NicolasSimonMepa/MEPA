@@ -12,6 +12,7 @@ import de.app.mepa.stammdaten.Stammdaten;
 
 public class Einstellungen extends AppCompatActivity implements View.OnClickListener{
     //Hallo dies ist eine Änderung
+    //Vivien Stumpe, 01.04.16
     //Button für den Button Menü in der Einstellungen Activity
     private Button btn_menu_einst;
     private Button btn_impr_einst;
