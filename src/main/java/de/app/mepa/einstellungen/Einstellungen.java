@@ -57,3 +57,4 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         }
     }
 }
+//hallo ich habe etwas geändert Nicolas 1.04.2016
