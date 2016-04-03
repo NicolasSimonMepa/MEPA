@@ -64,4 +64,20 @@
     <string name="txtv_medikamente">Medikamente</string>
     <string name="txtv_notkompetenzmassnahmen">Notkompetenzmaßnahmen</string>
     <string name="btn_fertig">Fertig</string>
+     <!--Nicolas 3.04.2016 -->
+    <string name="btn_impr_einst">Impressum</string>
+    <string name="btn_ds_löschen">Datensatz wirklich löschen?</string>
+    <string name="txtv_impressum">Impressum</string>
+    <string name="txtv_Firma">Festivealth\n
+                              Expo Plaza 12\n
+                              30539 Hannover</string>
+    <string name="txtv_telEtc">Telefon: 0511/3666987-1\n
+                               Telefax: 0511/3666987-0\n
+                               E-Mail: <xlink href="mailto:info@Festivealth.de">info@Festivealth.de</xlink>
+                               </string>
+    <string name="txtv_name"> Vertreten durch die Geschäftsführerin: <strong> Vivien Stumpe</strong>\n
+                              Stellvertretender Geschäftsführer: <Stong>Daniel Semmler</Stong>
+</string>
+    
+    
 </resources>
