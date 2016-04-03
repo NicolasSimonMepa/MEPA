@@ -32,7 +32,7 @@
     <string name="txtv_maßnahmen">5. Maßnahmen</string>
     <string name="txtv_erstbefund">6. Erstbefund</string>
     <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
-    
+    <!-- Emile Yoncaova 03.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
     <string name="txtv_vergiftung">Vergiftung</string>
