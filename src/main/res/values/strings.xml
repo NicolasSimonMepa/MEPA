@@ -32,4 +32,36 @@
     <string name="txtv_maßnahmen">5. Maßnahmen</string>
     <string name="txtv_erstbefund">6. Erstbefund</string>
     <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
+    
+        <string name="txtv_keine">keine</string>
+    <string name="txtv_atmung">Atmung</string>
+    <string name="txtv_vergiftung">Vergiftung</string>
+    <string name="txtv_schwindel">Schwindel</string>
+    <string name="txtv_kreislauf">Herz-Kreislauf</string>
+    <string name="txtv_uebelkeit">Übelkeit/Erbrechen</string>
+    <string name="txtv_unterkuehlung">Unterkühlung</string>
+    <string name="txtv_baucherkrankung">Baucherkrankung</string>
+    <string name="txtv_hitzeschlag">Hitzeschlag</string>
+    <string name="txtv_hitzeerschoepfung">Hitzeerschöpfung</string>
+    <string name="txtv_alkoholisiert">alkoholisiert</string>
+    <string name="txtv_stoffwechsel">Stoffwechsel</string>
+    <string name="txtv_sonstiges">Sonstiges</string>
+
+    <string name="txtv_seitenlage">Stabile Seitenlage</string>
+    <string name="txtv_extremitaetenschienung">Extremitätenschienung</string>
+    <string name="txtv_sauerstoffgabe">Sauerstoffgabe</string>
+    <string name="txtv_oberkoerperhochlage">Oberkörperhochlage</string>
+    <string name="txtv_wundversorgung">Wundversorgung</string>
+    <string name="txtv_intubation">Intubation</string>
+    <string name="txtv_flachlagerung">Flachlagerung</string>
+    <string name="txtv_ekgmonitoring">EKG-Monitoring</string>
+    <string name="txtv_beatmung">Beatmung</string>
+    <string name="txtv_schocklagerung">Schocklagerung</string>
+    <string name="txtv_venoeserzugang">Venöser Zugang</string>
+    <string name="txtv_herzdruckmassage">Herzdruckmassage</string>
+    <string name="txtv_infusion">Infusion</string>
+    <string name="txtv_betreuung">Betreuung</string>
+    <string name="txtv_medikamente">Medikamente</string>
+    <string name="txtv_notkompetenzmassnahmen">Notkompetenzmaßnahmen</string>
+    <string name="btn_fertig">Fertig</string>
 </resources>
