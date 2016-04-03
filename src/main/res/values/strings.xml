@@ -1,3 +1,4 @@
+<!-- Zuletzt geändert von Vivien Stumpe am 03.04.16 -->
 <resources>
     <string name="app_name">MEPA</string>
     <string name="btn_menu">Menü</string>
@@ -24,4 +25,11 @@
     <string name="btn_löschen_einst">Lokale Daten löschen</string>
     <string name="btn_sync_einst">Daten synchronisieren</string>
     <string name="btn_impr_einst">Impressum</string>
+    <string name="txtv_pers_daten">1. Persönliche Daten</string>
+    <string name="txtv_notfallsituation">2. Notfallsituation</string>
+    <string name="txtv_verletzung">3. Verletzung</string>
+    <string name="txtv_erkrankung">4. Erkrankung/Vergiftung</string>
+    <string name="txtv_maßnahmen">5. Maßnahmen</string>
+    <string name="txtv_erstbefund">6. Erstbefund</string>
+    <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
 </resources>
