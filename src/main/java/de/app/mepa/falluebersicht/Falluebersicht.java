@@ -1,4 +1,4 @@
-
+//Zuletzt geändert von Vivien Stumpe am 04.04.16
 package de.app.mepa.falluebersicht;
 
 import android.content.Intent;
@@ -18,7 +18,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stammdaten);
+        setContentView(R.layout.activity_falluebersicht);
         //Buttonverweis der Schaltfläche zur Variable
         btn_menu = (Button)findViewById(R.id.btn_menu_fallueb);
         // Event abfangen
