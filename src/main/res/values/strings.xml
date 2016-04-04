@@ -33,6 +33,18 @@
     <string name="txtv_erstbefund">6. Erstbefund</string>
     <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
     <string name="pers_daten">Persönliche Daten</string>
+    <string name="txtv_name_pers_daten">Nachname</string>
+    <string name="txtv_vorname_pers_daten">Vorname</string>
+    <string name="txtv_str_pers_daten">Straße</string>
+    <string name="txtv_plz_pers_daten">Postleitzahl</string>
+    <string name="txtv_ort_pers_daten">Wohnort</string>
+    <string name="txtv_telefon_pers_daten">Telefon</string>
+    <string name="cck_patient_pers_daten">Patient</string>
+    <string name="cck_familie_pers_daten">Familie</string>
+    <string name="cck_freunde_pers_daten">Freunde</string>
+    <string name="txtv_geb_pers_daten">Geboren am</string>
+    <string name="txtv_fundort_pers_daten">Ggf. Fundort</string>
+    <string name="txtv_krankenkasse_pers_daten">Krankenkasse</string>
     <!-- Emile Yoncaova 03.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
