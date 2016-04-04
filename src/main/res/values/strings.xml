@@ -1,5 +1,6 @@
-<!-- Zuletzt geändert von Vivien Stumpe am 03.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 04.04.16 -->
 <resources>
+    <!-- Vivien Stumpe, 04.04.16 -->
     <string name="app_name">MEPA</string>
     <string name="btn_menu">Menü</string>
     <string name="txtv_info">Hier folgt noch ein Infotext!</string>
@@ -24,7 +25,6 @@
     <string name="btn_stammdat_einst">Stammdaten verwalten</string>
     <string name="btn_löschen_einst">Lokale Daten löschen</string>
     <string name="btn_sync_einst">Daten synchronisieren</string>
-    <string name="btn_impr_einst">Impressum</string>
     <string name="txtv_pers_daten">1. Persönliche Daten</string>
     <string name="txtv_notfallsituation">2. Notfallsituation</string>
     <string name="txtv_verletzung">3. Verletzung</string>
@@ -32,6 +32,7 @@
     <string name="txtv_maßnahmen">5. Maßnahmen</string>
     <string name="txtv_erstbefund">6. Erstbefund</string>
     <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
+    <string name="pers_daten">Persönliche Daten</string>
     <!-- Emile Yoncaova 03.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
