@@ -21,7 +21,9 @@
         <activity android:name="de.app.mepa.falleingabe.Falleingabe" />
         <activity android:name="de.app.mepa.impressum.Impressum" />
         <activity android:name="de.app.mepa.falluebersicht.Falluebersicht" />
-        <activity android:name="de.app.mepa.pers_daten.Pers_daten"></activity>
+        <activity android:name="de.app.mepa.pers_daten.Pers_daten" />
+        <activity android:name="de.app.mepa.notfallsituation.notfallsituation" />
+        <activity android:name="de.app.mepa.verletzung.Verletzung"></activity>
     </application>
 
 </manifest>
