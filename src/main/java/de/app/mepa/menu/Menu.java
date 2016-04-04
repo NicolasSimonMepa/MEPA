@@ -16,7 +16,6 @@ import de.app.mepa.mepa.R;
         //OnClickListener implementieren, um zu reagieren wenn eine View geklickt wurde
         //von Vivien Stumpe, 01.04.16
 public class Menu extends AppCompatActivity implements View.OnClickListener{
-public class Menu extends AppCompatActivity implements View.OnClickListener{
     //Erstellen von TextView-Variablen, um die TextViews in der Activity anzusprechen
     //von Vivien Stumpe, 01.04.16
     private TextView txtv_start;
