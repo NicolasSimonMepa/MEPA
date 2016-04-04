@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stume am 03.04.16
+//Zuletzt bearbeitet von Vivien Stume am 04.04.16
 package de.app.mepa.menu;
 
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.falluebersicht.Falluebersicht;
+import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 
@@ -69,6 +71,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             Intent intent = new Intent(Menu.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Hier fehlt noch die letzte Activity, da die Klasse noch nicht existiert
+        //von Vivien Stumpe, 04.04.16
+        if (ce == R.id.txtv_falluebersicht_menu){
+            Intent intent = new Intent(Menu.this, Falluebersicht.class);
+            startActivity(intent);
+        }
     }
 }
