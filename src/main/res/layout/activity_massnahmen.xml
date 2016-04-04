@@ -24,11 +24,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtv_erkrankung"
-        android:id="@+id/textView"
-        android:textSize="30sp"
+        android:text="@string/txtv_maßnahmen"
+        android:id="@+id/textView2"
         android:layout_below="@+id/btn_menu"
         android:layout_centerHorizontal="true"
+        android:textSize="30sp"
         android:textColor="#000000" />
 
     <CheckBox
