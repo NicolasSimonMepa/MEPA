@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 04.04.16
+//Zuletzt geändert von Emile Yoncaova am 05.04.16
 package de.app.mepa.falleingabe;
 
 import android.content.Intent;
@@ -13,6 +13,8 @@ import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.pers_daten.Pers_daten;
 import de.app.mepa.verletzung.Verletzung;
+import de.app.mepa.massnahmen.Maßnahmen;
+import de.app.mepa.erkrankung.Erkrankung;
 
 //OnClickListener implementieren, um auf einen Klick des Benutzers zu reagieren
 //von Vivien Stumpe, 03.04.16
@@ -26,6 +28,9 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private TextView txtv_pers_daten;
     private TextView txtv_notfall;
     private TextView txtv_verletzung;
+    private TextView txtv_erkrankung;
+    private TextView txtv_massnahmen;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +50,16 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         txtv_pers_daten = (TextView)findViewById(R.id.txtv_pers_daten);
         txtv_notfall = (TextView)findViewById(R.id.txtv_notfallsit);
         txtv_verletzung = (TextView)findViewById(R.id.txtv_verletzung);
+        txtv_erkrankung = (TextView)findViewById(R.id.txtv_erkrankung);
+        txtv_massnahmen = (TextView)findViewById(R.id.txtv_maßnahmen)
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 04.04.16
         txtv_pers_daten.setOnClickListener(this);
         txtv_notfall.setOnClickListener(this);
         txtv_verletzung.setOnClickListener(this);
+        txtv_erkrankung.setOnClickListener(this);
+        txtv_massnahmen.setOnClickListener(this);
     }
 
     @Override
@@ -81,6 +90,14 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         }
         if(ce == R.id.txtv_verletzung){
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.txtv_erkrankung){
+            Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.txtv_maßnahmen){
+            Intent intent = new Intent(Falleingabe.this, Maßnahmen.class);
             startActivity(intent);
         }
     }
