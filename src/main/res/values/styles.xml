@@ -1,11 +1,12 @@
+<!-- Zuletzt geändert von Vivien Stumpe am 01.04.16 -->
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Keine Titelleiste bzw. ActionBar anzeigen -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>
+

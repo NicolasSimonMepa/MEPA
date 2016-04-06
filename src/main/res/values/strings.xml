@@ -1,4 +1,6 @@
+<!-- Zuletzt geändert von Vivien Stumpe am 04.04.16 -->
 <resources>
+        <!-- Vivien Stumpe, 04.04.16 -->
     <string name="app_name">MEPA</string>
     <string name="btn_menu">Menü</string>
     <string name="txtv_info">Hier folgt noch ein Infotext!</string>
@@ -23,5 +25,100 @@
     <string name="btn_stammdat_einst">Stammdaten verwalten</string>
     <string name="btn_löschen_einst">Lokale Daten löschen</string>
     <string name="btn_sync_einst">Daten synchronisieren</string>
+    <string name="txtv_pers_daten">1. Persönliche Daten</string>
+    <string name="txtv_notfallsituation">2. Notfallsituation</string>
+    <string name="txtv_verletzung">3. Verletzung</string>
+    <string name="txtv_erkrankung">4. Erkrankung/Vergiftung</string>
+    <string name="txtv_maßnahmen">5. Maßnahmen</string>
+    <string name="txtv_erstbefund">6. Erstbefund</string>
+    <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
+    <string name="pers_daten">Persönliche Daten</string>
+    <string name="txtv_name_pers_daten">Nachname</string>
+    <string name="txtv_vorname_pers_daten">Vorname</string>
+    <string name="txtv_str_pers_daten">Straße</string>
+    <string name="txtv_plz_pers_daten">Postleitzahl</string>
+    <string name="txtv_ort_pers_daten">Wohnort</string>
+    <string name="txtv_telefon_pers_daten">Telefon</string>
+    <string name="cck_patient_pers_daten">Patient</string>
+    <string name="cck_familie_pers_daten">Familie</string>
+    <string name="cck_freunde_pers_daten">Freunde</string>
+    <string name="txtv_geb_pers_daten">Geboren am</string>
+    <string name="txtv_fundort_pers_daten">Ggf. Fundort</string>
+    <string name="txtv_krankenkasse_pers_daten">Krankenkasse</string>
+    <string name="txtv_zugefuehrt">Der Hilfsstelle
+                                    \nzugeführt durch:</string>
+    <string name="cck_polizei">Polizei</string>
+    <string name="cck_rtw">RTW/KTW</string>
+    <string name="cck_san">San-Team</string>
+    <string name="cck_sec">Security</string>
+    <string name="cck_ang">Angehörige</string>
+    <string name="cck_selbst">Selbst</string>
+    <string name="cck_pas">Passanten</string>
+    <string name="sonstiges">Sonstiges</string>
+    <string name="txtv_notfall">Notfallsituation</string>
+    <string name="txtv_beschreibung_notfall">Bitte beschreiben Sie die Notfallsituation:</string>
+    <string name="verletzung">Verletzung</string>
+    <string name="cck_prellung">Prellung/\nVerletzung</string>
+    <string name="cck_wunde">Wunde/\nVerletzung</string>
+    <string name="cck_verbrennung">Verbrennung</string>
+    <string name="cck_inhalation">Inhalations-\ntrauma</string>
+    <string name="cck_elektro">Elektrounfall</string>
+    <string name="txtv_schaedel">Schädel-Hirn</string>
+    <string name="txtv_gesicht">Gesicht</string>
+    <string name="txtv_hws">HWS</string>
+    <string name="txtv_brustkorb">Brustkorb</string>
+    <string name="txtv_bauch">Bauch</string>
+    <string name="txtv_bws">BWS / LWS</string>
+    <string name="txtv_becken">Becken</string>
+    <string name="txtv_arme">Arme</string>
+    <string name="txtv_beine">Beine</string>
+    <string name="txtv_weichteile">Weichteile</string>
+    <!-- Emile Yoncaova 03.04.2016 -->
+        <string name="txtv_keine">keine</string>
+    <string name="txtv_atmung">Atmung</string>
+    <string name="txtv_vergiftung">Vergiftung</string>
+    <string name="txtv_schwindel">Schwindel</string>
+    <string name="txtv_kreislauf">Herz-Kreislauf</string>
+    <string name="txtv_uebelkeit">Übelkeit/Erbrechen</string>
+    <string name="txtv_unterkuehlung">Unterkühlung</string>
+    <string name="txtv_baucherkrankung">Baucherkrankung</string>
+    <string name="txtv_hitzeschlag">Hitzeschlag</string>
+    <string name="txtv_hitzeerschoepfung">Hitzeerschöpfung</string>
+    <string name="txtv_alkoholisiert">alkoholisiert</string>
+    <string name="txtv_stoffwechsel">Stoffwechsel</string>
+    <string name="txtv_sonstiges">Sonstiges</string>
+
+    <string name="txtv_seitenlage">Stabile Seitenlage</string>
+    <string name="txtv_extremitaetenschienung">Extremitätenschienung</string>
+    <string name="txtv_sauerstoffgabe">Sauerstoffgabe</string>
+    <string name="txtv_oberkoerperhochlage">Oberkörperhochlage</string>
+    <string name="txtv_wundversorgung">Wundversorgung</string>
+    <string name="txtv_intubation">Intubation</string>
+    <string name="txtv_flachlagerung">Flachlagerung</string>
+    <string name="txtv_ekgmonitoring">EKG-Monitoring</string>
+    <string name="txtv_beatmung">Beatmung</string>
+    <string name="txtv_schocklagerung">Schocklagerung</string>
+    <string name="txtv_venoeserzugang">Venöser Zugang</string>
+    <string name="txtv_herzdruckmassage">Herzdruckmassage</string>
+    <string name="txtv_infusion">Infusion</string>
+    <string name="txtv_betreuung">Betreuung</string>
+    <string name="txtv_medikamente">Medikamente</string>
+    <string name="txtv_notkompetenzmassnahmen">Notkompetenzmaßnahmen</string>
+    <string name="btn_fertig">Fertig</string>
+     <!--Nicolas 3.04.2016 -->
     <string name="btn_impr_einst">Impressum</string>
+    <string name="btn_ds_löschen">Datensatz wirklich löschen?</string>
+    <string name="txtv_impressum">Impressum</string>
+    <string name="txtv_Firma">Festivealth\n
+                              Expo Plaza 12\n
+                              30539 Hannover</string>
+    <string name="txtv_telEtc">Telefon: 0511/3666987-1\n
+                               Telefax: 0511/3666987-0\n
+                               E-Mail: <xlink href="mailto:info@Festivealth.de">info@Festivealth.de</xlink>
+                               </string>
+    <string name="txtv_name"> Vertreten durch die Geschäftsführerin: <strong> Vivien Stumpe</strong>\n
+                              Stellvertretender Geschäftsführer: <Stong>Daniel Semmler</Stong>
+</string>
+    
+    
 </resources>

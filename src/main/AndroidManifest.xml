@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- Zuletzt geändert von Vivien Stumpe am 04.04.16 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.app.mepa.mepa">
 
@@ -17,7 +17,15 @@
         </activity>
         <activity android:name="de.app.mepa.menu.Menu" />
         <activity android:name="de.app.mepa.stammdaten.Stammdaten" />
-        <activity android:name="de.app.mepa.einstellungen.Einstellungen"></activity>
+        <activity android:name="de.app.mepa.einstellungen.Einstellungen" />
+        <activity android:name="de.app.mepa.falleingabe.Falleingabe" />
+        <activity android:name="de.app.mepa.impressum.Impressum" />
+        <activity android:name="de.app.mepa.falluebersicht.Falluebersicht" />
+        <activity android:name="de.app.mepa.pers_daten.Pers_daten" />
+        <activity android:name="de.app.mepa.notfallsituation.notfallsituation" />
+        <activity android:name="de.app.mepa.verletzung.Verletzung"></activity>
+        <activity android:name="de.app.mepa.erkrankung.Erkrankung" />
+        <activity android:name="de.app.mepa.massnahmen.Maßnahmen" />
     </application>
 
 </manifest>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Zuletzt geändert von Vivien Stumpe am 01.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,7 +23,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_menu"
-        android:id="@+id/btn_menu"
+        android:id="@+id/btn_menu_main"
         android:layout_below="@+id/imgv_logo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -37,14 +38,14 @@
         android:text="@string/txtv_info"
         android:id="@+id/txtv_info"
         android:singleLine="false"
-        android:layout_below="@+id/btn_menu"
+        android:layout_below="@+id/btn_menu_main"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_falleingabe"
-        android:id="@+id/btn_falleingabe"
+        android:id="@+id/btn_falleingabe_main"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
