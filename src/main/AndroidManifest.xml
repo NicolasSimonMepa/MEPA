@@ -24,8 +24,8 @@
         <activity android:name="de.app.mepa.pers_daten.Pers_daten" />
         <activity android:name="de.app.mepa.notfallsituation.notfallsituation" />
         <activity android:name="de.app.mepa.verletzung.Verletzung"></activity>
-        <activity android:name="de.app.mepa.erkrankung.erkrankung" />
-        <activity android:name="de.app.mepa.massnahmen.massnahmen" />
+        <activity android:name="de.app.mepa.erkrankung.Erkrankung" />
+        <activity android:name="de.app.mepa.massnahmen.Maßnahmen" />
     </application>
 
 </manifest>
