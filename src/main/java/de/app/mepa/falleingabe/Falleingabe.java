@@ -13,7 +13,7 @@ import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.pers_daten.Pers_daten;
 import de.app.mepa.verletzung.Verletzung;
-import de.app.mepa.massnahmen.Maßnahmen;
+import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
 
 //OnClickListener implementieren, um auf einen Klick des Benutzers zu reagieren
@@ -51,7 +51,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         txtv_notfall = (TextView)findViewById(R.id.txtv_notfallsit);
         txtv_verletzung = (TextView)findViewById(R.id.txtv_verletzung);
         txtv_erkrankung = (TextView)findViewById(R.id.txtv_erkrankung);
-        txtv_massnahmen = (TextView)findViewById(R.id.txtv_maßnahmen)
+        txtv_massnahmen = (TextView)findViewById(R.id.txtv_massnahmen)
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 04.04.16
@@ -96,8 +96,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_maßnahmen){
-            Intent intent = new Intent(Falleingabe.this, Maßnahmen.class);
+        if(ce == R.id.txtv_massnahmen){
+            Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
     }
