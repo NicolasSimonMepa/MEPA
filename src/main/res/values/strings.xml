@@ -73,7 +73,7 @@
     <string name="txtv_arme">Arme</string>
     <string name="txtv_beine">Beine</string>
     <string name="txtv_weichteile">Weichteile</string>
-    <!-- Emile Yoncaova 03.04.2016 -->
+    <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
     <string name="txtv_vergiftung">Vergiftung</string>
@@ -86,6 +86,11 @@
     <string name="txtv_hitzeerschoepfung">Hitzeerschöpfung</string>
     <string name="txtv_alkoholisiert">alkoholisiert</string>
     <string name="txtv_stoffwechsel">Stoffwechsel</string>
+    <string name="txtv_neurologie">Neurologie</string>
+    <string name="txtv_psychatrie">Psychatrie</string>
+    <string name="txtv_gynaekologie">Gynäkologie</string>
+    <string name="txtv_geburtshilfe">Geburtshilfe</string>
+    <string name="txtv_kindernotfall">Kindernotfall</string>
     <string name="txtv_sonstiges">Sonstiges</string>
 
     <string name="txtv_seitenlage">Stabile Seitenlage</string>
