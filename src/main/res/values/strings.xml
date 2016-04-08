@@ -1,6 +1,6 @@
-<!-- Zuletzt geändert von Vivien Stumpe am 04.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 08.04.16 -->
 <resources>
-        <!-- Vivien Stumpe, 04.04.16 -->
+        <!-- Vivien Stumpe, 08.04.16 -->
     <string name="app_name">MEPA</string>
     <string name="btn_menu">Menü</string>
     <string name="txtv_info">Hier folgt noch ein Infotext!</string>
@@ -73,6 +73,11 @@
     <string name="txtv_arme">Arme</string>
     <string name="txtv_beine">Beine</string>
     <string name="txtv_weichteile">Weichteile</string>
+        <string-array name="drawer_nav_falleingabe">
+        <item>Start</item>
+        <item>Einstellungen</item>
+        <item>Fallübersicht</item>
+    </string-array>
     <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
