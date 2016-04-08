@@ -1,4 +1,4 @@
-//Zuletzt geändert von Emile Yoncaova am 05.04.16
+//Zuletzt geändert von Vivien Stumpe am 08.04.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Intent;
@@ -51,7 +51,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         txtv_notfall = (TextView)findViewById(R.id.txtv_notfallsit);
         txtv_verletzung = (TextView)findViewById(R.id.txtv_verletzung);
         txtv_erkrankung = (TextView)findViewById(R.id.txtv_erkrankung);
-        txtv_massnahmen = (TextView)findViewById(R.id.txtv_massnahmen)
+        txtv_massnahmen = (TextView)findViewById(R.id.txtv_maßnahmen);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 04.04.16
@@ -96,7 +96,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_massnahmen){
+        if(ce == R.id.txtv_maßnahmen){
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
