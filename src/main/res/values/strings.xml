@@ -1,6 +1,6 @@
-<!-- Zuletzt geändert von Vivien Stumpe am 08.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 09.04.16 -->
 <resources>
-        <!-- Vivien Stumpe, 08.04.16 -->
+        <!-- Vivien Stumpe, 31.03.16 -->
     <string name="app_name">MEPA</string>
     <string name="btn_menu">Menü</string>
     <string name="txtv_info">Hier folgt noch ein Infotext!</string>
@@ -8,6 +8,7 @@
     <string name="imgv_logo">Festivealth Logo</string>
     <string name="txtv_menu">Menü</string>
     <string name="txtv_start">Start</string>
+    <!-- Vivien Stumpe, 01.04.16 -->
     <string name="txtv_einstellungen">Einstellungen</string>
     <string name="txtv_falleingabe">Falleingabe</string>
     <string name="txtv_falluebersicht">Fallübersicht</string>
@@ -32,6 +33,7 @@
     <string name="txtv_maßnahmen">5. Maßnahmen</string>
     <string name="txtv_erstbefund">6. Erstbefund</string>
     <string name="txtv_ersthelfermaßnahmen">7. Ersthelfermaßnahmen</string>
+    <!-- Vivien Stumpe, 04.04.16 -->
     <string name="pers_daten">Persönliche Daten</string>
     <string name="txtv_name_pers_daten">Nachname</string>
     <string name="txtv_vorname_pers_daten">Vorname</string>
@@ -73,11 +75,25 @@
     <string name="txtv_arme">Arme</string>
     <string name="txtv_beine">Beine</string>
     <string name="txtv_weichteile">Weichteile</string>
+    <!-- Vivien Stumpe, 08.04.16 -->
         <string-array name="drawer_nav_falleingabe">
         <item>Start</item>
         <item>Einstellungen</item>
         <item>Fallübersicht</item>
+            <item>Upload</item>
+            <item>Impressum</item>
+            <item>Stammdaten</item>
     </string-array>
+    <!-- Vivien Stumpe, 09.04.16 -->
+    <string-array name="drawer_nav_einstellungen">
+        <item>Start</item>
+        <item>Falleingabe</item>
+        <item>Fallübersicht</item>
+        <item>Upload</item>
+        <item>Impressum</item>
+        <item>Stammdaten</item>
+    </string-array>
+
     <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
