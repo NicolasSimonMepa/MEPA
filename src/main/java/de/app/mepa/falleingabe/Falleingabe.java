@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 08.04.2016
+//Zuletzt geändert von Vivien Stumpe am 09.04.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -18,16 +18,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falluebersicht.Falluebersicht;
+import de.app.mepa.impressum.Impressum;
 import de.app.mepa.menu.Menu;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.pers_daten.Pers_daten;
+import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
+
 
 //OnClickListener implementieren, um auf einen Klick des Benutzers zu reagieren
 //von Vivien Stumpe, 03.04.16
@@ -51,9 +55,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
     //Adapter, der die Einträge der ListView darstellt
+    //Array mit den Icons, die im Menü dargestellt werden sollen
     private DrawerLayout drawerlayout_falleingabe;
     private ListView listview_falleingabe;
-    private MyAdapter myadapter;
+    private MyAdapter myadapter_fallein;
+    private int[] drawer_icons_falleingabe={R.drawable.mepa_icon, R.drawable.mepa_icon,
+            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
 
 
     @Override
@@ -89,9 +96,9 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_falleingabe=(DrawerLayout) findViewById(R.id.drawerLayout_Falleingabe);
         listview_falleingabe=(ListView) findViewById(R.id.listview_falleingabe);
-        //Adapter setzen, um die Einträge der ListView darzustellen
-        myadapter=new MyAdapter(this);
-        listview_falleingabe.setAdapter(myadapter);
+        //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
+        myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_falleingabe), drawer_icons_falleingabe);
+        listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
     }
 
@@ -139,6 +146,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     @Override
     //Wird aufgerufen, wenn ein Element im Drawer geklickt wurde
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
 
@@ -158,62 +166,24 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
                 startActivity(intent);
             }
+            //von Vivien Stumpe, 09.04.16
+            //Die Activity zum Upload der Daten fehlt noch!!!
+            //Wenn das vierte Element im Menü geklickt wurde, wird der Upload geöffnet
+            if(position==3) {
+                Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
+                startActivity(intent);
+            }
+            //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+            if(position==4) {
+                Intent intent = new Intent(Falleingabe.this, Impressum.class);
+                startActivity(intent);
+            }
+            //Wenn das sechste Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+            if(position==5) {
+                Intent intent = new Intent(Falleingabe.this, Stammdaten.class);
+                startActivity(intent);
+            }
 
         }
-
 }
-    //von Vivien Stumpe, 08.04.16
-    //Klasse für einen eigenen Adapter implementieren
-class MyAdapter extends BaseAdapter{
-    private Context context;
-        //Array für die Texte, die im Menü dargestellt werden sollen
-    private String[] drawer_falleingabe;
-        //Array für die Icons/Piktogramme, die im Menü dargestellt werden sollen
-    private int[] icons_falleingabe={R.drawable.mepa_icon, R.drawable.mepa_icon, R.drawable.mepa_icon};
 
-        //Konstruktor überladen
-    public MyAdapter(Context context){
-        this.context=context;
-
-        //Einträge des Menüs festlegen - sie finden sich in strings.xml im string Array drawer_nav_falleingabe
-        drawer_falleingabe=context.getResources().getStringArray(R.array.drawer_nav_falleingabe);
-    }
-        //erforderlicher Dienst
-    @Override
-    public int getCount() {
-        return drawer_falleingabe.length;
-    }
-    //erforderlicher Dienst
-    @Override
-    public Object getItem(int position) {
-        return drawer_falleingabe[position];
-    }
-    //erforderlicher Dienst
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-    //erforderlicher Dienst
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row=null;
-        if(convertView==null)
-        {
-            LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            //Layout für die Elemente der ListView zuweisen - Wie sollen die Einträge im Menü dargestellt werden?
-            row=inflater.inflate(R.layout.drawer_listview_item, parent, false);
-        }
-        else
-        {
-            row=convertView;
-        }
-        //Verbindung zu den Elementen des Drawers herstellen
-        TextView txtv_title_drawer=(TextView) row.findViewById(R.id.txtv_drawer_listview);
-        ImageView imgv_title_drawer=(ImageView) row.findViewById(R.id.imgv_drawer_listview);
-        //Einträge der ListView im Menü darstellen
-        txtv_title_drawer.setText(drawer_falleingabe[position]);
-        //Icons/Piktogramme im Menü darstellen
-        imgv_title_drawer.setImageResource(icons_falleingabe[position]);
-        return row;
-    }
-}
