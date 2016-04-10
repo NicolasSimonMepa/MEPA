@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Zuletzt geändert von Vivien Stumpe am 04.04.16 -->
+<?xml version="1.0" encoding="utf-8"?><!-- Zuletzt geändert von Vivien Stumpe am 10.04.16 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.app.mepa.mepa">
 
@@ -26,6 +26,7 @@
         <activity android:name="de.app.mepa.verletzung.Verletzung"></activity>
         <activity android:name="de.app.mepa.erkrankung.Erkrankung" />
         <activity android:name="de.app.mepa.massnahmen.Massnahmen" />
+        <activity android:name="de.app.mepa.upload.Upload"></activity>
     </application>
 
 </manifest>
