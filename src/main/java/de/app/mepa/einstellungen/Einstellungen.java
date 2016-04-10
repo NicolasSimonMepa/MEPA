@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 09.04.16
+//Zuletzt geändert von Vivien Stumpe am 10.04.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -121,11 +121,10 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(Einstellungen.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //von Vivien Stumpe, 09.04.16
-        //Die Activity zum Upload der Daten fehlt noch!!!
+        //von Vivien Stumpe, 10.04.16
         //Wenn das vierte Element im Menü geklickt wurde, wird der Upload geöffnet
         if(position==3) {
-            Intent intent = new Intent(Einstellungen.this, Falluebersicht.class);
+            Intent intent = new Intent(Einstellungen.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
