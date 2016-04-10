@@ -31,6 +31,7 @@ import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
+import de.app.mepa.upload.Upload;
 
 
 //OnClickListener implementieren, um auf einen Klick des Benutzers zu reagieren
