@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Zuletzt geändert von Vivien Stumpe -->
+<!-- von Vivien Stumpe, 10.04.16 -->
+<!-- DrawerLayout für das Hamburger Menü -->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout_Erkrankung"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!-- von , -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -234,3 +243,61 @@
         </TableRow>
     </TableLayout>
 </ScrollView>
+    <!-- von Vivien Stumpe, 10.04.16 -->
+    <!-- Hamburger Menü - Drawer Navigation -->
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_Erkrankung"
+        android:background="#ffeedd"
+        android:layout_gravity="start">
+
+        <!-- Kopfzeile -->
+
+        <RelativeLayout
+            android:id="@+id/menu_kopfzeile_Erkrankung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" >
+
+            <ImageView
+                android:id="@+id/menu_Erkrankung"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_menu"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/menu_Erkrankung"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtv_menu_Erkrankung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_menu"
+                    android:layout_marginTop="15dp"
+                    android:textSize="30sp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <!-- Menüpunkte -->
+        <ListView
+            android:id="@+id/listview_Erkrankung"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/menu_kopfzeile_Erkrankung"
+            android:choiceMode="singleChoice"
+            android:background="#ffeedd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
