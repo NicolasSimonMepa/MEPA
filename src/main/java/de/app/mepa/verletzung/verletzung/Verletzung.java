@@ -1,16 +1,27 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 04.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 10.04.16
 package de.app.mepa.verletzung;
 
+import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 
+import de.app.mepa.MyAdapter;
+import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.falleingabe.Falleingabe;
+import de.app.mepa.falluebersicht.Falluebersicht;
+import de.app.mepa.impressum.Impressum;
+import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
+import de.app.mepa.stammdaten.Stammdaten;
+import de.app.mepa.upload.Upload;
 
-public class Verletzung extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Verletzung extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener  {
     //Variablen für die Spinner in der Activity erstellen
     //von Vivien Stumpe, 04.04.16
     private Spinner spin_schaedel_art;
@@ -39,7 +50,16 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     //von Vivien Stumpe, 04.04.16
     private String[]art = {" ", "offen", "geschl"};
     private String[]grad = {" ", "leicht", "mittel", "schwer"};
-
+    //von Vivien Stumpe, 10.04.16
+    //DrawerLayout für das Hamburger Menü
+    //ListView, die die Einträge des Menüs enthält
+    //Adapter, der die Einträge der ListView darstellt
+    //Array mit den Icons, die im Menü dargestellt werden sollen
+    private DrawerLayout drawerlayout_verletzung;
+    private ListView listview_verletzung;
+    private MyAdapter myadapter_verletzung;
+    private int[] drawer_icons_verletzung={R.drawable.mepa_icon, R.drawable.mepa_icon,
+            R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +162,15 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         spin_weichteile_grad = (Spinner)findViewById(R.id.spin_weichteile_grad);
         spin_weichteile_grad.setAdapter(adapter);
         spin_weichteile_grad.setOnItemSelectedListener(this);
+        //von Vivien Stumpe, 10.04.16
+        //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
+        drawerlayout_verletzung=(DrawerLayout) findViewById(R.id.drawerLayout_Verletzung);
+        listview_verletzung=(ListView) findViewById(R.id.listview_verletzung);
+        //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
+        myadapter_verletzung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_verletzung);
+        listview_verletzung.setAdapter(myadapter_verletzung);
+        //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
+        listview_verletzung.setOnItemClickListener(this);
     }
 
     //Prozedur, die aufgerufen wird wenn ein Listenelement im Spinner ausgewählt wurde
@@ -164,5 +193,49 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    //von Vivien Stumpe, 10.04.16
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
+        selectItemFromDrawer(position);
+    }
+    //von Vivien Stumpe, 10.04.16
+    private void selectItemFromDrawer(int position){
+        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
+        if(position==0) {
+            Intent intent = new Intent(Verletzung.this, MainActivity.class);
+            startActivity(intent);
+        }
+        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
+        if(position==1) {
+            Intent intent = new Intent(Verletzung.this, Einstellungen.class);
+            startActivity(intent);
+        }
+        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
+        if(position==2) {
+            Intent intent = new Intent(Verletzung.this, Falleingabe.class);
+            startActivity(intent);
+        }
+        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Verletzung.this, Falluebersicht.class);
+            startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==4) {
+            Intent intent = new Intent(Verletzung.this, Upload.class);
+            startActivity(intent);
+        }
+        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==5) {
+            Intent intent = new Intent(Verletzung.this, Impressum.class);
+            startActivity(intent);
+        }
+        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+        if(position==6) {
+            Intent intent = new Intent(Verletzung.this, Stammdaten.class);
+            startActivity(intent);
+        }
     }
 }
