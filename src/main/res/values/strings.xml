@@ -95,6 +95,15 @@
     </string-array>
         <!-- Vivien Stumpe, 10.04.16 -->
     <string name="txtv_upload">Upload</string>
+    <string-array name="drawer_nav_erfassung">
+        <item>Start</item>
+        <item>Einstellungen</item>
+        <item>Falleingabe</item>
+        <item>Fallübersicht</item>
+        <item>Upload</item>
+        <item>Impressum</item>
+        <item>Stammdaten</item>
+    </string-array>
 
     <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
