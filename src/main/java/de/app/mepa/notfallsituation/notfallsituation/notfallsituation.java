@@ -41,7 +41,7 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
         drawerlayout_notfall=(DrawerLayout) findViewById(R.id.drawerLayout_Notfallsituation);
         listview_notfall=(ListView) findViewById(R.id.listview_Notfallsituation);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_notfallsituation), drawer_icons_notfall);
+        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_notfall);
         listview_notfall.setAdapter(myadapter_notfall);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_notfall.setOnItemClickListener(this);
