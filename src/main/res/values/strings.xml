@@ -104,6 +104,14 @@
         <item>Impressum</item>
         <item>Stammdaten</item>
     </string-array>
+    <string-array name="drawer_nav_stammdaten">
+        <item>Start</item>
+        <item>Einstellungen</item>
+        <item>Falleingabe</item>
+        <item>Fallübersicht</item>
+        <item>Upload</item>
+        <item>Impressum</item>
+    </string-array>
 
     <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
