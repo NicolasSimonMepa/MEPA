@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- ZUletzt bearbeitet von Vivien Stumpe, 04.04.16 -->
+    <!-- Zuletzt bearbeitet von Vivien Stumpe, 10.04.16 -->
+<!-- von Vivien Stumpe, 10.04.16 -->
+<!-- DrawerLayout für das Hamburger Menü -->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout_Notfallsituation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!-- von Vivien Stumpe, 04.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -52,3 +61,62 @@
             android:textColor="#000000" />
     </LinearLayout>
 </RelativeLayout>
+    <!-- von Vivien Stumpe, 10.04.16 -->
+    <!-- Hamburger Menü - Drawer Navigation -->
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_Notfallsituation"
+        android:background="#ffeedd"
+        android:layout_gravity="start">
+
+        <!-- Kopfzeile -->
+
+        <RelativeLayout
+            android:id="@+id/menu_kopfzeile_Notfallsituation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" >
+
+            <ImageView
+                android:id="@+id/menu_Notfallsituation"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_menu"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/menu_Notfallsituation"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtv_menu_Notfallsituation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_menu"
+                    android:layout_marginTop="15dp"
+                    android:textSize="30sp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <!-- Menüpunkte -->
+        <ListView
+            android:id="@+id/listview_Notfallsituation"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/menu_kopfzeile_Notfallsituation"
+            android:choiceMode="singleChoice"
+            android:background="#ffeedd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
+
