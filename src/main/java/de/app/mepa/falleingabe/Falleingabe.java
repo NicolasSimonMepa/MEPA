@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 09.04.2016
+//Zuletzt geändert von Vivien Stumpe am 10.04.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -166,11 +166,10 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
                 startActivity(intent);
             }
-            //von Vivien Stumpe, 09.04.16
-            //Die Activity zum Upload der Daten fehlt noch!!!
+            //von Vivien Stumpe, 10.04.16
             //Wenn das vierte Element im Menü geklickt wurde, wird der Upload geöffnet
             if(position==3) {
-                Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
+                Intent intent = new Intent(Falleingabe.this, Upload.class);
                 startActivity(intent);
             }
             //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
