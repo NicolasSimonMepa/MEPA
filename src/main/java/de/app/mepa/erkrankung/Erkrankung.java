@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 10.04.16
+//Zuletzt geändert von Vivien Stumpe, 11.04.16
 package de.app.mepa.erkrankung;
 
 import android.content.Intent;
@@ -10,14 +10,17 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
+import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
+import de.app.mepa.verletzung.Verletzung;
 
 public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemClickListener{
     //von Vivien Stumpe, 10.04.16
@@ -30,7 +33,9 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     private MyAdapter myadapter_erkrankung;
     private int[] drawer_icons_erkrankung={R.drawable.mepa_icon, R.drawable.mepa_icon,
             R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
-
+    //von Vivien Stumpe, 11.04.16
+    //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+    private View view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,19 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         listview_erkrankung.setAdapter(myadapter_erkrankung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_erkrankung.setOnItemClickListener(this);
+
+        //von Vivien Stumpe, 11.04.16
+        //Verbindung der View zur Scrollview in der Aktivität
+        view=(View) findViewById(R.id.scrV_erkrankung);
+        //OnTouchListener auf die View setzen
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
+            //Bei einem Swipe nach links wird die nächste Aktivität geöffnet
+            @Override
+            public void onSwipeLeft() {
+                Intent intent = new Intent(Erkrankung.this, Massnahmen.class);
+                startActivity(intent);
+            }
+        });
     }
     //von Vivien Stumpe, 10.04.16
     @Override
