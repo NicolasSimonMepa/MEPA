@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 10.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 11.04.16
 package de.app.mepa.verletzung;
 
 import android.content.Intent;
@@ -12,7 +12,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.erkrankung.Erkrankung;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -60,6 +62,9 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private MyAdapter myadapter_verletzung;
     private int[] drawer_icons_verletzung={R.drawable.mepa_icon, R.drawable.mepa_icon,
             R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    //von Vivien Stumpe, 11.04.16
+    //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+    private View view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,6 +176,19 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         listview_verletzung.setAdapter(myadapter_verletzung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_verletzung.setOnItemClickListener(this);
+
+        //von Vivien Stumpe, 11.04.16
+        //Verbindung der View zur Scrollview in der Aktivität
+        view=(View) findViewById(R.id.rl_verletzung);
+        //OnTouchListener auf die View setzen
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            //Bei einem Swipe nach links wird die nächste Aktivität geöffnet
+            public void onSwipeLeft() {
+                Intent intent = new Intent(Verletzung.this, Erkrankung.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //Prozedur, die aufgerufen wird wenn ein Listenelement im Spinner ausgewählt wurde
