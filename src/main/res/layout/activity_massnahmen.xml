@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:fillViewport="true"
-    tools:context="de.app.mepa.massnahmen.Massnahmen">
+    tools:context="de.app.mepa.massnahmen.Massnahmen"
+    android:id="@+id/scrV_massnahmen">
 
 
     <TableLayout
