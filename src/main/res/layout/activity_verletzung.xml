@@ -16,7 +16,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="de.app.mepa.verletzung.Verletzung">
+    tools:context="de.app.mepa.verletzung.Verletzung"
+    android:id="@+id/rl_verletzung">
 
     <TextView
         android:layout_width="match_parent"
