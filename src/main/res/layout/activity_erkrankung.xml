@@ -17,7 +17,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:fillViewport="true"
-    tools:context="de.app.mepa.erkrankung.Erkrankung">
+    tools:context="de.app.mepa.erkrankung.Erkrankung"
+    android:id="@+id/scrV_erkrankung">
 
     <TableLayout
         android:layout_width="match_parent"
