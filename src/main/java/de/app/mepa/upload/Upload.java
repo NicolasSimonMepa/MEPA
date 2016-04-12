@@ -11,9 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+/* auskommentiert von Vivien Stumpe, 12.04.16
+Mit den Importanweisungen erhalte ich beim Starten eine Fehlermeldung
+"Error: package com.google.android.gms.XY does not exist"
+--> Das Projekt lässt sich dann nicht starten
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+*/
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
