@@ -31,6 +31,8 @@ import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
+import de.app.mepa.erstbefund.Erstbefund;
+import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.upload.Upload;
 
 
@@ -50,6 +52,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private TextView txtv_verletzung;
     private TextView txtv_erkrankung;
     private TextView txtv_massnahmen;
+    private TextView txtv_erstbefund;
+    private TextView txtv_ersthelfermassnahmen;
     
 
     //von Vivien Stumpe, 08.04.16
@@ -84,6 +88,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         txtv_verletzung = (TextView)findViewById(R.id.txtv_verletzung);
         txtv_erkrankung = (TextView)findViewById(R.id.txtv_erkrankung);
         txtv_massnahmen = (TextView)findViewById(R.id.txtv_maßnahmen);
+        txtv_erstbefund = (TextView)findViewById(R.id.txtv_erstbefund);
+        txtv_ersthelfermassnahmen = (TextView)findViewById(R.id.txtv_ersthelferm);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 04.04.16
@@ -92,6 +98,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         txtv_verletzung.setOnClickListener(this);
         txtv_erkrankung.setOnClickListener(this);
         txtv_massnahmen.setOnClickListener(this);
+        txtv_erstbefund.setOnClickListener(this);
+        txtv_ersthelfermassnahmen.setOnClickListener(this);
 
         //von Vivien Stumpe, 08.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
@@ -139,6 +147,14 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         }
         if(ce == R.id.txtv_maßnahmen){
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.txtv_erstbefund){
+            Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.txtv_ersthelferm){
+            Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
     }
