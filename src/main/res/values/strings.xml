@@ -95,6 +95,23 @@
     </string-array>
         <!-- Vivien Stumpe, 10.04.16 -->
     <string name="txtv_upload">Upload</string>
+        <!-- Nathalie Horn, 10.04.16-->
+    <string name="txtv_upload_usb">USB</string>
+    <string name="txtv_upload_upload">Upload</string>
+    <string name="txtv_upload_bluetooth">Bluetooth</string>
+    <string name="txtv_upload_email">E-Mail</string>
+
+    <!-- Nathalie Horn, 11.04.16-->
+    <string-array name="drawer_nav_upload">
+        <item>Start</item>
+        <item>Einstellungen</item>
+        <item>Falleingabe</item>
+        <item>Fallübersicht</item>
+        <item>Impressum</item>
+        <item>Stammdaten</item>
+    </string-array>
+
+    <!-- Vivien Stumpe, 10.04.16 -->
     <string-array name="drawer_nav_erfassung">
         <item>Start</item>
         <item>Einstellungen</item>
