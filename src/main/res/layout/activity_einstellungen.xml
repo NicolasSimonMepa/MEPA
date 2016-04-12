@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Zuletzt geändert von Vivien Stumpe, 12.04.16 -->
 <!-- von Vivien Stumpe, 09.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -12,12 +12,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_centerInParent="true"
     tools:context="de.app.mepa.einstellungen.Einstellungen">
+    <!-- von Vivien Stumpe, 12.04.16 -->
+    <!-- Layout für die Toolbar hinzufügen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar_layout"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +38,8 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="false"
         android:gravity="top"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -50,11 +58,11 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_menu"
             android:id="@+id/btn_menu_einst"
-            android:background="#2e5897"
+            android:background="#ffeedd"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center" />
 
         <Button
@@ -62,10 +70,10 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_stammdat_einst"
             android:id="@+id/btn_stammdat_einst"
-            android:background="#2e5897"
+            android:background="#ffeedd"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:gravity="center" />
 
@@ -74,11 +82,11 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_löschen_einst"
             android:id="@+id/btn_löschen_einst"
-            android:background="#2e5897"
+            android:background="#ffeedd"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center" />
 
         <Button
@@ -86,11 +94,11 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_sync_einst"
             android:id="@+id/btn_sync_einst"
-            android:background="#2e5897"
+            android:background="#ffeedd"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center" />
 
         <Button
@@ -98,10 +106,10 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_impr_einst"
             android:id="@+id/btn_impr_einst"
-            android:background="#2e5897"
+            android:background="#ffeedd"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:gravity="center" />
     </LinearLayout>
