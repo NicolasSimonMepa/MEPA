@@ -129,7 +129,9 @@
         <item>Upload</item>
         <item>Impressum</item>
     </string-array>
-
+    <!-- Vivien Stumpe, 12.04.16 -->
+    <string name="drawer_open">Menü öffnen</string>
+    <string name="drawer_close">Menü schließen</string>
     <!-- Emile Yoncaova 08.04.2016 -->
         <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
