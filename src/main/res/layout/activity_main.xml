@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe am 01.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 12.04.16 -->
+<!-- von Vivien Stumpe, 01.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,39 +20,116 @@
         android:src="@drawable/festivealth_logo"
         android:contentDescription="@string/imgv_logo" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_menu"
-        android:id="@+id/btn_menu_main"
+<!-- von Vivien Stumpe, 12.04.16 -->
+<!-- Kachel Menü -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/imgv_logo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#2e5897"
-        android:textColor="#ffffff"
-        android:textSize="30sp" />
+        android:id="@+id/tbl_main"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:stretchColumns="*"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/txtv_info"
-        android:id="@+id/txtv_info"
-        android:singleLine="false"
-        android:layout_below="@+id/btn_menu_main"
-        android:layout_centerHorizontal="true" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tblr_main_1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_falleingabe"
-        android:id="@+id/btn_falleingabe_main"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="71dp"
-        android:background="#2e5897"
-        android:textColor="#ffffff"
-        android:textSize="30sp" />
+            <TextView
+                android:id="@+id/txtv_main_falleingabe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/falleingabe"
+                android:text="@string/txtv_falleingabe"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
 
+            <TextView
+                android:id="@+id/txtv_main_falluebersicht"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/falleingabe"
+                android:text="@string/txtv_falluebersicht"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tblr_main_2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:id="@+id/txtv_main_stammdaten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/falleingabe"
+                android:text="@string/txtv_stammdaten"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+            <TextView
+                android:id="@+id/txtv_main_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/upload"
+                android:text="@string/txtv_upload"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tblr_main_3"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:id="@+id/txtv_main_einstellungen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/falleingabe"
+                android:text="@string/txtv_einstellungen"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+            <TextView
+                android:id="@+id/txtv_main_impressum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/impressum"
+                android:text="@string/txtv_impressum"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>
