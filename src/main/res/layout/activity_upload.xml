@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Von Vivien Stumpe, 10.04.16 -->
+<!-- zuletzt geändert von Nathalie Horn, 12.04.16 -->
+
+<!-- DrawerLayout für das Hamburger Menü -->
+
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout_Upload"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Hauptinhalt der Aktivität -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +20,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.app.mepa.upload.Upload">
 
+    <!-- 'Upload' -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,4 +33,136 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:gravity="center" />
+
+    <!-- 'Menü' -->
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_menu"
+        android:id="@+id/btn_menu_fallein"
+        android:background="#2e5897"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_below="@+id/txtv_upload"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+        <!-- GridLayout für Anordnung der Icons -->
+        <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+            android:columnOrderPreserved="false"
+            android:layout_below="@+id/btn_menu_fallein"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtv_upload_bluetooth"
+                android:id="@+id/txtv_upload_bluetooth"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/mepa_icon"
+                android:layout_row="1"
+                android:layout_column="0" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtv_upload_usb"
+                android:id="@+id/txtv_upload_usb"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/mepa_icon"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtv_upload_upload"
+                android:id="@+id/txtv_upload_upload"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/mepa_icon"
+                android:layout_row="0"
+                android:layout_column="2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtv_upload_email"
+                android:id="@+id/txtv_upload_email"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/mepa_icon"
+                android:layout_row="1"
+                android:layout_column="2" />
+        </GridLayout>
 </RelativeLayout>
+
+    <!-- Hamburger Menü - Drawer Navigation -->
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_Upload"
+        android:background="#ffeedd"
+        android:layout_gravity="start">
+
+        <!-- Kopfzeile -->
+        <RelativeLayout
+            android:id="@+id/menu_kopfzeile_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" >
+
+            <ImageView
+                android:id="@+id/menu_upload"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_menu"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/menu_upload"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtv_menu_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_menu"
+                    android:layout_marginTop="15dp"
+                    android:textSize="30sp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- Menüpunkte -->
+
+        <ListView
+            android:id="@+id/listview_upload"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/menu_kopfzeile_upload"
+            android:choiceMode="singleChoice"
+            android:background="#ffeedd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
