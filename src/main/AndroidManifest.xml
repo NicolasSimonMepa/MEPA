@@ -26,6 +26,8 @@
         <activity android:name="de.app.mepa.verletzung.Verletzung"></activity>
         <activity android:name="de.app.mepa.erkrankung.Erkrankung" />
         <activity android:name="de.app.mepa.massnahmen.Massnahmen" />
+        <activity android:name="de.app.mepa.erstbefund.Erstbefund" />
+        <activity android:name="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen" />
         <activity android:name="de.app.mepa.upload.Upload"></activity>
     </application>
 
