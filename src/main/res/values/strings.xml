@@ -181,7 +181,9 @@
     <string name="txtv_insuffizient">Insuffizient</string>
     <string name="txtv_aed">AED</string>
     <string name="btn_fertig">Fertig</string>
-     <!--Nicolas 3.04.2016 -->
+     <!--Nicolas 3.04.2016, zuletzt geändert am 12.04.16 -->
+    <string name="txtv_speichern">Speichern</string>
+    <string name="txtv_loeschen">verwerfen</string>
     <string name="btn_impr_einst">Impressum</string>
     <string name="btn_ds_löschen">Datensatz wirklich löschen?</string>
     <string name="txtv_impressum">Impressum</string>
