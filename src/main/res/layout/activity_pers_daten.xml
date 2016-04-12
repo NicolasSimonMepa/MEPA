@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 10.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 12.04.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -7,6 +7,32 @@
     android:id="@+id/drawerLayout_pers_daten"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- von Vivien Stumpe, 12.04.16 -->
+    <!-- Layout für die Toolbar hinzufügen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar_layout"/>
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/pers_daten"
+            android:id="@+id/txtv_pers_daten_Label"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp" />
+    </RelativeLayout>
 <!-- von Vivien Stumpe am 04.04.16 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,6 +46,7 @@
     tools:context="de.app.mepa.pers_daten.Pers_daten"
     android:id="@+id/scrV_pers_daten">
 
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,16 +54,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/tbl_pers_daten"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingTop="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/pers_daten"
-            android:id="@+id/textView3"
-            android:textSize="30sp"
-            android:textColor="#000000" />
 
         <TableRow
             android:layout_width="match_parent"
