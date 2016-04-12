@@ -3,6 +3,8 @@ package de.app.mepa.falleingabe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,6 +69,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private int[] drawer_icons_falleingabe={R.drawable.mepa_icon, R.drawable.mepa_icon,
             R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
 
+    /*von Vivien Stumpe, 12.04.16
+    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
+    ActionBarDrawerToggle und Toolbar anlegen
+    */
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +117,24 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_falleingabe), drawer_icons_falleingabe);
         listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
+        
+                /*von Vivien Stumpe, 12.04.16
+        Verbindung zur Toolbar in der Acitivity herstellen
+        Toolbar anstelle der ActionBar verwenden
+        ActionBarDrawerToggle initialisieren
+        DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
+        */
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_falleingabe, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_falleingabe.addDrawerListener(actionbardrawertoggle);
+    }
+        //von Vivien Stumpe, 12.04.16
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
     }
 
     @Override
