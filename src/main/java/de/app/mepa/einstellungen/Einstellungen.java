@@ -1,10 +1,12 @@
-//Zuletzt geändert von Vivien Stumpe am 10.04.16
+//Zuletzt geändert von Vivien Stumpe am 12.04.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -45,6 +47,13 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private int[] drawer_icons_einstellungen={R.drawable.mepa_icon, R.drawable.falleingabe,
             R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
 
+    /*von Vivien Stumpe, 12.04.16
+    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
+    ActionBarDrawerToggle und Toolbar anlegen
+    */
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +84,25 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         listview_einstellungen.setAdapter(myadapter_einstellungen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_einstellungen.setOnItemClickListener(this);
+
+        /*von Vivien Stumpe, 12.04.16
+        Verbindung zur Toolbar in der Acitivity herstellen
+        Toolbar anstelle der ActionBar verwenden
+        ActionBarDrawerToggle initialisieren
+        DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
+        */
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_einstellungen, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_einstellungen.addDrawerListener(actionbardrawertoggle);
+    }
+
+    //von Vivien Stumpe, 12.04.16
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
     }
 
     @Override
@@ -141,4 +169,3 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
 
     }
 }
-
