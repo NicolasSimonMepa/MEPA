@@ -28,7 +28,7 @@
         android:src="@drawable/festivealth_logo"
         android:contentDescription="@string/imgv_logo" />
 
-    <!-- Layout für die Toolbar
+    <!-- Layout für die Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             layout="@layout/toolbar_layout"/>
-    </LinearLayout> -->
+    </LinearLayout>
 
     <!-- 'Upload' -->
     <TextView
@@ -51,12 +51,7 @@
         android:layout_alignParentEnd="true"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:gravity="center"
-    <include
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        layout="@layout/toolbar_layout"/>
-
+        android:gravity="center"/>
 
     <!-- TableLayout für Anordnung der Icons -->
     <TableLayout
