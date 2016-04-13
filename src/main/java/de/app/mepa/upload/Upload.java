@@ -10,15 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-/* auskommentiert von Vivien Stumpe, 12.04.16
-Mit den Importanweisungen erhalte ich beim Starten eine Fehlermeldung
-"Error: package com.google.android.gms.XY does not exist"
---> Das Projekt lässt sich dann nicht starten
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-*/
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -38,6 +31,12 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.mepa_icon,
             R.drawable.mepa_icon, R.drawable.mepa_icon, R.drawable.impressum, R.drawable.mepa_icon,};
 
+    /*von Nathalie Horn, 13.04.16
+    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
+    ActionBarDrawerToggle und Toolbar anlegen
+    */
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,25 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         myadapter_upload = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_upload), drawer_icons_upload);
         listview_upload.setAdapter(myadapter_upload);
         listview_upload.setOnItemClickListener(this);
+
+        /*von , 12.04.16
+        Verbindung zur Toolbar in der Acitivity herstellen
+        Toolbar anstelle der ActionBar verwenden
+        ActionBarDrawerToggle initialisieren
+        DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
+        */
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_upload, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_upload.addDrawerListener(actionbardrawertoggle);
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
     }
 
     @Override
