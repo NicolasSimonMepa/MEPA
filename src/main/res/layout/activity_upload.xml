@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- zuletzt geändert von Nathalie Horn, 12.04.16 -->
+<!-- zuletzt geändert von Nathalie Horn, 13.04.16 -->
 
 <!-- DrawerLayout für das Hamburger Menü -->
-
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout_Upload"
@@ -20,92 +19,124 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.app.mepa.upload.Upload">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgv_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/festivealth_logo"
+        android:contentDescription="@string/imgv_logo" />
+
+    <!-- Layout für die Toolbar
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/toolbar_layout"/>
+    </LinearLayout> -->
+
     <!-- 'Upload' -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imgv_logo"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/txtv_upload"
         android:id="@+id/txtv_upload"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:gravity="center" />
-
-    <!-- 'Menü' -->
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_menu"
-        android:id="@+id/btn_menu_fallein"
-        android:background="#2e5897"
         android:gravity="center"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_below="@+id/txtv_upload"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        layout="@layout/toolbar_layout"/>
 
-        <!-- GridLayout für Anordnung der Icons -->
-        <GridLayout
+
+    <!-- TableLayout für Anordnung der Icons -->
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-            android:columnOrderPreserved="false"
-            android:layout_below="@+id/btn_menu_fallein"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true">
+        android:layout_height="match_parent"
+        android:id="@+id/tbl_main"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:stretchColumns="*"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:layout_below="@+id/imgv_logo">
 
-            <Button
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tblr_main_1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableTop="@drawable/upload"
                 android:text="@string/txtv_upload_bluetooth"
                 android:id="@+id/txtv_upload_bluetooth"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/mepa_icon"
-                android:layout_row="1"
-                android:layout_column="0" />
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableTop="@drawable/upload"
                 android:text="@string/txtv_upload_usb"
                 android:id="@+id/txtv_upload_usb"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/mepa_icon"
-                android:layout_row="0"
-                android:layout_column="0" />
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
 
-            <Button
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tblr_main_2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_upload_upload"
                 android:id="@+id/txtv_upload_upload"
+                android:drawableTop="@drawable/upload"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/mepa_icon"
-                android:layout_row="0"
-                android:layout_column="2" />
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_upload_email"
                 android:id="@+id/txtv_upload_email"
+                android:drawableTop="@drawable/upload"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/mepa_icon"
-                android:layout_row="1"
-                android:layout_column="2" />
-        </GridLayout>
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:clickable="true" />
+
+        </TableRow>
+
+        </TableLayout>
 </RelativeLayout>
 
     <!-- Hamburger Menü - Drawer Navigation -->
