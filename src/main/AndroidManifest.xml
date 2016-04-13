@@ -34,7 +34,8 @@
         <activity android:name="de.app.mepa.massnahmen.Massnahmen" />
         <activity android:name="de.app.mepa.erstbefund.Erstbefund" />
         <activity android:name="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen" />
-        <activity android:name="de.app.mepa.upload.Upload"></activity>
+        <!--Nathalie Horn am 13.04.16 -->
+        <activity android:name="de.app.mepa.upload.Upload" android:label=""/>
     </application>
 
 </manifest>
