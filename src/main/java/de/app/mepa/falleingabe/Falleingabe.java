@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 10.04.2016
+//Zuletzt geändert von Vivien Stumpe am 14.04.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -48,14 +48,15 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private Button btn_fallein;
 
     //private Textviewvariable, die auf Persönliche Daten in der Activity zeigen soll
-    //von Vivien Stumpe, 04.04.16
+    //von Vivien Stumpe, 14.04.16
     private TextView txtv_pers_daten;
     private TextView txtv_notfall;
     private TextView txtv_verletzung;
     private TextView txtv_erkrankung;
     private TextView txtv_massnahmen;
     private TextView txtv_erstbefund;
-    private TextView txtv_ersthelfermassnahmen;
+    private TextView txtv_uebergabe;
+    private TextView txtv_bemerkung;
     
 
     //von Vivien Stumpe, 08.04.16
@@ -81,6 +82,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_falleingabe);
 
+        /*
         //Verbindung zwischen Buttonvariable und Button in der Activity herstellen
         //von Vivien Stumpe, 03.04.16
         btn_fallein = (Button)findViewById(R.id.btn_menu_fallein);
@@ -88,26 +90,29 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 03.04.16
         btn_fallein.setOnClickListener(this);
+        */
 
         //Verbindung zwischen Variable und TextView in der Activity herstellen
-        //von Vivien Stumpe, 04.04.16
-        txtv_pers_daten = (TextView)findViewById(R.id.txtv_pers_daten);
-        txtv_notfall = (TextView)findViewById(R.id.txtv_notfallsit);
-        txtv_verletzung = (TextView)findViewById(R.id.txtv_verletzung);
-        txtv_erkrankung = (TextView)findViewById(R.id.txtv_erkrankung);
-        txtv_massnahmen = (TextView)findViewById(R.id.txtv_maßnahmen);
-        txtv_erstbefund = (TextView)findViewById(R.id.txtv_erstbefund);
-        txtv_ersthelfermassnahmen = (TextView)findViewById(R.id.txtv_ersthelferm);
+        //von Vivien Stumpe, 14.04.16
+        txtv_pers_daten = (TextView)findViewById(R.id.txtv_fallein_pers);
+        txtv_notfall = (TextView)findViewById(R.id.txtv_fallein_notfall);
+        txtv_verletzung = (TextView)findViewById(R.id.txtv_fallein_verletzung);
+        txtv_erkrankung = (TextView)findViewById(R.id.txtv_fallein_erkrankung);
+        txtv_massnahmen = (TextView)findViewById(R.id.txtv_fallein_maßnahmen);
+        txtv_erstbefund = (TextView)findViewById(R.id.txtv_fallein_erstbef);
+        txtv_uebergabe = (TextView)findViewById(R.id.txtv_fallein_uebergabe);
+        txtv_bemerkung = (TextView)findViewById(R.id.txtv_fallein_bemerkung);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
-        //von Vivien Stumpe, 04.04.16
+        //von Vivien Stumpe, 14.04.16
         txtv_pers_daten.setOnClickListener(this);
         txtv_notfall.setOnClickListener(this);
         txtv_verletzung.setOnClickListener(this);
         txtv_erkrankung.setOnClickListener(this);
         txtv_massnahmen.setOnClickListener(this);
         txtv_erstbefund.setOnClickListener(this);
-        txtv_ersthelfermassnahmen.setOnClickListener(this);
+        txtv_uebergabe.setOnClickListener(this);
+        txtv_bemerkung.setOnClickListener(this);
 
         //von Vivien Stumpe, 08.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
@@ -118,7 +123,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
         
-                /*von Vivien Stumpe, 12.04.16
+        /*von Vivien Stumpe, 12.04.16
         Verbindung zur Toolbar in der Acitivity herstellen
         Toolbar anstelle der ActionBar verwenden
         ActionBarDrawerToggle initialisieren
@@ -143,6 +148,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //von Vivien Stumpe, 03.04.16
         int ce = v.getId();
 
+        /*
         //Ein Intent erzeugen, wenn der bestimmte Button geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
         //Aufrufen der Activity mittels Intent
@@ -151,38 +157,51 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(Falleingabe.this, Menu.class);
             startActivity(intent);
         }
-        //Ein Intent erzeugen, wenn der bestimmte Button geklickt wurde
+        */
+        //Ein Intent erzeugen, wenn die bestimmte TextView geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
         //Aufrufen der Activity mittels Intent
-        //von Vivien Stumpe, 04.04.16
-        if(ce == R.id.txtv_pers_daten){
+        //von Vivien Stumpe, 14.04.16
+        if(ce == R.id.txtv_fallein_pers){
             Intent intent = new Intent(Falleingabe.this, Pers_daten.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_notfallsit){
+        if(ce == R.id.txtv_fallein_notfall){
             Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_verletzung){
+        if(ce == R.id.txtv_fallein_verletzung){
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_erkrankung){
+        if(ce == R.id.txtv_fallein_erkrankung){
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_maßnahmen){
+        if(ce == R.id.txtv_fallein_maßnahmen){
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_erstbefund){
+        if(ce == R.id.txtv_fallein_erstbef){
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_ersthelferm){
+        if(ce == R.id.txtv_fallein_bemerkung){
+            //Activity fehlt noch!!
+            Intent intent = new Intent(Falleingabe.this, MainActivity.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.txtv_fallein_uebergabe){
+            //Activity fehlt noch!!
+            Intent intent = new Intent(Falleingabe.this, MainActivity.class);
+            startActivity(intent);
+        }
+        /*TextView fehlt noch!
+        if(ce == R.id.txtv_fallein_ersthelferma){
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
+        */
     }
 
         //von Vivien Stumpe, 08.04.16
