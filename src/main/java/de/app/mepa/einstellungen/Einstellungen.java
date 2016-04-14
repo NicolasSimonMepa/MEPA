@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 12.04.16
+//Zuletzt geändert von Vivien Stumpe am 14.04.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import de.app.mepa.MyAdapter;
@@ -28,13 +29,6 @@ import de.app.mepa.upload.Upload;
 //OnItemClickListener implementieren, um auf einen Klick in der ListView reagieren zu können
 //von Vivien Stumpe, 09.04.16
 public class Einstellungen extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
-    //Button-Variablen für die Buttons in der Einstellungen Activity
-    //von Vivien Stumpe, 01.04.16
-    private Button btn_menu_einst;
-    private Button btn_impr;
-    private Button btn_stammdat_einst;
-    private Button btn_sync_einst;
-    private Button btn_löschen_einst;
 
     //von Vivien Stumpe, 09.04.16
     //DrawerLayout für das Hamburger Menü
@@ -54,26 +48,15 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
+    //TextView-Variablen für die TextViews in der Einstellungen Activity
+    //von Vivien Stumpe, 14.04.16
+    private TextView txtv_mitarbeiter;
+    private TextView txtv_löschen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_einstellungen);
-
-        //Zuweisen der Button-Variablen zu den Buttons in der Activity
-        //von Vivien Stumpe, 01.04.16
-        btn_menu_einst = (Button)findViewById(R.id.btn_menu_einst);
-        btn_impr = (Button)findViewById(R.id.btn_impr_einst);
-        btn_löschen_einst = (Button)findViewById(R.id.btn_löschen_einst);
-        btn_stammdat_einst = (Button)findViewById(R.id.btn_stammdat_einst);
-        btn_sync_einst = (Button)findViewById(R.id.btn_sync_einst);
-
-        // Events abfangen und an den OnClickListener die aktuelle View übergeben
-        //von Vivien Stumpe, 01.04.16
-        btn_menu_einst.setOnClickListener(this);
-        btn_impr.setOnClickListener(this);
-        btn_löschen_einst.setOnClickListener(this);
-        btn_stammdat_einst.setOnClickListener(this);
-        btn_sync_einst.setOnClickListener(this);
 
         //von Vivien Stumpe, 09.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
@@ -95,6 +78,17 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_einstellungen, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_einstellungen.addDrawerListener(actionbardrawertoggle);
+
+        //Zuweisen der Button-Variablen zu den Buttons in der Activity
+        //von Vivien Stumpe, 14.04.16
+        txtv_mitarbeiter = (TextView)findViewById(R.id.txtv_einst_mitarbeiter);
+        txtv_löschen = (TextView)findViewById(R.id.txtv_einst_loeschen);
+
+
+        // Events abfangen und an den OnClickListener die aktuelle View übergeben
+        //von Vivien Stumpe, 14.04.16
+        txtv_mitarbeiter.setOnClickListener(this);
+        txtv_löschen.setOnClickListener(this);
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -110,20 +104,16 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //clicked element mit dem geklickten Button belegen
         //von Vivien Stumpe, 01.04.16
         int ce = v.getId();
-        //Ein Intent erzeugen, wenn der Button geklickt wurde
+        //Ein Intent erzeugen, wenn die TextView geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
-        //von Vivien Stumpe, 01.04.16
-        if (ce == R.id.btn_menu_einst){
-            Intent intent = new Intent(Einstellungen.this, Menu.class);
+        //von Vivien Stumpe, 14.04.16
+        //ES FEHLEN NOCH DIE RICHTIGEN ACTIVITIES!!
+        if (ce == R.id.txtv_einst_mitarbeiter){
+            Intent intent = new Intent(Einstellungen.this, MainActivity.class);
             startActivity(intent);
         }
-        if (ce == R.id.btn_stammdat_einst){
-            Intent intent = new Intent(Einstellungen.this, Stammdaten.class);
-            startActivity(intent);
-        }
-        //von Vivien Stumpe, 04.04.16
-        if (ce == R.id.btn_impr_einst){
-            Intent intent = new Intent(Einstellungen.this, Impressum.class);
+        if (ce == R.id.txtv_einst_loeschen) {
+            Intent intent = new Intent(Einstellungen.this, MainActivity.class);
             startActivity(intent);
         }
     }
