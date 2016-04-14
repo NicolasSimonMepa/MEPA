@@ -137,6 +137,8 @@
     <string name="txtv_person">Person</string>
     <string name="txtv_uebergabe">Übergabe</string>
     <string name="txtv_bemerkung">Bemerkung</string>
+    <string name="abbrechen">Abbrechen</string>
+    <string name="loeschen">Löschen  </string>
 
     
     <!-- Emile Yoncaova 08.04.2016 -->
