@@ -18,7 +18,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/lnl_toolbar">
         <include
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -31,6 +32,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/txtv_falleingabe"
         android:id="@+id/txtv_falleingabe_fallein"
+        android:layout_marginTop="60dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
