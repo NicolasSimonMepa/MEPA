@@ -39,7 +39,7 @@
         android:layout_alignParentBottom="false"
         android:gravity="top"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="60dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -52,66 +52,31 @@
         android:layout_alignParentLeft="false"
         android:layout_centerVertical="true"
         android:gravity="center">
-
-        <Button
-            android:layout_width="match_parent"
+<!--von Vivien Stumpe, 14.04.16 -->
+        <TextView
+            android:id="@+id/txtv_einst_mitarbeiter"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_menu"
-            android:id="@+id/btn_menu_einst"
-            android:background="#ffeedd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:gravity="center" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_stammdat_einst"
-            android:id="@+id/btn_stammdat_einst"
-            android:background="#ffeedd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:drawableTop="@drawable/falleingabe"
+            android:text="@string/txtv_mitarbeiter_konfig"
+            android:layout_marginBottom="20dp"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:gravity="center" />
-
-        <Button
-            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <TextView
+            android:id="@+id/txtv_einst_loeschen"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableTop="@drawable/falleingabe"
             android:text="@string/btn_löschen_einst"
-            android:id="@+id/btn_löschen_einst"
-            android:background="#ffeedd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="20sp"
             android:textColor="#000000"
-            android:gravity="center" />
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:clickable="true" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_sync_einst"
-            android:id="@+id/btn_sync_einst"
-            android:background="#ffeedd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:gravity="center" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_impr_einst"
-            android:id="@+id/btn_impr_einst"
-            android:background="#ffeedd"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:gravity="center" />
     </LinearLayout>
 </RelativeLayout>
     <!-- von Vivien Stumpe, 09.04.16 -->
@@ -171,5 +136,3 @@ android:layout_gravity="start">
         android:layout_marginBottom="5dp" />
 </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
-
-
