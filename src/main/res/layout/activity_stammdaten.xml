@@ -273,7 +273,8 @@
             android:singleLine="false"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
-            android:minWidth="30dp" />
+            android:minWidth="30dp"
+            android:layout_weight="1" />
 
         <Button
             android:layout_width="wrap_content"
@@ -286,7 +287,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:paddingLeft="7dp"
-            android:paddingRight="7dp" />
+            android:paddingRight="7dp"
+            android:layout_weight="1" />
     </LinearLayout>
 </RelativeLayout>
 <!-- von Vivien Stumpe, 10.04.16 -->
