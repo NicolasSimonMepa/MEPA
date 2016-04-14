@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 12.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 14.04.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -25,6 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/pers_daten"
             android:id="@+id/txtv_pers_daten_Label"
@@ -38,6 +39,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="70dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -49,14 +51,11 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/txtv_pers_daten"
-        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/tbl_pers_daten"
         android:gravity="center"
         android:paddingTop="20dp">
-
 
         <TableRow
             android:layout_width="match_parent"
@@ -80,7 +79,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_name_pers_daten"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:hint="@string/txtv_name_pers_daten" />
         </TableRow>
 
         <TableRow
@@ -104,7 +104,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_vorname_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_vorname_pers_daten" />
         </TableRow>
 
         <TableRow
@@ -128,7 +129,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_str_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_str_pers_daten" />
         </TableRow>
 
         <TableRow
@@ -152,7 +154,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_plz_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_plz_pers_daten" />
         </TableRow>
 
         <TableRow
@@ -174,7 +177,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_ort_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_ort_pers_daten" />
         </TableRow>
 
         <TableRow
@@ -198,7 +202,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_telefon_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_telefon_pers_daten" />
 
         </TableRow>
 
@@ -261,7 +266,8 @@
                 android:ems="10"
                 android:id="@+id/etxt_geb_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_geb_pers_daten" />
 
         </TableRow>
 
@@ -284,7 +290,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_krankenkasse_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_krankenkasse_pers_daten" />
 
         </TableRow>
 
@@ -307,7 +314,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_fundort_pers_daten"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:hint="@string/txtv_fundort_pers_daten" />
 
         </TableRow>
 
