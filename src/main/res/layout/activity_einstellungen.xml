@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             layout="@layout/toolbar_layout"/>
+
     </LinearLayout>
 
     <TextView
@@ -53,6 +54,7 @@
         android:layout_centerVertical="true"
         android:gravity="center">
 <!--von Vivien Stumpe, 14.04.16 -->
+<!-- Kachel Menü -->
         <TextView
             android:id="@+id/txtv_einst_mitarbeiter"
             android:layout_width="wrap_content"
@@ -76,6 +78,42 @@
             android:gravity="center_horizontal"
             android:textStyle="bold"
             android:clickable="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+
+            android:id="@+id/lnl_einst_buttons"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loeschen"
+                android:id="@+id/btn_einst_löschen"
+                android:background="#ee0f0f"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abbrechen"
+                android:id="@+id/btn_einst_abbrechen"
+                android:background="#137922"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>
