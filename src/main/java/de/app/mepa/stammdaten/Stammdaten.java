@@ -1,10 +1,12 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 10.04.16
+//Zuletzt bearbeitet von Vivien Stumpe am 14.04.16
 package de.app.mepa.stammdaten;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -38,18 +40,18 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         private int[] drawer_icons_stammdaten={R.drawable.mepa_icon, R.drawable.mepa_icon,
                 R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum};
 
+    /*von Vivien Stumpe, 14.04.16
+    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
+    ActionBarDrawerToggle und Toolbar anlegen
+    */
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stammdaten);
 
-        //Buttonverweis der Schaltfläche zur Variable
-        //von Vivien Stumpe, 01.04.16
-        btn_menu = (Button)findViewById(R.id.btn_menu_stammd);
-
-        // Event abfangen und die aktuelle View an den OnClickListener übergeben
-        //von Vivien Stumpe, 01.04.16
-        btn_menu.setOnClickListener(this);
 
         //von Vivien Stumpe, 10.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
@@ -60,6 +62,26 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         listview_stammdaten.setAdapter(myadapter_stammdaten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_stammdaten.setOnItemClickListener(this);
+
+        /*von Vivien Stumpe, 14.04.16
+        Verbindung zur Toolbar in der Acitivity herstellen
+        Toolbar anstelle der ActionBar verwenden
+        ActionBarDrawerToggle initialisieren
+        DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
+        */
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_stammdaten, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_stammdaten.addDrawerListener(actionbardrawertoggle);
+    }
+
+
+    //von Vivien Stumpe, 14.04.16
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
     }
 
     @Override
@@ -70,10 +92,11 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         //Ein Intent erzeugen, wenn der Button geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
         //von Vivien Stumpe, 01.04.16
-        if (ce == R.id.btn_menu_stammd){
+       /* if (ce == R.id.btn_menu_stammd){
             Intent intent = new Intent(Stammdaten.this, Menu.class);
             startActivity(intent);
         }
+        */
     }
         //von Vivien Stumoe, 10.04.16
         @Override
