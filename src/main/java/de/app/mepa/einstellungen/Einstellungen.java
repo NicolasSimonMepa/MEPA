@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -52,6 +53,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     //von Vivien Stumpe, 14.04.16
     private TextView txtv_mitarbeiter;
     private TextView txtv_löschen;
+    private LinearLayout lnl_buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,15 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //von Vivien Stumpe, 14.04.16
         txtv_mitarbeiter = (TextView)findViewById(R.id.txtv_einst_mitarbeiter);
         txtv_löschen = (TextView)findViewById(R.id.txtv_einst_loeschen);
-
+        lnl_buttons = (LinearLayout)findViewById(R.id.lnl_einst_buttons);
+        /* Wenn es das LinearLayout gibt
+        Wird es beim Starten der Aktivität ausgeblendet
+         */
+        if (lnl_buttons != null) {
+            lnl_buttons.setVisibility(View.GONE);
+            //View aktualisieren
+            lnl_buttons.invalidate();
+        }
 
         // Events abfangen und an den OnClickListener die aktuelle View übergeben
         //von Vivien Stumpe, 14.04.16
@@ -107,14 +117,17 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //Ein Intent erzeugen, wenn die TextView geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
         //von Vivien Stumpe, 14.04.16
-        //ES FEHLEN NOCH DIE RICHTIGEN ACTIVITIES!!
+        //ES FEHLT NOCH EINE ACTIVITY!!
         if (ce == R.id.txtv_einst_mitarbeiter){
             Intent intent = new Intent(Einstellungen.this, MainActivity.class);
             startActivity(intent);
         }
+        //wenn "Lokale Daten löschen" ausgewählt wurde
         if (ce == R.id.txtv_einst_loeschen) {
-            Intent intent = new Intent(Einstellungen.this, MainActivity.class);
-            startActivity(intent);
+            //werden die Buttons eingeblendet
+            lnl_buttons.setVisibility(View.VISIBLE);
+            //muss aufgerufen werden, um die View zu aktualisieren
+            lnl_buttons.invalidate();
         }
     }
     //Von Vivien Stumpe, 09.04.16
