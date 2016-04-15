@@ -141,8 +141,9 @@
     <string name="loeschen">Löschen  </string>
 
     
-    <!-- Emile Yoncaova 08.04.2016 -->
-        <string name="txtv_keine">keine</string>
+    <!-- Emile Yoncaova 15.04.2016 -->
+    <string name="erkrankung">Erkrankung</string>
+    <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
     <string name="txtv_vergiftung">Vergiftung</string>
     <string name="txtv_schwindel">Schwindel</string>
@@ -160,7 +161,8 @@
     <string name="txtv_geburtshilfe">Geburtshilfe</string>
     <string name="txtv_kindernotfall">Kindernotfall</string>
     <string name="txtv_sonstiges">Sonstiges</string>
-
+    
+    <string name="massnahmen">Maßnahmen</string>
     <string name="txtv_seitenlage">Stabile Seitenlage</string>
     <string name="txtv_extremitaetenschienung">Extremitätenschienung</string>
     <string name="txtv_sauerstoffgabe">Sauerstoffgabe</string>
