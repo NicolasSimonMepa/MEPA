@@ -30,10 +30,14 @@
             android:label=""/>
         <activity android:name="de.app.mepa.verletzung.Verletzung"
             android:label=""></activity>
-        <activity android:name="de.app.mepa.erkrankung.Erkrankung" />
-        <activity android:name="de.app.mepa.massnahmen.Massnahmen" />
-        <activity android:name="de.app.mepa.erstbefund.Erstbefund" />
-        <activity android:name="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen" />
+        <activity android:name="de.app.mepa.erkrankung.Erkrankung"
+            android:label=""/>
+        <activity android:name="de.app.mepa.massnahmen.Massnahmen"
+            android:label=""/>
+        <activity android:name="de.app.mepa.erstbefund.Erstbefund"
+            android:label=""/>
+        <activity android:name="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen"
+            android:label=""/>
         <!--Nathalie Horn am 13.04.16 -->
         <activity android:name="de.app.mepa.upload.Upload" android:label=""/>
     </application>
