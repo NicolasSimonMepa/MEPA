@@ -1,3 +1,4 @@
+// zuletzt geändert von Emile Yoncaova, 15.04.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Intent;
@@ -7,7 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -26,6 +28,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private int[]drawer_icons_ersthelfermassnahmen={R.drawable.mepa_icon,R.drawable.mepa_icon,
             R.drawable.falleingabe,R.drawable.mepa_icon,R.drawable.upload,R.drawable.impressum,R.drawable.mepa_icon,};
 
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,8 +44,18 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         listview_ersthelfermassnahmen.setAdapter(myadapter_ersthelfermassnahmen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_ersthelfermassnahmen.setOnItemClickListener(this);
-    }
 
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_ersthelfermassnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_ersthelfermassnahmen.addDrawerListener(actionbardrawertoggle);
+    }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
+    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
