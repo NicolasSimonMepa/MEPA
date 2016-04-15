@@ -1,9 +1,11 @@
-//Zuletzt geändert von Vivien Stumpe, 11.04.16
+//Zuletzt geändert von Emile Yoncaova, 15.04.16
 package de.app.mepa.erkrankung;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +38,10 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
+
+    private ActionBarDrawerToggle actionbardrawertoggle;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +69,17 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
                 startActivity(intent);
             }
         });
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erkrankung, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_erkrankung.addDrawerListener(actionbardrawertoggle);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
     }
     //von Vivien Stumpe, 10.04.16
     @Override
