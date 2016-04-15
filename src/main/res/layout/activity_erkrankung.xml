@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Zuletzt geändert von Vivien Stumpe -->
+<!--Zuletzt geändert von Emile Yoncaova -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -7,32 +7,53 @@
     android:id="@+id/drawerLayout_Erkrankung"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!-- von , -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:fillViewport="true"
-    tools:context="de.app.mepa.erkrankung.Erkrankung"
-    android:id="@+id/scrV_erkrankung">
+<!-- von Emile Yoncaova, 15.04.16-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_layout" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:text="@string/erkrankung"
+            android:id="@+id/txtv_erkrankung"
+            android:textSize="30sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"/>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:fillViewport="true"
+            tools:context="de.app.mepa.erkrankung.Erkrankung"
+            android:id="@+id/scrV_erkrankung">
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/txtv_erkrankung"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tbl_erkrankung"
         android:gravity="center"
-        android:id="@+id/tbl_erkrankung">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtv_erkrankung"
-            android:id="@+id/textView"
-            android:textSize="30sp"
-            android:textColor="#000000"/>
+        android:paddingTop="20dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -244,6 +265,7 @@
         </TableRow>
     </TableLayout>
 </ScrollView>
+    </RelativeLayout>
     <!-- von Vivien Stumpe, 10.04.16 -->
     <!-- Hamburger Menü - Drawer Navigation -->
     <RelativeLayout
