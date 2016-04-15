@@ -1,3 +1,4 @@
+<!-- zuletzt geändert von Emile Yoncaova, 15.04.16 -->
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v4.widget.DrawerLayout
@@ -5,6 +6,31 @@
     android:id="@+id/drawerLayout_Ersthelfermassnahmen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar_layout" />
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/ersthelfermassnahmen"
+            android:id="@+id/txtv_ersthelfermassnahmen"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -16,25 +42,15 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/ersthelfermassnahmen"
-            android:id="@+id/txtv_ersthelfermassnahmen"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="#000000"
-            android:textSize="28sp"
-            android:gravity="center" />
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtv_ersthelfermassnahmen"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:id="@+id/tbl_erstbefund">
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tbl_ersthelfermassnahmen"
+            android:gravity="center"
+            android:paddingTop="20dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -96,7 +112,7 @@
                     android:textSize="20sp" />
             </TableRow>
         </TableLayout>
-
+    </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
