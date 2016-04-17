@@ -192,22 +192,30 @@
     <string name="txtv_insuffizient">Insuffizient</string>
     <string name="txtv_aed">AED</string>
     <string name="btn_fertig">Fertig</string>
-     <!--Nicolas 3.04.2016, zuletzt geändert am 12.04.16 -->
+
+     <!--Nicolas 3.04.2016, zuletzt geändert am 17.04.16 -->
     <string name="txtv_speichern">Speichern</string>
     <string name="txtv_loeschen">verwerfen</string>
     <string name="btn_impr_einst">Impressum</string>
     <string name="btn_ds_löschen">Datensatz wirklich löschen?</string>
     <string name="txtv_impressum">Impressum</string>
-    <string name="txtv_Firma">Festivealth\n
-                              Expo Plaza 12\n
-                              30539 Hannover</string>
-    <string name="txtv_telEtc">Telefon: 0511/3666987-1\n
-                               Telefax: 0511/3666987-0\n
-                               E-Mail: <xlink href="mailto:info@Festivealth.de">info@Festivealth.de</xlink>
-                               </string>
-    <string name="txtv_name"> Vertreten durch die Geschäftsführerin: <strong> Vivien Stumpe</strong>\n
-                              Stellvertretender Geschäftsführer: <Stong>Daniel Semmler</Stong>
-</string>
-    
+    <string name="txtv_Firma">Festivealth
+                              \nExpo Plaza 12
+                              \n30539 Hannover</string>
+    <string name="txtv_telEtc">Telefon: 0511/3666987-1
+        \nTelefax: 0511/3666987-0\nE-Mail:
+        <xlink href="mailto:info@Festivealth.de">info@Festivealth.de</xlink>
+    </string>
+    <string name="txtv_name"> Vertreten durch die Geschäftsführerin: \nVivien Stumpe
+        \nStellvertretender Geschäftsführer: \nDaniel Semmler</string>
+    <string name="txtv_haftung">rechtliche Hinweise\n§ 1 Haftungsbeschränkung
+    \nDie Inhalte dieser App werden mit größtmöglicher Sorgfalt erstellt. Der
+    Anbieter übernimmt jedoch keine Gewähr für die Richtigkeit, Vollständigkeit
+    und Aktualität der bereitgestellten Inhalte. Die Nutzung der Inhalte der
+    App erfolgt auf eigene Gefahr des Nutzers. Namentlich gekennzeichnete
+    Beiträge geben die Meinung des jeweiligen Autors und nicht immer die Meinung
+    des Anbieters wieder. Mit der reinen Nutzung der Website des Anbieters kommt
+    keinerlei Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande.
+    </string>
     
 </resources>
