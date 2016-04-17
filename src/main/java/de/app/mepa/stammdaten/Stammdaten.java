@@ -38,7 +38,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         private ListView listview_stammdaten;
         private MyAdapter myadapter_stammdaten;
         private int[] drawer_icons_stammdaten={R.drawable.mepa_icon, R.drawable.mepa_icon,
-                R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum};
+                R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
 
     /*von Vivien Stumpe, 14.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -58,7 +58,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         drawerlayout_stammdaten=(DrawerLayout) findViewById(R.id.drawerLayout_Stammdaten);
         listview_stammdaten=(ListView) findViewById(R.id.listview_stammdaten);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_stammdaten), drawer_icons_stammdaten);
+        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_stammdaten);
         listview_stammdaten.setAdapter(myadapter_stammdaten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_stammdaten.setOnItemClickListener(this);
@@ -134,6 +134,11 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
             if(position==5) {
                 Intent intent = new Intent(Stammdaten.this, Impressum.class);
+                startActivity(intent);
+            }
+            //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+            if(position==6) {
+                Intent intent = new Intent(Stammdaten.this, Stammdaten.class);
                 startActivity(intent);
             }
         }
