@@ -15,19 +15,19 @@
                     xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:layout_centerInParent="true"
                     tools:context="de.app.mepa.falluebersicht.Falluebersicht">
 
 <!--von Nicolas Simon 25.03.16 -->
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="1">
+            android:orientation="vertical">
+
+            <include
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_layout"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,31 +44,23 @@
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"/>
 
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_menu_stammd"
-                android:id="@+id/btn_menu_fallueb"
-                android:layout_below="@+id/txtv_stammdaten"
-                android:layout_alignRight="@+id/txtv_stammdaten"
-                android:layout_alignEnd="@+id/txtv_stammdaten"
-                android:background="#2e5897"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
 
-                <ExpandableListView
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="333dp"
-                    android:id="@+id/listView"
-                    android:layout_weight="0.25"
-                    />
+                    android:layout_height="405dp"
+                    android:id="@+id/scrollView2">
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TableLayout>
+                </ScrollView>
+
 
                 <TableRow
                     android:layout_width="30dp"
@@ -76,25 +68,28 @@
                     android:id="@+id/tbrow">
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="102dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/txtv_speichern"
+                        android:text="@string/abbrechen"
                         android:id="@+id/btn_speichern_fallueb"
+                        android:background="#137922"
                         android:textColor="#ffffff"
-                        android:background="#3cb427"
-                        android:layout_marginRight="50dp"/>
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp" />
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="102dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/txtv_loeschen"
-                        android:id="@+id/btn_verwerfen_fallueb"
-                        android:layout_column="7"
-                        android:background="#ff0101"
-                        android:textColor="#fffefe"
-                        android:layout_marginLeft="100dp"/>
+                        android:text="@string/btn_verwerfen"
+                        android:id="@+id/btn_loeschen_fallueb"
+                        android:background="#ee0f0f"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp" />
                 </TableRow>
 
             </TableLayout>
