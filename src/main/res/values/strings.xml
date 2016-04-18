@@ -141,7 +141,16 @@
     <string name="txtv_bemerkung">Bemerkung</string>
     <string name="abbrechen">Abbrechen</string>
     <string name="loeschen">Löschen  </string>
-
+    <!-- Vivien Stumpe, 18.04.16 -->
+    <string-array name="drawer_nav">
+        <item>Start</item>
+        <item>Einstellungen</item>
+        <item>Falleingabe</item>
+        <item>Fallübersicht</item>
+        <item>Upload</item>
+        <item>Impressum</item>
+        <item>Stammdaten</item>
+    </string-array>
     
     <!-- Emile Yoncaova 15.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
