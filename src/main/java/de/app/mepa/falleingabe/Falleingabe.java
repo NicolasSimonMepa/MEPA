@@ -119,7 +119,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         drawerlayout_falleingabe=(DrawerLayout) findViewById(R.id.drawerLayout_Falleingabe);
         listview_falleingabe=(ListView) findViewById(R.id.listview_falleingabe);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_falleingabe);
+        myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_falleingabe);
         listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
         
