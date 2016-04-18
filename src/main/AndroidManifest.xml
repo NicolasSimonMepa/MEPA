@@ -22,8 +22,10 @@
             android:label=""/>
         <activity android:name="de.app.mepa.falleingabe.Falleingabe"
             android:label=""/>
-        <activity android:name="de.app.mepa.impressum.Impressum" />
-        <activity android:name="de.app.mepa.falluebersicht.Falluebersicht" />
+        <activity android:name="de.app.mepa.impressum.Impressum" 
+            android:label=""/>
+        <activity android:name="de.app.mepa.falluebersicht.Falluebersicht" 
+            android:label=""/>
         <activity android:name="de.app.mepa.pers_daten.Pers_daten"
             android:label=""/>
         <activity android:name="de.app.mepa.notfallsituation.notfallsituation"
