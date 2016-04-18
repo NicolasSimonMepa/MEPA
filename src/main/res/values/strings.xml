@@ -218,4 +218,8 @@
     keinerlei Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande.
     </string>
     
+    <!-- Nathalie Horn 18.04.16 -->
+    <string name="txtv_mitarbeiter_name">Name</string>
+    <string name="txtv_mitarbeiter_vorname">Vorname</string>
+    
 </resources>
