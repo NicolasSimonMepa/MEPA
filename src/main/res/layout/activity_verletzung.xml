@@ -39,7 +39,7 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:gravity="center"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="60dp" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -139,7 +139,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tbl_verletzung">
+            android:id="@+id/tbl_verletzung"
+            android:paddingLeft="10dp">
 
             <TableRow
                 android:layout_width="match_parent"
