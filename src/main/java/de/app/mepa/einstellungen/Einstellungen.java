@@ -118,8 +118,9 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
         //von Vivien Stumpe, 14.04.16
         //ES FEHLT NOCH EINE ACTIVITY!!
+        //zuletzt geändert von Nathalie Horn, 18.04.16 --> Activity zu Mitarbeiterkonfig
         if (ce == R.id.txtv_einst_mitarbeiter){
-            Intent intent = new Intent(Einstellungen.this, MainActivity.class);
+            Intent intent = new Intent(Einstellungen.this, Mitarbeiterkonfig.class);
             startActivity(intent);
         }
         //wenn "Lokale Daten löschen" ausgewählt wurde
