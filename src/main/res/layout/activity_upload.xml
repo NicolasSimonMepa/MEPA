@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/upload"
+                android:drawableTop="@drawable/bluetooth"
                 android:text="@string/txtv_upload_bluetooth"
                 android:id="@+id/txtv_upload_bluetooth"
                 android:textColor="#000000"
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/upload"
+                android:drawableTop="@drawable/usb"
                 android:text="@string/txtv_upload_usb"
                 android:id="@+id/txtv_upload_usb"
                 android:textColor="#000000"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_upload_email"
                 android:id="@+id/txtv_upload_email"
-                android:drawableTop="@drawable/upload"
+                android:drawableTop="@drawable/send_mail"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
