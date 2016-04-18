@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 14.04.16
+//Zuletzt geändert von Vivien Stumpe am 18.04.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import de.app.mepa.MyAdapter;
@@ -22,6 +23,7 @@ import de.app.mepa.impressum.Impressum;
 import de.app.mepa.menu.Menu;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
+import de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
@@ -54,6 +56,13 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private TextView txtv_mitarbeiter;
     private TextView txtv_löschen;
     private LinearLayout lnl_buttons;
+
+    /* von Vivien Stumpe, 18.04.16
+    Buttonvariablen für die Buttons Abbrechen und Löschen
+     */
+    private Button btn_loeschen;
+    private Button btn_abbrechen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +108,15 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //von Vivien Stumpe, 14.04.16
         txtv_mitarbeiter.setOnClickListener(this);
         txtv_löschen.setOnClickListener(this);
+
+        /* von Vivien Stumpe, 18.04.16
+        Zuweisen der Buttonvariablen zu den Buttons in der Activity
+        Setzen des OnClickListeners, damit auf Klicks reagiert wird
+         */
+        btn_abbrechen = (Button)findViewById(R.id.btn_einst_abbrechen);
+        btn_loeschen = (Button)findViewById(R.id.btn_einst_löschen);
+        btn_abbrechen.setOnClickListener(this);
+        btn_loeschen.setOnClickListener(this);
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -127,6 +145,25 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         if (ce == R.id.txtv_einst_loeschen) {
             //werden die Buttons eingeblendet
             lnl_buttons.setVisibility(View.VISIBLE);
+            //muss aufgerufen werden, um die View zu aktualisieren
+            lnl_buttons.invalidate();
+        }
+
+        /* von Vivien Stumpe, 18.04.16
+        Wenn Abbrechen gedrückt wird, verschwinden die Buttons
+        Wenn Löschen gedrückt wird, werden die Daten gelöscht
+        -> Löschen fehlt noch!
+         */
+        if (ce == R.id.btn_einst_abbrechen){
+            //werden die Buttons ausgeblendet
+            lnl_buttons.setVisibility(View.GONE);
+            //muss aufgerufen werden, um die View zu aktualisieren
+            lnl_buttons.invalidate();
+        }
+        if(ce == R.id.btn_einst_löschen){
+            Toast.makeText(this, "Daten werden gelöscht", Toast.LENGTH_SHORT).show();
+            //werden die Buttons ausgeblendet
+            lnl_buttons.setVisibility(View.GONE);
             //muss aufgerufen werden, um die View zu aktualisieren
             lnl_buttons.invalidate();
         }
