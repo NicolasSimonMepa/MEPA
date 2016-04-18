@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- zuletzt geändert von Nathalie Horn, 13.04.16 -->
+<!-- zuletzt geändert von Nathalie Horn, 18.04.16 -->
 
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -13,40 +13,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="de.app.mepa.upload.Upload">
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgv_logo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/festivealth_logo"
-        android:contentDescription="@string/imgv_logo" />
 
     <!-- Layout für die Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/lnl_toolbar">
         <include
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             layout="@layout/toolbar_layout"/>
     </LinearLayout>
 
     <!-- 'Upload' -->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgv_logo"
+
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/txtv_upload"
         android:id="@+id/txtv_upload"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textColor="#000000"
@@ -56,21 +46,17 @@
     <!-- TableLayout für Anordnung der Icons -->
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tbl_main"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:gravity="center"
         android:stretchColumns="*"
-        android:paddingTop="30dp"
-        android:paddingBottom="20dp"
-        android:layout_below="@+id/imgv_logo">
+        android:id="@+id/tbl_main">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/tblr_main_1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
