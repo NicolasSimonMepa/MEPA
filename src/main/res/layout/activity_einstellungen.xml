@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe, 12.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe, 18.04.16 -->
 <!-- von Vivien Stumpe, 09.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -59,7 +59,7 @@
             android:id="@+id/txtv_einst_mitarbeiter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/falleingabe"
+            android:drawableTop="@drawable/mitarbeiter_konf"
             android:text="@string/txtv_mitarbeiter_konfig"
             android:layout_marginBottom="20dp"
             android:textColor="#000000"
@@ -71,7 +71,7 @@
             android:id="@+id/txtv_einst_loeschen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/falleingabe"
+            android:drawableTop="@drawable/local_data_delete"
             android:text="@string/btn_löschen_einst"
             android:textColor="#000000"
             android:textSize="20sp"
