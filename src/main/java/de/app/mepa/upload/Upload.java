@@ -1,5 +1,5 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 11.04.16
+//Zuletzt geändert von Nathalie Horn, 18.04.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
@@ -28,8 +28,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     private DrawerLayout drawerlayout_upload;
     private ListView listview_upload;
     private MyAdapter myadapter_upload;
-    private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.einstellungen,
-            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.impressum, R.drawable.stammdaten,};
+    private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Nathalie Horn, 13.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -47,7 +47,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         drawerlayout_upload = (DrawerLayout) findViewById(R.id.drawerLayout_Upload);
         listview_upload = (ListView) findViewById(R.id.listview_upload);
         //Adapter für Listview erzeugen
-        myadapter_upload = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_upload), drawer_icons_upload);
+        myadapter_upload = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_upload);
         listview_upload.setAdapter(myadapter_upload);
         listview_upload.setOnItemClickListener(this);
 
@@ -106,15 +106,19 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
                 startActivity(intent);
             }
 
-            //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-            if (position == 4) {
-                Intent intent = new Intent(Upload.this, Impressum.class);
+            //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
+            if(position==4) {
+                Intent intent = new Intent(Falleingabe.this, Upload.class);
                 startActivity(intent);
             }
-
-            //Wenn das sechste Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-            if (position == 5) {
-                Intent intent = new Intent(Upload.this, Stammdaten.class);
+            //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
+            if(position==5) {
+                Intent intent = new Intent(Falleingabe.this, Impressum.class);
+                startActivity(intent);
+            }
+            //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+            if(position==6) {
+                Intent intent = new Intent(Falleingabe.this, Stammdaten.class);
                 startActivity(intent);
             }
         }
