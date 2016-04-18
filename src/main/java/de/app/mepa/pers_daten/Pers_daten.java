@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 12.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 18.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
@@ -12,7 +12,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 import de.app.mepa.MyAdapter;
@@ -29,7 +32,7 @@ import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.OnSwipeTouchListener;
 
 
-public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
 //von Vivien Stumpe, 10.04.16
 //DrawerLayout für das Hamburger Menü
 //ListView, die die Einträge des Menüs enthält
@@ -50,6 +53,23 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
     */
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
+
+    /* von Vivien Stumpe, 18.04.16
+    Variablen für die Spinner in der Activity erstellen
+
+    */
+    private Spinner spin_zugef;
+
+    /* von Vivien Stumpe, 18.04.16
+    String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
+    */
+    private String[]zugef = {" ", "Polizei", "RTW/KTW", "San-Team", "Security",
+            "Angehörige", "Selbst", "Passanten", "Sonstiges"};
+
+    /* von Vivien Stumpe, 18.04.16
+    TableRow erzeugen
+     */
+    private TableRow tblr_sonstiges_zugef;
 
 
     @Override
@@ -89,6 +109,34 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_pers_daten, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_pers_daten.addDrawerListener(actionbardrawertoggle);
+
+        /* von Vivien Stumpe, 18.04.16
+        ArrayAdapter erzeugen
+        Der ArrayAdapter generiert die Listenelemente des Spinners
+        Parameter sind die aktuelle Activity, Systemressource, Array mit den Listenelementen
+        */
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Pers_daten.this,
+                android.R.layout.simple_spinner_item,zugef);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        /* von Vivien Stumpe, 18.04.16
+        Verknüpfung der Spinnervariable zum Spinner in der Activity herstellen
+        SpinnerAdapter dem Spinner zuweisen damit die Elemente in der Activity angezeigt werden
+        setOnItemSelectedListener implementieren, damit mit dem ausgewählten Eintrag auch gearbeitet werden kann
+        */
+        spin_zugef = (Spinner)findViewById(R.id.spin_zugefuehrt_pers_daten);
+        spin_zugef.setAdapter(adapter);
+        spin_zugef.setOnItemSelectedListener(this);
+
+        /* von Vivien Stumpe, 18.04.16
+        TableRow Variable der View zuordnen
+        TableRow in der Activity ausblenden --> soll erst eingeblendet werden, wenn Sonstiges im Spinner gewählt wurde
+         */
+        tblr_sonstiges_zugef=(TableRow) findViewById(R.id.tblr_sonstiges_pers_daten);
+        tblr_sonstiges_zugef.setVisibility(View.GONE);
+        //View aktualisieren
+        tblr_sonstiges_zugef.invalidate();
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -140,5 +188,81 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
             Intent intent = new Intent(Pers_daten.this, Stammdaten.class);
             startActivity(intent);
         }
+    }
+
+    /* von Vivien Stumpe, 18.04.16
+    */
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                // Was soll passieren, wenn das erste Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 1:
+                // Was soll passieren, wenn das zweite Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 2:
+                // Was soll passieren, wenn das dritte Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 3:
+                // Was soll passieren, wenn das vierte Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 4:
+                // Was soll passieren, wenn das fünfte Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 5:
+                // Was soll passieren, wenn das sechste Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 6:
+                // Was soll passieren, wenn das siebte Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 7:
+                // Was soll passieren, wenn das achte Element gewählt wurde?
+                // Sonstiges- Eingabefeld wird ausgeblendet
+                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+            case 8:
+                // Wenn sonstiges ausgewählt wurde, wird das Eingabefeld dazu angezeigt
+                tblr_sonstiges_zugef.setVisibility(View.VISIBLE);
+                //View aktualisieren
+                tblr_sonstiges_zugef.invalidate();
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
