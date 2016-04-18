@@ -47,8 +47,10 @@
     <string name="txtv_geb_pers_daten">Geboren am</string>
     <string name="txtv_fundort_pers_daten">Ggf. Fundort</string>
     <string name="txtv_krankenkasse_pers_daten">Krankenkasse</string>
-    <string name="txtv_zugefuehrt">Der Hilfsstelle
-                                    \nzugeführt durch:</string>
+    <string name="txtv_zugefuehrt">Der Hilfs-
+                                        \nstelle
+                                    \nzugeführt
+                                    \ndurch:</string>
     <string name="cck_polizei">Polizei</string>
     <string name="cck_rtw">RTW/KTW</string>
     <string name="cck_san">San-Team</string>
