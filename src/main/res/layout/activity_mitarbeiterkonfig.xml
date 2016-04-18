@@ -80,7 +80,6 @@
                     android:id="@+id/etxt_mitarbeiter_name"
                     android:layout_column="1"
                     android:typeface="normal"
-                    android:editable="false"
                     android:inputType="text"
                     android:singleLine="false" />
             </TableRow>
@@ -111,7 +110,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/etxt_mitarbeiter_vorname"
-                    android:layout_column="1" />
+                    android:layout_column="1"
+                    android:typeface="normal"
+                    android:inputType="text"
+                    android:singleLine="false"/>
             </TableRow>
 
         </TableLayout>
