@@ -166,20 +166,20 @@
     <RelativeLayout
         android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:id="@+id/drawer_Einstellungen"
+        android:id="@+id/drawer_Mitarbeiterkonfig"
         android:background="#ffeedd"
         android:layout_gravity="start">
 
         <!-- Kopfzeile -->
 
         <RelativeLayout
-            android:id="@+id/menu_kopfzeile_einstellungen"
+            android:id="@+id/menu_kopfzeile_mitarbeiterkonfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp" >
 
             <ImageView
-                android:id="@+id/menu_einstellungen"
+                android:id="@+id/menu_mitarbeiterkonfig"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/icon_menu"
@@ -191,11 +191,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/menu_einstellungen"
+                android:layout_toRightOf="@+id/menu_mitarbeiterkonfig"
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/txtv_menu_einstellungen"
+                    android:id="@+id/txtv_menu_mitarbeiterkonfig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_menu"
@@ -207,10 +207,10 @@
         </RelativeLayout>
         <!-- Menüpunkte -->
         <ListView
-            android:id="@+id/listview_einstellungen"
+            android:id="@+id/listview_mitarbeiterkonfig"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            android:layout_below="@+id/menu_kopfzeile_einstellungen"
+            android:layout_below="@+id/menu_kopfzeile_mitarbeiterkonfig"
             android:choiceMode="singleChoice"
             android:background="#ffeedd"
             android:layout_marginLeft="10dp"
