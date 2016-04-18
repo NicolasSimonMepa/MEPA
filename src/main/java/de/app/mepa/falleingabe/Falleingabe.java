@@ -67,8 +67,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private DrawerLayout drawerlayout_falleingabe;
     private ListView listview_falleingabe;
     private MyAdapter myadapter_fallein;
-    private int[] drawer_icons_falleingabe={R.drawable.mepa_icon, R.drawable.mepa_icon,R.drawable.falleingabe,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
+   private int[] drawer_icons_falleingabe={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
