@@ -28,8 +28,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     private DrawerLayout drawerlayout_upload;
     private ListView listview_upload;
     private MyAdapter myadapter_upload;
-    private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.mepa_icon, R.drawable.mepa_icon, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.einstellungen,
+            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.impressum, R.drawable.stammdaten,};
 
     /*von Nathalie Horn, 13.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
