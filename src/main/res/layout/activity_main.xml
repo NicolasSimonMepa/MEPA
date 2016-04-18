@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe am 12.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 18.04.16 -->
 <!-- von Vivien Stumpe, 01.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -56,7 +56,7 @@
                 android:id="@+id/txtv_main_falluebersicht"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/falleingabe"
+                android:drawableTop="@drawable/falluebersicht"
                 android:text="@string/txtv_falluebersicht"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -77,7 +77,7 @@
                 android:id="@+id/txtv_main_stammdaten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/falleingabe"
+                android:drawableTop="@drawable/stammdaten"
                 android:text="@string/txtv_stammdaten"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -110,7 +110,7 @@
                 android:id="@+id/txtv_main_einstellungen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/falleingabe"
+                android:drawableTop="@drawable/einstellungen"
                 android:text="@string/txtv_einstellungen"
                 android:textColor="#000000"
                 android:textSize="20sp"
