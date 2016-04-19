@@ -216,6 +216,11 @@
     <string name="txtv_suffizient">Suffizient</string>
     <string name="txtv_insuffizient">Insuffizient</string>
     <string name="txtv_aed">AED</string>
+    <string name="txtv_zustand">Zustand</string>
+    <string name="txtv_transport">Transport</string>
+    <string name="txtv_notarzt">Notarzt</string>
+    <string name="cck_hausarzt_informiert">Hausarzt/ABD informiert</string>
+    <string name="cck_tod_unfallort">Tod am Unfallort</string>
     <string name="txtv_zeit">Zeit</string>
 
     <string name="bemerkung">Bemerkung</string>
