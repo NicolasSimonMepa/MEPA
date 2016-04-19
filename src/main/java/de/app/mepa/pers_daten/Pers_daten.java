@@ -41,8 +41,8 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
     private DrawerLayout drawerlayout_pers_daten;
     private ListView listview_pers_daten;
     private MyAdapter myadapter_pers_daten;
-    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+  private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
@@ -63,7 +63,7 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
     /* von Vivien Stumpe, 18.04.16
     String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
     */
-    private String[]zugef = {" ", "Polizei", "RTW/KTW", "San-Team", "Security",
+    private String[]zugef = {"----", "Polizei", "RTW/KTW", "San-Team", "Security",
             "Angehörige", "Selbst", "Passanten", "Sonstiges"};
 
     /* von Vivien Stumpe, 18.04.16
@@ -81,7 +81,7 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
         drawerlayout_pers_daten=(DrawerLayout) findViewById(R.id.drawerLayout_pers_daten);
         listview_pers_daten=(ListView) findViewById(R.id.listview_pers_daten);
 
-        myadapter_pers_daten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_pers_daten);
+        myadapter_pers_daten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_pers_daten);
         listview_pers_daten.setAdapter(myadapter_pers_daten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_pers_daten.setOnItemClickListener(this);
