@@ -78,6 +78,99 @@
 
                     android:spinnerMode="dropdown" />
             </TableRow>
+            
+                        <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_zustand"
+                    android:id="@+id/txtv_zustand"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_zustand"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_zustand"
+                    android:spinnerMode="dropdown"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_transport"
+                    android:id="@+id/txtv_transport"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_transport"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_transport"
+                    android:spinnerMode="dropdown"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_notarzt"
+                    android:id="@+id/txtv_notarzt"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_notarzt"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_notarzt"
+                    android:spinnerMode="dropdown"/>
+            </TableRow>
+            
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_hausarzt_informiert"
+                    android:id="@+id/cck_hausarzt"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_tod_unfallort"
+                    android:id="@+id/cck_tod_unfallort"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+            </TableRow>
+            
             <TableRow>
                 <TextView
                     android:layout_width="match_parent"
