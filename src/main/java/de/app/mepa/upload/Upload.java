@@ -108,17 +108,17 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
             if(position==4) {
-                Intent intent = new Intent(Falleingabe.this, Upload.class);
+                Intent intent = new Intent(Upload.this, Upload.class);
                 startActivity(intent);
             }
             //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
             if(position==5) {
-                Intent intent = new Intent(Falleingabe.this, Impressum.class);
+                Intent intent = new Intent(Upload.this, Impressum.class);
                 startActivity(intent);
             }
             //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
             if(position==6) {
-                Intent intent = new Intent(Falleingabe.this, Stammdaten.class);
+                Intent intent = new Intent(Upload.this, Stammdaten.class);
                 startActivity(intent);
             }
         }
