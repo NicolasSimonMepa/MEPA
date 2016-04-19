@@ -9,7 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -29,19 +30,21 @@ private Spinner spin_ekg;
 private Spinner spin_schmerzen;
 private Spinner spin_atmung;
 
-private String[]bewusstseinslage={" ","orientiert","getrübt","bewusstlos"};
-private String[]kreislauf={" ","schock","kreislaufstillstand","puls regelmäßig","puls unregelmäßig"};
-private String[]pupillenfunktion_rechts={" ","eng","mittel","weit","entrundet","lichtreaktion"};
-private String[]pupillenfunktion_links={" ","eng","mittel","weit","entrundet","lichtreaktion"};
-private String[]ekg={" ","sinusrhythmus","rhythmusstörung","kammerflimmern","asystolie"};
-private String[]schmerzen={" ","leicht","mittel","stark"};
-private String[]atmung={" ","spontan/frei","atemnot","hyperventilation","atemstillstand"};
+private String[]bewusstseinslage={"-----","orientiert","getrübt","bewusstlos"};
+private String[]kreislauf={"-----","schock","kreislaufstillstand","puls regelmäßig","puls unregelmäßig"};
+private String[]pupillenfunktion_rechts={"rechts","eng","mittel","weit","entrundet","lichtreaktion"};
+private String[]pupillenfunktion_links={"links","eng","mittel","weit","entrundet","lichtreaktion"};
+private String[]ekg={"-----","sinusrhythmus","rhythmusstörung","kammerflimmern","asystolie"};
+private String[]schmerzen={"-----","leicht","mittel","stark"};
+private String[]atmung={"-----","spontan/frei","atemnot","hyperventilation","atemstillstand"};
 
 private DrawerLayout drawerlayout_erstbefund;
 private ListView listview_erstbefund;
 private MyAdapter myadapter_erstbefund;
 private int[]drawer_icons_erstbefund={R.drawable.mepa_icon,R.drawable.mepa_icon,
         R.drawable.falleingabe,R.drawable.mepa_icon,R.drawable.upload,R.drawable.impressum,R.drawable.mepa_icon,};
+private ActionBarDrawerToggle actionbardrawertoggle;
+Toolbar toolbar;
 
 @Override
 protected void onCreate(Bundle savedInstanceState){
@@ -121,7 +124,19 @@ protected void onCreate(Bundle savedInstanceState){
         listview_erstbefund.setAdapter(myadapter_erstbefund);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_erstbefund.setOnItemClickListener(this);
+        
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erstbefund, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerlayout_erstbefund.addDrawerListener(actionbardrawertoggle);
         }
+
+@Override
+protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
+        actionbardrawertoggle.syncState();
+    }
 
 @Override
 public void onItemSelected(AdapterView<?>parent,View view,int position,long id){
