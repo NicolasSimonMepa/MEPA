@@ -41,8 +41,8 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private DrawerLayout drawerlayout_einstellungen;
     private ListView listview_einstellungen;
     private MyAdapter myadapter_einstellungen;
-    private int[] drawer_icons_einstellungen={R.drawable.mepa_icon, R.drawable.mepa_icon, R.drawable.falleingabe,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
+    private int[] drawer_icons_einstellungen={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+                R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -74,7 +74,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         drawerlayout_einstellungen=(DrawerLayout) findViewById(R.id.drawerLayout_Einstellungen);
         listview_einstellungen=(ListView) findViewById(R.id.listview_einstellungen);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_einstellungen=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_einstellungen);
+        myadapter_einstellungen=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_einstellungen);
         listview_einstellungen.setAdapter(myadapter_einstellungen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_einstellungen.setOnItemClickListener(this);
