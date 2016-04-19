@@ -99,7 +99,7 @@
 
     </RelativeLayout>
 
-    <!-- von Vivien Stumpe, 09.04.16 , Übernommen von Nicolas 10.04.16-->
+    <!-- von Nicolas 10.04.16-->
     <!-- Hamburger Menü - Drawer Navigation -->
 <RelativeLayout
 android:layout_width="250dp"
