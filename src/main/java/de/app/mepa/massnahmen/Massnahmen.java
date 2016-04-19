@@ -27,7 +27,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
     private DrawerLayout drawerlayout_massnahmen;
     private ListView listview_massnahmen;
     private MyAdapter myadapter_massnahmen;
-    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+    private int[] drawer_icons_massnahmen={R.drawable.mepa_icon, R.drawable.einstellungen,
             R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
 
     //von Vivien Stumpe, 11.04.16
