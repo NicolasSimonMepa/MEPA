@@ -31,8 +31,8 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
     private DrawerLayout drawerlayout_notfall;
     private ListView listview_notfall;
     private MyAdapter myadapter_notfall;
-    private int[] drawer_icons_notfall={R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_notfall={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -51,7 +51,7 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
         drawerlayout_notfall=(DrawerLayout) findViewById(R.id.drawerLayout_Notfallsituation);
         listview_notfall=(ListView) findViewById(R.id.listview_Notfallsituation);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_notfall);
+        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_notfall);
         listview_notfall.setAdapter(myadapter_notfall);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_notfall.setOnItemClickListener(this);
