@@ -38,8 +38,8 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerlayout_falluebersicht;
     private ListView listview_falluebersicht;
     private MyAdapter myadapter_falluebersicht;
-    private int[] drawer_icons_falluebersicht={R.drawable.mepa_icon, R.drawable.falleingabe,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_falluebersicht={R.drawable.mepa_icon, R.drawable.mepa_icon,R.drawable.falleingabe,
+            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -74,7 +74,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         drawerlayout_falluebersicht=(DrawerLayout) findViewById(R.id.drawerLayout_Falluebersicht);
         listview_falluebersicht=(ListView) findViewById(R.id.listview_falluebersicht);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_falluebersicht=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_stammdaten), drawer_icons_falluebersicht);
+        myadapter_falluebersicht=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_falluebersicht);
         listview_falluebersicht.setAdapter(myadapter_falluebersicht);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_falluebersicht.setOnItemClickListener(this);
@@ -136,28 +136,27 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(Falluebersicht.this, Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das zweite Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
+        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
         if(position==2) {
             Intent intent = new Intent(Falluebersicht.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
         if(position==3) {
             Intent intent = new Intent(Falluebersicht.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //von Vivien Stumpe, 10.04.16
-        //Wenn das vierte Element im Menü geklickt wurde, wird der Upload geöffnet
+        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
         if(position==4) {
             Intent intent = new Intent(Falluebersicht.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
         if(position==5) {
             Intent intent = new Intent(Falluebersicht.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
         if(position==6) {
             Intent intent = new Intent(Falluebersicht.this, Stammdaten.class);
             startActivity(intent);
