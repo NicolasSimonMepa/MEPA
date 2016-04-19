@@ -32,7 +32,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
-    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+    private int[] drawer_icons_ersthelfermassnahmen={R.drawable.mepa_icon, R.drawable.einstellungen,
             R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
