@@ -26,8 +26,8 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
     private DrawerLayout drawerlayout_impressum;
     private ListView listview_impressum;
     private MyAdapter myadapter_impressum;
-    private int[] drawer_icons_impress={R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_impressum={R.drawable.mepa_icon, R.drawable.mepa_icon,R.drawable.falleingabe,
+            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -41,9 +41,9 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
         //von Nicolas Simon, 17.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_impressum=(DrawerLayout) findViewById(R.id.drawerLayout_Impressum);
-        listview_impressum=(ListView) findViewById(R.id.listview_impressum);
+        listview_impressum=(ListView) findViewById(R.id.listview_falluebersicht); // kann kein Listview_impressum finden, müsste eig erzeugt sein?!
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_impressum=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_falleingabe), drawer_icons_impress);
+        myadapter_impressum=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_impressum);
         listview_impressum.setAdapter(myadapter_impressum);
         listview_impressum.setOnItemClickListener(this);
 
@@ -88,28 +88,27 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
             Intent intent = new Intent(Impressum.this, Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das zweite Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
+        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
         if(position==2) {
             Intent intent = new Intent(Impressum.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
         if(position==3) {
             Intent intent = new Intent(Impressum.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //von Vivien Stumpe, 10.04.16
-        //Wenn das vierte Element im Menü geklickt wurde, wird der Upload geöffnet
+        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
         if(position==4) {
             Intent intent = new Intent(Impressum.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
         if(position==5) {
             Intent intent = new Intent(Impressum.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, werden die Stammdaten geöffnet
+        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
         if(position==6) {
             Intent intent = new Intent(Impressum.this, Stammdaten.class);
             startActivity(intent);
