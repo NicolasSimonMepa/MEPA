@@ -38,8 +38,8 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerlayout_falluebersicht;
     private ListView listview_falluebersicht;
     private MyAdapter myadapter_falluebersicht;
-    private int[] drawer_icons_falluebersicht={R.drawable.mepa_icon, R.drawable.mepa_icon,R.drawable.falleingabe,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
+    private int[] drawer_icons_falluebersicht={R.drawable.mepa_icon, R.drawable.einstellungen,R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
