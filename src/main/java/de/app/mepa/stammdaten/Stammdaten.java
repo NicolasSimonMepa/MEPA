@@ -37,8 +37,8 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         private DrawerLayout drawerlayout_stammdaten;
         private ListView listview_stammdaten;
         private MyAdapter myadapter_stammdaten;
-        private int[] drawer_icons_stammdaten={R.drawable.mepa_icon, R.drawable.mepa_icon,
-                R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
+        private int[] drawer_icons_stammdaten={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
+                R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     /*von Vivien Stumpe, 14.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -58,7 +58,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         drawerlayout_stammdaten=(DrawerLayout) findViewById(R.id.drawerLayout_Stammdaten);
         listview_stammdaten=(ListView) findViewById(R.id.listview_stammdaten);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_stammdaten);
+        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_stammdaten);
         listview_stammdaten.setAdapter(myadapter_stammdaten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_stammdaten.setOnItemClickListener(this);
