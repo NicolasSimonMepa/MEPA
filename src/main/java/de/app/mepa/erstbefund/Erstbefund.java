@@ -44,7 +44,7 @@ public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemS
         private DrawerLayout drawerlayout_erstbefund;
         private ListView listview_erstbefund;
         private MyAdapter myadapter_erstbefund;
-         private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+         private int[] drawer_icons_erstbefund={R.drawable.mepa_icon, R.drawable.einstellungen,
             R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
         private ActionBarDrawerToggle actionbardrawertoggle;
         Toolbar toolbar;
