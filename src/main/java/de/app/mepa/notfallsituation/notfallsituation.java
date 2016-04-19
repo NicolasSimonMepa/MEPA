@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
+import de.app.mepa.bemerkung.Bemerkung;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
@@ -41,6 +43,10 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
+    //von Vivien Stumpe, 11.04.16
+    //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+    private View view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,21 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_notfall, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_notfall.addDrawerListener(actionbardrawertoggle);
+
+        /* von Vivien Stumpe, 19.04.16
+        Wechseln der Aktivität mittels Swipe
+        Hauptelement der Activity finden und der Variable zuweisen
+        Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
+        wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
+        */
+        view=(View) findViewById(R.id.rl_notfall);
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                Intent intent = new Intent(notfallsituation.this, Bemerkung.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //von Vivien Stumpe, 12.04.16
