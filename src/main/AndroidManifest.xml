@@ -40,6 +40,8 @@
             android:label=""/>
         <activity android:name="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen"
             android:label=""/>
+        <activity android:name="de.app.mepa.bemerkung.Bemerkung"
+			android:label=""/>
         <!--Nathalie Horn am 13.04.16 -->
         <activity android:name="de.app.mepa.upload.Upload" android:label=""/>
         <!-- Nathalie Horn am 18.04.16 -->
