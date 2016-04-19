@@ -26,6 +26,9 @@ import de.app.mepa.upload.Upload;
 
 public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
     private Spinner spin_ersthelfermassnahmen;
+    private Spinner spin_zustand;
+    private Spinner spin_transport;
+    private Spinner spin_notarzt;
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
@@ -36,7 +39,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     Toolbar toolbar;
 
     private String[]ersthelfermassnahmen={"keine","suffizient","insuffizient","AED"};
-
+    private String[]zustand={"unverändert", "verbessert", "verschlechtert"};
+    private String[]transport={"transport", "nicht erforderlich", "Pat. lehnt transport ab"};
+    private String[]notarzt={"nachgefordert", "abbestellt"};
 
 
     //von Vivien Stumpe, 11.04.16
@@ -58,6 +63,33 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_ersthelfermassnahmen=(Spinner)findViewById(R.id.spin_ersthelfermassnahmen);
         spin_ersthelfermassnahmen.setAdapter(adapter_ersthelfermassnahmen);
         spin_ersthelfermassnahmen.setOnItemSelectedListener(this);
+        
+        ArrayAdapter<String> adapter_zustand=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
+                android.R.layout.simple_spinner_item,zustand);
+
+        adapter_zustand.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin_zustand=(Spinner)findViewById(R.id.spin_zustand);
+        spin_zustand.setAdapter(adapter_zustand);
+        spin_zustand.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> adapter_transport=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
+                android.R.layout.simple_spinner_item,transport);
+
+        adapter_transport.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin_transport=(Spinner)findViewById(R.id.spin_transport);
+        spin_transport.setAdapter(adapter_transport);
+        spin_transport.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> adapter_notarzt=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
+                android.R.layout.simple_spinner_item,notarzt);
+
+        adapter_notarzt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin_notarzt=(Spinner)findViewById(R.id.spin_notarzt);
+        spin_notarzt.setAdapter(adapter_notarzt);
+        spin_notarzt.setOnItemSelectedListener(this);
 
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
