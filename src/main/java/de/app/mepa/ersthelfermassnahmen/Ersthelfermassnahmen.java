@@ -13,12 +13,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Spinner;
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
+import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
@@ -34,6 +36,14 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     Toolbar toolbar;
 
     private String[]ersthelfermassnahmen={"keine","suffizient","insuffizient","AED"};
+
+
+
+    //von Vivien Stumpe, 11.04.16
+    //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+    /* ---------------------------------------
+    private View view;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -62,6 +72,24 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_ersthelfermassnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_ersthelfermassnahmen.addDrawerListener(actionbardrawertoggle);
+
+
+                 // von Vivien Stumpe, 19.04.16
+                //Wechseln der Aktivität mittels Swipe
+                 //Hauptelement der Activity finden und der Variable zuweisen
+                 //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
+                 //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
+        /* ------------------------------------------
+        view=(View) findViewById(R.id.scrV_ersthelfermassnahmen);
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
+                startActivity(intent);
+            }
+        });
+        */
+
     }
 
     @Override
