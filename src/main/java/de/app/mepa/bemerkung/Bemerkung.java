@@ -24,14 +24,14 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     private DrawerLayout drawerlayout_bemerkung;
     private ListView listview_bemerkung;
     private MyAdapter myadapter_bemerkung;
-    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
 
-    /* ------------------------------------
+
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
-    */
+
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -60,7 +60,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
         wenn nach links gewischt wird, wird die Falleingabe mittels Intent geöffnet
         */
-        /* --------------------------------------------------------------------------
+
         view=(View) findViewById(R.id.rl_bemerkung);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -69,7 +69,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
                 startActivity(intent);
             }
         });
-        */
+
     }
 
     @Override
