@@ -152,7 +152,7 @@
         <item>Stammdaten</item>
     </string-array>
     
-    <!-- Emile Yoncaova 15.04.2016 -->
+    <!-- Emile Yoncaova 19.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
     <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
@@ -194,15 +194,31 @@
     <string name="erstbefund">Erstbefund</string>
     <string name="txtv_bewusstseinslage">Bewusstseinslage</string>
     <string name="txtv_kreislauf">Kreislauf</string>
+    <string name="cck_schock_erstbefund">Schock</string>
+    <string name="cck_kreislaufstillstand_erstbefund">Kreislaufstillstand</string>
+    <string name="cck_puls_regelmaessig_erstbefund">Puls regelmäßig</string>
+    <string name="cck_puls_unregelmaessig_erstbefund">Puls unregelmäßig</string>
     <string name="txtv_pupillenfunktion">Pupillenfunktion</string>
+    <string name="txtv_rechts">rechts</string>
+    <string name="txtv_links">links</string>
+    <string name="cck_eng">eng</string>
+    <string name="cck_mittel">mittel</string>
+    <string name="cck_weit">weit</string>
+    <string name="cck_lichtreaktion">Lichtreaktion</string>
+    <string name="cck_entrundet">entrundet</string>
     <string name="txtv_ekg">EKG</string>
     <string name="txtv_schmerzen">Schmerzen</string>
 
-    <string name="ersthelfermassnahmen">Ersthelfermaßnahmen</string>
+    <string name="uebergabe">Übergabe</string>
+    <string name="txtv_ergebnis">Ergebnis</string>
+    <string name="txtv_wertsachen">Übergabe Wertsachen</string>
+    <string name="txtv_ersthelfermassnahmen">Ersthelfermaßnahmen</string>
     <string name="txtv_suffizient">Suffizient</string>
     <string name="txtv_insuffizient">Insuffizient</string>
     <string name="txtv_aed">AED</string>
-    <string name="btn_fertig">Fertig</string>
+    <string name="txtv_zeit">Zeit</string>
+
+    <string name="bemerkung">Bemerkung</string>
 
      <!--Nicolas 3.04.2016, zuletzt geändert am 17.04.16 -->
     <string name="txtv_speichern">Speichern</string>
