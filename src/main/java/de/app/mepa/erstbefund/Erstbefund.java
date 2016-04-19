@@ -12,10 +12,13 @@ import android.widget.Spinner;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
+import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.stammdaten.Stammdaten;
@@ -45,6 +48,12 @@ private int[]drawer_icons_erstbefund={R.drawable.mepa_icon,R.drawable.mepa_icon,
         R.drawable.falleingabe,R.drawable.mepa_icon,R.drawable.upload,R.drawable.impressum,R.drawable.mepa_icon,};
 private ActionBarDrawerToggle actionbardrawertoggle;
 Toolbar toolbar;
+
+/* ----------------------------------------------
+    //von Vivien Stumpe, 11.04.16
+    //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+    private View view;
+*/
 
 @Override
 protected void onCreate(Bundle savedInstanceState){
@@ -129,6 +138,22 @@ protected void onCreate(Bundle savedInstanceState){
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erstbefund, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_erstbefund.addDrawerListener(actionbardrawertoggle);
+
+        /* --------------------------------------------------------
+                 // von Vivien Stumpe, 11.04.16
+                 //Hauptelement der Activity finden und der Variable zuweisen
+                 //Wechseln der Aktivität mittels Swipe
+                 //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
+                 //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
+        view=(View) findViewById(R.id.scrV_erstbefund);
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
+                startActivity(intent);
+            }
+        });
+        */
         }
 
 @Override
