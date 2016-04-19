@@ -5,12 +5,16 @@
               android:layout_height="match_parent"> -->
 
 <!-- von Vivien Stumpe, 09.04.16 , Nicolas übernommen 10.04.16-->
-<!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout_Impressum"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="de.app.mepa.impressum.Impressum">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -55,7 +59,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/txtv_name"
                         android:lines="3"
@@ -117,60 +121,62 @@
         </ScrollView>
 
     </LinearLayout>
+    </RelativeLayout>
 
-
+    <!-- von Vivien Stumpe, 09.04.16 , Übernommen von Nicolas 10.04.16-->
+    <!-- Hamburger Menü - Drawer Navigation -->
     <RelativeLayout
-android:layout_width="250dp"
-android:layout_height="match_parent"
-android:id="@+id/drawer_falluebersicht"
-android:background="#ffeedd"
-android:layout_gravity="start">
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout_Impress"
+        android:background="#ffeedd"
+        android:layout_gravity="start">
 
-<!-- Kopfzeile -->
+        <!-- Kopfzeile -->
 
-<RelativeLayout
-    android:id="@+id/menu_kopfzeile_Impressum"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp" >
-
-    <ImageView
-        android:id="@+id/menu_impressum"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/icon_menu"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@+id/menu_impressum"
-        android:orientation="vertical" />
-
-        <TextView
-            android:id="@+id/txtv_menu_Impressum"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/menu_kopfzeile_Impressum"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_menu"
-            android:layout_marginTop="15dp"
-            android:textSize="30sp"
-            android:textColor="#000000"/>
+            android:padding="8dp" >
 
-</RelativeLayout>
-<!-- Menüpunkte -->
-<ListView
-    android:id="@+id/listview_impressum"
-    android:layout_width="280dp"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/menu_kopfzeile_Impressum"
-    android:choiceMode="singleChoice"
-    android:background="#ffeedd"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp" />
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/menu_impressum"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_menu"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/menu_impressum"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtv_menu_Impressum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menü"
+                    android:layout_marginTop="15dp"
+                    android:textSize="30sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <!-- Menüpunkte -->
+        <ListView
+            android:id="@+id/listview_falluebersicht"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/menu_kopfzeile_Impressum"
+            android:choiceMode="singleChoice"
+            android:background="#ffeedd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
