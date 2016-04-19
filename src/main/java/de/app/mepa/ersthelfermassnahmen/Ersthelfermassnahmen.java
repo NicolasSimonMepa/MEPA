@@ -1,4 +1,4 @@
-// zuletzt geändert von Emile Yoncaova, 15.04.16
+// zuletzt geändert von Emile Yoncaova, 19.04.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Intent;
@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.widget.Spinner;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -20,8 +22,8 @@ import de.app.mepa.mepa.R;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
-public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemClickListener{
-
+public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
+    private Spinner spin_ersthelfermassnahmen;
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
@@ -31,10 +33,21 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
+    private String[]ersthelfermassnahmen={"keine","suffizient","insuffizient","AED"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ersthelfermassnahmen);
+
+        ArrayAdapter<String> adapter_ersthelfermassnahmen=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
+                android.R.layout.simple_spinner_item,ersthelfermassnahmen);
+
+        adapter_ersthelfermassnahmen.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin_ersthelfermassnahmen=(Spinner)findViewById(R.id.spin_ersthelfermassnahmen);
+        spin_ersthelfermassnahmen.setAdapter(adapter_ersthelfermassnahmen);
+        spin_ersthelfermassnahmen.setOnItemSelectedListener(this);
 
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
@@ -50,6 +63,28 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_ersthelfermassnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_ersthelfermassnahmen.addDrawerListener(actionbardrawertoggle);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?>parent,View view,int position,long id){
+        switch(position){
+            case 0:
+                // Was soll passieren, wenn das erste Element gewählt wurde?
+                break;
+            case 1:
+                // Was soll passieren, wenn das zweite Element gewählt wurde?
+                break;
+            case 2:
+                // Was soll passieren, wenn das dritte Element gewählt wurde?
+                break;
+            case 3:
+                // Was soll passieren, wenn das vierte Element gewählt wurde?
+                break;
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?>parent){
+    }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -58,7 +93,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
+        //Aufruf der Prozedur mit Ersthelfermassnahmen der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
     private void selectItemFromDrawer(int position){
