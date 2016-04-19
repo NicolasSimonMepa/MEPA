@@ -33,7 +33,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     private DrawerLayout drawerlayout_erkrankung;
     private ListView listview_erkrankung;
     private MyAdapter myadapter_erkrankung;
-    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+    private int[] drawer_icons_erkrankung={R.drawable.mepa_icon, R.drawable.einstellungen,
             R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
