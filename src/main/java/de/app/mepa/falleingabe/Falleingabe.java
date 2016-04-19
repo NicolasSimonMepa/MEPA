@@ -34,6 +34,7 @@ import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
 import de.app.mepa.erstbefund.Erstbefund;
+import de.app.mepa.bemerkung.Bemerkung;
 import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.upload.Upload;
 
@@ -187,20 +188,14 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_bemerkung){
-            //Activity fehlt noch!!
-            Intent intent = new Intent(Falleingabe.this, MainActivity.class);
+            Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_uebergabe){
-            //Activity fehlt noch!!
-            Intent intent = new Intent(Falleingabe.this, MainActivity.class);
-            startActivity(intent);
-        }
-        /*TextView fehlt noch!
-        if(ce == R.id.txtv_fallein_ersthelferma){
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
+        /*Übergabe Seite ist Ersthelfermaßnahmen Seite
         */
     }
 
