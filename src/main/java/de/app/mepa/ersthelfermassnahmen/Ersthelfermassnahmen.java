@@ -29,8 +29,8 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
-    private int[]drawer_icons_ersthelfermassnahmen={R.drawable.mepa_icon,R.drawable.mepa_icon,
-            R.drawable.falleingabe,R.drawable.mepa_icon,R.drawable.upload,R.drawable.impressum,R.drawable.mepa_icon,};
+    private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -41,9 +41,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
-    /* ---------------------------------------
+
     private View view;
-    */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -79,7 +79,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                  //Hauptelement der Activity finden und der Variable zuweisen
                  //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
                  //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
-        /* ------------------------------------------
+
         view=(View) findViewById(R.id.scrV_ersthelfermassnahmen);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -88,7 +88,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 startActivity(intent);
             }
         });
-        */
+
 
     }
 
