@@ -62,8 +62,8 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private DrawerLayout drawerlayout_verletzung;
     private ListView listview_verletzung;
     private MyAdapter myadapter_verletzung;
-    private int[] drawer_icons_verletzung={R.drawable.mepa_icon, R.drawable.mepa_icon,
-            R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+    private int[] drawer_icons_verletzung={R.drawable.mepa_icon, R.drawable.einstellungen,
+            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
