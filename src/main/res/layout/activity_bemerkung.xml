@@ -40,7 +40,8 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:fillViewport="true"
-            tools:context="de.app.mepa.bemerkung.Bemerkung">
+            tools:context="de.app.mepa.bemerkung.Bemerkung"
+            android:id="@+id/rl_bemerkung">
 
             <EditText
                 android:layout_width="match_parent"
@@ -110,3 +111,4 @@
             android:layout_marginBottom="5dp" />
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
+
