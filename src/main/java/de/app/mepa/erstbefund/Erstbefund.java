@@ -25,35 +25,35 @@ import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
 public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
-private Spinner spin_bewusstseinslage;
-private Spinner spin_kreislauf;
-private Spinner spin_pupillenfunktion_rechts;
-private Spinner spin_pupillenfunktion_links;
-private Spinner spin_ekg;
-private Spinner spin_schmerzen;
-private Spinner spin_atmung;
+        private Spinner spin_bewusstseinslage;
+        private Spinner spin_kreislauf;
+        private Spinner spin_pupillenfunktion_rechts;
+        private Spinner spin_pupillenfunktion_links;
+        private Spinner spin_ekg;
+        private Spinner spin_schmerzen;
+        private Spinner spin_atmung;
+        
+        private String[]bewusstseinslage={"-----","orientiert","getrübt","bewusstlos"};
+        private String[]kreislauf={"-----","schock","kreislaufstillstand","puls regelmäßig","puls unregelmäßig"};
+        private String[]pupillenfunktion_rechts={"rechts","eng","mittel","weit","entrundet","lichtreaktion"};
+        private String[]pupillenfunktion_links={"links","eng","mittel","weit","entrundet","lichtreaktion"};
+        private String[]ekg={"-----","sinusrhythmus","rhythmusstörung","kammerflimmern","asystolie"};
+        private String[]schmerzen={"-----","leicht","mittel","stark"};
+        private String[]atmung={"-----","spontan/frei","atemnot","hyperventilation","atemstillstand"};
 
-private String[]bewusstseinslage={"-----","orientiert","getrübt","bewusstlos"};
-private String[]kreislauf={"-----","schock","kreislaufstillstand","puls regelmäßig","puls unregelmäßig"};
-private String[]pupillenfunktion_rechts={"rechts","eng","mittel","weit","entrundet","lichtreaktion"};
-private String[]pupillenfunktion_links={"links","eng","mittel","weit","entrundet","lichtreaktion"};
-private String[]ekg={"-----","sinusrhythmus","rhythmusstörung","kammerflimmern","asystolie"};
-private String[]schmerzen={"-----","leicht","mittel","stark"};
-private String[]atmung={"-----","spontan/frei","atemnot","hyperventilation","atemstillstand"};
+        private DrawerLayout drawerlayout_erstbefund;
+        private ListView listview_erstbefund;
+        private MyAdapter myadapter_erstbefund;
+         private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen,
+            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
+        private ActionBarDrawerToggle actionbardrawertoggle;
+        Toolbar toolbar;
 
-private DrawerLayout drawerlayout_erstbefund;
-private ListView listview_erstbefund;
-private MyAdapter myadapter_erstbefund;
-private int[]drawer_icons_erstbefund={R.drawable.mepa_icon,R.drawable.mepa_icon,
-        R.drawable.falleingabe,R.drawable.mepa_icon,R.drawable.upload,R.drawable.impressum,R.drawable.mepa_icon,};
-private ActionBarDrawerToggle actionbardrawertoggle;
-Toolbar toolbar;
 
-/* ----------------------------------------------
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
-*/
+
 
 @Override
 protected void onCreate(Bundle savedInstanceState){
@@ -139,7 +139,7 @@ protected void onCreate(Bundle savedInstanceState){
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erstbefund, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_erstbefund.addDrawerListener(actionbardrawertoggle);
 
-        /* --------------------------------------------------------
+
                  // von Vivien Stumpe, 11.04.16
                  //Hauptelement der Activity finden und der Variable zuweisen
                  //Wechseln der Aktivität mittels Swipe
@@ -153,7 +153,7 @@ protected void onCreate(Bundle savedInstanceState){
                 startActivity(intent);
             }
         });
-        */
+
         }
 
 @Override
