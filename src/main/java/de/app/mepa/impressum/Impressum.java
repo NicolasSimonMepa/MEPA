@@ -26,8 +26,8 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
     private DrawerLayout drawerlayout_impressum;
     private ListView listview_impressum;
     private MyAdapter myadapter_impressum;
-    private int[] drawer_icons_impressum={R.drawable.mepa_icon, R.drawable.mepa_icon,R.drawable.falleingabe,
-            R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon};
+    private int[] drawer_icons_impressum={R.drawable.mepa_icon, R.drawable.einstellungen,R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
