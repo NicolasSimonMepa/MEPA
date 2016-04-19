@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.erstbefund.Erstbefund;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -28,9 +29,11 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
     private MyAdapter myadapter_massnahmen;
     private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.mepa_icon,
             R.drawable.falleingabe, R.drawable.mepa_icon, R.drawable.upload, R.drawable.impressum, R.drawable.mepa_icon,};
+   /* -------------------------------------------
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
+    */
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -47,15 +50,20 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         listview_massnahmen.setAdapter(myadapter_massnahmen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_massnahmen.setOnItemClickListener(this);
+        /* ------------------------------------------------ 
         //von Vivien Stumpe, 11.04.16
-      /**  view=(View) findViewById(R.id.scrV_massnahmen);
+                    //Wechseln der Akitivität mittels Swipe
+                  //Hauptelement der Activity finden und der Variable zuweisen
+                 //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
+                 //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
+        view=(View) findViewById(R.id.scrV_massnahmen);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public void onSwipeLeft() {
                 Intent intent = new Intent(Massnahmen.this, Erstbefund.class);
                 startActivity(intent);
             }
-        }); **/
+        }); */
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_massnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
