@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 18.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 22.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -137,6 +138,12 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
         tblr_sonstiges_zugef.setVisibility(View.GONE);
         //View aktualisieren
         tblr_sonstiges_zugef.invalidate();
+
+        /* von Vivien Stumpe, 22.02.16
+            Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
+            sondern erst, wenn ins Eingabefeld geklickt wird
+         */
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     //von Vivien Stumpe, 12.04.16
