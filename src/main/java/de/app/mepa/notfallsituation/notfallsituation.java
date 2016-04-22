@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 12.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 22.04.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -87,6 +88,11 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
                 startActivity(intent);
             }
         });
+        /* von Vivien Stumpe, 22.02.16
+            Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
+            sondern erst, wenn ins Eingabefeld geklickt wird
+         */
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     //von Vivien Stumpe, 12.04.16
