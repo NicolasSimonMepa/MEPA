@@ -1,4 +1,4 @@
-<!-- Zuletzt geändert von Vivien Stumpe am 14.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 22.04.16 -->
 <resources>
         <!-- Vivien Stumpe, 31.03.16 -->
     <string name="app_name">MEPA</string>
@@ -47,10 +47,7 @@
     <string name="txtv_geb_pers_daten">Geboren am</string>
     <string name="txtv_fundort_pers_daten">Ggf. Fundort</string>
     <string name="txtv_krankenkasse_pers_daten">Krankenkasse</string>
-    <string name="txtv_zugefuehrt">Der Hilfs-
-                                        \nstelle
-                                    \nzugeführt
-                                    \ndurch:</string>
+    <string name="txtv_zugefuehrt">Der Hilfsstelle zugeführt durch:</string>
     <string name="cck_polizei">Polizei</string>
     <string name="cck_rtw">RTW/KTW</string>
     <string name="cck_san">San-Team</string>
@@ -151,6 +148,10 @@
         <item>Impressum</item>
         <item>Stammdaten</item>
     </string-array>
+
+    <!-- Vivien Stumpe, 22.04.16 -->
+    <string name="txtv_versichertennr">Versichertennummer</string>
+    <string name="txtv_versicherungsnr">Versicherungsnummer</string>
     
     <!-- Emile Yoncaova 19.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
