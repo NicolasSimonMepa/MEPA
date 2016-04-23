@@ -190,13 +190,12 @@
                     android:id="@+id/edtxt_ergebnis_zeit"
                     android:layout_column="0" />
             </TableRow>
-			
-			<TableRow>
-				<TextView
-					android:layout_width="match_parent"
+            <TableRow>
+		<TextView
+			android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:text="@string/txtv_wertsachen"
+                    android:text="@string/txtv_uebergabe_wertsachen"
                     android:id="@+id/uebergabe_wertsachen"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
@@ -253,7 +252,7 @@
 				<CheckBox
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cck_rtw"
+                    android:text="@string/cck_uebergabe_rtw"
                     android:id="@+id/cck_rtw"
                     android:checked="false"
                     android:textSize="20sp"/>
@@ -298,7 +297,7 @@
 				<CheckBox
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cck_polizei"
+                    android:text="@string/cck_uebergabe_polizei"
                     android:id="@+id/cck_polizei"
                     android:checked="false"
                     android:textSize="20sp"/>
