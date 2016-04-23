@@ -79,7 +79,7 @@
                     android:spinnerMode="dropdown" />
             </TableRow>
             
-                        <TableRow>
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -177,20 +177,278 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:text="@string/txtv_zeit"
-                    android:id="@+id/uebergabe_Zeit"
+                    android:id="@+id/ergebnis_zeit"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
             </TableRow>
-
             <TableRow>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="time"
                     android:ems="10"
-                    android:id="@+id/Zeit"
+                    android:id="@+id/edtxt_ergebnis_zeit"
                     android:layout_column="0" />
             </TableRow>
+			
+			<TableRow>
+				<TextView
+					android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_wertsachen"
+                    android:id="@+id/uebergabe_wertsachen"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="textMultiLine"
+					android:ems="10"
+					android:id="@+id/edtxt_wertsachen" />
+			</TableRow>
+			
+			<TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_zeit"
+                    android:id="@+id/wertsachen_zeit"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/edtxt_wertsachen_zeit"
+                    android:layout_column="0" />
+            </TableRow>
+			
+			<TableRow>
+				<TextView
+					android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_nachforderung"
+                    android:id="@+id/uebergabe_nachforderung"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_ktw"
+                    android:id="@+id/cck_ktw"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_rtw"
+                    android:id="@+id/cck_rtw"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_nef"
+                    android:id="@+id/cck_nef"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_naw"
+                    android:id="@+id/cck_naw"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_rth"
+                    android:id="@+id/cck_rth"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_feuerwehr"
+                    android:id="@+id/cck_feuerwehr"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_polizei"
+                    android:id="@+id/cck_polizei"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			
+			<TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_zeit"
+                    android:id="@+id/nachforderung_zeit"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/edtxt_nachforderung_zeit"
+                    android:layout_column="0" />
+            </TableRow>
+			
+			<TableRow>
+				<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_entlassung"
+                    android:id="@+id/uebergabe_entlassung"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+			</TableRow>
+			<TableRow>
+				<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_funkruf"
+                    android:id="@+id/entlassung_funkruf"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+				<EditText
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/edtxt_funkruf"
+                    android:layout_column="0" />
+			</TableRow>
+			
+			<TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_zeit"
+                    android:id="@+id/entlassung_zeit"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/edtxt_entlassung_zeit"
+                    android:layout_column="0" />
+            </TableRow>
+			
+			<TableRow
+				android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_entlassung"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_entlassung"
+                    android:spinnerMode="dropdown"/>
+			</TableRow>
+			
+			<TableRow>
+				<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_entlassung_ziel"
+                    android:id="@+id/entlassung_ziel"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+				<EditText
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/edtxt_entlassung_ziel"
+                    android:layout_column="0" />
+			</TableRow>
+			
+			<TableRow>
+				<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_sonstiges"
+                    android:id="@+id/entlassung_sonstiges"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+				<EditText
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/edtxt_entlassung_sonstiges"
+                    android:layout_column="0" />
+			</TableRow>
+			
+			<TableRow>
+				<CheckBox
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_entlassungsrevers"
+                    android:id="@+id/cck_entlassungsrevers"
+                    android:checked="false"
+                    android:textSize="20sp"/>
+			</TableRow>
+			
+			<TableRow>
+				<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:text="@string/txtv_zeuge"
+                    android:id="@+id/entlassung_zeuge"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+				<EditText
+					android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/edtxt_entlassung_zeuge"
+                    android:layout_column="0" />
+			</TableRow>
         </TableLayout>
     </ScrollView>
     </RelativeLayout>
