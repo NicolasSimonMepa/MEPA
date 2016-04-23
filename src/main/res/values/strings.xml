@@ -153,7 +153,7 @@
     <string name="txtv_versichertennr">Versichertennummer</string>
     <string name="txtv_versicherungsnr">Versicherungsnummer</string>
     
-    <!-- Emile Yoncaova 19.04.2016 -->
+    <!-- Emile Yoncaova 23.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
     <string name="txtv_keine">keine</string>
     <string name="txtv_atmung">Atmung</string>
@@ -223,6 +223,20 @@
     <string name="cck_hausarzt_informiert">Hausarzt/ABD informiert</string>
     <string name="cck_tod_unfallort">Tod am Unfallort</string>
     <string name="txtv_zeit">Zeit</string>
+    <string name="txtv_wertsachen">Übergabe Wertsachen</string>
+    <string name="txtv_nachforderung">Nachforderung</string>
+    <string name="cck_ktw">KTW</string>
+    <string name="cck_rtw">RTW</string>
+    <string name="cck_nef">NEF</string>
+    <string name="cck_naw">NAW</string>
+    <string name="cck_rth">RTH</string>
+    <string name="cck_feuerwehr">Feuerwehr</string>
+    <string name="cck_polizei">Polizei</string>
+    <string name="txtv_entlassung">Transport/Übergabe/Entlassung</string>
+    <string name="txtv_funkruf">Funkruf</string>
+    <string name="txtv_entlassung_ziel">Ziel</string>
+    <string name="cck_entlassungsrevers">Patient hat Entlassungs-Revers unterschrieben</string>
+    <string name="txtv_zeuge">Helfername</string>
 
     <string name="bemerkung">Bemerkung</string>
 
