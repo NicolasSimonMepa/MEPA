@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -29,6 +30,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private Spinner spin_zustand;
     private Spinner spin_transport;
     private Spinner spin_notarzt;
+    private Spinner spin_entlassung;
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
@@ -42,7 +44,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private String[]zustand={"unverändert", "verbessert", "verschlechtert"};
     private String[]transport={"transport", "nicht erforderlich", "Pat. lehnt transport ab"};
     private String[]notarzt={"nachgefordert", "abbestellt"};
-
+    private String[]entlassung={"Transportart", "KTW", "RTW", "RTH", "Polizei", "Taxi/PKW", "ÖPNV", "eigenständig", "Angehörige", "zurück zur Veranstaltung"};
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
@@ -90,6 +92,15 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_notarzt=(Spinner)findViewById(R.id.spin_notarzt);
         spin_notarzt.setAdapter(adapter_notarzt);
         spin_notarzt.setOnItemSelectedListener(this);
+        
+        ArrayAdapter<String> adapter_entlassung=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
+                android.R.layout.simple_spinner_item,entlassung);
+
+        adapter_entlassung.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin_entlassung=(Spinner)findViewById(R.id.spin_entlassung);
+        spin_entlassung.setAdapter(adapter_entlassung);
+        spin_entlassung.setOnItemSelectedListener(this);
 
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
@@ -120,7 +131,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 startActivity(intent);
             }
         });
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
     }
 
