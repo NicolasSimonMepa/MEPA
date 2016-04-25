@@ -64,7 +64,7 @@ Buttonvariablen für die Buttons Speichern und Verwerfen
         drawerlayout_mitarbeiterkonfig=(DrawerLayout) findViewById(R.id.drawerLayout_Mitarbeiterkonfig);
         listview_mitarbeiterkonfig=(ListView) findViewById(R.id.listview_mitarbeiterkonfig);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_mitarbeiterkonfig=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_mitarbeiterkonfig);
+        myadapter_mitarbeiterkonfig=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_mitarbeiterkonfig);
         listview_mitarbeiterkonfig.setAdapter(myadapter_mitarbeiterkonfig);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_mitarbeiterkonfig.setOnItemClickListener(this);
