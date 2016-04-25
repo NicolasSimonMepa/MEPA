@@ -106,7 +106,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
         listview_ersthelfermassnahmen=(ListView)findViewById(R.id.listview_ersthelfermassnahmen);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_ersthelfermassnahmen=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav_erfassung),drawer_icons_ersthelfermassnahmen);
+        myadapter_ersthelfermassnahmen=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav),drawer_icons_ersthelfermassnahmen);
         listview_ersthelfermassnahmen.setAdapter(myadapter_ersthelfermassnahmen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_ersthelfermassnahmen.setOnItemClickListener(this);
