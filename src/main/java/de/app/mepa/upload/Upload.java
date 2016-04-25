@@ -3,7 +3,6 @@
 package de.app.mepa.upload;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,17 +11,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
 
 public class Upload extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+
+    //von Nathalie Horn, 25.04.16
+    //Private Textvariablen, die die Möglichkeiten des Uploads anzeigen.
+    private TextView txtv_email;
 
     //Drawer Layout: Listview, Adapter und Array der Icons im Drawer Menü
     private DrawerLayout drawerlayout_upload;
@@ -42,6 +44,14 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
+        //Verbindung zwischen Variable und TextView in der Activity herstellen
+        //von Nathalie Horn, 25.04.16
+        txtv_email = (TextView)findViewById(R.id.txtv_upload_email);
+
+        //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
+        //von Nathalie Horn, 25.04.16
+        txtv_email.setOnClickListener(this);
 
         // für das Drawer Layout, Drawer und Listview zuweisen
         drawerlayout_upload = (DrawerLayout) findViewById(R.id.drawerLayout_Upload);
@@ -71,8 +81,28 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         actionbardrawertoggle.syncState();
     }
 
+
     @Override
-    public void onClick(View v) {    }
+    public void onClick(View v) {
+        //Deklaration und Initialisierung der Hilfsvariablen ce, die die ID des geklickten Elements enthält
+        int ce = v.getId();
+
+            //Upload durch E-Mail
+            if(ce == R.id.txtv_upload_email){
+                String adresse = "spam@deinedomain.de";
+                String adressarray[] = { adresse };
+                String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
+                // Intent anlegen der die Funktion "Action_Send" aufruft.
+                Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
+                // Fügt der E-Mail Eigenschaften und unseren Text hinzu
+                emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
+                emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, "Das ist der Betreff");
+                emailversand.setType("plain/text");
+                emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
+                startActivity(emailversand);
+        }
+
+   }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
