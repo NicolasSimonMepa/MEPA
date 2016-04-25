@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe am 22.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 25.04.16 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.app.mepa.mepa">
 
@@ -11,11 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="de.app.mepa.menu.Menu" />
         <activity android:name="de.app.mepa.stammdaten.Stammdaten"
@@ -24,9 +19,17 @@
         <activity android:name="de.app.mepa.einstellungen.Einstellungen"
             android:label=""
             android:screenOrientation="portrait"/>
+        <!-- Vivien Stumpe, 25.04.16
+        Falleingabe ist die Startseite -->
         <activity android:name="de.app.mepa.falleingabe.Falleingabe"
             android:label=""
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
         <activity android:name="de.app.mepa.impressum.Impressum" 
             android:label=""
             android:screenOrientation="portrait"/>
