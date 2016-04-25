@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 22.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 25.04.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -10,7 +10,42 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <!-- von Vivien Stumpe, 25.04.16
+        Layout für die Navigation mit vor und zurück Pfeilen -->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:id="@+id/tbl_pers_daten_navi"
+            android:stretchColumns="*">
+            <TableRow>
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/imgv_before_pers"
+                    android:src="@drawable/before"
+                    android:clickable="true">
+                </ImageView>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/pers_daten"
+                    android:id="@+id/txtv_pers_daten_Label"
+                    android:textSize="30sp"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal"
+                    />
+
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/imgv_next_pers"
+                    android:src="@drawable/next"
+                    android:clickable="true"/>
+            </TableRow>
+        </TableLayout>
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
     <LinearLayout
@@ -26,14 +61,14 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="70dp"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:fillViewport="true"
             tools:context="de.app.mepa.pers_daten.Pers_daten"
-            android:id="@+id/scrV_pers_daten">
+            android:id="@+id/scrV_pers_daten"
+            android:layout_marginTop="40dp">
             <!-- von Vivien Stumpe, 22.02.16 -->
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -58,7 +93,8 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:src="@drawable/person"
                         android:id="@+id/imgv_name_pers_daten"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        />
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -359,17 +395,7 @@
 
         </ScrollView>
     </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/pers_daten"
-            android:id="@+id/txtv_pers_daten_Label"
-            android:textSize="30sp"
-            android:textColor="#000000"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp" />
+
     </RelativeLayout>
 <!-- von Vivien Stumpe am 04.04.16 -->
     <!-- von Vivien Stumpe, 10.04.16 -->
