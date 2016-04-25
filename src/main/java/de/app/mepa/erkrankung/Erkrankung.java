@@ -52,7 +52,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         drawerlayout_erkrankung=(DrawerLayout) findViewById(R.id.drawerLayout_Erkrankung);
         listview_erkrankung=(ListView) findViewById(R.id.listview_Erkrankung);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_erkrankung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_erkrankung);
+        myadapter_erkrankung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_erkrankung);
         listview_erkrankung.setAdapter(myadapter_erkrankung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_erkrankung.setOnItemClickListener(this);
