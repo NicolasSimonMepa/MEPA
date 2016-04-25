@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe, 18.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe, 25.04.16 -->
 <!-- von Vivien Stumpe, 09.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -61,6 +61,20 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/mitarbeiter_konf"
             android:text="@string/txtv_mitarbeiter_konfig"
+            android:layout_marginBottom="20dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <!-- von Vivien Stumpe, 25.04.16
+        Stammdaten als Option bei den Einstellungen-->
+        <TextView
+            android:id="@+id/txtv_einst_stammdaten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/stammdaten"
+            android:text="@string/txtv_stammdaten"
             android:layout_marginBottom="20dp"
             android:textColor="#000000"
             android:textSize="20sp"
