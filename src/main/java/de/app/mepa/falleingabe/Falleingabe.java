@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 14.04.2016
+//Zuletzt geändert von Vivien Stumpe am 25.04.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -134,6 +134,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_falleingabe, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_falleingabe.addDrawerListener(actionbardrawertoggle);
+        
+        /* von Vivien Stumpe, 25.04.16
+        Name der App (MEPA) wird in der Toolbar ausgeblendet
+         */
+        getSupportActionBar().setTitle("");
     }
         //von Vivien Stumpe, 12.04.16
     @Override
