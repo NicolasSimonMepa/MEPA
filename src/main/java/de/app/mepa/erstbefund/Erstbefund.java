@@ -129,7 +129,7 @@ protected void onCreate(Bundle savedInstanceState){
         drawerlayout_erstbefund=(DrawerLayout)findViewById(R.id.drawerLayout_Erstbefund);
         listview_erstbefund=(ListView)findViewById(R.id.listview_erstbefund);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_erstbefund=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav_erfassung),drawer_icons_erstbefund);
+        myadapter_erstbefund=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav),drawer_icons_erstbefund);
         listview_erstbefund.setAdapter(myadapter_erstbefund);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_erstbefund.setOnItemClickListener(this);
