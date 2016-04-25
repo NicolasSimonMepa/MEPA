@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 22.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 25.04.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Intent;
@@ -10,12 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.bemerkung.Bemerkung;
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -24,7 +26,7 @@ import de.app.mepa.mepa.R;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
-public class notfallsituation extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class notfallsituation extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     //von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
@@ -34,8 +36,8 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
     private DrawerLayout drawerlayout_notfall;
     private ListView listview_notfall;
     private MyAdapter myadapter_notfall;
-    private int[] drawer_icons_notfall={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
-            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+    private int[] drawer_icons_notfall={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -48,6 +50,12 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
+    /* von Vivien Stumpe, 25.04.16
+    ImageViews für die Zurück und Vor Bilder in der Aktivität
+    */
+    private ImageView imgv_before;
+    private ImageView imgv_next;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,7 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
         drawerlayout_notfall=(DrawerLayout) findViewById(R.id.drawerLayout_Notfallsituation);
         listview_notfall=(ListView) findViewById(R.id.listview_Notfallsituation);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_notfall);
+        myadapter_notfall=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_notfall);
         listview_notfall.setAdapter(myadapter_notfall);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_notfall.setOnItemClickListener(this);
@@ -93,6 +101,15 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
             sondern erst, wenn ins Eingabefeld geklickt wird
          */
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        /* von Vivien Stumpe, 25.04.16
+        Views in der Akitivität finden und den Variablen zuweisen
+        OnClickListener darauf setzen, damit auf Klicks reagiert wird
+         */
+        imgv_before = (ImageView)findViewById(R.id.imgv_before_notfall);
+        imgv_next = (ImageView)findViewById(R.id.imgv_next_notfall);
+        imgv_before.setOnClickListener(this);
+        imgv_next.setOnClickListener(this);
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -108,40 +125,55 @@ public class notfallsituation extends AppCompatActivity implements AdapterView.O
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
+    // von Vivien Stumpe, 25.04.16 aktualisiert
     private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
+
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
         if(position==0) {
-            Intent intent = new Intent(notfallsituation.this, MainActivity.class);
-            startActivity(intent);
-        }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(notfallsituation.this, Einstellungen.class);
-            startActivity(intent);
-        }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
             Intent intent = new Intent(notfallsituation.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
             Intent intent = new Intent(notfallsituation.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
             Intent intent = new Intent(notfallsituation.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(notfallsituation.this, Einstellungen.class);
+            startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
             Intent intent = new Intent(notfallsituation.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(notfallsituation.this, Stammdaten.class);
+    }
+
+    @Override
+    public void onClick(View v) {
+        /* von Vivien Stumpe, 25.04.16
+        Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
+        die die ID der geklickten View erhält
+        */
+        int ce = v.getId();
+
+        /* von Vivien Stumpe, 25.04.16
+        Ein Intent erzeugen, wenn die bestimmte ImageView geklickt wurde
+        Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
+        Aufrufen der Activity mittels Intent
+        */
+        if(ce == R.id.imgv_before_notfall){
+            Intent intent = new Intent(notfallsituation.this, Ersthelfermassnahmen.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.imgv_next_notfall){
+            Intent intent = new Intent(notfallsituation.this, Bemerkung.class);
             startActivity(intent);
         }
     }
