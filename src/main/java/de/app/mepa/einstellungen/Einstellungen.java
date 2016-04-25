@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 18.04.16
+//Zuletzt geändert von Vivien Stumpe am 25.04.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -53,9 +53,11 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
 
     //TextView-Variablen für die TextViews in der Einstellungen Activity
     //von Vivien Stumpe, 14.04.16
+    // ergänzt von Vivien Stumpe, 25.04.16 - Stammdaten
     private TextView txtv_mitarbeiter;
     private TextView txtv_löschen;
     private LinearLayout lnl_buttons;
+    private TextView txtv_stammdaten;
 
     /* von Vivien Stumpe, 18.04.16
     Buttonvariablen für die Buttons Abbrechen und Löschen
@@ -90,10 +92,12 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_einstellungen, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_einstellungen.addDrawerListener(actionbardrawertoggle);
 
-        //Zuweisen der Button-Variablen zu den Buttons in der Activity
+       //Zuweisen der Button-Variablen zu den Buttons in der Activity
         //von Vivien Stumpe, 14.04.16
+        // ergänzt von Vivien Stumpe, 25.04.16 - Stammdaten
         txtv_mitarbeiter = (TextView)findViewById(R.id.txtv_einst_mitarbeiter);
         txtv_löschen = (TextView)findViewById(R.id.txtv_einst_loeschen);
+        txtv_stammdaten = (TextView)findViewById(R.id.txtv_einst_stammdaten);
         lnl_buttons = (LinearLayout)findViewById(R.id.lnl_einst_buttons);
         /* Wenn es das LinearLayout gibt
         Wird es beim Starten der Aktivität ausgeblendet
@@ -106,8 +110,10 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
 
         // Events abfangen und an den OnClickListener die aktuelle View übergeben
         //von Vivien Stumpe, 14.04.16
+        //ergänzt von Vivien Stumpe, 25.04.16 - Stammdaten
         txtv_mitarbeiter.setOnClickListener(this);
         txtv_löschen.setOnClickListener(this);
+        txtv_stammdaten.setOnClickListener(this);
 
         /* von Vivien Stumpe, 18.04.16
         Zuweisen der Buttonvariablen zu den Buttons in der Activity
@@ -135,10 +141,14 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         //Ein Intent erzeugen, wenn die TextView geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
         //von Vivien Stumpe, 14.04.16
-        //ES FEHLT NOCH EINE ACTIVITY!!
         //zuletzt geändert von Nathalie Horn, 18.04.16 --> Activity zu Mitarbeiterkonfig
+        //ergänzt von Vivien Stumpe, 25.04.16 - Stammdaten
         if (ce == R.id.txtv_einst_mitarbeiter){
             Intent intent = new Intent(Einstellungen.this, Mitarbeiterkonfig.class);
+            startActivity(intent);
+        }
+        if (ce == R.id.txtv_einst_stammdaten){
+            Intent intent = new Intent(Einstellungen.this, Stammdaten.class);
             startActivity(intent);
         }
         //wenn "Lokale Daten löschen" ausgewählt wurde
