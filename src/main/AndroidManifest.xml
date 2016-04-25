@@ -22,7 +22,7 @@
         <!-- Vivien Stumpe, 25.04.16
         Falleingabe ist die Startseite -->
         <activity android:name="de.app.mepa.falleingabe.Falleingabe"
-            android:label=""
+            android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
