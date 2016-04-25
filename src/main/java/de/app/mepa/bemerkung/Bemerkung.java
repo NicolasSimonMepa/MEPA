@@ -44,7 +44,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         drawerlayout_bemerkung=(DrawerLayout) findViewById(R.id.drawerLayout_Bemerkung);
         listview_bemerkung=(ListView) findViewById(R.id.listview_Bemerkung);
 
-        myadapter_bemerkung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_bemerkung);
+        myadapter_bemerkung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_bemerkung);
         listview_bemerkung.setAdapter(myadapter_bemerkung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_bemerkung.setOnItemClickListener(this);
