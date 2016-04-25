@@ -46,7 +46,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         drawerlayout_massnahmen=(DrawerLayout) findViewById(R.id.drawerLayout_Massnahmen);
         listview_massnahmen=(ListView) findViewById(R.id.listview_Massnahmen);
 
-        myadapter_massnahmen=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_massnahmen);
+        myadapter_massnahmen=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_massnahmen);
         listview_massnahmen.setAdapter(myadapter_massnahmen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_massnahmen.setOnItemClickListener(this);
