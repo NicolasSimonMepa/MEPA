@@ -120,12 +120,13 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         /* von Vivien Stumpe, 18.04.16
         ArrayAdapter erzeugen
         Der ArrayAdapter generiert die Listenelemente des Spinners
-        Parameter sind die aktuelle Activity, Systemressource, Array mit den Listenelementen
+        Parameter sind die aktuelle Activity, das Layout für den Spinnerinhalt, Array mit den Listenelementen
+        Layout für den Spinner geändert am 25.04.16 (VS)
         */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Pers_daten.this,
-                android.R.layout.simple_spinner_item,zugef);
+                R.layout.my_spinner,zugef);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.my_spinner);
 
         /* von Vivien Stumpe, 18.04.16
         Verknüpfung der Spinnervariable zum Spinner in der Activity herstellen
