@@ -182,7 +182,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         drawerlayout_verletzung=(DrawerLayout) findViewById(R.id.drawerLayout_Verletzung);
         listview_verletzung=(ListView) findViewById(R.id.listview_verletzung);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_verletzung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_erfassung), drawer_icons_verletzung);
+        myadapter_verletzung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_verletzung);
         listview_verletzung.setAdapter(myadapter_verletzung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_verletzung.setOnItemClickListener(this);
