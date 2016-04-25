@@ -24,7 +24,6 @@ import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.menu.Menu;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
