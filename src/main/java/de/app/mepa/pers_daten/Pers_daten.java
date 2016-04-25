@@ -43,8 +43,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private DrawerLayout drawerlayout_pers_daten;
     private ListView listview_pers_daten;
     private MyAdapter myadapter_pers_daten;
-  private int[] drawer_icons_pers_daten={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
-            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+  private int[] drawer_icons_pers_daten={R.drawable.falleingabe,
+          R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
@@ -88,7 +88,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         drawerlayout_pers_daten=(DrawerLayout) findViewById(R.id.drawerLayout_pers_daten);
         listview_pers_daten=(ListView) findViewById(R.id.listview_pers_daten);
 
-        myadapter_pers_daten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_pers_daten);
+        myadapter_pers_daten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_pers_daten);
         listview_pers_daten.setAdapter(myadapter_pers_daten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_pers_daten.setOnItemClickListener(this);
@@ -160,8 +160,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         imgv_next = (ImageView)findViewById(R.id.imgv_next_pers);
         imgv_before.setOnClickListener(this);
         imgv_next.setOnClickListener(this);
-
-
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -177,40 +175,32 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
+    // von Vivien Stumpe, 25.04.16 aktualisiert
     private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
+
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
         if(position==0) {
-            Intent intent = new Intent(Pers_daten.this, MainActivity.class);
-            startActivity(intent);
-        }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Pers_daten.this, Einstellungen.class);
-            startActivity(intent);
-        }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
             Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
             Intent intent = new Intent(Pers_daten.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
             Intent intent = new Intent(Pers_daten.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
-            Intent intent = new Intent(Pers_daten.this, Impressum.class);
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Pers_daten.this, Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(Pers_daten.this, Stammdaten.class);
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
+            Intent intent = new Intent(Pers_daten.this, Impressum.class);
             startActivity(intent);
         }
     }
