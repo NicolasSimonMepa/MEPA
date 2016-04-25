@@ -1,5 +1,5 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 18.04.16
+//Zuletzt geändert von Nathalie Horn, 25.04.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
@@ -28,8 +28,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     private DrawerLayout drawerlayout_upload;
     private ListView listview_upload;
     private MyAdapter myadapter_upload;
-    private int[] drawer_icons_upload = {R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
-            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+    private int[] drawer_icons_upload = {R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Nathalie Horn, 13.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -47,7 +47,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         drawerlayout_upload = (DrawerLayout) findViewById(R.id.drawerLayout_Upload);
         listview_upload = (ListView) findViewById(R.id.listview_upload);
         //Adapter für Listview erzeugen
-        myadapter_upload = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_upload);
+        myadapter_upload = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_upload);
         listview_upload.setAdapter(myadapter_upload);
         listview_upload.setOnItemClickListener(this);
 
@@ -80,48 +80,37 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         selectItemFromDrawer(position);
     }
 
-        private void selectItemFromDrawer(int position) {
+    // geändert von Nathalie Horn, 25.04.16
+    private void selectItemFromDrawer(int position){
 
-            //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-            if (position == 0) {
-                Intent intent = new Intent(Upload.this, MainActivity.class);
-                startActivity(intent);
-            }
-
-            //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-            if (position == 1) {
-                Intent intent = new Intent(Upload.this, Einstellungen.class);
-                startActivity(intent);
-            }
-
-            //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe geöffnet
-            if (position == 2) {
-                Intent intent = new Intent(Upload.this, Falleingabe.class);
-                startActivity(intent);
-            }
-
-            //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-            if (position == 3) {
-                Intent intent = new Intent(Upload.this, Falluebersicht.class);
-                startActivity(intent);
-            }
-
-            //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-            if(position==4) {
-                Intent intent = new Intent(Upload.this, Upload.class);
-                startActivity(intent);
-            }
-            //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-            if(position==5) {
-                Intent intent = new Intent(Upload.this, Impressum.class);
-                startActivity(intent);
-            }
-            //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-            if(position==6) {
-                Intent intent = new Intent(Upload.this, Stammdaten.class);
-                startActivity(intent);
-            }
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+        if(position==0) {
+            Intent intent = new Intent(Upload.this, Falleingabe.class);
+            startActivity(intent);
         }
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
+            Intent intent = new Intent(Upload.this, Falluebersicht.class);
+            startActivity(intent);
+        }
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
+            Intent intent = new Intent(Upload.this, Upload.class);
+            startActivity(intent);
+        }
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Upload.this, Einstellungen.class);
+            startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
+            Intent intent = new Intent(Upload.this, Impressum.class);
+            startActivity(intent);
+        }
+
+    }
+
 }
 
 
