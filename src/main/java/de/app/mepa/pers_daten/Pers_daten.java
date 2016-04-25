@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 22.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 25.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TableRow;
@@ -33,7 +34,7 @@ import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.OnSwipeTouchListener;
 
 
-public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+public class Pers_daten extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
 //von Vivien Stumpe, 10.04.16
 //DrawerLayout für das Hamburger Menü
 //ListView, die die Einträge des Menüs enthält
@@ -72,6 +73,11 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
      */
     private TableRow tblr_sonstiges_zugef;
 
+    /* von Vivien Stumpe, 25.04.16
+    ImageViews für die Zurück und Vor Bilder in der Aktivität
+     */
+    private ImageView imgv_before;
+    private ImageView imgv_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,11 +145,22 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
         //View aktualisieren
         tblr_sonstiges_zugef.invalidate();
 
-        /* von Vivien Stumpe, 22.02.16
+        /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
             sondern erst, wenn ins Eingabefeld geklickt wird
          */
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        /* von Vivien Stumpe, 25.04.16
+        Views in der Akitivität finden und den Variablen zuweisen
+        OnClickListener darauf setzen, damit auf Klicks reagiert wird
+         */
+        imgv_before = (ImageView)findViewById(R.id.imgv_before_pers);
+        imgv_next = (ImageView)findViewById(R.id.imgv_next_pers);
+        imgv_before.setOnClickListener(this);
+        imgv_next.setOnClickListener(this);
+
+
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -271,5 +288,28 @@ public class Pers_daten extends AppCompatActivity implements AdapterView.OnItemC
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        /* von Vivien Stumpe, 25.04.16
+        Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
+        die die ID der geklickten View erhält
+        */
+        int ce = v.getId();
+
+        /* von Vivien Stumpe, 25.04.16
+        Ein Intent erzeugen, wenn die bestimmte ImageView geklickt wurde
+        Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
+        Aufrufen der Activity mittels Intent
+        */
+        if(ce == R.id.imgv_before_pers){
+            Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
+            startActivity(intent);
+        }
+        if(ce == R.id.imgv_next_pers){
+            Intent intent = new Intent(Pers_daten.this, Verletzung.class);
+            startActivity(intent);
+        }
     }
 }
