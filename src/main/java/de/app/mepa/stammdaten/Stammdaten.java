@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 14.04.16
+//Zuletzt bearbeitet von Vivien Stumpe am 25.04.16
 package de.app.mepa.stammdaten;
 
 import android.content.Intent;
@@ -37,8 +37,8 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         private DrawerLayout drawerlayout_stammdaten;
         private ListView listview_stammdaten;
         private MyAdapter myadapter_stammdaten;
-        private int[] drawer_icons_stammdaten={R.drawable.mepa_icon, R.drawable.einstellungen, R.drawable.falleingabe,
-                R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+        private int[] drawer_icons_stammdaten={R.drawable.falleingabe,
+                R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Vivien Stumpe, 14.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -58,7 +58,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         drawerlayout_stammdaten=(DrawerLayout) findViewById(R.id.drawerLayout_Stammdaten);
         listview_stammdaten=(ListView) findViewById(R.id.listview_stammdaten);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_stammdaten);
+        myadapter_stammdaten=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_stammdaten);
         listview_stammdaten.setAdapter(myadapter_stammdaten);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_stammdaten.setOnItemClickListener(this);
@@ -104,42 +104,33 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
             selectItemFromDrawer(position);
         }
-        //von Vivien Stumpe, 10.04.16
-        private void selectItemFromDrawer(int position){
-            //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-            if(position==0) {
-                Intent intent = new Intent(Stammdaten.this, MainActivity.class);
-                startActivity(intent);
-            }
-            //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-            if(position==1) {
-                Intent intent = new Intent(Stammdaten.this, Einstellungen.class);
-                startActivity(intent);
-            }
-            //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-            if(position==2) {
-                Intent intent = new Intent(Stammdaten.this, Falleingabe.class);
-                startActivity(intent);
-            }
-            //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-            if(position==3) {
-                Intent intent = new Intent(Stammdaten.this, Falluebersicht.class);
-                startActivity(intent);
-            }
-            //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-            if(position==4) {
-                Intent intent = new Intent(Stammdaten.this, Upload.class);
-                startActivity(intent);
-            }
-            //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-            if(position==5) {
-                Intent intent = new Intent(Stammdaten.this, Impressum.class);
-                startActivity(intent);
-            }
-            //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-            if(position==6) {
-                Intent intent = new Intent(Stammdaten.this, Stammdaten.class);
-                startActivity(intent);
-            }
+    // von Vivien Stumpe, 25.04.16 aktualisiert
+    private void selectItemFromDrawer(int position){
+
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+        if(position==0) {
+            Intent intent = new Intent(Stammdaten.this, Falleingabe.class);
+            startActivity(intent);
+        }
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
+            Intent intent = new Intent(Stammdaten.this, Falluebersicht.class);
+            startActivity(intent);
+        }
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
+            Intent intent = new Intent(Stammdaten.this, Upload.class);
+            startActivity(intent);
+        }
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Stammdaten.this, Einstellungen.class);
+            startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
+            Intent intent = new Intent(Stammdaten.this, Impressum.class);
+            startActivity(intent);
+        }
         }
     }
