@@ -14,7 +14,6 @@ import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.menu.Menu;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
