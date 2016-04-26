@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 25.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 26.04.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:id="@+id/tbl_pers_daten_navi"
-            android:stretchColumns="*">
+            android:stretchColumns="1">
             <TableRow>
                 <ImageView
                     android:layout_height="match_parent"
@@ -37,15 +37,57 @@
                     android:textColor="#000000"
                     android:gravity="center_horizontal"
                     />
-
-                <ImageView
-                    android:layout_height="match_parent"
-                    android:layout_width="wrap_content"
-                    android:id="@+id/imgv_next_pers"
-                    android:src="@drawable/next"
-                    android:clickable="true"/>
             </TableRow>
         </TableLayout>
+
+            <!-- von Vivien Stumpe, 26.04.16
+            Tickmarks zur Navigation zwischen den Seiten
+            hier entwickelt durch Radio Buttons -->
+<RadioGroup android:layout_width="fill_parent"
+    android:layout_height="20dp"
+    android:orientation="horizontal"
+    android:layout_below="@id/tbl_pers_daten_navi"
+    android:gravity="center_horizontal"
+    android:id="@+id/tickmarks"
+    android:clickable="true"
+    android:checkedButton="@+id/rBtn_pers"
+    android:theme="@style/RadioButton">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rBtn_pers"
+                    android:paddingLeft="0dp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_verletzung"
+                    android:paddingLeft="0dp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_erkrankung"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_massnahmen"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_erstbefund"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_uebergabe"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_notfall"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rBtn_bemerkung"/>
+</RadioGroup>
+
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
     <LinearLayout
@@ -68,7 +110,7 @@
             android:fillViewport="true"
             tools:context="de.app.mepa.pers_daten.Pers_daten"
             android:id="@+id/scrV_pers_daten"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="50dp">
             <!-- von Vivien Stumpe, 22.02.16 -->
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -414,13 +456,14 @@
             android:id="@+id/menu_kopfzeile_pers_daten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp" >
+            android:padding="8dp"
+            android:background="@drawable/festival">
 
             <ImageView
                 android:id="@+id/menu_pers_daten"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu"
+                android:src="@drawable/icon_menu_weiss"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -439,7 +482,7 @@
                     android:text="@string/btn_menu"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#ffffff"/>
 
             </LinearLayout>
         </RelativeLayout>
