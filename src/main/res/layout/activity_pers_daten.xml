@@ -48,7 +48,7 @@
     android:orientation="horizontal"
     android:layout_below="@id/tbl_pers_daten_navi"
     android:gravity="center_horizontal"
-    android:id="@+id/tickmarks"
+    android:id="@+id/tickmarks_pers_daten"
     android:clickable="true"
     android:checkedButton="@+id/rBtn_pers"
     android:theme="@style/RadioButton">
