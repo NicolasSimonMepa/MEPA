@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 25.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 26.04.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Intent;
@@ -50,11 +50,10 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-    /* von Vivien Stumpe, 25.04.16
-    ImageViews für die Zurück und Vor Bilder in der Aktivität
+    /* von Vivien Stas Zurück Bild in der Aktivität
     */
     private ImageView imgv_before;
-    private ImageView imgv_next;
+
 
 
     @Override
@@ -95,6 +94,16 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(notfallsituation.this, Bemerkung.class);
                 startActivity(intent);
             }
+
+            /* von Vivien Stumpe, 26.04.16
+            Bei einem Swipe nach rechts wird die vorherige Aktivität geöffnet
+            Außerdem bleibt der Drawer (Hamburger Menü) geschlossen
+            */
+            public void onSwipeRight() {
+                drawerlayout_notfall.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(notfallsituation.this, Falleingabe.class);
+                startActivity(intent);
+            }
         });
         /* von Vivien Stumpe, 22.02.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
@@ -107,9 +116,8 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         OnClickListener darauf setzen, damit auf Klicks reagiert wird
          */
         imgv_before = (ImageView)findViewById(R.id.imgv_before_notfall);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_notfall);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
+
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -169,11 +177,7 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         Aufrufen der Activity mittels Intent
         */
         if(ce == R.id.imgv_before_notfall){
-            Intent intent = new Intent(notfallsituation.this, Ersthelfermassnahmen.class);
-            startActivity(intent);
-        }
-        if(ce == R.id.imgv_next_notfall){
-            Intent intent = new Intent(notfallsituation.this, Bemerkung.class);
+            Intent intent = new Intent(notfallsituation.this, Falleingabe.class);
             startActivity(intent);
         }
     }
