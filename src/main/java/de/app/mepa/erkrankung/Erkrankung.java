@@ -1,4 +1,4 @@
-//Zuletzt geändert von Emile Yoncaova, 15.04.16
+//Zuletzt geändert von Emile Yoncaova, 26.04.16
 package de.app.mepa.erkrankung;
 
 import android.content.Intent;
@@ -8,7 +8,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import de.app.mepa.MyAdapter;
@@ -18,13 +20,13 @@ import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.massnahmen.Massnahmen;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 import de.app.mepa.verletzung.Verletzung;
 
-public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
+    private ImageView imgv_before;
+    private ImageView imgv_next;
     //von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -33,8 +35,8 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     private DrawerLayout drawerlayout_erkrankung;
     private ListView listview_erkrankung;
     private MyAdapter myadapter_erkrankung;
-    private int[] drawer_icons_erkrankung={R.drawable.mepa_icon, R.drawable.einstellungen,
-            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
+    private int[] drawer_icons_erkrankung={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
@@ -52,7 +54,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         drawerlayout_erkrankung=(DrawerLayout) findViewById(R.id.drawerLayout_Erkrankung);
         listview_erkrankung=(ListView) findViewById(R.id.listview_Erkrankung);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_erkrankung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_erkrankung);
+        myadapter_erkrankung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_erkrankung);
         listview_erkrankung.setAdapter(myadapter_erkrankung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_erkrankung.setOnItemClickListener(this);
@@ -73,6 +75,13 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erkrankung, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_erkrankung.addDrawerListener(actionbardrawertoggle);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        imgv_before = (ImageView)findViewById(R.id.imgv_before_erkrankung);
+        imgv_next = (ImageView)findViewById(R.id.imgv_next_erkrankung);
+        imgv_before.setOnClickListener(this);
+        imgv_next.setOnClickListener(this);
     }
 
     @Override
@@ -91,7 +100,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     private void selectItemFromDrawer(int position){
         //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
         if(position==0) {
-            Intent intent = new Intent(Erkrankung.this, MainActivity.class);
+            Intent intent = new Intent(Erkrankung.this, Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
@@ -101,27 +110,39 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
         if(position==2) {
-            Intent intent = new Intent(Erkrankung.this, Falleingabe.class);
+            Intent intent = new Intent(Erkrankung.this, Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
         if(position==3) {
-            Intent intent = new Intent(Erkrankung.this, Falluebersicht.class);
+            Intent intent = new Intent(Erkrankung.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
         if(position==4) {
-            Intent intent = new Intent(Erkrankung.this, Upload.class);
-            startActivity(intent);
-        }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
             Intent intent = new Intent(Erkrankung.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(Erkrankung.this, Stammdaten.class);
+    }
+    @Override
+    public void onClick(View v) {
+        /* von Vivien Stumpe, 25.04.16
+        Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
+        die die ID der geklickten View erhält
+        */
+        int ce = v.getId();
+
+        /* von Vivien Stumpe, 25.04.16
+        Ein Intent erzeugen, wenn die bestimmte ImageView geklickt wurde
+        Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
+        Aufrufen der Activity mittels Intent
+        */
+        if (ce == R.id.imgv_before_erkrankung) {
+            Intent intent = new Intent(Erkrankung.this, Verletzung.class);
+            startActivity(intent);
+        }
+        if (ce == R.id.imgv_next_erkrankung) {
+            Intent intent = new Intent(Erkrankung.this, Massnahmen.class);
             startActivity(intent);
         }
     }
