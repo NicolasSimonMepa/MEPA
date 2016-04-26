@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- zuletzt geändert von Vivien Stumpe, 26.04.16
+Farben definiert -->
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#ffeedd</color>
+    <color name="colorPrimaryDark">#efb14d</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="weiss">#ffffff</color>
+    <color name="schwarz">#000000</color>
+    <color name="grau">#797777</color>
+    <color name="rot">#f41414</color>
 </resources>
