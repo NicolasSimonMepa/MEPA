@@ -50,7 +50,7 @@
     android:layout_below="@id/tbl_pers_daten_navi"
     android:gravity="center_horizontal"
     android:checkedButton="@+id/rBtn_pers"
-    android:id="@+id/tickmarks">
+    android:id="@+id/tickmarks_pers">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
