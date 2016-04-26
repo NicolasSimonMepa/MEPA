@@ -101,7 +101,7 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
             */
             public void onSwipeRight() {
                 drawerlayout_notfall.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                Intent intent = new Intent(notfallsituation.this, Falleingabe.class);
+                Intent intent = new Intent(notfallsituation.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
             }
         });
