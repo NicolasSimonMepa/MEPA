@@ -124,9 +124,9 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         Layout für den Spinner geändert am 25.04.16 (VS)
         */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Pers_daten.this,
-                R.layout.my_spinner,zugef);
+                R.layout.spinner_layout,zugef);
 
-        adapter.setDropDownViewResource(R.layout.my_spinner);
+        adapter.setDropDownViewResource(R.layout.spinner_layout);
 
         /* von Vivien Stumpe, 18.04.16
         Verknüpfung der Spinnervariable zum Spinner in der Activity herstellen
