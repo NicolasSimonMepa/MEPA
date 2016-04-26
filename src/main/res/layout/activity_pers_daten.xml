@@ -48,44 +48,58 @@
     android:orientation="horizontal"
     android:layout_below="@id/tbl_pers_daten_navi"
     android:gravity="center_horizontal"
-    android:id="@+id/tickmarks_pers_daten"
-    android:clickable="true"
-    android:checkedButton="@+id/rBtn_pers"
-    android:theme="@style/RadioButton">
+    android:id="@+id/tickmarks"
+>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rBtn_pers"
-                    android:paddingLeft="0dp"/>
+                    android:paddingLeft="0dp"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_checked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:id="@+id/rBtn_verletzung"
-                    android:paddingLeft="0dp"/>
+                    android:paddingLeft="0dp"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_erkrankung"/>
+                    android:id="@+id/rBtn_erkrankung"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_massnahmen"/>
+                    android:id="@+id/rBtn_massnahmen"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_erstbefund"/>
+                    android:id="@+id/rBtn_erstbefund"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_uebergabe"/>
+                    android:id="@+id/rBtn_uebergabe"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_notfall"/>
+                    android:id="@+id/rBtn_notfall"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_bemerkung"/>
+                    android:id="@+id/rBtn_bemerkung"
+                    android:button="@null"
+                    android:background="@drawable/rBtn_nchecked"/>
 </RadioGroup>
 
     <!-- von Vivien Stumpe, 12.04.16 -->
