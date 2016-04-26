@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 25.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 26.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
@@ -95,7 +95,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
         //von Vivien Stumpe, 11.04.16
         //Verbindung der View zur Scrollview in der Aktivität
-    view=(View) findViewById(R.id.scrV_pers_daten);
+        view=(View) findViewById(R.id.scrV_pers_daten);
         //OnTouchListener auf die View setzen
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -103,7 +103,16 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             public void onSwipeLeft() {
             Intent intent = new Intent(Pers_daten.this, Verletzung.class);
                startActivity(intent);
-        }
+            }
+            /* von Vivien Stumpe, 26.04.16
+            Bei einem Swipe nach rechts wird die vorherige Aktivität geöffnet
+            Außerdem bleibt der Drawer (Hamburger Menü) geschlossen
+             */
+            public void onSwipeRight() {
+                drawerlayout_pers_daten.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
+                startActivity(intent);
+            }
         });
 
         /*von Vivien Stumpe, 12.04.16
@@ -157,9 +166,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         OnClickListener darauf setzen, damit auf Klicks reagiert wird
          */
         imgv_before = (ImageView)findViewById(R.id.imgv_before_pers);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_pers);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -296,10 +303,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         */
         if(ce == R.id.imgv_before_pers){
             Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
-            startActivity(intent);
-        }
-        if(ce == R.id.imgv_next_pers){
-            Intent intent = new Intent(Pers_daten.this, Verletzung.class);
             startActivity(intent);
         }
     }
