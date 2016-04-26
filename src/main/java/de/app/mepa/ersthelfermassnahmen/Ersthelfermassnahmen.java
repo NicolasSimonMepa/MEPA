@@ -1,4 +1,4 @@
-// zuletzt geändert von Emile Yoncaova, 19.04.16
+// zuletzt geändert von Emile Yoncaova, 26.04.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -16,16 +17,17 @@ import android.widget.Spinner;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
+import de.app.mepa.erstbefund.Erstbefund;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
-public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
+public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
+    private ImageView imgv_before;
+    private ImageView imgv_next;
     private Spinner spin_ersthelfermassnahmen;
     private Spinner spin_zustand;
     private Spinner spin_transport;
@@ -34,8 +36,8 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private DrawerLayout drawerlayout_ersthelfermassnahmen;
     private ListView listview_ersthelfermassnahmen;
     private MyAdapter myadapter_ersthelfermassnahmen;
-    private int[] drawer_icons_ersthelfermassnahmen={R.drawable.mepa_icon, R.drawable.einstellungen,
-            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
+    private int[] drawer_icons_ersthelfermassnahmen={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -106,7 +108,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
         listview_ersthelfermassnahmen=(ListView)findViewById(R.id.listview_ersthelfermassnahmen);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_ersthelfermassnahmen=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav),drawer_icons_ersthelfermassnahmen);
+        myadapter_ersthelfermassnahmen=new MyAdapter(this,this.getResources().getStringArray(R.array.drawer_nav_neu),drawer_icons_ersthelfermassnahmen);
         listview_ersthelfermassnahmen.setAdapter(myadapter_ersthelfermassnahmen);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_ersthelfermassnahmen.setOnItemClickListener(this);
@@ -132,6 +134,11 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
             }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        imgv_before = (ImageView)findViewById(R.id.imgv_before_uebergabe);
+        imgv_next = (ImageView)findViewById(R.id.imgv_next_uebergabe);
+        imgv_before.setOnClickListener(this);
+        imgv_next.setOnClickListener(this);
 
     }
 
@@ -167,40 +174,52 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         //Aufruf der Prozedur mit Ersthelfermassnahmen der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
-    private void selectItemFromDrawer(int position){
+    private void selectItemFromDrawer(int position) {
         //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        if(position==0) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, MainActivity.class);
+        if (position == 0) {
+            Intent intent = new Intent(Ersthelfermassnahmen.this, Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
+        if (position == 1) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Falleingabe.class);
-            startActivity(intent);
-        }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
+        if (position == 2) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
+        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        if (position == 3) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
+        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if (position == 4) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Stammdaten.class);
+    }
+    @Override
+    public void onClick(View v) {
+        /* von Vivien Stumpe, 25.04.16
+        Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
+        die die ID der geklickten View erhält
+        */
+        int ce = v.getId();
+
+        /* von Vivien Stumpe, 25.04.16
+        Ein Intent erzeugen, wenn die bestimmte ImageView geklickt wurde
+        Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
+        Aufrufen der Activity mittels Intent
+        */
+        if (ce == R.id.imgv_before_uebergabe) {
+            Intent intent = new Intent(Ersthelfermassnahmen.this, Erstbefund.class);
+            startActivity(intent);
+        }
+        if (ce == R.id.imgv_next_uebergabe) {
+            Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
             startActivity(intent);
         }
     }
