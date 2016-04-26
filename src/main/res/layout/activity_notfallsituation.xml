@@ -29,13 +29,14 @@
 
 
     <!-- von Vivien Stumpe, 25.04.16
-           Layout für die Navigation mit vor und zurück Pfeilen -->
+         Layout für die Navigation mit zurück Pfeil -->
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/tbl_notfall_navi"
-        android:stretchColumns="*">
+        android:stretchColumns="1">
         <TableRow>
             <ImageView
                 android:layout_height="match_parent"
@@ -44,24 +45,80 @@
                 android:src="@drawable/before"
                 android:clickable="true">
             </ImageView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/txtv_notfall"
-                android:id="@+id/txtv_notfallsituation"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textColor="#000000" />
 
-            <ImageView
-                android:layout_height="match_parent"
+            <TextView
                 android:layout_width="wrap_content"
-                android:id="@+id/imgv_next_notfall"
-                android:src="@drawable/next"
-                android:clickable="true"/>
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/txtv_notfallsituation"
+                android:id="@+id/txtv_notfall_Label"
+                android:textSize="30sp"
+                android:textColor="#000000"
+                android:gravity="center_horizontal"
+                />
         </TableRow>
     </TableLayout>
+
+    <!-- von Vivien Stumpe, 26.04.16
+    Tickmarks zur Navigation zwischen den Seiten
+    hier entwickelt durch Radio Buttons -->
+    <RadioGroup android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/tbl_notfall_navi"
+        android:gravity="center_horizontal"
+        android:checkedButton="@+id/rBtn_notfall"
+        android:id="@+id/tickmarks_notfall">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rBtn_pers"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_verletzung"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_erkrankung"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_massnahmen"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_erstbefund"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_uebergabe"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_notfall"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_bemerkung"
+            android:button="@null"
+            android:background="@drawable/radiobutton_layout"/>
+    </RadioGroup>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -110,13 +167,14 @@
             android:id="@+id/menu_kopfzeile_Notfallsituation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp" >
+            android:padding="8dp"
+            android:background="@drawable/festival">
 
             <ImageView
                 android:id="@+id/menu_Notfallsituation"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu"
+                android:src="@drawable/icon_menu_weiss"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -135,7 +193,7 @@
                     android:text="@string/btn_menu"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#ffffff"/>
 
             </LinearLayout>
         </RelativeLayout>
