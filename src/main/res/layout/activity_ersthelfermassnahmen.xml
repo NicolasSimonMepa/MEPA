@@ -11,6 +11,41 @@
         android:layout_height="match_parent"
         android:id="@+id/rl_ersthelfermassnahmen">
 
+	<TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:id="@+id/tbl_uebergabe_navi"
+            android:stretchColumns="*">
+            <TableRow>
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/imgv_before_uebergabe"
+                    android:src="@drawable/before"
+                    android:clickable="true">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/uebergabe"
+                    android:id="@+id/txtv_uebergabe_Label"
+                    android:textSize="30sp"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal"
+                    />
+
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/imgv_next_uebergabe"
+                    android:src="@drawable/next"
+                    android:clickable="true"/>
+            </TableRow>
+        </TableLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,29 +56,18 @@
             layout="@layout/toolbar_layout" />
     </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/uebergabe"
-            android:id="@+id/txtv_uebergabe"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="60dp" />
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/txtv_uebergabe"
+        android:layout_below="@+id/tbl_uebergabe_navi"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
+        android:fillViewport="true"
         tools:context="de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen"
         android:id="@+id/scrV_ersthelfermassnahmen">
-
 
         <TableLayout
             android:layout_width="match_parent"
@@ -342,6 +366,8 @@
                     android:id="@+id/entlassung_funkruf"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
 				<EditText
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -394,6 +420,8 @@
                     android:id="@+id/entlassung_ziel"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
 				<EditText
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -412,6 +440,8 @@
                     android:id="@+id/entlassung_sonstiges"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
 				<EditText
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -440,6 +470,8 @@
                     android:id="@+id/entlassung_zeuge"
                     android:textColor="#000000"
                     android:textSize="20sp"/>
+            </TableRow>
+            <TableRow>
 				<EditText
 					android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
