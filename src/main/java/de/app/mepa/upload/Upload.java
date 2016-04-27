@@ -1,5 +1,5 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 25.04.16
+//Zuletzt geändert von Nathalie Horn, 27.04.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
+import android.net.Uri;
+
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -88,16 +93,29 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         int ce = v.getId();
 
             //Upload durch E-Mail
+            //von Nathalie Horn am 27.04.16
             if(ce == R.id.txtv_upload_email){
                 String adresse = "spam@deinedomain.de";
                 String adressarray[] = { adresse };
                 String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
+                //Zugriff auf Datei im gleichen Verzeichnis (Upload), Erstellung einer URI zur Datei
+                File f = new File("/test.txt");
+                Uri u = Uri.fromFile(f);
+
+
                 // Intent anlegen der die Funktion "Action_Send" aufruft.
                 Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
+                //Legt fest, dass nur EMail Apps zum Versand verwendet werden sollen.
+                //Intent.setData(Uri.parse("mailto:"));
+
                 // Fügt der E-Mail Eigenschaften und unseren Text hinzu
                 emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
                 emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, "Das ist der Betreff");
-                emailversand.setType("plain/text");
+
+                //Durch EXTRA_STREAM wird eine Datei versendet.
+                emailversand.setType("*/*");
+                emailversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+
                 emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
                 startActivity(emailversand);
         }
