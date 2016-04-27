@@ -62,39 +62,40 @@ protected void onCreate(Bundle savedInstanceState){
         setContentView(R.layout.activity_erstbefund);
 
         ArrayAdapter<String>adapter_bewusstseinslage=new ArrayAdapter<String>(Erstbefund.this,
-        android.R.layout.simple_spinner_item,bewusstseinslage);
+                R.layout.spinner_layout,bewusstseinslage);
 
         adapter_bewusstseinslage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_kreislauf=new ArrayAdapter<String>(Erstbefund.this,
-        android.R.layout.simple_spinner_item,kreislauf);
+                R.layout.spinner_layout,kreislauf);
 
         adapter_kreislauf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_pupillenfunktion_rechts=new ArrayAdapter<String>(Erstbefund.this,
-                android.R.layout.simple_spinner_item,pupillenfunktion_rechts);
+                R.layout.spinner_layout,pupillenfunktion_rechts);
 
         adapter_pupillenfunktion_rechts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_pupillenfunktion_links=new ArrayAdapter<String>(Erstbefund.this,
-                android.R.layout.simple_spinner_item,pupillenfunktion_links);
+                R.layout.spinner_layout,pupillenfunktion_links);
 
         adapter_pupillenfunktion_links.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_ekg=new ArrayAdapter<String>(Erstbefund.this,
-                android.R.layout.simple_spinner_item,ekg);
+                R.layout.spinner_layout,ekg);
 
         adapter_ekg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_schmerzen=new ArrayAdapter<String>(Erstbefund.this,
-                android.R.layout.simple_spinner_item,schmerzen);
+                R.layout.spinner_layout,schmerzen);
 
         adapter_schmerzen.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         ArrayAdapter<String>adapter_atmung=new ArrayAdapter<String>(Erstbefund.this,
-                android.R.layout.simple_spinner_item,atmung);
+                R.layout.spinner_layout,atmung);
 
         adapter_atmung.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
 
         spin_bewusstseinslage=(Spinner)findViewById(R.id.spin_bewusstseinslage);
