@@ -35,7 +35,7 @@
                     android:id="@+id/txtv_erkrankung_Label"
                     android:textSize="30sp"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal"
+
                     />
             </TableRow>
         </TableLayout>
