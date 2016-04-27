@@ -26,7 +26,6 @@ import de.app.mepa.verletzung.Verletzung;
 
 public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
-    private ImageView imgv_next;
     //von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -70,6 +69,11 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
                 Intent intent = new Intent(Erkrankung.this, Massnahmen.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_erkrankung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Erkrankung.this, Verletzung.class);
+                startActivity(intent);
+            }
         });
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -79,9 +83,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_erkrankung);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_erkrankung);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
     }
 
     @Override
@@ -139,10 +141,6 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         */
         if (ce == R.id.imgv_before_erkrankung) {
             Intent intent = new Intent(Erkrankung.this, Verletzung.class);
-            startActivity(intent);
-        }
-        if (ce == R.id.imgv_next_erkrankung) {
-            Intent intent = new Intent(Erkrankung.this, Massnahmen.class);
             startActivity(intent);
         }
     }
