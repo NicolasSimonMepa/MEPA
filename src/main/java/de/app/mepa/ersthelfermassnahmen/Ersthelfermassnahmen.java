@@ -41,11 +41,11 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
-    private String[]ersthelfermassnahmen={"keine","suffizient","insuffizient","AED"};
-    private String[]zustand={"unverändert", "verbessert", "verschlechtert"};
-    private String[]transport={"transport", "nicht erforderlich", "Pat. lehnt transport ab"};
-    private String[]notarzt={"nachgefordert", "abbestellt"};
-    private String[]entlassung={"Transportart", "KTW", "RTW", "RTH", "Polizei", "Taxi/PKW", "ÖPNV", "eigenständig", "Angehörige", "zurück zur Veranstaltung"};
+    private String[]ersthelfermassnahmen={"-----","keine","suffizient","insuffizient","AED"};
+    private String[]zustand={"-----", "unverändert", "verbessert", "verschlechtert"};
+    private String[]transport={"-----", "nicht erforderlich", "Pat. lehnt transport ab"};
+    private String[]notarzt={"-----", "nachgefordert", "abbestellt"};
+    private String[]entlassung={"-----", "KTW", "RTW", "RTH", "Polizei", "Taxi/PKW", "ÖPNV", "eigenständig", "Angehörige", "zurück zur Veranstaltung"};
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
@@ -59,7 +59,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_ersthelfermassnahmen);
 
         ArrayAdapter<String> adapter_ersthelfermassnahmen=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
-                android.R.layout.simple_spinner_item,ersthelfermassnahmen);
+                R.layout.spinner_layout,ersthelfermassnahmen);
 
         adapter_ersthelfermassnahmen.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -68,7 +68,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_ersthelfermassnahmen.setOnItemSelectedListener(this);
         
         ArrayAdapter<String> adapter_zustand=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
-                android.R.layout.simple_spinner_item,zustand);
+                R.layout.spinner_layout,zustand);
 
         adapter_zustand.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -77,7 +77,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_zustand.setOnItemSelectedListener(this);
 
         ArrayAdapter<String> adapter_transport=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
-                android.R.layout.simple_spinner_item,transport);
+                R.layout.spinner_layout,transport);
 
         adapter_transport.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -86,7 +86,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_transport.setOnItemSelectedListener(this);
 
         ArrayAdapter<String> adapter_notarzt=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
-                android.R.layout.simple_spinner_item,notarzt);
+                R.layout.spinner_layout,notarzt);
 
         adapter_notarzt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -95,7 +95,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_notarzt.setOnItemSelectedListener(this);
         
         ArrayAdapter<String> adapter_entlassung=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
-                android.R.layout.simple_spinner_item,entlassung);
+                R.layout.spinner_layout,entlassung);
 
         adapter_entlassung.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
