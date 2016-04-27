@@ -68,6 +68,7 @@
         android:layout_below="@id/tbl_notfall_navi"
         android:gravity="center_horizontal"
         android:checkedButton="@+id/rBtn_notfall"
+        android:clickable="false"
         android:id="@+id/tickmarks_notfall">
         <RadioButton
             android:layout_width="wrap_content"
