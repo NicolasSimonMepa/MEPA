@@ -23,7 +23,6 @@ import de.app.mepa.mepa.R;
 
 public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
-    private ImageView imgv_next;
     private DrawerLayout drawerlayout_bemerkung;
     private ListView listview_bemerkung;
     private MyAdapter myadapter_bemerkung;
@@ -71,13 +70,16 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
                 Intent intent = new Intent(Bemerkung.this, Falleingabe.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_bemerkung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Bemerkung.this, notfallsituation.class);
+                startActivity(intent);
+            }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_bemerkung);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_bemerkung);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
     }
 
     @Override
@@ -133,10 +135,6 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         */
         if (ce == R.id.imgv_before_bemerkung) {
             Intent intent = new Intent(Bemerkung.this, notfallsituation.class);
-            startActivity(intent);
-        }
-        if (ce == R.id.imgv_next_bemerkung) {
-            Intent intent = new Intent(Bemerkung.this, Falleingabe.class);
             startActivity(intent);
         }
     }
