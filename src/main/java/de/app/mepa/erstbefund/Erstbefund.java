@@ -26,7 +26,6 @@ import de.app.mepa.upload.Upload;
 
 public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
         private ImageView imgv_before;
-        private ImageView imgv_next;
         private Spinner spin_bewusstseinslage;
         private Spinner spin_kreislauf;
         private Spinner spin_pupillenfunktion_rechts;
@@ -154,13 +153,16 @@ protected void onCreate(Bundle savedInstanceState){
                 Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_erstbefund.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Erstbefund.this, Massnahmen.class);
+                startActivity(intent);
+            }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_erstbefund);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_erstbefund);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
         }
 
 @Override
@@ -240,10 +242,6 @@ private void selectItemFromDrawer(int position){
         */
                 if (ce == R.id.imgv_before_erstbefund) {
                         Intent intent = new Intent(Erstbefund.this, Massnahmen.class);
-                        startActivity(intent);
-                }
-                if (ce == R.id.imgv_next_erstbefund) {
-                        Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
                         startActivity(intent);
                 }
         }
