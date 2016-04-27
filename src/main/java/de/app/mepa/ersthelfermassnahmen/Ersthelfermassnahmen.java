@@ -27,7 +27,6 @@ import de.app.mepa.upload.Upload;
 
 public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
-    private ImageView imgv_next;
     private Spinner spin_ersthelfermassnahmen;
     private Spinner spin_zustand;
     private Spinner spin_transport;
@@ -132,13 +131,16 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_ersthelfermassnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Ersthelfermassnahmen.this, Erstbefund.class);
+                startActivity(intent);
+            }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_uebergabe);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_uebergabe);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
 
     }
 
@@ -216,10 +218,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         */
         if (ce == R.id.imgv_before_uebergabe) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Erstbefund.class);
-            startActivity(intent);
-        }
-        if (ce == R.id.imgv_next_uebergabe) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
             startActivity(intent);
         }
     }
