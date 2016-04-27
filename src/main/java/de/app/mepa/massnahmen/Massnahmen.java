@@ -25,7 +25,6 @@ import de.app.mepa.mepa.R;
 
 public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
     private ImageView imgv_before;
-    private ImageView imgv_next;
     private DrawerLayout drawerlayout_massnahmen;
     private ListView listview_massnahmen;
     private MyAdapter myadapter_massnahmen;
@@ -65,6 +64,11 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
                 Intent intent = new Intent(Massnahmen.this, Erstbefund.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_massnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Massnahmen.this, Erkrankung.class);
+                startActivity(intent);
+            }
         });
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,9 +78,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_massnahmen);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_massnahmen);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -131,10 +133,6 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         */
         if (ce == R.id.imgv_before_massnahmen) {
             Intent intent = new Intent(Massnahmen.this, Erkrankung.class);
-            startActivity(intent);
-        }
-        if (ce == R.id.imgv_next_massnahmen) {
-            Intent intent = new Intent(Massnahmen.this, Erstbefund.class);
             startActivity(intent);
         }
     }
