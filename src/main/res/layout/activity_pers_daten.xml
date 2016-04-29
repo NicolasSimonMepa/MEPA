@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 26.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 29.04.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -10,6 +10,9 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
+        android:id="@+id/rl_pers_daten"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/verlauf">
         <!-- von Vivien Stumpe, 26.04.16
         Layout für die Navigation mit zurück Pfeil -->
@@ -121,7 +124,7 @@
             <include
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                layout="@layout/toolbar_layout"/>
+                layout="@layout/toolbar_eingaben_layout"/>
 
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
