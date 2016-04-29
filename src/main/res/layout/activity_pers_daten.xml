@@ -9,7 +9,8 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/verlauf">
         <!-- von Vivien Stumpe, 26.04.16
         Layout für die Navigation mit zurück Pfeil -->
         <TableLayout
