@@ -11,9 +11,10 @@
 <!-- von Vivien Stumpe am 03.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="de.app.mepa.stammdaten.Stammdaten">
+    tools:context="de.app.mepa.stammdaten.Stammdaten"
+    android:background="@drawable/verlauf">
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
     <LinearLayout
@@ -43,27 +44,22 @@
         android:gravity="center_horizontal" />
 
     <TableLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtv_stammdaten"
-        android:layout_marginBottom="5dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
         android:id="@+id/tbl_stammdaten"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="false"
-        android:layout_alignWithParentIfMissing="true"
-        android:layout_alignParentStart="false">
+        android:gravity="center"
+        android:stretchColumns="1"
+        android:focusable="true" android:focusableInTouchMode="true">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tblr_kreisverband"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +67,6 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/txtv_kreisverband"
                 android:id="@+id/txtv_kreisverband"
-                android:layout_below="@+id/tbl_stammdaten"
                 android:textSize="20sp"
                 android:textColor="#000000" />
 
@@ -81,19 +76,16 @@
                 android:id="@+id/etxt_kreisverband"
                 android:layout_column="1"
                 android:typeface="normal"
-                android:editable="false"
-                android:inputType="text"
-                android:singleLine="false" />
+                android:inputType="textCapSentences|textMultiLine"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:maxLength="45"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tbl_stammdaten"
-            android:layout_alignRight="@+id/txtv_stammdaten"
-            android:layout_alignEnd="@+id/txtv_stammdaten"
             android:id="@+id/tblr_ortsverein"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
 
             <TextView
@@ -102,9 +94,6 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/txtv_ortsverein"
                 android:id="@+id/txtv_ortsverein"
-                android:layout_centerVertical="true"
-                android:layout_alignRight="@+id/tbl_stammdaten"
-                android:layout_alignEnd="@+id/tbl_stammdaten"
                 android:textSize="20sp"
                 android:textColor="#000000" />
 
@@ -112,17 +101,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_ortsverein"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:inputType="textCapSentences|textMultiLine"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:maxLength="45"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/txtv_stammdaten"
-            android:layout_alignStart="@+id/txtv_stammdaten"
             android:id="@+id/tblr_ort"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
 
             <TextView
@@ -131,9 +120,6 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/txtv_ort"
                 android:id="@+id/txtv_ort"
-                android:layout_centerVertical="true"
-                android:layout_alignRight="@+id/txtv_stammdaten"
-                android:layout_alignEnd="@+id/txtv_stammdaten"
                 android:textSize="20sp"
                 android:textColor="#000000" />
 
@@ -141,17 +127,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_ort"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:inputType="textCapSentences|textMultiLine"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:maxLength="45"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tbl_stammdaten"
-            android:layout_alignRight="@+id/txtv_stammdaten"
-            android:layout_alignEnd="@+id/txtv_stammdaten"
             android:id="@+id/tblr_veranstaltung"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
 
             <TextView
@@ -160,22 +146,35 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/txtv_veranstaltung"
                 android:id="@+id/txtv_veranstaltung"
-                android:layout_centerVertical="true"
-                android:layout_alignRight="@+id/txtv_stammdaten"
-                android:layout_alignEnd="@+id/txtv_stammdaten"
                 android:layout_marginRight="84dp"
                 android:layout_marginEnd="84dp"
                 android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_veranstaltung"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:inputType="textCapSentences|textMultiLine"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:maxLength="45"/>
 
         </TableRow>
-
+    </TableLayout>
+<TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbl_stammdaten"
+        android:id="@+id/tbl_stammdaten_check"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:stretchColumns="*">
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -247,11 +246,12 @@
 
     </TableLayout>
 
+
  <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tbl_stammdaten"
+        android:layout_below="@+id/tbl_stammdaten_check"
         android:id="@+id/lnl_buttons"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="false"
@@ -306,14 +306,13 @@
             android:id="@+id/menu_kopfzeile_stammdaten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/festival"
             android:padding="8dp" >
 
             <ImageView
                 android:id="@+id/menu_stammdaten"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu_weiss"
+                android:src="@drawable/icon_menu"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -332,7 +331,7 @@
                     android:text="@string/btn_menu"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#000000"/>
 
             </LinearLayout>
         </RelativeLayout>
