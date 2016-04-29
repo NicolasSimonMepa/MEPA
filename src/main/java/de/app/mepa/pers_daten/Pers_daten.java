@@ -1,15 +1,13 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 26.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
-import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -18,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -26,7 +23,6 @@ import de.app.mepa.erkrankung.Erkrankung;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
@@ -74,10 +70,12 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private TableRow tblr_sonstiges_zugef;
 
     /* von Vivien Stumpe, 25.04.16
-    ImageViews für die Zurück und Vor Bilder in der Aktivität
+    ImageViews für den Zurück Pfeil in der Aktivität
+    ergänzt am 29.04.16 (imgv_menü)
      */
     private ImageView imgv_before;
-    private ImageView imgv_next;
+    private ImageView imgv_menü;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +91,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_pers_daten.setOnItemClickListener(this);
 
+
         //von Vivien Stumpe, 11.04.16
         //Verbindung der View zur Scrollview in der Aktivität
         view=(View) findViewById(R.id.scrV_pers_daten);
@@ -106,10 +105,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             }
             /* von Vivien Stumpe, 26.04.16
             Bei einem Swipe nach rechts wird die vorherige Aktivität geöffnet
-            Außerdem bleibt der Drawer (Hamburger Menü) geschlossen
              */
             public void onSwipeRight() {
-                drawerlayout_pers_daten.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
                 startActivity(intent);
             }
@@ -123,8 +120,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         */
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_pers_daten, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_pers_daten.addDrawerListener(actionbardrawertoggle);
+
 
         /* von Vivien Stumpe, 18.04.16
         ArrayAdapter erzeugen
@@ -164,18 +160,19 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         /* von Vivien Stumpe, 25.04.16
         Views in der Akitivität finden und den Variablen zuweisen
         OnClickListener darauf setzen, damit auf Klicks reagiert wird
+        ergänzt von Vivien Stumpe, 29.04.16 --> imgv_menü
          */
         imgv_before = (ImageView)findViewById(R.id.imgv_before_pers);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+        /*von Vivien Stumpe, 29.04.16
+        Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
+        */
+        drawerlayout_pers_daten.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    //von Vivien Stumpe, 12.04.16
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -210,6 +207,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             Intent intent = new Intent(Pers_daten.this, Impressum.class);
             startActivity(intent);
         }
+        //Menü schließen
+        drawerlayout_pers_daten.closeDrawers();
     }
 
     /* von Vivien Stumpe, 18.04.16
@@ -305,5 +304,13 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
             startActivity(intent);
         }
+
+        /* von Vivien Stumpe, 29.04.16
+        Das Menü wird geöffnet in der Startposition (bei uns links)
+         */
+        if(ce == R.id.imgv_menu){
+            drawerlayout_pers_daten.openDrawer(GravityCompat.START);
+        }
+
     }
 }
