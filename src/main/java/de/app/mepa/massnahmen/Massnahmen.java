@@ -99,17 +99,17 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         }
         //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
         if(position==1) {
-            Intent intent = new Intent(Massnahmen.this, Einstellungen.class);
+            Intent intent = new Intent(Massnahmen.this, Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
         if(position==2) {
-            Intent intent = new Intent(Massnahmen.this, Falluebersicht.class);
+            Intent intent = new Intent(Massnahmen.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
         if(position==3) {
-            Intent intent = new Intent(Massnahmen.this, Upload.class);
+            Intent intent = new Intent(Massnahmen.this, Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
@@ -132,7 +132,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         Aufrufen der Activity mittels Intent
         */
         if (ce == R.id.imgv_before_massnahmen) {
-            Intent intent = new Intent(Massnahmen.this, Erkrankung.class);
+            Intent intent = new Intent(Massnahmen.this, Falleingabe.class);
             startActivity(intent);
         }
     }
