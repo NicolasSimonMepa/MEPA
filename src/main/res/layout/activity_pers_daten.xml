@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent">
         <!-- von Vivien Stumpe, 26.04.16
         Layout für die Navigation mit zurück Pfeil -->
@@ -41,364 +41,410 @@
             </TableRow>
         </TableLayout>
 
-            <!-- von Vivien Stumpe, 26.04.16
-            Tickmarks zur Navigation zwischen den Seiten
-            hier entwickelt durch Radio Buttons -->
-<RadioGroup android:layout_width="fill_parent"
-    android:layout_height="20dp"
-    android:orientation="horizontal"
-    android:layout_below="@id/tbl_pers_daten_navi"
-    android:gravity="center_horizontal"
-    android:checkedButton="@+id/rBtn_pers"
-    android:id="@+id/tickmarks_pers">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rBtn_pers"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_verletzung"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_erkrankung"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_massnahmen"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_erstbefund"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_uebergabe"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_notfall"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/rBtn_bemerkung"
-                    android:button="@null"
-                    android:clickable="false"
-                    android:background="@drawable/radiobutton_layout"/>
-</RadioGroup>
-
-    <!-- von Vivien Stumpe, 12.04.16 -->
-    <!-- Layout für die Toolbar hinzufügen -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            layout="@layout/toolbar_layout"/>
-
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:fillViewport="true"
-            tools:context="de.app.mepa.pers_daten.Pers_daten"
-            android:id="@+id/scrV_pers_daten"
-            android:layout_marginTop="50dp">
-            <!-- von Vivien Stumpe, 22.02.16 -->
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
-
-            <TableLayout
-                android:layout_width="match_parent"
+        <!-- von Vivien Stumpe, 26.04.16
+        Tickmarks zur Navigation zwischen den Seiten
+        hier entwickelt durch Radio Buttons -->
+        <RadioGroup android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/tbl_pers_daten_navi"
+            android:gravity="center_horizontal"
+            android:checkedButton="@+id/rBtn_pers"
+            android:id="@+id/tickmarks_pers">
+            <RadioButton
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tbl_pers_daten"
-                android:gravity="center"
-                android:paddingTop="20dp">
+                android:id="@+id/rBtn_pers"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_verletzung"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_erkrankung"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_massnahmen"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_erstbefund"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_uebergabe"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_notfall"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rBtn_bemerkung"
+                android:button="@null"
+                android:clickable="false"
+                android:background="@drawable/radiobutton_layout"/>
+        </RadioGroup>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_name"
-                    android:gravity="left">
+        <!-- von Vivien Stumpe, 12.04.16 -->
+        <!-- Layout für die Toolbar hinzufügen -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_layout"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:fillViewport="true"
+                tools:context="de.app.mepa.pers_daten.Pers_daten"
+                android:id="@+id/scrV_pers_daten"
+                android:layout_marginTop="50dp">
+                <!-- von Vivien Stumpe, 22.02.16 -->
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:src="@drawable/person"
-                        android:id="@+id/imgv_name_pers_daten"
-                        android:textColor="#000000"
-                        />
+                        android:id="@+id/tbl_pers_daten"
+                        android:gravity="center"
+                        android:paddingTop="20dp">
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:ems="10"
-                        android:id="@+id/etxt_name_pers_daten"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:hint="@string/txtv_name_pers_daten" />
-                </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/tblr_name"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="left">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_vorname_pers_daten">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:src="@drawable/person"
+                                android:id="@+id/imgv_name_pers_daten"
+                                android:textColor="#000000"
+                                />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_vorname_pers_daten"
-                        android:src="@drawable/person"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textCapWords|textPersonName|textMultiLine"
+                                android:singleLine="false"
+                                android:maxLength="45"
+                                android:maxLines="2"
+                                android:id="@+id/etxt_name_pers_daten"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                android:hint="@string/txtv_name_pers_daten" />
+                        </TableRow>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:ems="10"
-                        android:id="@+id/etxt_vorname_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_vorname_pers_daten" />
-                </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_vorname_pers_daten">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_str_pers_daten">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_vorname_pers_daten"
+                                android:src="@drawable/person"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_str_pers_daten"
-                        android:src="@drawable/person"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textCapWords|textPersonName|textMultiLine"
+                                android:singleLine="false"
+                                android:maxLength="45"
+                                android:maxLines="2"
+                                android:id="@+id/etxt_vorname_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_vorname_pers_daten" />
+                        </TableRow>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPostalAddress"
-                        android:ems="10"
-                        android:id="@+id/etxt_str_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_str_pers_daten" />
-                </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_str_pers_daten">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_plz_pers_daten">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_str_pers_daten"
+                                android:src="@drawable/person"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_plz_pers_daten"
-                        android:src="@drawable/person"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="textCapSentences|textMultiLine"
+                                android:ems="10"
+                                android:singleLine="false"
+                                android:maxLines="2"
+                                android:maxLength="45"
+                                android:id="@+id/etxt_str_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_str_pers_daten" />
+                        </TableRow>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPostalAddress"
-                        android:ems="10"
-                        android:id="@+id/etxt_plz_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_plz_pers_daten" />
-                </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_plz_pers_daten">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_ort_pers_daten">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_plz_pers_daten"
+                                android:src="@drawable/person"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_ort_pers_daten"
-                        android:src="@drawable/person"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:maxLength="5"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:id="@+id/etxt_plz_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_plz_pers_daten" />
+                        </TableRow>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etxt_ort_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_ort_pers_daten" />
-                </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_ort_pers_daten">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_telefon_pers_daten">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_ort_pers_daten"
+                                android:layout_marginBottom="5dp"
+                                android:src="@drawable/person"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_telefon_pers_daten"
-                        android:src="@drawable/person"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_ort_pers_daten"
+                                android:inputType="textCapSentences|textMultiLine"
+                                android:singleLine="false"
+                                android:maxLines="2"
+                                android:maxLength="45"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_ort_pers_daten" />
+                        </TableRow>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="phone"
-                        android:ems="10"
-                        android:id="@+id/etxt_telefon_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_telefon_pers_daten" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_telefon_pers_daten">
 
-                </TableRow>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_telefon_pers_daten"
+                                android:layout_marginBottom="5dp"
+                                android:src="@drawable/person"/>
 
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="phone"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:maxLength="20"
+                                android:ems="10"
+                                android:id="@+id/etxt_telefon_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_telefon_pers_daten" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_geb_pers_daten">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_gebdat_pers_daten"
-                        android:src="@drawable/person"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="date"
-                        android:ems="10"
-                        android:id="@+id/etxt_geb_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_geb_pers_daten" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_krankenkasse_pers_daten">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_krankenkasse_pers_daten"
-                        android:src="@drawable/person"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etxt_krankenkasse_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_krankenkasse_pers_daten" />
-
-                </TableRow>
-
-                <!-- von Vivien Stumpe, 22.04.16 -->
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_versichertennr_pers_daten">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_versichertennr_pers_daten"
-                        android:src="@drawable/person"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etxt_versichertennr_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_versichertennr" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_versicherungsnr_pers_daten">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_versicherungsnr_pers_daten"
-                        android:src="@drawable/person"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etxt_versicherungsnr_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_versicherungsnr" />
-
-                </TableRow>
+                        </TableRow>
 
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_fundort_pers_daten">
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_geb_pers_daten">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/imgv_fundort_pers_daten"
-                        android:src="@drawable/person"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_gebdat_pers_daten"
+                                android:src="@drawable/person"/>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etxt_fundort_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/txtv_fundort_pers_daten" />
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:ems="10"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:id="@+id/etxt_geb_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_geb_pers_daten" />
 
-                </TableRow>
-                </TableLayout>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_krankenkasse_pers_daten">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_krankenkasse_pers_daten"
+                                android:src="@drawable/person"/>
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_krankenkasse_pers_daten"
+                                android:inputType="textCapWords"
+                                android:singleLine="false"
+                                android:maxLines="2"
+                                android:maxLength="45"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_krankenkasse_pers_daten" />
+
+                        </TableRow>
+
+                        <!-- von Vivien Stumpe, 22.04.16 -->
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_versichertennr_pers_daten">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_versichertennr_pers_daten"
+                                android:src="@drawable/person"/>
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_versichertennr_pers_daten"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_versichertennr" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_versicherungsnr_pers_daten">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_versicherungsnr_pers_daten"
+                                android:src="@drawable/person"/>
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_versicherungsnr_pers_daten"
+                                android:textSize="20sp"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_versicherungsnr" />
+
+                        </TableRow>
+
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_fundort_pers_daten">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_fundort_pers_daten"
+                                android:src="@drawable/person"/>
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_fundort_pers_daten"
+                                android:inputType="textCapSentences|textMultiLine"
+                                android:singleLine="false"
+                                android:maxLines="2"
+                                android:maxLength="60"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:hint="@string/txtv_fundort_pers_daten" />
+
+                        </TableRow>
+                    </TableLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -411,57 +457,60 @@
                         android:textColor="#000000"
                         android:layout_column="0" />
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtv_zugefuehrt_pers_daten"
-                android:id="@+id/tbl_pers_daten_2"
-                android:gravity="center"
-                android:paddingTop="20dp"
-                android:stretchColumns="1">
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_zugef_pers_daten">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imgv_zugefuehrt_pers_daten"
-                        android:src="@drawable/person"/>
-
-                    <!-- von Vivien Stumpe, 18.04.16 -->
-                    <Spinner
+                    <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/spin_zugefuehrt_pers_daten"
-                        android:layout_weight="1"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tblr_sonstiges_pers_daten">
-
-                    <EditText
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etxt_sonstiges_pers_daten"
-                        android:textSize="20sp"
-                        android:textColor="#000000"
-                        android:hint="@string/sonstiges" />
-                </TableRow>
+                        android:layout_below="@id/txtv_zugefuehrt_pers_daten"
+                        android:id="@+id/tbl_pers_daten_2"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:stretchColumns="1">
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/tblr_zugef_pers_daten">
 
-        </TableLayout>
-        </RelativeLayout>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/imgv_zugefuehrt_pers_daten"
+                                android:src="@drawable/person"/>
+
+                            <!-- von Vivien Stumpe, 18.04.16 -->
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/spin_zugefuehrt_pers_daten"
+                                android:layout_weight="1"/>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/tblr_sonstiges_pers_daten">
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etxt_sonstiges_pers_daten"
+                                android:textSize="20sp"
+                                android:inputType="textCapSentences"
+                                android:maxLines="2"
+                                android:maxLength="45"
+                                android:textColor="#000000"
+                                android:hint="@string/sonstiges" />
+                        </TableRow>
+
+                    </TableLayout>
+                </RelativeLayout>
 
 
-        </ScrollView>
-    </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
 
     </RelativeLayout>
-<!-- von Vivien Stumpe am 04.04.16 -->
+    <!-- von Vivien Stumpe am 04.04.16 -->
     <!-- von Vivien Stumpe, 10.04.16 -->
     <!-- Hamburger Menü - Drawer Navigation -->
     <RelativeLayout
