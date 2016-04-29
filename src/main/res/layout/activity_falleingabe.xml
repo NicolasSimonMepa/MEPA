@@ -12,7 +12,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.app.mepa.falleingabe.Falleingabe">
+    tools:context="de.app.mepa.falleingabe.Falleingabe
+    android:background="@drawable/verlauf">
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
     <LinearLayout
