@@ -16,8 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
+            android:layout_marginLeft="20sp"
             android:id="@+id/tbl_erkrankung_navi"
-            android:stretchColumns="*">
+            android:stretchColumns="1">
             <TableRow>
                 <ImageView
                     android:layout_height="match_parent"
@@ -30,6 +31,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="30sp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/erkrankung"
                     android:id="@+id/txtv_erkrankung_Label"
