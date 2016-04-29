@@ -13,7 +13,8 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    tools:context="de.app.mepa.einstellungen.Einstellungen">
+    tools:context="de.app.mepa.einstellungen.Einstellungen"
+    android:background="@drawable/verlauf">
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
     <LinearLayout
