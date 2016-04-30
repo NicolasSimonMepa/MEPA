@@ -1,15 +1,18 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 12.04.16
+//Zuletzt bearbeitet von Nicolas Simon, 30.04.16
 package de.app.mepa.verletzung;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -20,14 +23,13 @@ import de.app.mepa.erkrankung.Erkrankung;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
+import de.app.mepa.pers_daten.Pers_daten;
 import de.app.mepa.upload.Upload;
 
-public class Verletzung extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener  {
+public class Verletzung extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener {
     //Variablen für die Spinner in der Activity erstellen
-    //von Vivien Stumpe, 04.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
     private Spinner spin_schaedel_art;
     private Spinner spin_gesicht_art;
     private Spinner spin_hws_art;
@@ -50,11 +52,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner spin_beine_grad;
     private Spinner spin_weichteile_grad;
 
+    private ImageView imgv_before;
+    private ImageView imgv_next;
+
     //String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
-    //von Vivien Stumpe, 04.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
     private String[]art = {" ", "offen", "geschl"};
     private String[]grad = {" ", "leicht", "mittel", "schwer"};
-    //von Vivien Stumpe, 10.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
     //Adapter, der die Einträge der ListView darstellt
@@ -62,13 +67,13 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private DrawerLayout drawerlayout_verletzung;
     private ListView listview_verletzung;
     private MyAdapter myadapter_verletzung;
-    private int[] drawer_icons_verletzung={R.drawable.mepa_icon, R.drawable.einstellungen,
-            R.drawable.falleingabe, R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten,};
+    private int[] drawer_icons_verletzung={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-    /*von Vivien Stumpe, 12.04.16
+    /*Nicolas Simon, übernommen von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
     ActionBarDrawerToggle und Toolbar anlegen
     */
@@ -80,10 +85,12 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verletzung);
 
+
+
         //ArrayAdapter erzeugen
         //Der ArrayAdapter generiert die Listenelemente des Spinners
         //Parameter sind die aktuelle Activity, Systemressource, Array mit den Listenelementen
-        //von Vivien Stumpe, 04.04.16
+        //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Verletzung.this,
                 android.R.layout.simple_spinner_item,art);
 
@@ -97,7 +104,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         //Verknüpfung der Spinnervariable zum Spinner in der Activity herstellen
         //SpinnerAdapter dem Spinner zuweisen damit die Elemente ind er Activity angezeigt werden
         //setOnItemSelectedListener implementieren, damit mit dem ausgewählten Eintrag auch gearbeitet werden kann
-        //von Vivien Stumpe, 04.04.16
+        //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
         spin_schaedel_art = (Spinner)findViewById(R.id.spin_schaedel_art);
         spin_schaedel_art.setAdapter(adapter);
         spin_schaedel_art.setOnItemSelectedListener(this);
@@ -177,7 +184,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         spin_weichteile_grad = (Spinner)findViewById(R.id.spin_weichteile_grad);
         spin_weichteile_grad.setAdapter(adapter);
         spin_weichteile_grad.setOnItemSelectedListener(this);
-        //von Vivien Stumpe, 10.04.16
+        //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_verletzung=(DrawerLayout) findViewById(R.id.drawerLayout_Verletzung);
         listview_verletzung=(ListView) findViewById(R.id.listview_verletzung);
@@ -187,7 +194,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_verletzung.setOnItemClickListener(this);
 
-        //von Vivien Stumpe, 11.04.16
+        //Nicolas Simon, übernommen von Vivien Stumpe, 11.04.16
         //Verbindung der View zur Scrollview in der Aktivität
         view=(View) findViewById(R.id.rl_verletzung);
         //OnTouchListener auf die View setzen
@@ -198,9 +205,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
                 Intent intent = new Intent(Verletzung.this, Erkrankung.class);
                 startActivity(intent);
             }
+            public void onSwipeRight() {
+                drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                Intent intent = new Intent(Verletzung.this, Pers_daten.class);
+                startActivity(intent);
+            }
         });
 
-                /*von Vivien Stumpe, 12.04.16
+                /*Nicolas Simon, übernommen von Vivien Stumpe, 12.04.16
         Verbindung zur Toolbar in der Acitivity herstellen
         Toolbar anstelle der ActionBar verwenden
         ActionBarDrawerToggle initialisieren
@@ -210,9 +222,18 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_verletzung, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_verletzung.addDrawerListener(actionbardrawertoggle);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        imgv_before = (ImageView)findViewById(R.id.imgv_before_verletzung);
+        imgv_next = (ImageView)findViewById(R.id.imgv_next_verletzung);
+        imgv_before.setOnClickListener(this);
+        imgv_next.setOnClickListener(this);
+
+        drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    //von Vivien Stumpe, 12.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 12.04.16
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -221,7 +242,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     //Prozedur, die aufgerufen wird wenn ein Listenelement im Spinner ausgewählt wurde
-    //von Vivien Stumpe, 04.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 06.04.16
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
@@ -241,48 +262,64 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    //von Vivien Stumpe, 10.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 15.04.16
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
-    //von Vivien Stumpe, 10.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 15.04.16
     private void selectItemFromDrawer(int position){
         //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
         if(position==0) {
-            Intent intent = new Intent(Verletzung.this, MainActivity.class);
-            startActivity(intent);
-        }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Verletzung.this, Einstellungen.class);
-            startActivity(intent);
-        }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
             Intent intent = new Intent(Verletzung.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
             Intent intent = new Intent(Verletzung.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
             Intent intent = new Intent(Verletzung.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Verletzung.this, Einstellungen.class);
+            startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
             Intent intent = new Intent(Verletzung.this, Impressum.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(Verletzung.this, Stammdaten.class);
+        //Menü schließen
+        drawerlayout_verletzung.closeDrawers();
+    }
+    @Override
+    public void onClick(View v) {
+        /* Nicolas Simon, übernommen von Vivien Stumpe, 25.04.16
+        Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
+        die die ID der geklickten View erhält
+        */
+        int ce = v.getId();
+
+        /* Nicolas Simon, übernommen von Vivien Stumpe, 25.04.16
+        Ein Intent erzeugen, wenn die bestimmte ImageView geklickt wurde
+        Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
+        Aufrufen der Activity mittels Intent
+        */
+        if (ce == R.id.imgv_before_verletzung) {
+            Intent intent = new Intent(Verletzung.this, Pers_daten.class);
             startActivity(intent);
+        }
+        /* Nicolas Simon, übernommen von Vivien Stumpe, 30.04.16
+        Das Menü wird geöffnet in der Startposition (bei uns links)
+         */
+        if(ce == R.id.imgv_menu){
+            drawerlayout_verletzung.openDrawer(GravityCompat.START);
         }
     }
 }
