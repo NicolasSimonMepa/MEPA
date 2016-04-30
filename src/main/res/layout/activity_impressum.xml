@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"> -->
 
-<!-- von Vivien Stumpe, 09.04.16 , Nicolas übernommen 10.04.16-->
+<!-- Nicolas 10.04.16-->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout_Impressum"
@@ -14,7 +14,8 @@
                     xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:context="de.app.mepa.impressum.Impressum">
+                    tools:context="de.app.mepa.impressum.Impressum"
+                    android:background="@drawable/verlauf">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -138,13 +139,14 @@
             android:id="@+id/menu_kopfzeile_Impressum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp" >
+            android:padding="8dp"
+            android:background="@drawable/festival">
 
             <ImageView
                 android:id="@+id/menu_impressum"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu"
+                android:src="@drawable/icon_menu_weiss"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -163,7 +165,7 @@
                     android:text="Menü"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#ffffff"/>
             </LinearLayout>
         </RelativeLayout>
         <!-- Menüpunkte -->
@@ -180,3 +182,4 @@
             android:layout_marginBottom="5dp" />
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
+
