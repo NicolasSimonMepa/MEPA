@@ -1,4 +1,4 @@
-//Zuletzt geändert von Nicolas Simon am 17.04.16
+//Zuletzt geändert von Nicolas Simon am 30.04.16
 package de.app.mepa.impressum;
 
 import android.content.Intent;
@@ -15,9 +15,7 @@ import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
 public class Impressum extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
@@ -26,8 +24,8 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
     private DrawerLayout drawerlayout_impressum;
     private ListView listview_impressum;
     private MyAdapter myadapter_impressum;
-    private int[] drawer_icons_impressum={R.drawable.mepa_icon, R.drawable.einstellungen,R.drawable.falleingabe,
-            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+    private int[] drawer_icons_impressum={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
@@ -38,7 +36,7 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_impressum);
 
-        //von Nicolas Simon, 17.04.16
+        //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_impressum=(DrawerLayout) findViewById(R.id.drawerLayout_Impressum);
         listview_impressum=(ListView) findViewById(R.id.listview_falluebersicht); // kann kein Listview_impressum finden, müsste eig erzeugt sein?!
@@ -53,7 +51,7 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_impressum, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_impressum.addDrawerListener(actionbardrawertoggle);
     }
-    //von Nicolas Simon, 17.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -80,37 +78,27 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
     private void selectItemFromDrawer(int position){
         //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
         if(position==0) {
-            Intent intent = new Intent(Impressum.this, MainActivity.class);
-            startActivity(intent);
-        }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Impressum.this, Einstellungen.class);
-            startActivity(intent);
-        }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
             Intent intent = new Intent(Impressum.this, Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if(position==1) {
             Intent intent = new Intent(Impressum.this, Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==2) {
             Intent intent = new Intent(Impressum.this, Upload.class);
             startActivity(intent);
         }
-        //Wenn das sechste Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==5) {
-            Intent intent = new Intent(Impressum.this, Impressum.class);
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if(position==3) {
+            Intent intent = new Intent(Impressum.this, Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das siebte Element im Menü geklickt wurde, werden die Stammdaten geöffnet
-        if(position==6) {
-            Intent intent = new Intent(Impressum.this, Stammdaten.class);
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if(position==4) {
+            Intent intent = new Intent(Impressum.this, Impressum.class);
             startActivity(intent);
         }
 
