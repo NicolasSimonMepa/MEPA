@@ -246,7 +246,7 @@
     <string name="txtv_entlassung_ziel">Ziel</string>
     <string name="cck_entlassungsrevers">Patient hat Entlassungs-Revers unterschrieben</string>
     <string name="txtv_zeuge">Helfername</string>
-
+    <string name="btn_foto">Foto</string>
     <string name="bemerkung">Bemerkung</string>
 
      <!--Nicolas 3.04.2016, zuletzt geändert am 17.04.16 -->
