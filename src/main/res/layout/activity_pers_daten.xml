@@ -493,14 +493,14 @@
 
                     </TableLayout>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tbl_pers_daten_2"
                         android:id="@+id/etxt_sonstiges_pers_daten"
                         android:textSize="20sp"
                         android:inputType="textCapSentences|textMultiLine"
                         android:maxLines="2"
-                        android:maxLength="50"
+                        android:maxLength="65"
                         android:textColor="#000000"
                         android:hint="@string/sonstiges" />
                 </RelativeLayout>
