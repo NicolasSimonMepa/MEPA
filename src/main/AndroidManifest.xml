@@ -2,6 +2,9 @@
 <!-- Zuletzt geändert von Vivien Stumpe am 25.04.16 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.app.mepa.mepa">
+	
+	<!--von Nathalie Horn, 30.04.16 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
