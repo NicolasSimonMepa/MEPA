@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <!-- Zuletzt geändert von Vivien Stumpe, 14.04.16 -->
+    <!-- Zuletzt geändert von Vivien Stumpe, 01.05.16 -->
     <!-- von Vivien Stumoe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -61,25 +61,25 @@
             android:id="@+id/tblr_kreisverband"
             android:layout_marginBottom="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/txtv_kreisverband"
-                android:id="@+id/txtv_kreisverband"
-                android:textSize="20sp"
-                android:textColor="#000000" />
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:src="@drawable/stammdaten"
+                android:id="@+id/imgv_kreisverband" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_kreisverband"
+                android:hint="@string/txtv_kreisverband"
                 android:layout_column="1"
                 android:typeface="normal"
+                android:ems="10"
                 android:inputType="textCapSentences|textMultiLine"
                 android:singleLine="false"
                 android:maxLines="2"
-                android:maxLength="45"/>
+                android:maxLength="55"/>
         </TableRow>
 
         <TableRow
@@ -88,24 +88,24 @@
             android:id="@+id/tblr_ortsverein"
             android:layout_marginBottom="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/txtv_ortsverein"
-                android:id="@+id/txtv_ortsverein"
-                android:textSize="20sp"
-                android:textColor="#000000" />
+                android:src="@drawable/stammdaten"
+                android:id="@+id/imgv_ortsverein" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_ortsverein"
+                android:hint="@string/txtv_ortsverein"
                 android:layout_column="1"
+                android:ems="10"
                 android:inputType="textCapSentences|textMultiLine"
                 android:singleLine="false"
                 android:maxLines="2"
-                android:maxLength="45"/>
+                android:maxLength="55"/>
         </TableRow>
 
         <TableRow
@@ -114,24 +114,24 @@
             android:id="@+id/tblr_ort"
             android:layout_marginBottom="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/txtv_ort"
-                android:id="@+id/txtv_ort"
-                android:textSize="20sp"
-                android:textColor="#000000" />
+                android:src="@drawable/stammdaten"
+                android:id="@+id/imgv_ort" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_ort"
+                android:hint="@string/txtv_ort"
                 android:layout_column="1"
+                android:ems="10"
                 android:inputType="textCapSentences|textMultiLine"
                 android:singleLine="false"
                 android:maxLines="2"
-                android:maxLength="45"/>
+                android:maxLength="55"/>
         </TableRow>
 
         <TableRow
@@ -140,27 +140,24 @@
             android:id="@+id/tblr_veranstaltung"
             android:layout_marginBottom="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/txtv_veranstaltung"
-                android:id="@+id/txtv_veranstaltung"
-                android:layout_marginRight="84dp"
-                android:layout_marginEnd="84dp"
-                android:textSize="20sp"
-                android:textColor="#000000"
-                />
+                android:src="@drawable/stammdaten"
+                android:id="@+id/imgv_veranstaltung" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etxt_veranstaltung"
+                android:hint="@string/txtv_veranstaltung"
                 android:layout_column="1"
+                android:ems="10"
                 android:inputType="textCapSentences|textMultiLine"
                 android:singleLine="false"
                 android:maxLines="2"
-                android:maxLength="45"/>
+                android:maxLength="55"/>
 
         </TableRow>
     </TableLayout>
@@ -252,7 +249,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tbl_stammdaten_check"
-        android:id="@+id/lnl_buttons"
+        android:id="@+id/lnl_stammdaten_buttons"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
