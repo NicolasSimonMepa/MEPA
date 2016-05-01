@@ -1,4 +1,4 @@
-<!-- Zuletzt geändert von Vivien Stumpe am 26.04.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 01.05.16 -->
 <resources>
 
     <!-- Keine Titelleiste bzw. ActionBar anzeigen -->
@@ -7,9 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!-- von Vivien Stumpe, 26.04.16
-     Style für die Radio Buttons -->
-    <style name="RadioButton" parent="Theme.AppCompat.Light">
+    <!-- von Vivien Stumpe, 01.05.16
+     Style für die Checkboxen -->
+    <style name="CheckBox" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/schwarz</item>
         <item name="colorControlActivated">@color/rot</item>
     </style>
