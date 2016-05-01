@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 25.04.16
+//Zuletzt bearbeitet von Vivien Stumpe am 01.05.16
 package de.app.mepa.stammdaten;
 
 import android.content.Intent;
@@ -7,10 +7,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -25,9 +31,6 @@ import de.app.mepa.upload.Upload;
 //OnClickListener implementieren, um bei einem Klick auf ein Steuerelement reagieren zu können
     //von Vivien Stumpe, 01.04.16
 public class Stammdaten extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
-    //Erstellen einer Button-Variable, um den Button der Activity anzusprechen
-    //von Vivien Stumpe, 01.04.16
-    private Button btn_menu;
 
         //von Vivien Stumpe, 10.04.16
         //DrawerLayout für das Hamburger Menü
@@ -47,11 +50,32 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
+    /* von Vivien Stumpe, 01.5.16
+    Attribute festlegen
+     */
+    protected String kreisverband;
+    protected String ort;
+    protected String ortsverein;
+    protected String veranstaltung;
+
+    // Hilfsvariablen
+    private EditText etxt_kreisverband;
+    private EditText etxt_ort;
+    private EditText etxt_ortsverein;
+    private EditText etxt_veranstaltung;
+    private LinearLayout buttons;
+    private Button speichern;
+    private Button verwerfen;
+    private TextWatcher tw;
+    private CheckBox cck_mosan;
+    private CheckBox cck_hilfs;
+    private CheckBox cck_sanw;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stammdaten);
-
 
         //von Vivien Stumpe, 10.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
@@ -73,6 +97,58 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         setSupportActionBar(toolbar);
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_stammdaten, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_stammdaten.addDrawerListener(actionbardrawertoggle);
+
+        /* von Vivien Stumpe, 01.05.16
+        Edittexte in der Activity finden und ansprechen
+         */
+        buttons=(LinearLayout)findViewById(R.id.lnl_stammdaten_buttons);
+        buttons.setVisibility(buttons.GONE);
+        etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband);
+        etxt_ort=(EditText)findViewById(R.id.etxt_ort);
+        etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
+        etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung);
+        /* von Vivien Stumpe, 01.05.16
+        TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
+        Damit entsprechend auf Eingaben reagiert werden kann
+         */
+        tw=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Buttons speichern & verwerfen sind sichtbar
+                buttons.setVisibility(buttons.VISIBLE);
+            }
+        };
+        /* von Vivien Stumpe, 01.05.16
+        TextChangedListener muss auf die Eingabefelder gesetzt werden
+        damit auch registriert wird, wenn eine Eingabe getätigt wurde
+        und entsprechend reagiert werden kann -> siehe TextWatcher
+         */
+        etxt_kreisverband.addTextChangedListener(tw);
+        etxt_ort.addTextChangedListener(tw);
+        etxt_ortsverein.addTextChangedListener(tw);
+        etxt_veranstaltung.addTextChangedListener(tw);
+
+        speichern=(Button)findViewById(R.id.btn_speichern_stammd);
+        verwerfen=(Button)findViewById(R.id.btn_verwerfen_stammd);
+        cck_hilfs=(CheckBox)findViewById(R.id.cck_hilfsstelle);
+        cck_mosan=(CheckBox)findViewById(R.id.cck_mosan);
+        cck_sanw=(CheckBox)findViewById(R.id.cck_sanw);
+        speichern.setOnClickListener(this);
+        verwerfen.setOnClickListener(this);
+        cck_hilfs.setOnClickListener(this);
+        cck_mosan.setOnClickListener(this);
+        cck_sanw.setOnClickListener(this);
+
     }
 
 
@@ -89,14 +165,45 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         //clicked element mit dem geklickten Button belegen
         //von Vivien Stumpe, 01.04.16
         int ce = v.getId();
-        //Ein Intent erzeugen, wenn der Button geklickt wurde
-        //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
-        //von Vivien Stumpe, 01.04.16
-       /* if (ce == R.id.btn_menu_stammd){
-            Intent intent = new Intent(Stammdaten.this, Menu.class);
-            startActivity(intent);
+        //von Vivien Stumpe, 01.05.16
+        //wenn eine der Checkboxen geklickt wurde erscheinen die Buttons
+        if(ce == R.id.cck_hilfsstelle){
+            buttons.setVisibility(buttons.VISIBLE);
         }
-        */
+        if(ce == R.id.cck_mosan){
+            buttons.setVisibility(buttons.VISIBLE);
+        }
+        if(ce == R.id.cck_sanw){
+            buttons.setVisibility(buttons.VISIBLE);
+        }
+        if(ce == R.id.btn_speichern_stammd){
+            //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
+            //muss noch angepasst werden -> Daten werden ja auch gelöscht?
+            // & Vergleich mit bestehenden Daten fehlt
+            if (etxt_kreisverband.getText().length()!=0){
+                //aktObjekt.setKreisverband(etxt_kreisverband.getText().toString())
+                Toast.makeText(this, "Kreisverband gespeichert", Toast.LENGTH_LONG).show();
+            }
+            if (etxt_ortsverein.getText().length()!=0){
+                //aktObjekt.setOrtsverein(etxt_ortsverein.getText().toString())
+                Toast.makeText(this, "Ortsverein gespeichert", Toast.LENGTH_LONG).show();
+            }
+            if (etxt_ort.getText().length()!=0){
+                //aktObjekt.setOrt(etxt_ort.getText().toString())
+                Toast.makeText(this, "Ort gespeichert", Toast.LENGTH_LONG).show();
+            }
+            if (etxt_veranstaltung.getText().length()!=0){
+                //aktObjekt.setVeranstaltung(etxt_veranstaltung.getText().toString())
+                Toast.makeText(this, "Veranstaltung gespeichert", Toast.LENGTH_LONG).show();
+            }
+            //Buttons wieder ausblenden
+            buttons.setVisibility(buttons.GONE);
+        }
+        if(ce==R.id.btn_verwerfen_stammd){
+            //Buttons werden ausgeblendet
+            buttons.setVisibility(buttons.GONE);
+            //Inhalt des Textfeldes löschen?
+        }
     }
         //von Vivien Stumoe, 10.04.16
         @Override
