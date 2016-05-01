@@ -1,15 +1,12 @@
 <!-- Zuletzt geändert von Vivien Stumpe am 01.05.16 -->
 <resources>
 
-    <!-- Keine Titelleiste bzw. ActionBar anzeigen -->
+    <!-- Keine Titelleiste bzw. ActionBar anzeigen
+    Farben der Checkboxen ändern-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <!-- von Vivien Stumpe, 01.05.16
-     Style für die Checkboxen -->
-    <style name="CheckBox" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/schwarz</item>
         <item name="colorControlActivated">@color/rot</item>
     </style>
