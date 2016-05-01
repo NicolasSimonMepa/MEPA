@@ -1,6 +1,8 @@
 // zuletzt geändert von Nathalie Horn, 01.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -34,6 +37,8 @@ import de.app.mepa.upload.Upload;
 
 
 public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
+    Button button;
+    static final int CAM_REQUEST = 1;
     private ImageView imgv_before;
     private Spinner spin_ersthelfermassnahmen;
     private Spinner spin_zustand;
@@ -169,6 +174,28 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         imgv_before = (ImageView)findViewById(R.id.imgv_before_uebergabe);
         imgv_before.setOnClickListener(this);
 
+        button = (Button) findViewById(R.id.btn_foto);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File file = getFile();
+                camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                startActivityForResult(camera_intent,CAM_REQUEST);
+            }
+        });
+    }
+    
+    private File getFile() {
+        File folder = new File("sdcard/mepa");
+
+        if (!folder.exists())
+        {
+            folder.mkdir();
+        }
+
+        File image_file = new File(folder,"entlassungsrevers.jpg");
+        return image_file;
     }
 
     @Override
