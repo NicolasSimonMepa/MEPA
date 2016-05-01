@@ -40,9 +40,9 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/pers_daten"
                     android:id="@+id/txtv_pers_daten_Label"
+                    android:layout_marginLeft="25sp"
                     android:textSize="30sp"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal"
                     />
             </TableRow>
         </TableLayout>
