@@ -39,9 +39,9 @@ public class Impressum extends AppCompatActivity implements View.OnClickListener
         //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_impressum=(DrawerLayout) findViewById(R.id.drawerLayout_Impressum);
-        listview_impressum=(ListView) findViewById(R.id.listview_falluebersicht); // kann kein Listview_impressum finden, müsste eig erzeugt sein?!
+        listview_impressum=(ListView) findViewById(R.id.listview_impressum); // kann kein Listview_impressum finden, müsste eig erzeugt sein?!
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_impressum=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_impressum);
+        myadapter_impressum=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_impressum);
         listview_impressum.setAdapter(myadapter_impressum);
         listview_impressum.setOnItemClickListener(this);
 
