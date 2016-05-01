@@ -53,7 +53,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner spin_weichteile_grad;
 
     private ImageView imgv_before;
-    private ImageView imgv_next;
+   // private ImageView imgv_next;
 
     //String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
     //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
@@ -189,7 +189,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         drawerlayout_verletzung=(DrawerLayout) findViewById(R.id.drawerLayout_Verletzung);
         listview_verletzung=(ListView) findViewById(R.id.listview_verletzung);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_verletzung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_verletzung);
+        myadapter_verletzung=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_verletzung);
         listview_verletzung.setAdapter(myadapter_verletzung);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_verletzung.setOnItemClickListener(this);
@@ -198,6 +198,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         //Verbindung der View zur Scrollview in der Aktivität
         view=(View) findViewById(R.id.rl_verletzung);
         //OnTouchListener auf die View setzen
+
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             //Bei einem Swipe nach links wird die nächste Aktivität geöffnet
@@ -226,9 +227,9 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_verletzung);
-        imgv_next = (ImageView)findViewById(R.id.imgv_next_verletzung);
+       // imgv_next = (ImageView)findViewById(R.id.imgv_next_verletzung);
         imgv_before.setOnClickListener(this);
-        imgv_next.setOnClickListener(this);
+       // imgv_next.setOnClickListener(this);
 
         drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
@@ -312,14 +313,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         Aufrufen der Activity mittels Intent
         */
         if (ce == R.id.imgv_before_verletzung) {
-            Intent intent = new Intent(Verletzung.this, Pers_daten.class);
+            Intent intent = new Intent(Verletzung.this, Falleingabe.class);
             startActivity(intent);
         }
         /* Nicolas Simon, übernommen von Vivien Stumpe, 30.04.16
         Das Menü wird geöffnet in der Startposition (bei uns links)
          */
-        if(ce == R.id.imgv_menu){
-            drawerlayout_verletzung.openDrawer(GravityCompat.START);
-        }
+       // if(ce == R.id.imgv_menu){
+       //     drawerlayout_verletzung.openDrawer(GravityCompat.START);
+       // }
     }
 }
