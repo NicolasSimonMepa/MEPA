@@ -9,116 +9,116 @@
     android:layout_height="match_parent">
 
     <!-- Hauptinhalt der Aktivität -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.app.mepa.upload.Upload">
-
-    <!-- Layout für die Toolbar -->
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/lnl_toolbar">
-        <include
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            layout="@layout/toolbar_layout"/>
-    </LinearLayout>
+        tools:context="de.app.mepa.upload.Upload">
 
-    <!-- 'Upload' -->
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/txtv_upload"
-        android:id="@+id/txtv_upload"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:gravity="center"/>
-
-    <!-- TableLayout für Anordnung der Icons -->
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:gravity="center"
-        android:stretchColumns="*"
-        android:id="@+id/tbl_main">
-
-        <TableRow
+        <!-- Layout für die Toolbar -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tblr_main_1"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/lnl_toolbar">
+            <include
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/bluetooth"
-                android:text="@string/txtv_upload_bluetooth"
-                android:id="@+id/txtv_upload_bluetooth"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:gravity="center_horizontal"
-                android:textStyle="bold"
-                android:clickable="true" />
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_layout"/>
+        </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/usb"
-                android:text="@string/txtv_upload_usb"
-                android:id="@+id/txtv_upload_usb"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:gravity="center_horizontal"
-                android:textStyle="bold"
-                android:clickable="true" />
+        <!-- 'Upload' -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
 
-        </TableRow>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/txtv_upload"
+            android:id="@+id/txtv_upload"
+            android:layout_marginTop="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:gravity="center"/>
 
-        <TableRow
+        <!-- TableLayout für Anordnung der Icons -->
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tblr_main_2"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp">
+            android:layout_marginTop="110dp"
+            android:gravity="center"
+            android:stretchColumns="*"
+            android:id="@+id/tbl_main">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_main_1"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/bluetooth"
+                    android:text="@string/txtv_upload_bluetooth"
+                    android:id="@+id/txtv_upload_bluetooth"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:clickable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/usb"
+                    android:text="@string/txtv_upload_usb"
+                    android:id="@+id/txtv_upload_usb"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:clickable="true" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txtv_upload_upload"
-                android:id="@+id/txtv_upload_upload"
-                android:drawableTop="@drawable/upload"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:gravity="center_horizontal"
-                android:textStyle="bold"
-                android:clickable="true" />
+                android:id="@+id/tblr_main_2"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtv_upload_email"
-                android:id="@+id/txtv_upload_email"
-                android:drawableTop="@drawable/send_mail"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:gravity="center_horizontal"
-                android:textStyle="bold"
-                android:clickable="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtv_upload_upload"
+                    android:id="@+id/txtv_upload_upload"
+                    android:drawableTop="@drawable/upload"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:clickable="true" />
 
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtv_upload_email"
+                    android:id="@+id/txtv_upload_email"
+                    android:drawableTop="@drawable/send_mail"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:clickable="true" />
+
+            </TableRow>
 
         </TableLayout>
-</RelativeLayout>
+    </RelativeLayout>
 
     <!-- Hamburger Menü - Drawer Navigation -->
     <RelativeLayout
@@ -133,13 +133,14 @@
             android:id="@+id/menu_kopfzeile_upload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/festival"
             android:padding="8dp" >
 
             <ImageView
                 android:id="@+id/menu_upload"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu"
+                android:src="@drawable/icon_menu_weiss"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -158,7 +159,7 @@
                     android:text="@string/btn_menu"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#ffffff"/>
 
             </LinearLayout>
         </RelativeLayout>
