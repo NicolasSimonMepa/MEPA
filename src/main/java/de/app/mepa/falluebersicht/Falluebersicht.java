@@ -25,8 +25,10 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     //Button-Variablen für die Buttons in der Einstellungen Activity
     //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
 
-
+    /* Vivien Stumpe, 01.05.16
+    Das LinearLayout gibt es in der Fallübersicht nicht?
     private LinearLayout lnl_buttons;
+    */
 
    //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
     //DrawerLayout für das Hamburger Menü
@@ -36,8 +38,8 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerlayout_falluebersicht;
     private ListView listview_falluebersicht;
     private MyAdapter myadapter_falluebersicht;
-    private int[] drawer_icons_falluebersicht={R.drawable.mepa_icon, R.drawable.einstellungen,R.drawable.falleingabe,
-            R.drawable.falluebersicht, R.drawable.upload, R.drawable.impressum, R.drawable.stammdaten};
+    private int[] drawer_icons_falluebersicht={R.drawable.falleingabe,
+            R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*Nicolas Simon, übernommen von Vivien Stumpe, 12.04.16
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
@@ -48,7 +50,10 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
 
     private Button btn_speichern_fallueb;
     private Button btn_loeschen_fallueb;
-   // private LinearLayout lnl_buttons;
+   /* Vivien Stumpe, 01.05.16
+   doppelt deklariert:
+    private LinearLayout lnl_buttons;
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +77,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         drawerlayout_falluebersicht=(DrawerLayout) findViewById(R.id.drawerLayout_Falluebersicht);
         listview_falluebersicht=(ListView) findViewById(R.id.listview_falluebersicht);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_falluebersicht=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav), drawer_icons_falluebersicht);
+        myadapter_falluebersicht=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_falluebersicht);
         listview_falluebersicht.setAdapter(myadapter_falluebersicht);
         //OnItemClickListener auf die ListView aktivieren, damit auf Klicks reagiert wird
         listview_falluebersicht.setOnItemClickListener(this);
@@ -103,18 +108,23 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         //Ein Intent erzeugen, wenn der Button geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
         //eingefügt von Nicolas Simon 17.04.16
-        if (ce == R.id.btn_speichern_fallueb) {
+       if (ce == R.id.btn_speichern_fallueb) {
+           /*
             //werden die Buttons eingeblendet
             lnl_buttons.setVisibility(View.VISIBLE);
             //muss aufgerufen werden, um die View zu aktualisieren
             lnl_buttons.invalidate();
+            */
         }
         if (ce == R.id.btn_loeschen_fallueb) {
+            /*
             //werden die Buttons eingeblendet
             lnl_buttons.setVisibility(View.VISIBLE);
             //muss aufgerufen werden, um die View zu aktualisieren
             lnl_buttons.invalidate();
+            */
         }
+
     }
     //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
     @Override
