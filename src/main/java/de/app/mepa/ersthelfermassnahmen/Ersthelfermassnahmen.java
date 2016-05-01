@@ -113,18 +113,18 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
         //von Nathalie Horn, 01.05.16
         //Systemzeit anzeigen, Deklaration und Initialisierung der Variablen
-        final TextView ergebnis_zeit;
+        final TextView uebergabe_zeit;
         Button aktualisieren;
         final String[] uhrzeit = new String[1];
 
-        ergebnis_zeit = (TextView) findViewById(R.id.edtxt_ergebnis_zeit);
+        uebergabe_zeit = (TextView) findViewById(R.id.edtxt_uebergabe_zeit);
         aktualisieren = (Button) findViewById(R.id.aktualisieren);
 
         aktualisieren.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.GERMANY);
-                ergebnis_zeit.setText(dateFormat.format(new java.util.Date()));
+                uebergabe_zeit.setText(dateFormat.format(new java.util.Date()));
 
             }
         });
