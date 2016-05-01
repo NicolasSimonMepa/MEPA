@@ -265,6 +265,14 @@
                     android:textColor="#000000"
                     android:textSize="20sp"/>
             </TableRow>
+            <!-- Nathalie Horn, 01.05.16 -->
+            <TableRow>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aktualisieren"
+                    android:id="@+id/aktualisieren" />
+            </TableRow>
             <TableRow>
                 <EditText
                     android:layout_width="wrap_content"
