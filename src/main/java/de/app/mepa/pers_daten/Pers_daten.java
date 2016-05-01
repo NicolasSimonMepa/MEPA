@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -63,9 +64,9 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             "Angehörige", "Selbst", "Passanten", "Sonstiges"};
 
     /* von Vivien Stumpe, 18.04.16
-    TableRow erzeugen
+    Edittext erzeugen
      */
-    private TableRow tblr_sonstiges_zugef;
+    private EditText etxt_sonstiges;
 
     /* von Vivien Stumpe, 25.04.16
     ImageViews für den Zurück Pfeil in der Aktivität
@@ -144,10 +145,10 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         TableRow Variable der View zuordnen
         TableRow in der Activity ausblenden --> soll erst eingeblendet werden, wenn Sonstiges im Spinner gewählt wurde
          */
-        tblr_sonstiges_zugef=(TableRow) findViewById(R.id.tblr_sonstiges_pers_daten);
-        tblr_sonstiges_zugef.setVisibility(View.GONE);
+        etxt_sonstiges=(EditText) findViewById(R.id.etxt_sonstiges_pers_daten);
+        etxt_sonstiges.setVisibility(View.GONE);
         //View aktualisieren
-        tblr_sonstiges_zugef.invalidate();
+        etxt_sonstiges.invalidate();
 
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
@@ -164,7 +165,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         imgv_before.setOnClickListener(this);
         imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
         imgv_menü.setOnClickListener(this);
-        
+
         /*von Vivien Stumpe, 29.04.16
         Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
         */
@@ -218,65 +219,65 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             case 0:
                 // Was soll passieren, wenn das erste Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 1:
                 // Was soll passieren, wenn das zweite Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 2:
                 // Was soll passieren, wenn das dritte Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 3:
                 // Was soll passieren, wenn das vierte Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 4:
                 // Was soll passieren, wenn das fünfte Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 5:
                 // Was soll passieren, wenn das sechste Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
 
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 6:
                 // Was soll passieren, wenn das siebte Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 7:
                 // Was soll passieren, wenn das achte Element gewählt wurde?
                 // Sonstiges- Eingabefeld wird ausgeblendet
-                tblr_sonstiges_zugef.setVisibility(View.GONE);
+                etxt_sonstiges.setVisibility(View.GONE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
             case 8:
                 // Wenn sonstiges ausgewählt wurde, wird das Eingabefeld dazu angezeigt
-                tblr_sonstiges_zugef.setVisibility(View.VISIBLE);
+                etxt_sonstiges.setVisibility(View.VISIBLE);
                 //View aktualisieren
-                tblr_sonstiges_zugef.invalidate();
+                etxt_sonstiges.invalidate();
                 break;
         }
     }
