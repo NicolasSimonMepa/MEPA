@@ -278,4 +278,8 @@
     <string name="txtv_mitarbeiter_name">Name</string>
     <string name="txtv_mitarbeiter_vorname">Vorname</string>
     
+    <!-- Nathalie Horn 01.05.16 -->
+    <string name="aktualisieren">Aktualisieren</string>
+
+    
 </resources>
