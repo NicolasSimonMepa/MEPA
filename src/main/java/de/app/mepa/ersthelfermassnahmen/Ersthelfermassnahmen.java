@@ -1,19 +1,26 @@
-// zuletzt geändert von Emile Yoncaova, 26.04.16
+// zuletzt geändert von Nathalie Horn, 01.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -24,6 +31,7 @@ import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.upload.Upload;
+
 
 public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
@@ -102,6 +110,25 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_entlassung=(Spinner)findViewById(R.id.spin_entlassung);
         spin_entlassung.setAdapter(adapter_entlassung);
         spin_entlassung.setOnItemSelectedListener(this);
+
+        //von Nathalie Horn, 01.05.16
+        //Systemzeit anzeigen, Deklaration und Initialisierung der Variablen
+        final TextView ergebnis_zeit;
+        Button aktualisieren;
+        final String[] uhrzeit = new String[1];
+
+        ergebnis_zeit = (TextView) findViewById(R.id.edtxt_ergebnis_zeit);
+        aktualisieren = (Button) findViewById(R.id.aktualisieren);
+
+        aktualisieren.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.GERMANY);
+                ergebnis_zeit.setText(dateFormat.format(new java.util.Date()));
+
+            }
+        });
+
 
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_ersthelfermassnahmen=(DrawerLayout)findViewById(R.id.drawerLayout_Ersthelfermassnahmen);
