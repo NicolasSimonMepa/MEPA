@@ -1,8 +1,9 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 27.04.16
+//Zuletzt geändert von Nathalie Horn, 30.04.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,35 +93,44 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Deklaration und Initialisierung der Hilfsvariablen ce, die die ID des geklickten Elements enthält
         int ce = v.getId();
 
-            //Upload durch E-Mail
-            //von Nathalie Horn am 27.04.16
-            if(ce == R.id.txtv_upload_email){
-                String adresse = "spam@deinedomain.de";
-                String adressarray[] = { adresse };
-                String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
-                //Zugriff auf Datei im gleichen Verzeichnis (Upload), Erstellung einer URI zur Datei
-                File f = new File("/test.txt");
-                Uri u = Uri.fromFile(f);
+        //Upload durch E-Mail
+        //von Nathalie Horn am 27.04.16
+        if(ce == R.id.txtv_upload_email){
+            String adresse = "spam@deinedomain.de";
+            String adressarray[] = { adresse };
+            String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
+
+            //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
+            File ordner;
+            ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
+            if (!ordner.exists()) {
+                ordner.mkdirs();
+            }
+            //Der Dateiname besteht aus 'Text' und der Zeit in Millisekunden
+            //Erstellung einer URI zur Datei
+            File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
+            Uri u = Uri.fromFile(f);
 
 
-                // Intent anlegen der die Funktion "Action_Send" aufruft.
-                Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
-                //Legt fest, dass nur EMail Apps zum Versand verwendet werden sollen.
-                //Intent.setData(Uri.parse("mailto:"));
+            // Intent anlegen der die Funktion "Action_Send" aufruft.
+            Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
+            //Legt fest, dass nur EMail Apps zum Versand verwendet werden sollen.
+            //Intent.setData(Uri.parse("mailto:"));
 
-                // Fügt der E-Mail Eigenschaften und unseren Text hinzu
-                emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
-                emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, "Das ist der Betreff");
+            // Fügt der E-Mail Eigenschaften und unseren Text hinzu
+            emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
+            emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, "Das ist der Betreff");
+            emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
 
-                //Durch EXTRA_STREAM wird eine Datei versendet.
-                emailversand.setType("*/*");
-                emailversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+            //Durch EXTRA_STREAM wird eine Datei versendet.
+            emailversand.setType("*/*");
+            emailversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
 
-                emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
-                startActivity(emailversand);
+
+            startActivity(Intent.createChooser(emailversand, "Protokoll senden"));
         }
 
-   }
+    }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
