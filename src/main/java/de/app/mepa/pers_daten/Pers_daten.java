@@ -46,10 +46,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private View view;
 
     /*von Vivien Stumpe, 12.04.16
-    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
-    ActionBarDrawerToggle und Toolbar anlegen
+    Toolbar-variable anlegen, um die Toolbar in den Screen einzubinden
     */
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     /* von Vivien Stumpe, 18.04.16
@@ -166,6 +164,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         imgv_before.setOnClickListener(this);
         imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
         imgv_menü.setOnClickListener(this);
+        
         /*von Vivien Stumpe, 29.04.16
         Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
         */
