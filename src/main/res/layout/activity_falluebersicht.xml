@@ -48,8 +48,7 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -147,7 +146,7 @@
         </RelativeLayout>
         <!-- Menüpunkte -->
         <ListView
-            android:id="@+id/listview_pers_daten"
+            android:id="@+id/listview_falluebersicht"
             android:layout_width="280dp"
             android:layout_height="match_parent"
             android:layout_below="@+id/menu_kopfzeile_falluebersicht"
