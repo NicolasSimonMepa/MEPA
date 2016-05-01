@@ -1,7 +1,8 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 26.04.16
+//Zuletzt bearbeitet von Vivien Stumpe, 01.05.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,21 +41,20 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
             R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Vivien Stumpe, 12.04.16
-    Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
-    ActionBarDrawerToggle und Toolbar anlegen
+    Toolbar-variable anlegen, um die Toolbar in den Screen einzubinden
     */
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-    /* von Vivien Stas Zurück Bild in der Aktivität
-    */
+    /* von Vivien Stumpe, 25.04.16
+    ImageViews für den Zurück Pfeil in der Aktivität
+    ergänzt am 01.05.16 (imgv_menü)
+     */
     private ImageView imgv_before;
-
-
+    private ImageView imgv_menü;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +73,9 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         /*von Vivien Stumpe, 12.04.16
         Verbindung zur Toolbar in der Acitivity herstellen
         Toolbar anstelle der ActionBar verwenden
-        ActionBarDrawerToggle initialisieren
-        DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
         */
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_notfall, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_notfall.addDrawerListener(actionbardrawertoggle);
 
         /* von Vivien Stumpe, 19.04.16
         Wechseln der Aktivität mittels Swipe
@@ -114,26 +110,27 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         /* von Vivien Stumpe, 25.04.16
         Views in der Akitivität finden und den Variablen zuweisen
         OnClickListener darauf setzen, damit auf Klicks reagiert wird
+        ergänzt von Vivien Stumpe, 01.05.16 -> imgv_menü
          */
         imgv_before = (ImageView)findViewById(R.id.imgv_before_notfall);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+
+        /*von Vivien Stumpe, 01.05.16
+        Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
+        */
+        drawerlayout_notfall.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
     }
 
-    //von Vivien Stumpe, 12.04.16
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
-    // von Vivien Stumpe, 25.04.16 aktualisiert
+    // von Vivien Stumpe, 01.05.16 aktualisiert
     private void selectItemFromDrawer(int position){
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
@@ -161,6 +158,8 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
             Intent intent = new Intent(notfallsituation.this, Impressum.class);
             startActivity(intent);
         }
+        //Menü schließen
+        drawerlayout_notfall.closeDrawers();
     }
 
     @Override
@@ -179,6 +178,12 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         if(ce == R.id.imgv_before_notfall){
             Intent intent = new Intent(notfallsituation.this, Falleingabe.class);
             startActivity(intent);
+        }
+        /* von Vivien Stumpe, 01.05.16
+        Das Menü wird geöffnet in der Startposition (bei uns links)
+         */
+        if(ce == R.id.imgv_menu){
+            drawerlayout_notfall.openDrawer(GravityCompat.START);
         }
     }
 }
