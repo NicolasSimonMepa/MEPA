@@ -491,24 +491,18 @@
                                 android:layout_weight="1"/>
                         </TableRow>
 
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/tblr_sonstiges_pers_daten">
-
-                            <EditText
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/etxt_sonstiges_pers_daten"
-                                android:textSize="20sp"
-                                android:inputType="textCapSentences"
-                                android:maxLines="2"
-                                android:maxLength="45"
-                                android:textColor="#000000"
-                                android:hint="@string/sonstiges" />
-                        </TableRow>
-
                     </TableLayout>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tbl_pers_daten_2"
+                        android:id="@+id/etxt_sonstiges_pers_daten"
+                        android:textSize="20sp"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="2"
+                        android:maxLength="45"
+                        android:textColor="#000000"
+                        android:hint="@string/sonstiges" />
                 </RelativeLayout>
 
 
