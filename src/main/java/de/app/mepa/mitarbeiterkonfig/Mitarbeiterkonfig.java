@@ -1,7 +1,7 @@
 /**
  * Created by Nathalie on 18.04.2016.
  */
-// Zuletzt bearbeitet von Nathalie Horn, 25.04.16
+// Zuletzt bearbeitet von Nathalie Horn, 02.05.16
 package de.app.mepa.mitarbeiterkonfig;
 
 import android.content.Intent;
@@ -10,12 +10,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -47,12 +51,19 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
-    /* 
-Buttonvariablen für die Buttons Speichern und Verwerfen
- */
+    //von Nathalie Horn 02.05.16
+    //Attribute festlegen
+    protected String vorname;
+    protected String nachname;
+
+    //Buttonvariablen für die Buttons Speichern und Verwerfen
     private LinearLayout lnl_buttons;
     private Button btn_speichern;
     private Button btn_verwerfen;
+    private EditText etxt_mitarbeiter_name;
+    private EditText etxt_mitarbeiter_vorname;
+    private TextWatcher textWatcher;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +91,13 @@ Buttonvariablen für die Buttons Speichern und Verwerfen
         actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_mitarbeiterkonfig, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_mitarbeiterkonfig.addDrawerListener(actionbardrawertoggle);
 
-        //Zuweisen der Button-Variablen zu den Buttons in der Activity
-        lnl_buttons = (LinearLayout)findViewById(R.id.lnl_buttons);
+        /* von Nathalie Horn, 02.05.16
+        Edittexte und Buttons in der Activity finden und ansprechen
+         */
+        lnl_buttons=(LinearLayout)findViewById(R.id.lnl_buttons);
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
+        etxt_mitarbeiter_name=(EditText)findViewById(R.id.etxt_mitarbeiter_name);
+        etxt_mitarbeiter_vorname=(EditText)findViewById(R.id.etxt_mitarbeiter_vorname);
 
         /*
         Zuweisen der Buttonvariablen zu den Buttons in der Activity
@@ -91,6 +107,34 @@ Buttonvariablen für die Buttons Speichern und Verwerfen
         btn_speichern = (Button)findViewById(R.id.btn_speichern_mitarbeiter_konfig);
         btn_verwerfen.setOnClickListener(this);
         btn_speichern.setOnClickListener(this);
+
+        textWatcher=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Buttons speichern & verwerfen sind sichtbar
+                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+            }
+        };
+
+        /* von Vivien Stumpe, 01.05.16
+        TextChangedListener muss auf die Eingabefelder gesetzt werden
+        damit auch registriert wird, wenn eine Eingabe getätigt wurde
+        und entsprechend reagiert werden kann -> siehe TextWatcher
+         */
+        etxt_mitarbeiter_name.addTextChangedListener(textWatcher);
+        etxt_mitarbeiter_vorname.addTextChangedListener(textWatcher);
+
+
     }
 
     @Override
@@ -101,7 +145,32 @@ Buttonvariablen für die Buttons Speichern und Verwerfen
     }
 
     @Override
-    public void onClick(View v) {    }
+    public void onClick(View v) {
+        //von Nathalie Horn, 02.05.16
+        //clicked element mit dem geklickten Button belegen
+        int ce = v.getId();
+
+        if(ce == R.id.btn_speichern_mitarbeiter_konfig) {
+            //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
+            //muss noch angepasst werden -> Daten werden ja auch gelöscht?
+            // & Vergleich mit bestehenden Daten fehlt
+            if (etxt_mitarbeiter_name.getText().length() != 0 || etxt_mitarbeiter_vorname.getText().length() != 0) {
+                //aktObjekt.setKreisverband(etxt_kreisverband.getText().toString())
+                Toast.makeText(this, "Mitarbeiter gespeichert", Toast.LENGTH_LONG).show();
+            }
+
+            //Buttons wieder ausblenden
+            lnl_buttons.setVisibility(lnl_buttons.GONE);
+        }
+
+        if(ce==R.id.btn_verwerfen_mitarbeiter_konfig){
+            Toast.makeText(this, "Mitarbeiter verworfen", Toast.LENGTH_LONG).show();
+            //Buttons werden ausgeblendet
+            lnl_buttons.setVisibility(lnl_buttons.GONE);
+            //Inhalt des Textfeldes löschen?
+        }
+
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
