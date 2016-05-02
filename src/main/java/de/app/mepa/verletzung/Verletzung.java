@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -52,13 +51,12 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner spin_beine_grad;
     private Spinner spin_weichteile_grad;
 
-    private ImageView imgv_before;
-   // private ImageView imgv_next;
+
 
     //String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
     //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
-    private String[]art = {" ", "offen", "geschl"};
-    private String[]grad = {" ", "leicht", "mittel", "schwer"};
+    private String[]art = {"-----", "offen", "geschl"};
+    private String[]grad = {"-----", "leicht", "mittel", "schwer"};
     //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -77,7 +75,9 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     Der ActionBarDrawerToggle sorgt dafür, dass das DrawerLayout in der übergebenen Toolbar angezeigt wird
     ActionBarDrawerToggle und Toolbar anlegen
     */
-    private ActionBarDrawerToggle actionbardrawertoggle;
+    private ImageView imgv_before;
+    private ImageView imgv_menü;
+
     Toolbar toolbar;
 
     @Override
@@ -206,6 +206,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
                 Intent intent = new Intent(Verletzung.this, Erkrankung.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Verletzung.this, Pers_daten.class);
@@ -221,8 +222,8 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         */
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_verletzung, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_verletzung.addDrawerListener(actionbardrawertoggle);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -234,13 +235,6 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    //Nicolas Simon, übernommen von Vivien Stumpe, 12.04.16
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
 
     //Prozedur, die aufgerufen wird wenn ein Listenelement im Spinner ausgewählt wurde
     //Nicolas Simon, übernommen von Vivien Stumpe, 06.04.16
@@ -319,8 +313,8 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         /* Nicolas Simon, übernommen von Vivien Stumpe, 30.04.16
         Das Menü wird geöffnet in der Startposition (bei uns links)
          */
-       // if(ce == R.id.imgv_menu){
-       //     drawerlayout_verletzung.openDrawer(GravityCompat.START);
-       // }
+       if(ce == R.id.imgv_menu){
+         drawerlayout_verletzung.openDrawer(GravityCompat.START);
+       }
     }
 }
