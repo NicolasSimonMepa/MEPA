@@ -77,7 +77,8 @@
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp" />
+                        android:layout_marginRight="5dp"
+                         android:visibility="invisible"/>
 
                     <Button
                         android:layout_width="wrap_content"
@@ -89,7 +90,8 @@
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp" />
+                        android:layout_marginRight="5dp"
+                         android:visibility="invisible"/>
                 </TableRow>
 
             </TableLayout>
