@@ -1,5 +1,5 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 30.04.16
+//Zuletzt geändert von Nathalie Horn, 02.05.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
@@ -14,8 +14,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.net.Uri;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -28,9 +35,12 @@ import de.app.mepa.mepa.R;
 
 public class Upload extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    //von Nathalie Horn, 25.04.16
+    //von Nathalie Horn, 25.04.16, geändert am 02.05.16
     //Private Textvariablen, die die Möglichkeiten des Uploads anzeigen.
     private TextView txtv_email;
+    private TextView txtv_bluetooth;
+    private TextView txtv_usb;
+    private TextView txtv_upload;
 
     //Drawer Layout: Listview, Adapter und Array der Icons im Drawer Menü
     private DrawerLayout drawerlayout_upload;
@@ -53,11 +63,19 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
         //Verbindung zwischen Variable und TextView in der Activity herstellen
         //von Nathalie Horn, 25.04.16
+        //geändert am 02.05.16
         txtv_email = (TextView)findViewById(R.id.txtv_upload_email);
+        txtv_bluetooth = (TextView)findViewById(R.id.txtv_upload_bluetooth);
+        txtv_usb = (TextView)findViewById(R.id.txtv_upload_usb);
+        txtv_upload = (TextView)findViewById(R.id.txtv_upload_upload);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Nathalie Horn, 25.04.16
+        //geändert am 02.05.16
         txtv_email.setOnClickListener(this);
+        txtv_bluetooth.setOnClickListener(this);
+        txtv_usb.setOnClickListener(this);
+        txtv_upload.setOnClickListener(this);
 
         // für das Drawer Layout, Drawer und Listview zuweisen
         drawerlayout_upload = (DrawerLayout) findViewById(R.id.drawerLayout_Upload);
@@ -111,6 +129,21 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
             Uri u = Uri.fromFile(f);
 
+            //von Nathalie Horn, 02.05.16
+            //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
+            FileOutputStream fileOut = null;
+            try {
+                fileOut = new FileOutputStream(f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            OutputStreamWriter writer = new OutputStreamWriter(fileOut);
+            try {
+                writer.write(nachricht);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
             // Intent anlegen der die Funktion "Action_Send" aufruft.
             Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
@@ -128,6 +161,55 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
 
             startActivity(Intent.createChooser(emailversand, "Protokoll senden"));
+        }
+        //von Nathalie Horn am 02.05.16
+        if(ce == R.id.txtv_upload_bluetooth){
+            String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
+
+            //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
+            File ordner;
+            ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
+            if (!ordner.exists()) {
+                ordner.mkdirs();
+            }
+            //Der Dateiname besteht aus 'Text' und der Zeit in Millisekunden
+            //Erstellung einer URI zur Datei
+            File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
+            Uri u = Uri.fromFile(f);
+
+            //von Nathalie Horn, 02.05.16
+            //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
+            FileOutputStream fileOut = null;
+            try {
+                fileOut = new FileOutputStream(f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            OutputStreamWriter writer = new OutputStreamWriter(fileOut);
+            try {
+                writer.write(nachricht);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Intent anlegen der die Funktion "Action_Send" aufruft.
+            Intent bluetoothversand = new Intent(android.content.Intent.ACTION_SEND);
+            //Durch EXTRA_STREAM wird eine Datei versendet.
+            bluetoothversand.setType("*/*");
+            bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+
+            startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
+
+        }
+
+        if(ce == R.id.txtv_upload_usb){
+            Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
+
+        }
+
+        if(ce == R.id.txtv_upload_upload){
+            Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
+
         }
 
     }
