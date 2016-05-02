@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 25.04.2016
+//Zuletzt geändert von Vivien Stumpe am 02.05.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -11,11 +11,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,7 +71,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private DrawerLayout drawerlayout_falleingabe;
     private ListView listview_falleingabe;
     private MyAdapter myadapter_fallein;
-    private int[] drawer_icons_falleingabe= {R.drawable.falleingabe,
+    private int[] drawer_icons_falleingabe = {R.drawable.falleingabe,
             R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Vivien Stumpe, 12.04.16
@@ -86,93 +89,100 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     public int img_uebergabe;
     public int img_notfall;
     public int img_bemerkung;
+    private View viewToAnimate;
 
-    public void setIconPerson(int person){
-        img_person=person;
-        TextView txtv_person=(TextView)findViewById(R.id.txtv_fallein_pers);
+    private LinearLayout lnl_buttons;
+    private Button btn_speichern;
+    private Button btn_verwerfen;
+
+    public void setIconPerson(int person) {
+        img_person = person;
+        TextView txtv_person = (TextView) findViewById(R.id.txtv_fallein_pers);
         try {
             txtv_person.setCompoundDrawablesWithIntrinsicBounds(0, img_person, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconVerletzung(int verletzung){
-        img_verletzung=verletzung;
-        TextView txtv_verletzung=(TextView)findViewById(R.id.txtv_fallein_verletzung);
+    public void setIconVerletzung(int verletzung) {
+        img_verletzung = verletzung;
+        TextView txtv_verletzung = (TextView) findViewById(R.id.txtv_fallein_verletzung);
         try {
             txtv_verletzung.setCompoundDrawablesWithIntrinsicBounds(0, img_verletzung, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconErkrankung(int erkrankung){
-        img_erkrankung=erkrankung;
-        TextView txtv_erkrankung=(TextView)findViewById(R.id.txtv_fallein_erkrankung);
+    public void setIconErkrankung(int erkrankung) {
+        img_erkrankung = erkrankung;
+        TextView txtv_erkrankung = (TextView) findViewById(R.id.txtv_fallein_erkrankung);
         try {
             txtv_erkrankung.setCompoundDrawablesWithIntrinsicBounds(0, img_erkrankung, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconMaßnahmen(int maßnahmen){
-        img_maßnahmen=maßnahmen;
-        TextView txtv_maßnahmen=(TextView)findViewById(R.id.txtv_fallein_maßnahmen);
+    public void setIconMaßnahmen(int maßnahmen) {
+        img_maßnahmen = maßnahmen;
+        TextView txtv_maßnahmen = (TextView) findViewById(R.id.txtv_fallein_maßnahmen);
         try {
             txtv_maßnahmen.setCompoundDrawablesWithIntrinsicBounds(0, img_maßnahmen, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconErstbefund(int erstbefund){
-        img_erstbefund=erstbefund;
-        TextView txtv_erstbefund=(TextView)findViewById(R.id.txtv_fallein_erstbef);
+    public void setIconErstbefund(int erstbefund) {
+        img_erstbefund = erstbefund;
+        TextView txtv_erstbefund = (TextView) findViewById(R.id.txtv_fallein_erstbef);
         try {
             txtv_erstbefund.setCompoundDrawablesWithIntrinsicBounds(0, img_erstbefund, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconUebergabe(int uebergabe){
-        img_uebergabe=uebergabe;
-        TextView txtv_uebergabe=(TextView)findViewById(R.id.txtv_fallein_uebergabe);
+    public void setIconUebergabe(int uebergabe) {
+        img_uebergabe = uebergabe;
+        TextView txtv_uebergabe = (TextView) findViewById(R.id.txtv_fallein_uebergabe);
         try {
             txtv_uebergabe.setCompoundDrawablesWithIntrinsicBounds(0, img_uebergabe, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconNotfall(int notfall){
-        img_notfall=notfall;
-        TextView txtv_notfall=(TextView)findViewById(R.id.txtv_fallein_notfall);
+    public void setIconNotfall(int notfall) {
+        img_notfall = notfall;
+        TextView txtv_notfall = (TextView) findViewById(R.id.txtv_fallein_notfall);
         try {
             txtv_notfall.setCompoundDrawablesWithIntrinsicBounds(0, img_notfall, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
     }
 
-    public void setIconBemerkung(int bemerkung){
-        img_bemerkung=bemerkung;
-        TextView txtv_bemerkung=(TextView)findViewById(R.id.txtv_fallein_bemerkung);
+    public void setIconBemerkung(int bemerkung) {
+        img_bemerkung = bemerkung;
+        TextView txtv_bemerkung = (TextView) findViewById(R.id.txtv_fallein_bemerkung);
         try {
             txtv_bemerkung.setCompoundDrawablesWithIntrinsicBounds(0, img_bemerkung, 0, 0);
-        }
-        catch (Exception e) {
+            ButtonsSichtbar();
+        } catch (Exception e) {
 
         }
+
+
     }
 
     @Override
@@ -192,14 +202,14 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         //Verbindung zwischen Variable und TextView in der Activity herstellen
         //von Vivien Stumpe, 14.04.16
-        txtv_pers_daten = (TextView)findViewById(R.id.txtv_fallein_pers);
-        txtv_notfall = (TextView)findViewById(R.id.txtv_fallein_notfall);
-        txtv_verletzung = (TextView)findViewById(R.id.txtv_fallein_verletzung);
-        txtv_erkrankung = (TextView)findViewById(R.id.txtv_fallein_erkrankung);
-        txtv_massnahmen = (TextView)findViewById(R.id.txtv_fallein_maßnahmen);
-        txtv_erstbefund = (TextView)findViewById(R.id.txtv_fallein_erstbef);
-        txtv_uebergabe = (TextView)findViewById(R.id.txtv_fallein_uebergabe);
-        txtv_bemerkung = (TextView)findViewById(R.id.txtv_fallein_bemerkung);
+        txtv_pers_daten = (TextView) findViewById(R.id.txtv_fallein_pers);
+        txtv_notfall = (TextView) findViewById(R.id.txtv_fallein_notfall);
+        txtv_verletzung = (TextView) findViewById(R.id.txtv_fallein_verletzung);
+        txtv_erkrankung = (TextView) findViewById(R.id.txtv_fallein_erkrankung);
+        txtv_massnahmen = (TextView) findViewById(R.id.txtv_fallein_maßnahmen);
+        txtv_erstbefund = (TextView) findViewById(R.id.txtv_fallein_erstbef);
+        txtv_uebergabe = (TextView) findViewById(R.id.txtv_fallein_uebergabe);
+        txtv_bemerkung = (TextView) findViewById(R.id.txtv_fallein_bemerkung);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Vivien Stumpe, 14.04.16
@@ -214,10 +224,10 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         //von Vivien Stumpe, 08.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
-        drawerlayout_falleingabe=(DrawerLayout) findViewById(R.id.drawerLayout_Falleingabe);
-        listview_falleingabe=(ListView) findViewById(R.id.listview_falleingabe);
+        drawerlayout_falleingabe = (DrawerLayout) findViewById(R.id.drawerLayout_Falleingabe);
+        listview_falleingabe = (ListView) findViewById(R.id.listview_falleingabe);
         //Adapter erzeugen und setzen, um die Einträge der ListView darzustellen
-        myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_falleingabe);
+        myadapter_fallein = new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_falleingabe);
         listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
 
@@ -227,25 +237,31 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         ActionBarDrawerToggle initialisieren
         DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
         */
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_falleingabe, toolbar, R.string.drawer_open, R.string.drawer_close);
+        actionbardrawertoggle = new ActionBarDrawerToggle(this, drawerlayout_falleingabe, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_falleingabe.addDrawerListener(actionbardrawertoggle);
         /* von Vivien Stumpe, 25.04.16
         Name der App (MEPA) wird in der Toolbar ausgeblendet
          */
         getSupportActionBar().setTitle("");
-        // ---------------------------
-        setIconPerson(R.drawable.person);
-        setIconVerletzung(R.drawable.verletzung);
-        setIconErkrankung(R.drawable.erkrankung_vergiftung);
-        setIconMaßnahmen(R.drawable.massnahmen);
-        setIconErstbefund(R.drawable.befund);
-        setIconUebergabe(R.drawable.uebergabe);
-        setIconNotfall(R.drawable.notfallsituation);
-        setIconBemerkung(R.drawable.bemerkung);
 
+        // von Vivien Stumpe, 02.05.16
+        // Standard Icons für das Kachel-Menü laden
+        IconsStart();
 
+        lnl_buttons = (LinearLayout) findViewById(R.id.lnl_falleingabe_buttons);
+        btn_speichern = (Button) findViewById(R.id.btn_speichern_fallein);
+        btn_verwerfen = (Button) findViewById(R.id.btn_verwerfen_fallein);
+        btn_speichern.setOnClickListener(this);
+        btn_verwerfen.setOnClickListener(this);
+
+        /* von Vivien Stumpe, 02.05.16
+        View die animiert werden soll zur Variable zuordnen
+        View unsichtbar machen
+         */
+        viewToAnimate=(View)findViewById(R.id.imgv_animation);
+        viewToAnimate.setVisibility(viewToAnimate.GONE);
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -262,64 +278,62 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //von Vivien Stumpe, 03.04.16
         int ce = v.getId();
 
-        /*
-        //Ein Intent erzeugen, wenn der bestimmte Button geklickt wurde
-        //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
-        //Aufrufen der Activity mittels Intent
-        //von Vivien Stumpe, 03.04.16
-        if(ce == R.id.btn_menu_fallein){
-            Intent intent = new Intent(Falleingabe.this, Menu.class);
-            startActivity(intent);
-        }
-        */
         //Ein Intent erzeugen, wenn die bestimmte TextView geklickt wurde
         //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
         //Aufrufen der Activity mittels Intent
         //von Vivien Stumpe, 14.04.16
-        if(ce == R.id.txtv_fallein_pers){
-            // -----------------------
-            setIconPerson(R.drawable.rbtn_checked);
+        if (ce == R.id.txtv_fallein_pers) {
+            
+            setIconPerson(R.drawable.person_save);
             Intent intent = new Intent(Falleingabe.this, Pers_daten.class);
             startActivity(intent);
 
         }
-        if(ce == R.id.txtv_fallein_notfall){
+        if (ce == R.id.txtv_fallein_notfall) {
             setIconNotfall(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_verletzung){
+        if (ce == R.id.txtv_fallein_verletzung) {
             setIconVerletzung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_erkrankung){
+        if (ce == R.id.txtv_fallein_erkrankung) {
             setIconErkrankung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_maßnahmen){
+        if (ce == R.id.txtv_fallein_maßnahmen) {
             setIconMaßnahmen(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_erstbef){
+        if (ce == R.id.txtv_fallein_erstbef) {
             setIconErstbefund(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_bemerkung){
+        if (ce == R.id.txtv_fallein_bemerkung) {
             setIconBemerkung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
             startActivity(intent);
         }
-        if(ce == R.id.txtv_fallein_uebergabe){
+        if (ce == R.id.txtv_fallein_uebergabe) {
             setIconUebergabe(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
         /*Übergabe Seite ist Ersthelfermaßnahmen Seite
         */
+        // von Vivien Stumpe, 02.05.16
+        if (ce == R.id.btn_speichern_fallein) {
+            speichern();
+        }
+        if (ce == R.id.btn_verwerfen_fallein) {
+            verwerfen();
+        }
+
     }
 
     //von Vivien Stumpe, 08.04.16
@@ -329,33 +343,112 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
+
     // von Vivien Stumpe, 25.04.16 aktualisiert
-    private void selectItemFromDrawer(int position){
+    private void selectItemFromDrawer(int position) {
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if(position==0) {
+        if (position == 0) {
             Intent intent = new Intent(Falleingabe.this, Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
+        if (position == 1) {
             Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
+        if (position == 2) {
             Intent intent = new Intent(Falleingabe.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
+        if (position == 3) {
             Intent intent = new Intent(Falleingabe.this, Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
+        if (position == 4) {
             Intent intent = new Intent(Falleingabe.this, Impressum.class);
             startActivity(intent);
         }
     }
+    
+    /* von Vivien Stumpe, 02.05.16
+    Prozedur, die die Standard Icons für das Kachelmenü lädt
+     */
+    protected void IconsStart(){
+        setIconPerson(R.drawable.person);
+        setIconVerletzung(R.drawable.verletzung);
+        setIconErkrankung(R.drawable.erkrankung_vergiftung);
+        setIconMaßnahmen(R.drawable.massnahmen);
+        setIconErstbefund(R.drawable.befund);
+        setIconUebergabe(R.drawable.uebergabe);
+        setIconNotfall(R.drawable.notfallsituation);
+        setIconBemerkung(R.drawable.bemerkung);
+    }
+    /* von Vivien Stumpe, 02.05.16
+    Prozedur, die prüft, ob sich ein Icon geändert hat
+    und wenn dies der Fall ist, die Buttons zum Speichern oder Verwerfen anzeigt
+     */
+    protected void ButtonsSichtbar() {
+        boolean aenderung = false;
+        if (img_person!=R.drawable.person) {
+            aenderung = true;
+        } else if (img_verletzung!=R.drawable.verletzung) {
+            aenderung = true;
+        } else if (img_erkrankung!=R.drawable.erkrankung_vergiftung) {
+            aenderung = true;
+        } else if (img_maßnahmen!=R.drawable.massnahmen) {
+            aenderung = true;
+        } else if (img_erstbefund!=R.drawable.befund) {
+            aenderung = true;
+        } else if (img_uebergabe!=R.drawable.uebergabe) {
+            aenderung = true;
+        } else if (img_notfall!=R.drawable.notfallsituation) {
+            aenderung = true;
+        } else if (img_bemerkung!=R.drawable.bemerkung) {
+            aenderung = true;
+        }
+
+        if(aenderung){
+            lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+        }
+    }
+    /* von Vivien Stumpe, 02.05.16
+    Prozedur, die beim Betätigen des Speichern-Buttons aufgerufen wird
+    Die Daten werden in der DB gespeichert
+    Es erfolgt eine Animation, dass die Daten erfolgreich gespeichert wurden
+    Die Icons werden zurückgesetzt
+     */
+    public void speichern(){
+        //Animation
+        //Daten speichern in der DB
+        //Icons zurücksetzen
+        // Die View wird sichtbar -> Animation
+        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        viewToAnimate.startAnimation(in);
+        viewToAnimate.setVisibility(View.VISIBLE);
+        //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
+        IconsStart();
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
+        //Die View wird wieder unsichtbar -> Animation
+        Animation out = AnimationUtils.makeOutAnimation(this, true);
+        viewToAnimate.startAnimation(out);
+        viewToAnimate.setVisibility(View.INVISIBLE);
+
+    }
+    /* von Vivien Stumpe, 02.05.16
+    Prozedur, die beim Betätigen des Verwerfen-Buttons aufgerufen wird
+    Die Daten werden nicht in der DB gespeichert
+    Die Icons werden zurückgesetzt
+    Die Buttons verschwinden
+     */
+    public void verwerfen(){
+        //Icons zurücksetzen
+        IconsStart();
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
+
+    }
+
 }
