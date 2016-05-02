@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <!-- von Nathalie Horn, 18.04.16 -->
-<!-- zuletzt geändert von Nathalie Horn, 18.04.16-->
+<!-- zuletzt geändert von Nathalie Horn, 02.05.16-->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout_Mitarbeiterkonfig"
@@ -178,13 +178,14 @@
             android:id="@+id/menu_kopfzeile_mitarbeiterkonfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/festival"
             android:padding="8dp" >
 
             <ImageView
                 android:id="@+id/menu_mitarbeiterkonfig"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_menu"
+                android:src="@drawable/icon_menu_weiss"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -203,7 +204,7 @@
                     android:text="@string/btn_menu"
                     android:layout_marginTop="15dp"
                     android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#ffffff"/>
 
             </LinearLayout>
         </RelativeLayout>
