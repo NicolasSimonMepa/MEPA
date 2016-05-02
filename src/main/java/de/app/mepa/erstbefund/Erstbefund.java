@@ -1,6 +1,7 @@
 package de.app.mepa.erstbefund;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
@@ -26,6 +26,7 @@ import de.app.mepa.upload.Upload;
 
 public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
         private ImageView imgv_before;
+        private ImageView imgv_menü;
         private Spinner spin_bewusstseinslage;
         private Spinner spin_kreislauf;
         private Spinner spin_pupillenfunktion_rechts;
@@ -47,7 +48,7 @@ public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemS
         private MyAdapter myadapter_erstbefund;
          private int[] drawer_icons_erstbefund={R.drawable.falleingabe,
                  R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
-        private ActionBarDrawerToggle actionbardrawertoggle;
+
         Toolbar toolbar;
 
 
@@ -138,8 +139,6 @@ protected void onCreate(Bundle savedInstanceState){
         
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erstbefund, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_erstbefund.addDrawerListener(actionbardrawertoggle);
 
 
                  // von Vivien Stumpe, 11.04.16
@@ -164,14 +163,11 @@ protected void onCreate(Bundle savedInstanceState){
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_erstbefund);
         imgv_before.setOnClickListener(this);
-        }
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
 
-@Override
-protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
+        drawerlayout_erstbefund.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
 
 @Override
 public void onItemSelected(AdapterView<?>parent,View view,int position,long id){
@@ -227,7 +223,8 @@ private void selectItemFromDrawer(int position){
                 Intent intent = new Intent(Erstbefund.this, Impressum.class);
                 startActivity(intent);
         }
-        }
+        drawerlayout_erstbefund.closeDrawers();
+    }
         @Override
         public void onClick(View v) {
         /* von Vivien Stumpe, 25.04.16
@@ -241,9 +238,12 @@ private void selectItemFromDrawer(int position){
         Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her
         Aufrufen der Activity mittels Intent
         */
-                if (ce == R.id.imgv_before_erstbefund) {
+            if (ce == R.id.imgv_before_erstbefund) {
                         Intent intent = new Intent(Erstbefund.this, Falleingabe.class);
                         startActivity(intent);
-                }
+            }
+            if(ce == R.id.imgv_menu){
+                drawerlayout_erstbefund.openDrawer(GravityCompat.START);
+            }
         }
 }
