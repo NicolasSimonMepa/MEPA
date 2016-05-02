@@ -55,7 +55,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
 
     //String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
     //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
-    private String[]art = {"-----", "offen", "geschl"};
+    private String[]art = {"-----", "offen", "geschlossen"};
     private String[]grad = {"-----", "leicht", "mittel", "schwer"};
     //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
