@@ -1,9 +1,9 @@
 package de.app.mepa.bemerkung;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +23,7 @@ import de.app.mepa.mepa.R;
 
 public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
+    private ImageView imgv_menü;
     private DrawerLayout drawerlayout_bemerkung;
     private ListView listview_bemerkung;
     private MyAdapter myadapter_bemerkung;
@@ -34,8 +35,6 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     @Override
@@ -53,8 +52,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_bemerkung, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_bemerkung.addDrawerListener(actionbardrawertoggle);
+
 
         /* von Vivien Stumpe, 11.04.16
         Wechseln der Aktivität mittels Swipe
@@ -70,6 +68,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
                 Intent intent = new Intent(Bemerkung.this, Falleingabe.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_bemerkung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Bemerkung.this, notfallsituation.class);
@@ -80,14 +79,12 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_bemerkung);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+
+        drawerlayout_bemerkung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Ersthelfermassnahmen der Position des geklickten Items/Menüpunkt
@@ -119,6 +116,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
             Intent intent = new Intent(Bemerkung.this, Impressum.class);
             startActivity(intent);
         }
+        drawerlayout_bemerkung.closeDrawers();
     }
     @Override
     public void onClick(View v) {
@@ -136,6 +134,9 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         if (ce == R.id.imgv_before_bemerkung) {
             Intent intent = new Intent(Bemerkung.this, Falleingabe.class);
             startActivity(intent);
+        }
+        if(ce == R.id.imgv_menu){
+            drawerlayout_bemerkung.openDrawer(GravityCompat.START);
         }
     }
 }
