@@ -62,7 +62,7 @@ hier entwickelt durch Radio Buttons -->
         <include
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            layout="@layout/toolbar_layout"/>
+            layout="@layout/toolbar_eingaben_layout"/>
     </LinearLayout>
 
     <ScrollView
