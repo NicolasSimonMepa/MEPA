@@ -58,7 +58,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private TextView txtv_erstbefund;
     private TextView txtv_uebergabe;
     private TextView txtv_bemerkung;
-    
+
 
     //von Vivien Stumpe, 08.04.16
     //DrawerLayout für das Hamburger Menü
@@ -68,7 +68,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private DrawerLayout drawerlayout_falleingabe;
     private ListView listview_falleingabe;
     private MyAdapter myadapter_fallein;
-   private int[] drawer_icons_falleingabe= {R.drawable.falleingabe,
+    private int[] drawer_icons_falleingabe= {R.drawable.falleingabe,
             R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
     /*von Vivien Stumpe, 12.04.16
@@ -77,6 +77,103 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     */
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
+    // ------------------------------------------------------
+    public int img_person;
+    public int img_verletzung;
+    public int img_erkrankung;
+    public int img_maßnahmen;
+    public int img_erstbefund;
+    public int img_uebergabe;
+    public int img_notfall;
+    public int img_bemerkung;
+
+    public void setIconPerson(int person){
+        img_person=person;
+        TextView txtv_person=(TextView)findViewById(R.id.txtv_fallein_pers);
+        try {
+            txtv_person.setCompoundDrawablesWithIntrinsicBounds(0, img_person, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconVerletzung(int verletzung){
+        img_verletzung=verletzung;
+        TextView txtv_verletzung=(TextView)findViewById(R.id.txtv_fallein_verletzung);
+        try {
+            txtv_verletzung.setCompoundDrawablesWithIntrinsicBounds(0, img_verletzung, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconErkrankung(int erkrankung){
+        img_erkrankung=erkrankung;
+        TextView txtv_erkrankung=(TextView)findViewById(R.id.txtv_fallein_erkrankung);
+        try {
+            txtv_erkrankung.setCompoundDrawablesWithIntrinsicBounds(0, img_erkrankung, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconMaßnahmen(int maßnahmen){
+        img_maßnahmen=maßnahmen;
+        TextView txtv_maßnahmen=(TextView)findViewById(R.id.txtv_fallein_maßnahmen);
+        try {
+            txtv_maßnahmen.setCompoundDrawablesWithIntrinsicBounds(0, img_maßnahmen, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconErstbefund(int erstbefund){
+        img_erstbefund=erstbefund;
+        TextView txtv_erstbefund=(TextView)findViewById(R.id.txtv_fallein_erstbef);
+        try {
+            txtv_erstbefund.setCompoundDrawablesWithIntrinsicBounds(0, img_erstbefund, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconUebergabe(int uebergabe){
+        img_uebergabe=uebergabe;
+        TextView txtv_uebergabe=(TextView)findViewById(R.id.txtv_fallein_uebergabe);
+        try {
+            txtv_uebergabe.setCompoundDrawablesWithIntrinsicBounds(0, img_uebergabe, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconNotfall(int notfall){
+        img_notfall=notfall;
+        TextView txtv_notfall=(TextView)findViewById(R.id.txtv_fallein_notfall);
+        try {
+            txtv_notfall.setCompoundDrawablesWithIntrinsicBounds(0, img_notfall, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    public void setIconBemerkung(int bemerkung){
+        img_bemerkung=bemerkung;
+        TextView txtv_bemerkung=(TextView)findViewById(R.id.txtv_fallein_bemerkung);
+        try {
+            txtv_bemerkung.setCompoundDrawablesWithIntrinsicBounds(0, img_bemerkung, 0, 0);
+        }
+        catch (Exception e) {
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +220,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         myadapter_fallein=new MyAdapter(this, this.getResources().getStringArray(R.array.drawer_nav_neu), drawer_icons_falleingabe);
         listview_falleingabe.setAdapter(myadapter_fallein);
         listview_falleingabe.setOnItemClickListener(this);
-        
+
         /*von Vivien Stumpe, 12.04.16
         Verbindung zur Toolbar in der Acitivity herstellen
         Toolbar anstelle der ActionBar verwenden
@@ -138,9 +235,20 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         Name der App (MEPA) wird in der Toolbar ausgeblendet
          */
         getSupportActionBar().setTitle("");
+        // ---------------------------
+        setIconPerson(R.drawable.person);
+        setIconVerletzung(R.drawable.verletzung);
+        setIconErkrankung(R.drawable.erkrankung_vergiftung);
+        setIconMaßnahmen(R.drawable.massnahmen);
+        setIconErstbefund(R.drawable.befund);
+        setIconUebergabe(R.drawable.uebergabe);
+        setIconNotfall(R.drawable.notfallsituation);
+        setIconBemerkung(R.drawable.bemerkung);
+
 
     }
-        //von Vivien Stumpe, 12.04.16
+
+    //von Vivien Stumpe, 12.04.16
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -169,34 +277,44 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Aufrufen der Activity mittels Intent
         //von Vivien Stumpe, 14.04.16
         if(ce == R.id.txtv_fallein_pers){
+            // -----------------------
+            setIconPerson(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Pers_daten.class);
             startActivity(intent);
+
         }
         if(ce == R.id.txtv_fallein_notfall){
+            setIconNotfall(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_verletzung){
+            setIconVerletzung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_erkrankung){
+            setIconErkrankung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_maßnahmen){
+            setIconMaßnahmen(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_erstbef){
+            setIconErstbefund(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_bemerkung){
+            setIconBemerkung(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
             startActivity(intent);
         }
         if(ce == R.id.txtv_fallein_uebergabe){
+            setIconUebergabe(R.drawable.rbtn_checked);
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
@@ -204,7 +322,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         */
     }
 
-        //von Vivien Stumpe, 08.04.16
+    //von Vivien Stumpe, 08.04.16
     @Override
     //Wird aufgerufen, wenn ein Element im Drawer geklickt wurde
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -239,6 +357,5 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(Falleingabe.this, Impressum.class);
             startActivity(intent);
         }
-
     }
 }
