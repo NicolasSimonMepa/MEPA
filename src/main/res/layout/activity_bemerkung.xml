@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/verlauf">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -111,7 +112,7 @@
             <include
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                layout="@layout/toolbar_layout" />
+                layout="@layout/toolbar_eingaben_layout" />
         </LinearLayout>
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -125,17 +126,21 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:fillViewport="true"
             tools:context="de.app.mepa.bemerkung.Bemerkung"
-            android:id="@+id/rl_bemerkung">
+            android:id="@+id/rl_bemerkung"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="377dp"
-                android:inputType="textMultiLine"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editText"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:inputType="textCapSentences|textMultiLine"
+                android:singleLine="false"
+                android:maxLength="400"
+                android:textColor="#000000"  />
         </RelativeLayout>
     </RelativeLayout>
 
