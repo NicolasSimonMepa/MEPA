@@ -291,6 +291,90 @@
                         android:spinnerMode="dropdown" />
                 </TableRow>
 
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="RR systolisch"
+                        android:id="@+id/edtxt_rr_systolisch"
+                        android:layout_column="0" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="RR diastolisch"
+                        android:id="@+id/edtxt_rr_diastolisch"
+                        android:layout_column="0" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="Puls"
+                        android:id="@+id/edtxt_puls"
+                        android:layout_column="0" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="Atemfrequenz"
+                        android:id="@+id/edtxt_atemfrequenz"
+                        android:layout_column="0" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="spO2 (in %)"
+                        android:id="@+id/edtxt_spo2"
+                        android:layout_column="0" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:hint="Blutzucker (in mg/dl)"
+                        android:id="@+id/edtxt_blutzucker"
+                        android:layout_column="0" />
+                </TableRow>
             </TableLayout>
         </ScrollView>
     </RelativeLayout>
