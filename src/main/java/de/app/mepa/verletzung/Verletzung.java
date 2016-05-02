@@ -92,14 +92,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         //Parameter sind die aktuelle Activity, Systemressource, Array mit den Listenelementen
         //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Verletzung.this,
-                android.R.layout.simple_spinner_item,art);
+                R.layout.spinner_layout,art);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_layout);
 
         ArrayAdapter<String> adapter_grad = new ArrayAdapter<String>(Verletzung.this,
-                android.R.layout.simple_spinner_item,grad);
+                R.layout.spinner_layout,grad);
 
-        adapter_grad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter_grad.setDropDownViewResource(R.layout.spinner_layout);
 
         //Verknüpfung der Spinnervariable zum Spinner in der Activity herstellen
         //SpinnerAdapter dem Spinner zuweisen damit die Elemente ind er Activity angezeigt werden
