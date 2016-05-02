@@ -1,10 +1,10 @@
-//Zuletzt geändert von Emile Yoncaova, 26.04.16
+//Zuletzt geändert von Emile Yoncaova, 02.05.16
 package de.app.mepa.erkrankung;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +26,7 @@ import de.app.mepa.verletzung.Verletzung;
 
 public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
     private ImageView imgv_before;
+    private ImageView imgv_menü;
     //von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -40,7 +41,6 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     @Override
@@ -69,6 +69,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
                 Intent intent = new Intent(Erkrankung.this, Massnahmen.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_erkrankung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Erkrankung.this, Verletzung.class);
@@ -77,21 +78,18 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         });
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_erkrankung, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_erkrankung.addDrawerListener(actionbardrawertoggle);
+
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_erkrankung);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+
+        drawerlayout_erkrankung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
     //von Vivien Stumpe, 10.04.16
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,6 +123,7 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
             Intent intent = new Intent(Erkrankung.this, Impressum.class);
             startActivity(intent);
         }
+        drawerlayout_erkrankung.closeDrawers();
     }
     @Override
     public void onClick(View v) {
@@ -142,6 +141,9 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         if (ce == R.id.imgv_before_erkrankung) {
             Intent intent = new Intent(Erkrankung.this, Falleingabe.class);
             startActivity(intent);
+        }
+        if(ce == R.id.imgv_menu){
+            drawerlayout_erkrankung.openDrawer(GravityCompat.START);
         }
     }
 }
