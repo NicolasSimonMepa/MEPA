@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- zuletzt geändert von Vivien Stumpe, 18.04.16 -->
+<!-- zuletzt geändert von Vivien Stumpe, 02.05.16 -->
 <!-- von Vivien Stumpe, 08.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -162,8 +162,60 @@
             </TableRow>
         </TableLayout>
 
+<!-- von Vivien Stumpe, 02.05.16
+Buttons zum Verwerfen und Speichern -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tbl_falleingabe"
+            android:id="@+id/lnl_falleingabe_buttons"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:visibility="gone">
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_speichern"
+                android:id="@+id/btn_speichern_fallein"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:background="#137922"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:singleLine="false"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:minWidth="30dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_verwerfen"
+                android:id="@+id/btn_verwerfen_fallein"
+                android:background="#ee0f0f"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgv_animation"
+            android:src="@drawable/animation"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
+
     <!-- von Vivien Stumpe, 08.04.16 -->
     <!-- Hamburger Menü - Drawer Navigation -->
     <RelativeLayout
