@@ -1,10 +1,10 @@
-//Zuletzt bearbeitet von Emile Yoncaova, 26.04.16
+//Zuletzt bearbeitet von Emile Yoncaova, 02.05.16
 package de.app.mepa.massnahmen;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +25,7 @@ import de.app.mepa.mepa.R;
 
 public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
     private ImageView imgv_before;
+    private ImageView imgv_menü;
     private DrawerLayout drawerlayout_massnahmen;
     private ListView listview_massnahmen;
     private MyAdapter myadapter_massnahmen;
@@ -35,8 +36,6 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
     private View view;
 
-
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     @Override
@@ -64,6 +63,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
                 Intent intent = new Intent(Massnahmen.this, Erstbefund.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_massnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Massnahmen.this, Erkrankung.class);
@@ -72,20 +72,18 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         });
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_massnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_massnahmen.addDrawerListener(actionbardrawertoggle);
+
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_massnahmen);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+
+        drawerlayout_massnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
@@ -117,6 +115,7 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
             Intent intent = new Intent(Massnahmen.this, Impressum.class);
             startActivity(intent);
         }
+        drawerlayout_massnahmen.closeDrawers();
     }
     @Override
     public void onClick(View v) {
@@ -134,6 +133,9 @@ public class Massnahmen extends AppCompatActivity implements AdapterView.OnItemC
         if (ce == R.id.imgv_before_massnahmen) {
             Intent intent = new Intent(Massnahmen.this, Falleingabe.class);
             startActivity(intent);
+        }
+        if(ce == R.id.imgv_menu){
+            drawerlayout_massnahmen.openDrawer(GravityCompat.START);
         }
     }
 }
