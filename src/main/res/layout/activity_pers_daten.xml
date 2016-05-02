@@ -246,7 +246,7 @@
                                 android:layout_height="40dp"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:id="@+id/imgv_plz_pers_daten"
-                                android:src="@drawable/person"/>
+                                android:src="@drawable/zipcode"/>
 
                             <EditText
                                 android:layout_width="wrap_content"
