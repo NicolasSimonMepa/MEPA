@@ -1,9 +1,10 @@
-// zuletzt geändert von Nathalie Horn, 01.05.16
+// zuletzt geändert von Emile Yoncaova, 02.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,6 +40,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     Button button;
     static final int CAM_REQUEST = 1;
     private ImageView imgv_before;
+    private ImageView imgv_menü;
     private Spinner spin_ersthelfermassnahmen;
     private Spinner spin_zustand;
     private Spinner spin_transport;
@@ -51,7 +52,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private int[] drawer_icons_ersthelfermassnahmen={R.drawable.falleingabe,
             R.drawable.falluebersicht, R.drawable.upload, R.drawable.einstellungen, R.drawable.impressum};
 
-    private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
 
     private String[]ersthelfermassnahmen={"-----","keine","suffizient","insuffizient","AED"};
@@ -146,8 +146,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_ersthelfermassnahmen, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerlayout_ersthelfermassnahmen.addDrawerListener(actionbardrawertoggle);
 
 
                  // von Vivien Stumpe, 19.04.16
@@ -173,6 +171,10 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
         imgv_before = (ImageView)findViewById(R.id.imgv_before_uebergabe);
         imgv_before.setOnClickListener(this);
+        imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
+        imgv_menü.setOnClickListener(this);
+
+        drawerlayout_ersthelfermassnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         button = (Button) findViewById(R.id.btn_foto);
         button.setOnClickListener(new View.OnClickListener() {
@@ -220,12 +222,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
-        actionbardrawertoggle.syncState();
-    }
-    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Ersthelfermassnahmen der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
@@ -256,6 +252,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
             Intent intent = new Intent(Ersthelfermassnahmen.this, Impressum.class);
             startActivity(intent);
         }
+        drawerlayout_ersthelfermassnahmen.closeDrawers();
     }
     @Override
     public void onClick(View v) {
@@ -273,6 +270,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         if (ce == R.id.imgv_before_uebergabe) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Falleingabe.class);
             startActivity(intent);
+        }
+        if(ce == R.id.imgv_menu){
+            drawerlayout_ersthelfermassnahmen.openDrawer(GravityCompat.START);
         }
     }
 }
