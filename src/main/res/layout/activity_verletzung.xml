@@ -50,71 +50,6 @@
 
         </TableRow>
 
-        <RadioGroup android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_below="@id/tbl_verletzung_navi"
-                    android:gravity="center_horizontal"
-                    android:checkedButton="@+id/rBtn_verletzung"
-                    android:id="@+id/tickmarks_verletzung"
-                    android:contextClickable="false">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rBtn_pers"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_verletzung"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_erkrankung"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_massnahmen"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_erstbefund"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_uebergabe"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_notfall"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rBtn_bemerkung"
-                android:button="@null"
-                android:clickable="false"
-                android:background="@drawable/radiobutton_layout"/>
-        </RadioGroup>
     </TableLayout>
     <!-- Nicolas Simon, übernommen von Vivien Stumpe, 30.04.16
 Tickmarks zur Navigation zwischen den Seiten
@@ -130,97 +65,15 @@ hier entwickelt durch Radio Buttons -->
             layout="@layout/toolbar_layout"/>
     </LinearLayout>
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:id="@+id/tbl_verletzung_art"
-        android:layout_marginTop="100dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tblr_verletzung_z1"
-            android:layout_marginBottom="5dp">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cck_prellung"
-                android:id="@+id/cck_prellung_verletzung"
-                android:layout_column="0"
-                android:textSize="20sp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cck_verbrennung"
-                android:id="@+id/cck_verbrennung_verletzung"
-                android:textSize="20sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tblr_verletzung_z2"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cck_wunde"
-                android:id="@+id/cck_wunde_verletzung"
-                android:layout_column="0"
-                android:textSize="20sp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cck_elektro"
-                android:id="@+id/cck_elektro_verletzung"
-                android:layout_column="1"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tblr_verletzung_z3"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cck_inhalation"
-                android:id="@+id/cck_inhalation_verletzung"
-                android:textSize="20sp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sonstiges"
-                android:id="@+id/cck_sonstiges_verletzung"
-                android:textSize="20sp" />
-        </TableRow>
-
-    </TableLayout>
-
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/tbl_verletzung_art"
+        android:layout_below="@+id/tickmarks_verletzung"
         android:layout_marginTop="10dp">
 
         <TableLayout
@@ -231,10 +84,129 @@ hier entwickelt durch Radio Buttons -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/tblr_art_verletzung"
+                android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ueberschr_verletzung"
+                android:id="@+id/txtv_ueberschr1_verletzung"
+                android:textSize="25sp"
+                android:textColor="#000000"
+                android:gravity="center_horizontal"
+                />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z1"
+                android:layout_marginBottom="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_prellung"
+                    android:id="@+id/cck_prellung_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z1_1"
+                android:layout_marginBottom="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_verbrennung"
+                    android:id="@+id/cck_verbrennung_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_wunde"
+                    android:id="@+id/cck_wunde_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z2_1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_elektro"
+                    android:id="@+id/cck_elektro_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z3"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cck_inhalation"
+                    android:id="@+id/cck_inhalation_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_verletzung_z3_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sonstiges"
+                    android:id="@+id/cck_sonstiges_verletzung"
+                    android:textSize="20sp" />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_locali_verletzung"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/ueberschr2_verletzung"
+                    android:id="@+id/txtv_ueberschr2_verletzung"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal"
+                    />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/tblr_schaedel_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -244,17 +216,27 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_schaedel_verletzung_spinn_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_schaedel_art"/>
+            </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_schaedel_verletzung_spinn_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/spin_schaedel_grad" />
-
             </TableRow>
 
             <TableRow
@@ -263,7 +245,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_gesicht_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -273,12 +254,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_gesicht_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_gesicht_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_gesicht_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -291,7 +282,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_hws_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -301,12 +291,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_hws_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_hws_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_hws_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -319,7 +319,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_brustkorb_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -329,12 +328,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_brustkorb_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_brustkorb_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_brustkorb_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -347,7 +356,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_bauch_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -357,12 +365,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_bauch_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_bauch_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_bauch_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -375,7 +393,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_bws_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -385,12 +402,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_bws_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_bws_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_bws_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -403,7 +430,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_becken_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -413,12 +439,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_becken_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_becken_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_becken_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -431,7 +467,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_arme_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -441,12 +476,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_arme_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_arme_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_arme_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -459,7 +504,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_beine_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -469,12 +513,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_beine_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_beine_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_beine_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -487,7 +541,6 @@ hier entwickelt durch Radio Buttons -->
                 android:id="@+id/tblr_weichteile_verletzung"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -497,12 +550,22 @@ hier entwickelt durch Radio Buttons -->
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_column="0" />
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_weichteile_verletzung_1"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/spin_weichteile_art"/>
-
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_weichteile_verletzung_2"
+                android:layout_marginBottom="5dp">
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -510,6 +573,86 @@ hier entwickelt durch Radio Buttons -->
             </TableRow>
         </TableLayout>
     </ScrollView>
+
+  <!--  <TableLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:paddingBottom="@dimen/activity_vertical_margin"
+         android:paddingLeft="@dimen/activity_horizontal_margin"
+         android:paddingRight="@dimen/activity_horizontal_margin"
+         android:paddingTop="@dimen/activity_vertical_margin"
+         android:id="@+id/tbl_verletzung_art"
+         android:layout_marginTop="100dp">
+
+
+     </TableLayout> -->
+
+    <RadioGroup android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/tbl_verletzung_navi"
+                android:gravity="center_horizontal"
+                android:checkedButton="@+id/rBtn_verletzung"
+                android:id="@+id/tickmarks_verletzung"
+                android:contextClickable="false">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rBtn_pers"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_verletzung"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_erkrankung"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_massnahmen"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_erstbefund"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_uebergabe"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_notfall"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/rBtn_bemerkung"
+            android:button="@null"
+            android:clickable="false"
+            android:background="@drawable/radiobutton_layout"/>
+    </RadioGroup>
 
 </RelativeLayout>
     <!-- von Vivien Stumpe, 10.04.16 -->
@@ -571,3 +714,4 @@ hier entwickelt durch Radio Buttons -->
             android:layout_marginBottom="5dp" />
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
+
