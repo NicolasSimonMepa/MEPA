@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/verlauf">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -112,7 +113,7 @@
             <include
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                layout="@layout/toolbar_layout" />
+                layout="@layout/toolbar_eingaben_layout" />
         </LinearLayout>
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -125,7 +126,9 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:fillViewport="true"
             tools:context="de.app.mepa.massnahmen.Massnahmen"
-            android:id="@+id/scrV_massnahmen">
+            android:id="@+id/scrV_massnahmen"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TableLayout
                 android:layout_width="match_parent"
