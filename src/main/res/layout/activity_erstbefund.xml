@@ -17,7 +17,9 @@
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20sp"
             android:id="@+id/tbl_erstbefund_navi"
-            android:stretchColumns="1">
+            android:stretchColumns="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
             <TableRow>
                 <ImageView
                     android:layout_height="match_parent"
@@ -435,5 +437,3 @@
             android:layout_marginBottom="5dp" />
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
-
-
