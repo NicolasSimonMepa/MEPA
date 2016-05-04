@@ -290,37 +290,37 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         }
         if (ce == R.id.txtv_fallein_notfall) {
-            setIconNotfall(R.drawable.rbtn_checked);
+            setIconNotfall(R.drawable.notfallsituation_save);
             Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_verletzung) {
-            setIconVerletzung(R.drawable.rbtn_checked);
+            setIconVerletzung(R.drawable.verletzung_save);
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_erkrankung) {
-            setIconErkrankung(R.drawable.rbtn_checked);
+            setIconErkrankung(R.drawable.erkrankung_vergiftung_save);
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_maßnahmen) {
-            setIconMaßnahmen(R.drawable.rbtn_checked);
+            setIconMaßnahmen(R.drawable.massnahmen_save);
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_erstbef) {
-            setIconErstbefund(R.drawable.rbtn_checked);
+            setIconErstbefund(R.drawable.befund_save);
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_bemerkung) {
-            setIconBemerkung(R.drawable.rbtn_checked);
+            setIconBemerkung(R.drawable.bemerkung_save);
             Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_uebergabe) {
-            setIconUebergabe(R.drawable.rbtn_checked);
+            setIconUebergabe(R.drawable.uebergabe_save);
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
@@ -450,5 +450,4 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         lnl_buttons.setVisibility(lnl_buttons.GONE);
 
     }
-
 }
