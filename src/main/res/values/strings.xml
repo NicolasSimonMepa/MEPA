@@ -248,6 +248,9 @@
     <string name="txtv_zeuge">Helfername</string>
     <string name="btn_foto">Foto</string>
     <string name="bemerkung">Bemerkung</string>
+    <string name="btn_bemerkung_speichern">Speichern</string>
+    <string name="btn_bemerkung_laden">Laden</string>
+    <string name="btn_bemerkung_loeschen">Löschen</string>
 
      <!--Nicolas 3.04.2016, zuletzt geändert am 17.04.16 -->
     <string name="txtv_speichern">Speichern</string>
