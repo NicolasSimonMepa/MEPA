@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 29.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 08.05.16 -->
 <!-- von Vivien Stumpe, 10.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -25,6 +25,7 @@
             android:stretchColumns="1"
             android:focusable="true" 
             android:focusableInTouchMode="true">
+
             <TableRow>
                 <ImageView
                     android:layout_height="match_parent"
@@ -150,6 +151,26 @@
                         android:gravity="center"
                         android:paddingTop="20dp"
                         android:stretchColumns="1">
+                        <!-- von Vivien Stumpe, 08.05.16 -->
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:gravity="center_horizontal">
+                            <RadioButton
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"
+                                android:id="@+id/rBtn_weibl"
+                                android:text="@string/weiblich"
+                                android:textSize="20sp"
+                                android:layout_marginRight="10dp"/>
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/rBtn_maennl"
+                                android:text="@string/maennlich"
+                                android:textSize="20sp"/>
+                        </RadioGroup>
+
 
                         <TableRow
                             android:layout_width="match_parent"
