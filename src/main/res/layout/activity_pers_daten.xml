@@ -264,11 +264,11 @@
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:ems="10"
                                 android:singleLine="true"
                                 android:maxLines="1"
-                                android:maxLength="5"
+                                android:maxLength="4"
                                 android:id="@+id/etxt_hausnr_pers_daten"
                                 android:textSize="20sp"
                                 android:textColor="#000000"
@@ -310,33 +310,59 @@
                                 android:hint="@string/txtv_plz_pers_daten" />
                         </TableRow>
 
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:id="@+id/tblr_ort_pers_daten">
-
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:id="@+id/imgv_ort_pers_daten"
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_marginBottom="5dp"
-                                android:src="@drawable/ort"/>
+                                android:id="@+id/tblr_ort_pers_daten">
 
-                            <EditText
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/etxt_ort_pers_daten"
-                                android:inputType="textCapSentences|textMultiLine"
-                                android:singleLine="false"
-                                android:maxLines="2"
-                                android:maxLength="45"
-                                android:textSize="20sp"
-                                android:textColor="#000000"
-                                android:hint="@string/txtv_ort_pers_daten" />
-                        </TableRow>
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:id="@+id/imgv_ort_pers_daten"
+                                    android:layout_marginBottom="5dp"
+                                    android:src="@drawable/ort"/>
 
+                                <EditText
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/etxt_ort_pers_daten"
+                                    android:inputType="textCapSentences|textMultiLine"
+                                    android:singleLine="false"
+                                    android:maxLines="2"
+                                    android:maxLength="45"
+                                    android:textSize="20sp"
+                                    android:textColor="#000000"
+                                    android:hint="@string/txtv_ort_pers_daten" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:id="@+id/tblr_land_pers_daten">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:id="@+id/imgv_land_pers_daten"
+                                    android:layout_marginBottom="5dp"
+                                    android:src="@drawable/ort"/>
+
+                                <EditText
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/etxt_land_pers_daten"
+                                    android:inputType="textCapSentences|textMultiLine"
+                                    android:singleLine="false"
+                                    android:maxLines="2"
+                                    android:maxLength="45"
+                                    android:textSize="20sp"
+                                    android:textColor="#000000"
+                                    android:hint="@string/txtv_land_pers_daten" />
+                            </TableRow>
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
