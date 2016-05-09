@@ -164,6 +164,7 @@
         <!-- Vivien Stumpe, 08.05.16 -->
     <string name="weiblich">weiblich</string>
     <string name="maennlich">männlich</string>
+    <string name="etxt_hausnr">Nr</string>
     
     <!-- Emile Yoncaova 23.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
