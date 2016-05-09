@@ -252,7 +252,7 @@
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:inputType="textCapSentences|textMultiLine"
+                                android:inputType="textCapWords|textMultiLine|textNoSuggestions"
                                 android:ems="10"
                                 android:singleLine="false"
                                 android:maxLines="2"
