@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 02.05.2016
+//Zuletzt geändert von Vivien Stumpe am 09.05.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falluebersicht.Falluebersicht;
@@ -94,6 +96,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private LinearLayout lnl_buttons;
     private Button btn_speichern;
     private Button btn_verwerfen;
+
+    /* von Vivien Stumpe, 06.05.16
+    Test der Datenbank
+     */
+    public static final String LOG_TAG = Falleingabe.class.getSimpleName();
+
+    private FalleingabeDataSource dataSource;
 
     public void setIconPerson(int person) {
         img_person = person;
@@ -262,6 +271,30 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
          */
         viewToAnimate=(View)findViewById(R.id.imgv_animation);
         viewToAnimate.setVisibility(viewToAnimate.GONE);
+
+        /* von Vivien Stumpe, 06.05.16
+        Verbindung zur DB herstellen
+        wenn keine DB verfügbar ist, wird mit dem DBHelper eine neue erstellt
+        */
+        dataSource = new FalleingabeDataSource(this);
+        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        dataSource.open();
+
+        /* von Vivien Stumpe, 09.05.16
+        Testweise Daten in die DB einfügen
+        erst muss ein Verband bestehen, damit ein Sanitäter angelegt werden kann - FK!
+        Danach kann auch ein Patient angelegt werden
+
+        dataSource.createVerband("DRK", "DRK-13");
+        dataSource.createVerband("Schulze", "Marianne");
+        dataSource.createSanitaeter("Meier", "Ludwig", 1);
+        dataSource.createSanitaeter("Schulze", "Marianne", 2);
+        dataSource.createPatient(34, "Stumpe", "Vivien", "22.02.1994", 1);
+        */
+
+        //Verbindung zur DB trennen
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        dataSource.close();
     }
 
     //von Vivien Stumpe, 12.04.16
