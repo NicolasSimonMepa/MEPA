@@ -1,13 +1,15 @@
+//Zuletzt bearbeitet von Indra Marcheel, 09.05.16
 //Zuletzt bearbeitet von Vivien Stumpe, 29.04.16
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -16,19 +18,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TableRow;
 
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
-import de.app.mepa.erkrankung.Erkrankung;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 import de.app.mepa.verletzung.Verletzung;
-import de.app.mepa.OnSwipeTouchListener;
 
 
 public class Pers_daten extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
@@ -67,6 +66,13 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     Edittext erzeugen
      */
     private EditText etxt_sonstiges;
+
+    /* von Indra Marcheel, 09.05.2016
+    Edittext erzeugen
+     */
+    private EditText etxt_name_pers_daten;
+    private EditText etxt_vorname_pers_daten;
+    private EditText etxt_str_pers_daten;
 
     /* von Vivien Stumpe, 25.04.16
     ImageViews für den Zurück Pfeil in der Aktivität
@@ -150,11 +156,73 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         //View aktualisieren
         etxt_sonstiges.invalidate();
 
+        etxt_name_pers_daten=(EditText) findViewById(R.id.etxt_name_pers_daten);
+        /* von Indra Marcheel, 09.05.2016
+        es können nur character eingegeben werden
+         */
+        etxt_name_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_vorname_pers_daten=(EditText) findViewById(R.id.etxt_vorname_pers_daten);
+         /* von Indra Marcheel, 09.05.2016
+        es können nur character eingegeben werden
+         */
+        etxt_vorname_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+         /* von Indra Marcheel, 09.05.2016
+        es können nur character, - , und zahlen eingegebne werden 
+         */
+        etxt_str_pers_daten=(EditText) findViewById(R.id.etxt_str_pers_daten);
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if ( !Character.isLetterOrDigit(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals("-")) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+
+        etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
+
+
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
             sondern erst, wenn ins Eingabefeld geklickt wird
          */
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        /* von Indra Marcheel, 09.05.2016
+        maximale eingabelänge wird auf 50 zeichen beschränkt
+         */
+        etxt_sonstiges.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
+
+
 
         /* von Vivien Stumpe, 25.04.16
         Views in der Akitivität finden und den Variablen zuweisen
@@ -314,3 +382,4 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
     }
 }
+
