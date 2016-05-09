@@ -326,7 +326,7 @@
                                     android:textAppearance="?android:attr/textAppearanceSmall"
                                     android:id="@+id/imgv_land_pers_daten"
                                     android:layout_marginBottom="5dp"
-                                    android:src="@drawable/ort"/>
+                                    android:src="@drawable/land"/>
 
                                 <EditText
                                     android:layout_width="wrap_content"
@@ -436,7 +436,7 @@
                                 android:layout_height="40dp"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:id="@+id/imgv_versichertennr_pers_daten"
-                                android:src="@drawable/person"/>
+                                android:src="@drawable/versichertennr"/>
 
                             <EditText
                                 android:layout_width="wrap_content"
@@ -532,7 +532,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:id="@+id/imgv_zugefuehrt_pers_daten"
-                                android:src="@drawable/person"/>
+                                android:src="@drawable/zugefuehrt_durch"/>
 
                             <!-- von Vivien Stumpe, 18.04.16 -->
                             <Spinner
