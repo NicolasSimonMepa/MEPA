@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 09.05.2016
+//Zuletzt geändert von Vivien Stumpe am 10.05.2016
 package de.app.mepa.falleingabe;
 
 import android.content.Context;
@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.app.mepa.BackgroundTaskDB;
 import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -292,9 +293,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         dataSource.createPatient(34, "Stumpe", "Vivien", "22.02.1994", 1);
         */
 
+
         //Verbindung zur DB trennen
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
+
+
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -462,6 +466,22 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         viewToAnimate.startAnimation(in);
         viewToAnimate.setVisibility(View.VISIBLE);
+
+        // ---------------
+        /* von Vivien Stumpe, 10.05.16
+         * BackgroundTaskDB anlegen, um mit der Datenbank im Hintergrund zu interagieren
+         * -> UI-Thread wird nicht belastet
+         
+        String verband= "DRK";
+        String ortsverein="DRk14";
+        BackgroundTaskDB bgtask = new BackgroundTaskDB(this);
+        // BackgroundTaskDB aufrufen mit der gewünschten Aktion
+        // der erste Parameter gibt an, was der bgtask tun soll
+        // -> siehe doInBackground(...) im BackgroundTaskDB
+        bgtask.execute("Verein hinzufügen", verband, ortsverein);
+        */
+        
+        // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
         IconsStart();
         lnl_buttons.setVisibility(lnl_buttons.GONE);
@@ -469,6 +489,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         Animation out = AnimationUtils.makeOutAnimation(this, true);
         viewToAnimate.startAnimation(out);
         viewToAnimate.setVisibility(View.INVISIBLE);
+
 
     }
     /* von Vivien Stumpe, 02.05.16
