@@ -346,6 +346,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
                 etxt_sonstiges.setVisibility(View.VISIBLE);
                 //View aktualisieren
                 etxt_sonstiges.invalidate();
+                //von Vivien Stumpe, 10.05.16 - Fokus auf das Sonstiges Feld legen
+                etxt_sonstiges.requestFocus();
                 break;
         }
     }
