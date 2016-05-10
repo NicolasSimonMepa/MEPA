@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 08.05.16
+//Zuletzt geändert von Vivien Stumpe, 10.05.16
 package de.app.mepa;
 import android.content.ContentValues;
 import android.content.Context;
@@ -82,6 +82,18 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verband.TABLE_NAME + " eingefügt.");
     }
+    /* von Vivien Stumpe, 10.05.16
+    Test, ob Daten in die DB geschrieben werden können
+     -> für AsyncTask (BackgroundTaskDB)
+    */
+    public void createVerband(SQLiteDatabase db, String kreisver, String ortsver) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Verband.COL_KREISVERBAND, kreisver);
+        values.put(FalleingabeContract.Tbl_Verband.COL_ORTSVEREIN, ortsver);
+
+        long insertId = db.insert(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verband.TABLE_NAME + " eingefügt.");
+    }
     /* von Vivien Stumpe, 09.05.16
     Test, ob Daten in die DB geschrieben werden können
     */
@@ -98,7 +110,3 @@ public class FalleingabeDataSource {
     }
 
 }
-
-
-
-
