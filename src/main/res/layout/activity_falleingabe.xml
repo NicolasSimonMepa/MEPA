@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- zuletzt geändert von Vivien Stumpe, 02.05.16 -->
+<!-- zuletzt geändert von Vivien Stumpe, 10.05.16 -->
 <!-- von Vivien Stumpe, 08.04.16 -->
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
@@ -41,16 +41,30 @@
             android:textSize="30sp"
             android:textColor="#000000"
             android:gravity="center" />
+    <!-- von Vivien Stumpe, 10.05.16 -->
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:fillViewport="true"
+        tools:context="de.app.mepa.falleingabe.Falleingabe"
+        android:id="@+id/scrV_falleingabe"
+        android:layout_marginTop="50dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
 
         <!-- von Vivien Stumpe, 14.04.16 -->
         <!-- Kachel Menü -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
             android:gravity="center"
             android:stretchColumns="*"
-            android:id="@+id/tbl_falleingabe">
+            android:id="@+id/tbl_falleingabe"
+            android:layout_marginTop="60dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -214,6 +228,9 @@ Buttons zum Verwerfen und Speichern -->
             android:id="@+id/imgv_animation"
             android:src="@drawable/animation"
             android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+</ScrollView>
     </RelativeLayout>
 
     <!-- von Vivien Stumpe, 08.04.16 -->
