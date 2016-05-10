@@ -230,6 +230,91 @@
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
+                
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cck_massnahmen_vakuummatratze"
+                        android:id="@+id/cck_massnahmen_vakuummatratze"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cck_massnahmen_hwsstuetzkragen"
+                        android:id="@+id/cck_massnahmen_hwsstuetzkragen"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtv_extremitaetenschienung"
+                        android:id="@+id/cck_massnahmen_extremitaetenschienung"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtv_ekgmonitoring"
+                        android:id="@+id/cck_massnahmen_ekgmonitoring"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cck_massnahmen_atemwege"
+                        android:id="@+id/cck_massnahmen_atemwege"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtv_notkompetenzmassnahmen"
+                        android:id="@+id/cck_massnahmen_notkompetenz"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cck_massnahmen_erstdefibrillation"
+                        android:id="@+id/cck_massnahmen_erstdefibrillation"
+                        android:checked="false"
+                        android:textSize="20sp" />
+                </TableRow>
+                
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
