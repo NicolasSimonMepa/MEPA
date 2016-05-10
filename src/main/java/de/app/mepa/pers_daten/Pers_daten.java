@@ -1,5 +1,5 @@
 //Zuletzt bearbeitet von Indra Marcheel, 09.05.16
-//Zuletzt bearbeitet von Vivien Stumpe, 29.04.16
+
 package de.app.mepa.pers_daten;
 
 import android.content.Intent;
@@ -201,7 +201,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             public CharSequence filter(CharSequence source, int start, int end,
                                        Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
-                    if ( !Character.isLetterOrDigit(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals("-")) {
+                    if ( !Character.isLetterOrDigit(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
                         return "";
                     }
                 }
@@ -382,4 +382,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
     }
 }
+
+
 
