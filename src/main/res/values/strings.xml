@@ -204,6 +204,10 @@
     <string name="txtv_infusion">Infusion</string>
     <string name="txtv_betreuung">Betreuung</string>
     <string name="txtv_medikamente">Medikamente</string>
+    <string name="cck_massnahmen_hwsstuetzkragen">HWS-Stützkragen</string>
+    <string name="cck_massnahmen_atemwege">Atemwege freimachen</string>
+    <string name="cck_massnahmen_vakuummatratze">Vakuummatratze</string>
+    <string name="cck_massnahmen_erstdefibrillation">Erstdefibrillation</string>
     <string name="txtv_notkompetenzmassnahmen">Notkompetenzmaßnahmen</string>
     
     <string name="erstbefund">Erstbefund</string>
