@@ -258,6 +258,18 @@
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
+        
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtv_baucherkrankung"
+                android:id="@+id/cck_erkrankung_baucherkrankung"
+                android:checked="false"
+                android:textSize="20sp" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
