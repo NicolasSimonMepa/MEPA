@@ -12,7 +12,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig">
+        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig"
+        android:background="@drawable/verlauf">
 
         <!-- Layout für die Toolbar -->
         <LinearLayout
