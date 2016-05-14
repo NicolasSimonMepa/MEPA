@@ -1,6 +1,7 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 01.05.16
+//Zuletzt bearbeitet von Vivien Stumpe am 14.05.16
 package de.app.mepa.stammdaten;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,14 +10,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -71,6 +76,12 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
     private CheckBox cck_hilfs;
     private CheckBox cck_sanw;
 
+    /* von Vivien Stumpe, 14.05.16
+    Variablen für den Kalender zur Auswahl des Datums
+ */
+    private EditText etxt_date;
+    private DatePickerDialog datepicker;
+    private Calendar calendar=Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +159,8 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         cck_hilfs.setOnClickListener(this);
         cck_mosan.setOnClickListener(this);
         cck_sanw.setOnClickListener(this);
+        etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
+        etxt_date.setOnClickListener(Stammdaten.this);
 
     }
 
@@ -198,6 +211,27 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             }
             //Buttons wieder ausblenden
             buttons.setVisibility(buttons.GONE);
+        }
+        /* von Vivien Stumpe, 14.05.2016
+        DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
+        Kalender öffnet sich, wenn auf das Eingabefeld "Datum" geklickt wird
+        Datum wird nach der Auswahl im Eingabefeld angezeigt
+         */
+        if(ce==R.id.etxt_veranstaltung_datum){
+
+            datepicker=new DatePickerDialog(Stammdaten.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Calendar dateCalendar=Calendar.getInstance();
+                    dateCalendar.set(Calendar.YEAR, year);
+                    dateCalendar.set(Calendar.MONTH, monthOfYear);
+                    dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                    String dateString= DateUtils.formatDateTime(Stammdaten.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE);
+                    etxt_date.setText(dateString);
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            datepicker.show();
         }
         if(ce==R.id.btn_verwerfen_stammd){
             //Buttons werden ausgeblendet
