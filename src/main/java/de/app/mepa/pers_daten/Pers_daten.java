@@ -1,7 +1,8 @@
-//Zuletzt bearbeitet von Indra Marcheel, 09.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 14.05.16
 
 package de.app.mepa.pers_daten;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -10,14 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.Calendar;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
@@ -80,6 +85,13 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
      */
     private ImageView imgv_before;
     private ImageView imgv_menü;
+
+    /* von Vivien Stumpe, 14.05.16
+    Variablen für den Kalender zur Auswahl des Geburtsdatums
+     */
+    private EditText etxt_gebdat;
+    private DatePickerDialog datepicker;
+    private Calendar calendar=Calendar.getInstance();
 
 
     @Override
@@ -238,6 +250,10 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
         */
         drawerlayout_pers_daten.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+        // Variablen für das Geburtsdatum
+        etxt_gebdat=(EditText)findViewById(R.id.etxt_geb_pers_daten);
+        etxt_gebdat.setOnClickListener(this);
     }
 
 
@@ -382,8 +398,27 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             drawerlayout_pers_daten.openDrawer(GravityCompat.START);
         }
 
+        /* von Vivien Stumpe, 14.05.2016
+        DatePickerDialog zum Anzeigen des Kalenders und auswählen des Geburtsdatums
+        Kalender öffnet sich, wenn auf das Eingabefeld "Geboren am" geklickt wird
+        Datum wird nach der Auswahl im Eingabefeld angezeigt
+         */
+        if(ce==R.id.etxt_geb_pers_daten){
+
+            datepicker=new DatePickerDialog(Pers_daten.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Calendar dateCalendar=Calendar.getInstance();
+                    dateCalendar.set(Calendar.YEAR, year);
+                    dateCalendar.set(Calendar.MONTH, monthOfYear);
+                    dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                    String dateString= DateUtils.formatDateTime(Pers_daten.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE);
+                    etxt_gebdat.setText(dateString);
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            datepicker.show();
+        }
+
     }
 }
-
-
-
