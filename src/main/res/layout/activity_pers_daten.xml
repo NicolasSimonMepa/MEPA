@@ -393,6 +393,8 @@
                                 android:id="@+id/etxt_geb_pers_daten"
                                 android:textSize="20sp"
                                 android:textColor="#000000"
+                                android:clickable="true"
+                                android:focusable="false"
                                 android:hint="@string/txtv_geb_pers_daten" />
 
                         </TableRow>
