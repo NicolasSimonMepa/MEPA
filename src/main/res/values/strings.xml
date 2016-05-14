@@ -166,6 +166,7 @@
     <string name="maennlich">männlich</string>
     <string name="etxt_hausnr">Nr</string>
     <string name="txtv_land_pers_daten">Land</string>
+    <string name="txtv_veranstaltung_datum">Veranstaltungsdatum</string>
     
     <!-- Emile Yoncaova 23.04.2016 -->
     <string name="erkrankung">Erkrankung</string>
