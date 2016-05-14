@@ -160,6 +160,30 @@
                 android:maxLength="55"/>
 
         </TableRow>
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tblr_veranstaltung_datum"
+        android:layout_marginBottom="5dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:src="@drawable/birthday"
+            android:id="@+id/imgv_veranstaltung_datum" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etxt_veranstaltung_datum"
+            android:hint="@string/txtv_veranstaltung_datum"
+            android:layout_column="1"
+            android:ems="10"
+            android:focusable="false"
+            android:clickable="true"/>
+
+    </TableRow>
     </TableLayout>
     <LinearLayout
         android:layout_width="fill_parent"
