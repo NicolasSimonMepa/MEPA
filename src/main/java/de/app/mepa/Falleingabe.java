@@ -508,6 +508,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     public void eingabenZuruecksetzen(){
         mfall=(GlobaleDaten)getApplication();
         mfall.loeschePat();
+        mfall.loescheEin();
         // hier folgen noch die Dienste für die anderen Screens
     }
 }
