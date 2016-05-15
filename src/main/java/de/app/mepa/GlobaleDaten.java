@@ -23,6 +23,10 @@ public class GlobaleDaten extends Application {
     private String pat_versnr;
     private String pat_versichertennr;
     private Integer pat_sani;
+
+    //Einsatz - Attribute
+    private String ein_zugef;
+    private String ein_fundort;
     //Patient - Dienste
     public void setPat_name(String n){
         this.pat_name=n;
@@ -118,4 +122,21 @@ public class GlobaleDaten extends Application {
         setPat_sani(null);
     }
 
+    //Einsatz - Dienste
+    public void setEin_zugef(String z){
+        this.ein_zugef=z;
+    }
+    public String getEin_zugef(){
+        return ein_zugef;
+    }
+    public void setEin_fundort(String f){
+        this.ein_fundort=f;
+    }
+    public String getEin_fundort(){
+        return ein_fundort;
+    }
+    public void loescheEin(){
+        setEin_zugef("");
+        setEin_fundort("");
+    }
 }
