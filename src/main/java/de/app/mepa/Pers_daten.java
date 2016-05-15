@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 14.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 15.05.16
 
 package de.app.mepa.pers_daten;
 
@@ -101,7 +101,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     //-------
     private GlobaleDaten mfall;
     private EditText etxt_plz_pers_daten, etxt_ort_pers_daten, etxt_land_pers_daten, etxt_tel_pers_daten,
-    etxt_krankenkasse_pers_daten, etxt_versnr_pers_daten, etxt_versichertennr_pers_daten;
+    etxt_krankenkasse_pers_daten, etxt_versnr_pers_daten, etxt_versichertennr_pers_daten, etxt_fundort_pers_daten;
     private RadioButton rbtn_weibl, rbtn_maennl;
 
     @Override
@@ -274,6 +274,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         etxt_krankenkasse_pers_daten=(EditText)findViewById(R.id.etxt_krankenkasse_pers_daten);
         etxt_versnr_pers_daten=(EditText)findViewById(R.id.etxt_versicherungsnr_pers_daten);
         etxt_versichertennr_pers_daten=(EditText)findViewById(R.id.etxt_versichertennr_pers_daten);
+        etxt_fundort_pers_daten=(EditText)findViewById(R.id.etxt_fundort_pers_daten);
         rbtn_maennl=(RadioButton)findViewById(R.id.rBtn_maennl);
         rbtn_weibl=(RadioButton)findViewById(R.id.rBtn_weibl);
         rbtn_maennl.setOnClickListener(this);
@@ -468,7 +469,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         mfall.setPat_str(etxt_str_pers_daten.getText().toString());
         Log.d("Fall", "Str gespeichert");
 
-
         mfall.setPat_plz(etxt_plz_pers_daten.getText().toString());
         Log.d("Fall", "PLZ gespeichert");
 
@@ -489,6 +489,34 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
         mfall.setPat_versnr(etxt_versnr_pers_daten.getText().toString());
         Log.d("Fall", "Versicherung-Nummer gespeichert");
+
+        mfall.setEin_fundort(etxt_fundort_pers_daten.getText().toString());
+        Log.d("Fall", "Fundort gespeichert");
+
+        if((spin_zugef.getSelectedItem().toString().equals("Polizei"))){
+                mfall.setEin_zugef("Polizei");
+            }
+        if((spin_zugef.getSelectedItem().toString().equals("RTW/KTW"))){
+            mfall.setEin_zugef("RTW/KTW");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("San-Team"))){
+            mfall.setEin_zugef("San-Team");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Security"))){
+            mfall.setEin_zugef("Security");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Angehörige"))){
+            mfall.setEin_zugef("Angehörige");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Selbst"))){
+            mfall.setEin_zugef("Selbst");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Passanten"))){
+            mfall.setEin_zugef("Passanten");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Sonstiges"))){
+            mfall.setEin_zugef("Sonstiges");
+        }
 
         if(rbtn_weibl.isChecked()) {
             mfall.setPat_sex("weiblich");
@@ -544,6 +572,35 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         }
         if((mfall.getPat_versnr()!=null)){
             etxt_versnr_pers_daten.setText(mfall.getPat_versnr());
+        }
+        if((mfall.getEin_fundort()!=null)) {
+            etxt_fundort_pers_daten.setText(mfall.getEin_fundort());
+        }
+        if((mfall.getEin_zugef()!=null)){
+            if(mfall.getEin_zugef().equals("Polizei")){
+                spin_zugef.setSelection(1);
+            }
+            if(mfall.getEin_zugef().equals("RTW/KTW")){
+                spin_zugef.setSelection(2);
+            }
+            if(mfall.getEin_zugef().equals("San-Team")){
+                spin_zugef.setSelection(3);
+            }
+            if(mfall.getEin_zugef().equals("Security")){
+                spin_zugef.setSelection(4);
+            }
+            if(mfall.getEin_zugef().equals("Angehörige")){
+                spin_zugef.setSelection(5);
+            }
+            if(mfall.getEin_zugef().equals("Selbst")){
+                spin_zugef.setSelection(6);
+            }
+            if(mfall.getEin_zugef().equals("Passanten")){
+                spin_zugef.setSelection(7);
+            }
+            if(mfall.getEin_zugef().equals("Sonstiges")){
+                spin_zugef.setSelection(8);
+            }
         }
         if((mfall.getPat_sex()!=null)) {
             if ((mfall.getPat_sex().equals("weiblich"))) {
