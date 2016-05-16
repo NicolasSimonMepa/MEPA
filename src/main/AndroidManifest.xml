@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt geändert von Vivien Stumpe am 15.05.16 -->
+<!-- Zuletzt geändert von Vivien Stumpe am 16.05.16 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.app.mepa.mepa">
 	
@@ -73,6 +73,14 @@
         <activity android:name="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig"
             android:label=""
             android:screenOrientation="portrait"/>
+        <activity android:name="de.app.mepa.OnBoarding"
+        android:screenOrientation="portrait" />
+        <activity android:name="de.app.mepa.stammdaten.Stammdaten_OnBoard"
+            android:screenOrientation="portrait"
+            android:label=""/>
+        <activity android:name="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig_OnBoard"
+            android:screenOrientation="portrait"
+            android:label="" />
     </application>
 
 </manifest>
