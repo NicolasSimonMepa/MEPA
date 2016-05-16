@@ -154,35 +154,35 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         spin_gesicht_grad.setOnItemSelectedListener(this);
 
         spin_hws_grad = (Spinner)findViewById(R.id.spin_hws_grad);
-        spin_hws_grad.setAdapter(adapter);
+        spin_hws_grad.setAdapter(adapter_grad);
         spin_hws_grad.setOnItemSelectedListener(this);
 
         spin_brustkorb_grad = (Spinner)findViewById(R.id.spin_brustkorb_grad);
-        spin_brustkorb_grad.setAdapter(adapter);
+        spin_brustkorb_grad.setAdapter(adapter_grad);
         spin_brustkorb_grad.setOnItemSelectedListener(this);
 
         spin_bauch_grad = (Spinner)findViewById(R.id.spin_bauch_grad);
-        spin_bauch_grad.setAdapter(adapter);
+        spin_bauch_grad.setAdapter(adapter_grad);
         spin_bauch_grad.setOnItemSelectedListener(this);
 
         spin_bws_grad = (Spinner)findViewById(R.id.spin_bws_grad);
-        spin_bws_grad.setAdapter(adapter);
+        spin_bws_grad.setAdapter(adapter_grad);
         spin_bws_grad.setOnItemSelectedListener(this);
 
         spin_becken_grad = (Spinner)findViewById(R.id.spin_becken_grad);
-        spin_becken_grad.setAdapter(adapter);
+        spin_becken_grad.setAdapter(adapter_grad);
         spin_becken_grad.setOnItemSelectedListener(this);
 
         spin_arme_grad = (Spinner)findViewById(R.id.spin_arme_grad);
-        spin_arme_grad.setAdapter(adapter);
+        spin_arme_grad.setAdapter(adapter_grad);
         spin_arme_grad.setOnItemSelectedListener(this);
 
         spin_beine_grad = (Spinner)findViewById(R.id.spin_beine_grad);
-        spin_beine_grad.setAdapter(adapter);
+        spin_beine_grad.setAdapter(adapter_grad);
         spin_beine_grad.setOnItemSelectedListener(this);
 
         spin_weichteile_grad = (Spinner)findViewById(R.id.spin_weichteile_grad);
-        spin_weichteile_grad.setAdapter(adapter);
+        spin_weichteile_grad.setAdapter(adapter_grad);
         spin_weichteile_grad.setOnItemSelectedListener(this);
         //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
