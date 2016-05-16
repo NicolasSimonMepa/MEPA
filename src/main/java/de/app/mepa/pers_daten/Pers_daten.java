@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 14.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 16.05.16
 
 package de.app.mepa.pers_daten;
 
@@ -9,9 +9,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -20,6 +23,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import java.util.Calendar;
@@ -33,6 +37,7 @@ import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.R;
 import de.app.mepa.upload.Upload;
 import de.app.mepa.verletzung.Verletzung;
+import de.app.mepa.GlobaleDaten;
 
 
 public class Pers_daten extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
@@ -93,6 +98,11 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private DatePickerDialog datepicker;
     private Calendar calendar=Calendar.getInstance();
 
+    //-------
+    private GlobaleDaten mfall;
+    private EditText etxt_plz_pers_daten, etxt_ort_pers_daten, etxt_land_pers_daten, etxt_tel_pers_daten,
+    etxt_krankenkasse_pers_daten, etxt_versnr_pers_daten, etxt_versichertennr_pers_daten, etxt_fundort_pers_daten;
+    private RadioButton rbtn_weibl, rbtn_maennl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,9 +242,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         /* von Indra Marcheel, 09.05.2016
         maximale eingabelänge wird auf 50 zeichen beschränkt
          */
-        etxt_sonstiges.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
-
-
+        etxt_sonstiges.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
 
         /* von Vivien Stumpe, 25.04.16
         Views in der Akitivität finden und den Variablen zuweisen
@@ -254,6 +262,26 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         // Variablen für das Geburtsdatum
         etxt_gebdat=(EditText)findViewById(R.id.etxt_geb_pers_daten);
         etxt_gebdat.setOnClickListener(this);
+        /* von Vivien Stumpe, 15.05.16
+        Views im Screen den Variablen zuordnen
+         */
+        etxt_plz_pers_daten=(EditText)findViewById(R.id.etxt_plz_pers_daten);
+        etxt_ort_pers_daten=(EditText)findViewById(R.id.etxt_ort_pers_daten);
+        etxt_land_pers_daten=(EditText)findViewById(R.id.etxt_land_pers_daten);
+        etxt_tel_pers_daten=(EditText)findViewById(R.id.etxt_telefon_pers_daten);
+        etxt_krankenkasse_pers_daten=(EditText)findViewById(R.id.etxt_krankenkasse_pers_daten);
+        etxt_versnr_pers_daten=(EditText)findViewById(R.id.etxt_versicherungsnr_pers_daten);
+        etxt_versichertennr_pers_daten=(EditText)findViewById(R.id.etxt_versichertennr_pers_daten);
+        etxt_fundort_pers_daten=(EditText)findViewById(R.id.etxt_fundort_pers_daten);
+        rbtn_maennl=(RadioButton)findViewById(R.id.rBtn_maennl);
+        rbtn_weibl=(RadioButton)findViewById(R.id.rBtn_weibl);
+        rbtn_maennl.setOnClickListener(this);
+        rbtn_weibl.setOnClickListener(this);
+
+        /* von Vivien Stumpe, 15.05.16
+        Falls Werte vorhanden sind, werden diese im Screen geladen
+         */
+        setWerte();
     }
 
 
@@ -294,6 +322,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         //Menü schließen
         drawerlayout_pers_daten.closeDrawers();
     }
+
 
     /* von Vivien Stumpe, 18.04.16
     */
@@ -421,4 +450,164 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         }
 
     }
+    /* von Vivien Stumpe, 15.05.16
+    Prozedur, die die eingegebenen Daten in den Variablen speichert
+     */
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setPat_name(etxt_name_pers_daten.getText().toString());
+        Log.d("Fall", "Name gespeichert");
+
+        mfall.setPat_vorname(etxt_vorname_pers_daten.getText().toString());
+        Log.d("Fall", "Vorname gespeichert");
+
+        mfall.setPat_geb(etxt_gebdat.getText().toString());
+        Log.d("Fall", "Geb gespeichert");
+
+        mfall.setPat_str(etxt_str_pers_daten.getText().toString());
+        Log.d("Fall", "Str gespeichert");
+
+        mfall.setPat_plz(etxt_plz_pers_daten.getText().toString());
+        Log.d("Fall", "PLZ gespeichert");
+
+        mfall.setPat_ort(etxt_ort_pers_daten.getText().toString());
+        Log.d("Fall", "Ort gespeichert");
+
+        mfall.setPat_land(etxt_land_pers_daten.getText().toString());
+        Log.d("Fall", "Land gespeichert");
+
+        mfall.setPat_tel(etxt_tel_pers_daten.getText().toString());
+        Log.d("Fall", "Telefon gespeichert");
+
+        mfall.setPat_krankenkasse(etxt_krankenkasse_pers_daten.getText().toString());
+        Log.d("Fall", "Krankenkasse gespeichert");
+
+        mfall.setPat_versichertennr(etxt_versichertennr_pers_daten.getText().toString());
+        Log.d("Fall", "Versichertennr gespeichert");
+
+        mfall.setPat_versnr(etxt_versnr_pers_daten.getText().toString());
+        Log.d("Fall", "Versicherung-Nummer gespeichert");
+
+        mfall.setEin_fundort(etxt_fundort_pers_daten.getText().toString());
+        Log.d("Fall", "Fundort gespeichert");
+
+        if((spin_zugef.getSelectedItem().toString().equals("Polizei"))){
+                mfall.setEin_zugef("Polizei");
+            }
+        if((spin_zugef.getSelectedItem().toString().equals("RTW/KTW"))){
+            mfall.setEin_zugef("RTW/KTW");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("San-Team"))){
+            mfall.setEin_zugef("San-Team");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Security"))){
+            mfall.setEin_zugef("Security");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Angehörige"))){
+            mfall.setEin_zugef("Angehörige");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Selbst"))){
+            mfall.setEin_zugef("Selbst");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Passanten"))){
+            mfall.setEin_zugef("Passanten");
+        }
+        if((spin_zugef.getSelectedItem().toString().equals("Sonstiges"))){
+            mfall.setEin_zugef("Sonstiges");
+        }
+
+        if(rbtn_weibl.isChecked()) {
+            mfall.setPat_sex("weiblich");
+        }
+        if(rbtn_maennl.isChecked()){
+            mfall.setPat_sex("maennlich");
+        }
+    }
+    /* von Vivien Stumpe, 15.05.16
+    wird aufgerufen, wenn eine andere Aktivität in den Vordergrund gelangt
+     */
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
+    }
+
+    /* von Vivien Stumpe, 15.05.16
+    belegt die Eingabefelder etc. mit den lokal gespeicherten Werten, sofern vorhanden
+     */
+    public void setWerte(){
+        mfall=(GlobaleDaten)getApplication();
+
+        if((mfall.getPat_name()!=null)){
+            etxt_name_pers_daten.setText(mfall.getPat_name());
+        }
+        if((mfall.getPat_vorname()!=null)){
+            etxt_vorname_pers_daten.setText(mfall.getPat_vorname());
+        }
+        if((mfall.getPat_str()!=null)){
+            etxt_str_pers_daten.setText(mfall.getPat_str());
+        }
+        if((mfall.getPat_plz()!=null)){
+            etxt_plz_pers_daten.setText(mfall.getPat_plz());
+        }
+        if((mfall.getPat_ort()!=null)){
+            etxt_ort_pers_daten.setText(mfall.getPat_ort());
+        }
+        if((mfall.getPat_land()!=null)){
+            etxt_land_pers_daten.setText(mfall.getPat_land());
+        }
+        if((mfall.getPat_tel()!=null)){
+            etxt_tel_pers_daten.setText(mfall.getPat_tel());
+        }
+        if((mfall.getPat_geb()!=null)){
+            etxt_gebdat.setText(mfall.getPat_geb());
+        }
+        if((mfall.getPat_krankenkasse()!=null)){
+            etxt_krankenkasse_pers_daten.setText(mfall.getPat_krankenkasse());
+        }
+        if((mfall.getPat_versichertennr()!=null)){
+            etxt_versichertennr_pers_daten.setText(mfall.getPat_versichertennr());
+        }
+        if((mfall.getPat_versnr()!=null)){
+            etxt_versnr_pers_daten.setText(mfall.getPat_versnr());
+        }
+        if((mfall.getEin_fundort()!=null)) {
+            etxt_fundort_pers_daten.setText(mfall.getEin_fundort());
+        }
+        if((mfall.getEin_zugef()!=null)){
+            if(mfall.getEin_zugef().equals("Polizei")){
+                spin_zugef.setSelection(1);
+            }
+            if(mfall.getEin_zugef().equals("RTW/KTW")){
+                spin_zugef.setSelection(2);
+            }
+            if(mfall.getEin_zugef().equals("San-Team")){
+                spin_zugef.setSelection(3);
+            }
+            if(mfall.getEin_zugef().equals("Security")){
+                spin_zugef.setSelection(4);
+            }
+            if(mfall.getEin_zugef().equals("Angehörige")){
+                spin_zugef.setSelection(5);
+            }
+            if(mfall.getEin_zugef().equals("Selbst")){
+                spin_zugef.setSelection(6);
+            }
+            if(mfall.getEin_zugef().equals("Passanten")){
+                spin_zugef.setSelection(7);
+            }
+            if(mfall.getEin_zugef().equals("Sonstiges")){
+                spin_zugef.setSelection(8);
+            }
+        }
+        if((mfall.getPat_sex()!=null)) {
+            if ((mfall.getPat_sex().equals("weiblich"))) {
+                rbtn_weibl.setChecked(true);
+            }
+            else if((mfall.getPat_sex().equals("maennlich")))
+                rbtn_maennl.setChecked(true);
+        }
+
+    }
+
 }
