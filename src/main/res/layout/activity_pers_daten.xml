@@ -229,6 +229,34 @@
                                 android:hint="@string/txtv_vorname_pers_daten" />
                         </TableRow>
 
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/tblr_geb_pers_daten">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/imgv_gebdat_pers_daten"
+                                android:src="@drawable/birthdate"/>
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:ems="10"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:id="@+id/etxt_geb_pers_daten"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:hint="@string/txtv_geb_pers_daten" />
+
+                        </TableRow>
 
                         <TableRow
                             android:layout_width="match_parent"
@@ -366,36 +394,6 @@
                                 android:textSize="20sp"
                                 android:textColor="#000000"
                                 android:hint="@string/txtv_telefon_pers_daten" />
-
-                        </TableRow>
-
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:id="@+id/tblr_geb_pers_daten">
-
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:id="@+id/imgv_gebdat_pers_daten"
-                                android:src="@drawable/birthdate"/>
-
-                            <EditText
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:inputType="date"
-                                android:ems="10"
-                                android:singleLine="true"
-                                android:maxLines="1"
-                                android:id="@+id/etxt_geb_pers_daten"
-                                android:textSize="20sp"
-                                android:textColor="#000000"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:hint="@string/txtv_geb_pers_daten" />
 
                         </TableRow>
 
