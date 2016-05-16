@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 14.05.16
+//Zuletzt bearbeitet von Vivien Stumpe am 16.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -82,6 +84,10 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
     private EditText etxt_date;
     private DatePickerDialog datepicker;
     private Calendar calendar=Calendar.getInstance();
+    /* von Vivien Stumpe, 16.05.16
+    aktueller Fall mit den zwischengespeicherten Werten
+    */
+    private GlobaleDaten mfall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +167,10 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         cck_sanw.setOnClickListener(this);
         etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
         etxt_date.setOnClickListener(Stammdaten.this);
+        /* von Vivien Stumpe, 16.05.16
+        Aktuelle Werte (falls vorhanden) im Screen anzeigen
+        */
+        setWerte();
 
     }
 
@@ -209,6 +219,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
                 //aktObjekt.setVeranstaltung(etxt_veranstaltung.getText().toString())
                 Toast.makeText(this, "Veranstaltung gespeichert", Toast.LENGTH_LONG).show();
             }
+            speichereEingaben();
             //Buttons wieder ausblenden
             buttons.setVisibility(buttons.GONE);
         }
@@ -274,4 +285,90 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             startActivity(intent);
         }
         }
+    /* von Vivien Stumpe, 16.05.16
+Prozedur, die die eingegebenen Daten in den Variablen speichert
+ */
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setVer_name(etxt_veranstaltung.getText().toString());
+        Log.d("Fall", "Name gespeichert");
+
+        mfall.setVer_ort(etxt_ort.getText().toString());
+        Log.d("Fall", "Ort gespeichert");
+
+        mfall.setVer_date(etxt_date.getText().toString());
+        Log.d("Fall", "Datum gespeichert");
+        mfall.setVer_vorh();
+
+        mfall.setVerb_kreisv(etxt_kreisverband.getText().toString());
+        Log.d("Fall", "Kreisverband gespeichert");
+
+        mfall.setVerb_ortsv(etxt_ortsverein.getText().toString());
+        Log.d("Fall", "Ortsverein gespeichert");
+        if(cck_hilfs.isChecked()) {
+            mfall.setEin_hilfs(1);
+        }
+        else
+            mfall.setEin_hilfs(0);
+
+        if(cck_mosan.isChecked()) {
+            mfall.setEin_mosan(1);
+        }
+        else
+            mfall.setEin_mosan(0);
+
+        if(cck_sanw.isChecked()) {
+            mfall.setEin_sanw(1);
+        }
+        else
+            mfall.setEin_sanw(0);
+        mfall.setVerb_vorh();
+        mfall.setFall_angelegt();
     }
+    /* von Vivien Stumpe, 16.05.16
+    wird aufgerufen, wenn eine andere Aktivität in den Vordergrund gelangt
+     */
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
+    }
+
+    /* von Vivien Stumpe, 16.05.16
+    belegt die Eingabefelder etc. mit den lokal gespeicherten Werten, sofern vorhanden
+     */
+    public void setWerte(){
+        mfall=(GlobaleDaten)getApplication();
+
+        if((mfall.getVer_name()!=null)){
+            etxt_veranstaltung.setText(mfall.getVer_name());
+        }
+        if((mfall.getVer_ort()!=null)){
+            etxt_ort.setText(mfall.getVer_ort());
+        }
+        if((mfall.getVer_date()!=null)){
+            etxt_date.setText(mfall.getVer_date());
+        }
+        if((mfall.getVerb_ortsv()!=null)){
+            etxt_ortsverein.setText(mfall.getVerb_ortsv());
+        }
+        if((mfall.getVerb_kreisv()!=null)){
+            etxt_kreisverband.setText(mfall.getVerb_kreisv());
+        }
+        if(mfall.getEin_hilfs()!=null) {
+            if (mfall.getEin_hilfs() == 1) {
+                cck_hilfs.setChecked(true);
+            }
+        }
+        if(mfall.getEin_mosan()!=null) {
+            if (mfall.getEin_mosan() == 1) {
+                cck_mosan.setChecked(true);
+            }
+        }
+        if(mfall.getEin_sanw()!=null) {
+            if (mfall.getEin_sanw() == 1) {
+                cck_sanw.setChecked(true);
+            }
+        }
+    }
+}
