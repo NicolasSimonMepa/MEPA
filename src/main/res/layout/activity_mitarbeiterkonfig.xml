@@ -51,7 +51,8 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:id="@+id/tbl_mitarbeiter_konfig"
-            android:focusable="true" android:focusableInTouchMode="true">>
+            android:stretchColumns="1"
+            android:focusable="true" android:focusableInTouchMode="true">
 
             <TableRow
                 android:layout_width="match_parent"
