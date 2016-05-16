@@ -1,41 +1,35 @@
-//Zuletzt geändert von Vivien Stumpe am 10.05.2016
+//Zuletzt geändert von Vivien Stumpe am 16.05.2016
 package de.app.mepa.falleingabe;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.app.mepa.BackgroundTaskDB;
 import de.app.mepa.FalleingabeDataSource;
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
+import de.app.mepa.OnBoarding;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
 
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.notfallsituation.notfallsituation;
 import de.app.mepa.pers_daten.Pers_daten;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.verletzung.Verletzung;
 import de.app.mepa.massnahmen.Massnahmen;
 import de.app.mepa.erkrankung.Erkrankung;
@@ -65,7 +59,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private TextView txtv_uebergabe;
     private TextView txtv_bemerkung;
 
-
     //von Vivien Stumpe, 08.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -83,7 +76,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     */
     private ActionBarDrawerToggle actionbardrawertoggle;
     Toolbar toolbar;
-    // ------------------------------------------------------
     public int img_person;
     public int img_verletzung;
     public int img_erkrankung;
@@ -95,8 +87,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private View viewToAnimate;
 
     private LinearLayout lnl_buttons;
-    private Button btn_speichern;
-    private Button btn_verwerfen;
+    private Button btn_speichern, btn_verwerfen;
+    private GlobaleDaten mfall;
 
     /* von Vivien Stumpe, 06.05.16
     Test der Datenbank
@@ -110,7 +102,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         TextView txtv_person = (TextView) findViewById(R.id.txtv_fallein_pers);
         try {
             txtv_person.setCompoundDrawablesWithIntrinsicBounds(0, img_person, 0, 0);
-            ButtonsSichtbar();
+                ButtonsSichtbar();
         } catch (Exception e) {
 
         }
@@ -191,8 +183,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         } catch (Exception e) {
 
         }
-
-
     }
 
     @Override
@@ -200,15 +190,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_falleingabe);
 
-        /*
-        //Verbindung zwischen Buttonvariable und Button in der Activity herstellen
-        //von Vivien Stumpe, 03.04.16
-        btn_fallein = (Button)findViewById(R.id.btn_menu_fallein);
+        // ------
+        //Stammdaten & Mitarbeiter müssen aus der DB ausgelesen werden & den Variablen zugewiesen werden!!
 
-        //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
-        //von Vivien Stumpe, 03.04.16
-        btn_fallein.setOnClickListener(this);
-        */
+
+        onBoard();
 
         //Verbindung zwischen Variable und TextView in der Activity herstellen
         //von Vivien Stumpe, 14.04.16
@@ -293,12 +279,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         dataSource.createPatient(34, "Stumpe", "Vivien", "22.02.1994", 1);
         */
 
-
         //Verbindung zur DB trennen
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
 
-
+        // Icons ggf. ändern, wenn Daten gespeichert wurden
+        IconsSave();
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -320,11 +306,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Aufrufen der Activity mittels Intent
         //von Vivien Stumpe, 14.04.16
         if (ce == R.id.txtv_fallein_pers) {
-            
-            setIconPerson(R.drawable.person_save);
             Intent intent = new Intent(Falleingabe.this, Pers_daten.class);
             startActivity(intent);
-
         }
         if (ce == R.id.txtv_fallein_notfall) {
             setIconNotfall(R.drawable.notfallsituation_save);
@@ -370,7 +353,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         if (ce == R.id.btn_verwerfen_fallein) {
             verwerfen();
         }
-
     }
 
     //von Vivien Stumpe, 08.04.16
@@ -424,6 +406,30 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setIconNotfall(R.drawable.notfallsituation);
         setIconBemerkung(R.drawable.bemerkung);
     }
+
+    /* von Vivien Stumpe, 15.05.16
+    Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
+    */
+    protected void IconsSave(){
+        mfall = (GlobaleDaten) getApplication();
+        //Vergleich, ob die Pflichtfelder eingegeben wurden -> muss im Screen noch sichergestellt sein!
+        if ((mfall.getPat_name() != null)&(mfall.getPat_vorname() != null)&(mfall.getPat_geb() != null)) {
+            if ((mfall.getPat_name().length() != 0)&(mfall.getPat_vorname().length() != 0)&(mfall.getPat_geb().length() != 0))
+                setIconPerson(R.drawable.person_save);
+        }
+        else{
+            setIconPerson(R.drawable.person);
+        }
+        //ähnliche Vergleiche für die anderen Screens müssen hier ergänzt werden
+        setIconVerletzung(R.drawable.verletzung);
+        setIconErkrankung(R.drawable.erkrankung_vergiftung);
+        setIconMaßnahmen(R.drawable.massnahmen);
+        setIconErstbefund(R.drawable.befund);
+        setIconUebergabe(R.drawable.uebergabe);
+        setIconNotfall(R.drawable.notfallsituation);
+        setIconBemerkung(R.drawable.bemerkung);
+    }
+
     /* von Vivien Stumpe, 02.05.16
     Prozedur, die prüft, ob sich ein Icon geändert hat
     und wenn dies der Fall ist, die Buttons zum Speichern oder Verwerfen anzeigt
@@ -442,7 +448,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             aenderung = true;
         } else if (img_uebergabe!=R.drawable.uebergabe) {
             aenderung = true;
-        } else if (img_notfall!=R.drawable.notfallsituation) {
+        } else if (img_notfall!= R.drawable.notfallsituation) {
             aenderung = true;
         } else if (img_bemerkung!=R.drawable.bemerkung) {
             aenderung = true;
@@ -489,19 +495,42 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         Animation out = AnimationUtils.makeOutAnimation(this, true);
         viewToAnimate.startAnimation(out);
         viewToAnimate.setVisibility(View.INVISIBLE);
-
-
     }
     /* von Vivien Stumpe, 02.05.16
     Prozedur, die beim Betätigen des Verwerfen-Buttons aufgerufen wird
     Die Daten werden nicht in der DB gespeichert
     Die Icons werden zurückgesetzt
     Die Buttons verschwinden
+    geändert am 15.05.16 -> eingabenZuruecksetzen();
      */
     public void verwerfen(){
+        eingabenZuruecksetzen();
         //Icons zurücksetzen
         IconsStart();
         lnl_buttons.setVisibility(lnl_buttons.GONE);
+    }
+    /* von Vivien Stumpe, 15.05.16
+    Prozedur, die alle gemachten Eingaben lokal löscht
+     */
+    public void eingabenZuruecksetzen(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.loeschePat();
+        mfall.loescheEin();
+        // hier folgen noch die Dienste für die anderen Screens
+    }
 
+    public void onBoard() {
+        mfall = (GlobaleDaten) getApplication();
+        // Wurde übersprungen?
+        if (!mfall.getUebersprungen()) {
+            //wenn nicht -> Gibt es Stammdaten zum Fall?
+            if (!mfall.getFall_angelegt()) {
+                //wenn nicht -> onBoarding Activity starten
+                Intent onboarding = new Intent(this, OnBoarding.class);
+                startActivity(onboarding);
+                //Falleingabe schließen
+                finish();
+            }
+        }
     }
 }
