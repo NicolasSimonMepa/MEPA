@@ -35,8 +35,8 @@
     <string name="txtv_ersthelfermaßnahmen">Ersthelfermaßnahmen</string>
     <!-- Vivien Stumpe, 04.04.16 -->
     <string name="pers_daten">Persönliche Daten</string>
-    <string name="txtv_name_pers_daten">Pflichtfeld Nachname</string>
-    <string name="txtv_vorname_pers_daten">Pflichtfeld Vorname</string>
+    <string name="txtv_name_pers_daten">Nachname</string>
+    <string name="txtv_vorname_pers_daten">Vorname</string>
     <string name="txtv_str_pers_daten">Straße</string>
     <string name="txtv_plz_pers_daten">Postleitzahl</string>
     <string name="txtv_ort_pers_daten">Wohnort</string>
@@ -44,7 +44,7 @@
     <string name="cck_patient_pers_daten">Patient</string>
     <string name="cck_familie_pers_daten">Familie</string>
     <string name="cck_freunde_pers_daten">Freunde</string>
-    <string name="txtv_geb_pers_daten">Pflichtfeld Geboren am</string>
+    <string name="txtv_geb_pers_daten">Geburtsdatum</string>
     <string name="txtv_fundort_pers_daten">Ggf. Fundort</string>
     <string name="txtv_krankenkasse_pers_daten">Krankenkasse</string>
     <string name="txtv_zugefuehrt">Der Hilfsstelle zugeführt durch:</string>
