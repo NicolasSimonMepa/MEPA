@@ -3,7 +3,7 @@
 Farben definiert -->
 <resources>
     <color name="colorPrimary">#ffeedd</color>
-    <color name="colorPrimaryDark">#efb14d</color>
+    <color name="colorPrimaryDark">#f4cea6</color>
     <color name="colorAccent">#FF4081</color>
     <color name="weiss">#ffffff</color>
     <color name="schwarz">#000000</color>
