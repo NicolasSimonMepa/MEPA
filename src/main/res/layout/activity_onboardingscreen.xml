@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/verlauf">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/festivealth_logo"
+        android:id="@+id/imgv_onb_logo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgv_onb_logo"
+        android:text="@string/txtv_willkommen"
+        android:id="@+id/txtv_onb_willkommen"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/schwarz"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/txtv_onb_willkommen"
+        android:id="@+id/txtv_onb_willkommenText"
+        android:textColor="@color/schwarz"
+        android:gravity="center_horizontal"
+        android:text="@string/txtv_willkommenText"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/lnl_onb_kacheln"
+        android:layout_below="@+id/txtv_onb_willkommenText"
+        android:gravity="center_horizontal">
+    <TextView
+        android:id="@+id/txtv_onb_mitarbeiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtv_mitarbeiter_konfig"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:clickable="true" />
+    <!-- von Vivien Stumpe, 25.04.16
+    Stammdaten als Option bei den Einstellungen-->
+    <TextView
+        android:id="@+id/txtv_onb_stammdaten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtv_stammdaten"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:clickable="true" />
+    </LinearLayout>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/lnl_onb_kacheln"
+        android:id="@+id/btn_onb_skip"
+        android:text="@string/btn_skip"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>

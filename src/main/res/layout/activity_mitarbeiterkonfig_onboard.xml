@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- von Vivien Stumpe, 16.05.16 -->
+<!-- zuletzt geändert von Vivien Stumpe, 16.05.16-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig_OnBoard"
+        android:background="@drawable/verlauf">
+        <!-- Layout für die Toolbar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/toolbar_onboard_layout"/>
+        </LinearLayout>
+    <!-- von Vivien Stumpe, 26.04.16
+              Layout für die Navigation mit zurück Pfeil -->
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/lnl_navi_mitarbeiter_onb"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/imgv_before_mitarbeiter_onb"
+            android:src="@drawable/before"
+            android:clickable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/txtv_mitarbeiter_konfig_onb"
+                android:id="@+id/txtv_mitarbeiter_konfig_onb"
+                android:textSize="30sp"
+                android:textColor="#000000"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnl_navi_mitarbeiter_onb"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:id="@+id/tbl_mitarbeiter_konfig_onb"
+            android:stretchColumns="1"
+            android:focusable="true" android:focusableInTouchMode="true">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_mitarbeiter_name_onb"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:src="@drawable/name"
+                    android:id="@+id/txtv_mitarbeiter_name_onb" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etxt_mitarbeiter_name_onb"
+                    android:hint="@string/txtv_mitarbeiter_name"
+                    android:layout_column="1"
+                    android:typeface="normal"
+                    android:ems="10"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:singleLine="false"
+                    android:maxLines="2"
+                    android:maxLength="55" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblr_mitarbeiter_vorname_onb"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:src="@drawable/prename"
+                    android:id="@+id/txtv_mitarbeiter_vorname_onb"  />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etxt_mitarbeiter_vorname_onb"
+                    android:hint="@string/txtv_mitarbeiter_vorname"
+                    android:layout_column="1"
+                    android:typeface="normal"
+                    android:ems="10"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:singleLine="false"
+                    android:maxLines="2"
+                    android:maxLength="55"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tbl_mitarbeiter_konfig_onb"
+            android:id="@+id/lnl_buttons_mitarbeiter_onb"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_speichern"
+                android:id="@+id/btn_speichern_mitarbeiter_konfig_onb"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:background="#137922"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:singleLine="false"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:minWidth="30dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_verwerfen"
+                android:id="@+id/btn_verwerfen_mitarbeiter_konfig_onb"
+                android:background="#ee0f0f"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </RelativeLayout>
