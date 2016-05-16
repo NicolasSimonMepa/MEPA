@@ -1,7 +1,7 @@
 /**
  * Created by Nathalie on 18.04.2016.
  */
-// Zuletzt bearbeitet von Nathalie Horn, 02.05.16
+// Zuletzt bearbeitet von Vivien Stumpe, 16.05.16
 package de.app.mepa.mitarbeiterkonfig;
 
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,14 +22,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
-import de.app.mepa.stammdaten.Stammdaten;
 import de.app.mepa.upload.Upload;
 
 
@@ -63,6 +63,8 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     private EditText etxt_mitarbeiter_name;
     private EditText etxt_mitarbeiter_vorname;
     private TextWatcher textWatcher;
+
+    private GlobaleDaten mfall;
 
 
     @Override
@@ -134,7 +136,10 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
         etxt_mitarbeiter_name.addTextChangedListener(textWatcher);
         etxt_mitarbeiter_vorname.addTextChangedListener(textWatcher);
 
-
+        /* von Vivien Stumpe, 16.05.16
+        Falls Werte vorhanden sind, werden diese im Screen geladen
+         */
+        setWerte();
     }
 
     @Override
@@ -158,6 +163,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
                 //aktObjekt.setKreisverband(etxt_kreisverband.getText().toString())
                 Toast.makeText(this, "Mitarbeiter gespeichert", Toast.LENGTH_LONG).show();
             }
+            speichereEingaben();
 
             //Buttons wieder ausblenden
             lnl_buttons.setVisibility(lnl_buttons.GONE);
@@ -205,11 +211,40 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
             Intent intent = new Intent(Mitarbeiterkonfig.this, Impressum.class);
             startActivity(intent);
         }
+    }
+    /* von Vivien Stumpe, 16.05.16
+    Prozedur, die die eingegebenen Daten in den Variablen speichert
+     */
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setSan_name(etxt_mitarbeiter_name.getText().toString());
+        Log.d("Fall", "Name gespeichert");
 
+        mfall.setSan_vorname(etxt_mitarbeiter_vorname.getText().toString());
+        Log.d("Fall", "Vorname gespeichert");
+        mfall.setSan_vorh();
+        mfall.setFall_angelegt();
+    }
+    /* von Vivien Stumpe, 16.05.16
+    wird aufgerufen, wenn eine andere Aktivität in den Vordergrund gelangt
+     */
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
     }
 
+    /* von Vivien Stumpe, 16.05.16
+    belegt die Eingabefelder etc. mit den lokal gespeicherten Werten, sofern vorhanden
+     */
+    public void setWerte(){
+        mfall=(GlobaleDaten)getApplication();
+
+        if((mfall.getSan_name()!=null)){
+            etxt_mitarbeiter_name.setText(mfall.getSan_name());
+        }
+        if((mfall.getSan_vorname()!=null)){
+            etxt_mitarbeiter_vorname.setText(mfall.getSan_vorname());
+            }
+        }
 }
-
-
-
-
