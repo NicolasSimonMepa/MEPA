@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_keine"
-                android:id="@+id/checkBox"
+                android:id="@+id/cck_erkrankung_keine"
                 android:textSize="20sp" />
         </TableRow>
 
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_alkoholisiert"
-                android:id="@+id/checkBox2"
+                android:id="@+id/cck_erkrankung_alkoholisiert"
                 android:textSize="20sp" />
         </TableRow>
 
@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_uebelkeit"
-                android:id="@+id/checkBox3"
+                android:id="@+id/cck_erkrankung_erbrechen"
                 android:textSize="20sp" />
         </TableRow>
 
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_schwindel"
-                android:id="@+id/checkBox4"
+                android:id="@+id/cck_erkrankung_schwindel"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -194,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_herz_kreislauf"
-                android:id="@+id/checkBox5"
+                android:id="@+id/cck_erkrankung_herzkreislauf"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -206,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_hitzeschlag"
-                android:id="@+id/checkBox6"
+                android:id="@+id/cck_erkrankung_hitzeschlag"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_hitzeerschoepfung"
-                android:id="@+id/checkBox7"
+                android:id="@+id/cck_erkrankung_hitzeerschoepfung"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -230,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_vergiftung"
-                android:id="@+id/checkBox8"
+                android:id="@+id/cck_erkrankung_vergiftung"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -242,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_atmung"
-                android:id="@+id/checkBox9"
+                android:id="@+id/cck_erkrankung_atmung"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -254,11 +254,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_unterkuehlung"
-                android:id="@+id/checkBox10"
+                android:id="@+id/cck_erkrankung_unterkuehlung"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
-        
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -278,7 +278,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_stoffwechsel"
-                android:id="@+id/checkBox11"
+                android:id="@+id/cck_erkrankung_stoffwechsel"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -290,7 +290,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_neurologie"
-                android:id="@+id/checkBox12"
+                android:id="@+id/cck_erkrankung_neurologie"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -302,7 +302,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_gynaekologie"
-                android:id="@+id/checkBox13"
+                android:id="@+id/cck_erkrankung_gynaekologie"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -314,7 +314,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_psychatrie"
-                android:id="@+id/checkBox14"
+                android:id="@+id/cck_erkrankung_psychatrie"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -326,7 +326,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_kindernotfall"
-                android:id="@+id/checkBox15"
+                android:id="@+id/cck_erkrankung_kindernotfall"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -338,7 +338,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_geburtshilfe"
-                android:id="@+id/checkBox16"
+                android:id="@+id/cck_erkrankung_geburtshilfe"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
@@ -350,7 +350,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtv_sonstiges"
-                android:id="@+id/checkBox20"
+                android:id="@+id/cck_erkrankung_sonstiges"
                 android:checked="false"
                 android:textSize="20sp" />
         </TableRow>
