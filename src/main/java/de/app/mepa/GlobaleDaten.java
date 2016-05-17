@@ -9,6 +9,12 @@ import android.util.Log;
  */
 public class GlobaleDaten extends Application {
     
+    //Notfallsituation - Variablen
+    private String notf_notfallsituation;
+
+    //Bemerkung - Variablen
+    private String bem_bemerkung;
+    
     //Erkrankung - Variablen
     private Integer erk_keine;
     private Integer erk_alkoholisiert;
@@ -71,6 +77,20 @@ public class GlobaleDaten extends Application {
     private String ver_ort;
     private String ver_date;
     private Boolean ver_vorh=false;
+    
+    //Notfallsituation - Dienste
+    public void setNotf_notfallsituation(String notfallsituation){this.notf_notfallsituation=notfallsituation;}
+    public String getNotf_notfallsituation(){return notf_notfallsituation;}
+    public void loescheNotf(){
+        setNotf_notfallsituation("");
+    }
+
+    //Bemerkung - Dienste
+    public void setBem_bemerkung(String bemerkung){this.bem_bemerkung=bemerkung;}
+    public String getBem_bemerkung(){return bem_bemerkung;}
+    public void loescheBem(){
+        setBem_bemerkung("");
+    }
     
     //Erkrankung - Dienste
     public void setErk_keine(Integer keine){this.erk_keine=keine;}
