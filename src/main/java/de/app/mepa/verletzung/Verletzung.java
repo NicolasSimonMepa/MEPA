@@ -196,7 +196,7 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
 
         //Nicolas Simon, übernommen von Vivien Stumpe, 11.04.16
         //Verbindung der View zur Scrollview in der Aktivität
-        view=(View) findViewById(R.id.rl_verletzung);
+        view=(View) findViewById(R.id.scrV_verletzung);
         //OnTouchListener auf die View setzen
 
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
