@@ -8,6 +8,27 @@ import android.util.Log;
  * enthält Variablen und Dienste, die während der Laufzeit in allen Activities verfügbar sind
  */
 public class GlobaleDaten extends Application {
+    
+    //Erkrankung - Variablen
+    private Integer erk_keine;
+    private Integer erk_alkoholisiert;
+    private Integer erk_erbrechen;
+    private Integer erk_schwindel;
+    private Integer erk_herzkreislauf;
+    private Integer erk_hitzeschlag;
+    private Integer erk_hitzeerschoepfung;
+    private Integer erk_vergiftung;
+    private Integer erk_atmung;
+    private Integer erk_unterkuehlung;
+    private Integer erk_baucherkrankung;
+    private Integer erk_stoffwechsel;
+    private Integer erk_neurologie;
+    private Integer erk_psychatrie;
+    private Integer erk_gynaekologie;
+    private Integer erk_kindernotfall;
+    private Integer erk_geburtshilfe;
+    private Integer erk_sonstiges;
+    private String erk_edtxt_sonstiges;
 
     //Patient - Variablen
     private String pat_name;
@@ -50,6 +71,67 @@ public class GlobaleDaten extends Application {
     private String ver_ort;
     private String ver_date;
     private Boolean ver_vorh=false;
+    
+    //Erkrankung - Dienste
+    public void setErk_keine(Integer keine){this.erk_keine=keine;}
+    public void setErk_alkoholisiert(Integer alkoholisiert){this.erk_alkoholisiert=alkoholisiert;}
+    public void setErk_erbrechen(Integer erbrechen){this.erk_erbrechen=erbrechen;}
+    public void setErk_schwindel(Integer schwindel){this.erk_schwindel=schwindel;}
+    public void setErk_herzkreislauf(Integer herzkreislauf){this.erk_herzkreislauf=herzkreislauf;}
+    public void setErk_hitzeschlag(Integer hitzeschlag){this.erk_hitzeschlag=hitzeschlag;}
+    public void setErk_hitzeerschoepfung(Integer hitzeerschoepfung){this.erk_hitzeerschoepfung=hitzeerschoepfung;}
+    public void setErk_vergiftung(Integer vergiftung){this.erk_vergiftung=vergiftung;}
+    public void setErk_atmung(Integer atmung){this.erk_atmung=atmung;}
+    public void setErk_unterkuehlung(Integer unterkuehlung){this.erk_unterkuehlung=unterkuehlung;}
+    public void setErk_baucherkrankung(Integer baucherkrankung){this.erk_baucherkrankung=baucherkrankung;}
+    public void setErk_stoffwechsel(Integer stoffwechsel){this.erk_stoffwechsel=stoffwechsel;}
+    public void setErk_neurologie(Integer neurologie){this.erk_neurologie=neurologie;}
+    public void setErk_psychatrie(Integer psychatrie){this.erk_psychatrie=psychatrie;}
+    public void setErk_gynaekologie(Integer gynaekologie){this.erk_gynaekologie=gynaekologie;}
+    public void setErk_kindernotfall(Integer kindernotfall){this.erk_kindernotfall=kindernotfall;}
+    public void setErk_geburtshilfe(Integer geburtshilfe){this.erk_geburtshilfe=geburtshilfe;}
+    public void setErk_sonstiges(Integer sonstiges){this.erk_sonstiges=sonstiges;}
+    public void setErk_edtxt_sonstiges(String edtxtSonstiges){this.erk_edtxt_sonstiges=edtxtSonstiges;}
+    public Integer getErk_keine(){return erk_keine;}
+    public Integer getErk_alkoholisiert(){return erk_alkoholisiert;}
+    public Integer getErk_erbrechen(){return erk_erbrechen;}
+    public Integer getErk_schwindel(){return erk_schwindel;}
+    public Integer getErk_herzkreislauf(){return erk_herzkreislauf;}
+    public Integer getErk_hitzeschlag(){return erk_hitzeschlag;}
+    public Integer getErk_hitzeerschoepfung(){return erk_hitzeerschoepfung;}
+    public Integer getErk_vergiftung(){return erk_vergiftung;}
+    public Integer getErk_atmung(){return erk_atmung;}
+    public Integer getErk_unterkuehlung(){return erk_unterkuehlung;}
+    public Integer getErk_baucherkrankung(){return erk_baucherkrankung;}
+    public Integer getErk_stoffwechsel(){return erk_stoffwechsel;}
+    public Integer getErk_neurologie(){return erk_neurologie;}
+    public Integer getErk_psychatrie(){return erk_psychatrie;}
+    public Integer getErk_gynaekologie(){return erk_gynaekologie;}
+    public Integer getErk_kindernotfall(){return erk_kindernotfall;}
+    public Integer getErk_geburtshilfe(){return erk_geburtshilfe;}
+    public Integer getErk_sonstiges(){return erk_sonstiges;}
+    public String getErk_edtxt_sonstiges(){return erk_edtxt_sonstiges;}
+    public void loescheErk(){
+        setErk_keine(0);
+        setErk_alkoholisiert(0);
+        setErk_erbrechen(0);
+        setErk_schwindel(0);
+        setErk_herzkreislauf(0);
+        setErk_hitzeschlag(0);
+        setErk_hitzeerschoepfung(0);
+        setErk_vergiftung(0);
+        setErk_atmung(0);
+        setErk_unterkuehlung(0);
+        setErk_baucherkrankung(0);
+        setErk_stoffwechsel(0);
+        setErk_neurologie(0);
+        setErk_psychatrie(0);
+        setErk_gynaekologie(0);
+        setErk_kindernotfall(0);
+        setErk_geburtshilfe(0);
+        setErk_sonstiges(0);
+        setErk_edtxt_sonstiges("");
+    }
 
     //Patient - Dienste
     public void setPat_name(String n){
