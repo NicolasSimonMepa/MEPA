@@ -1,8 +1,6 @@
 package de.app.mepa.bemerkung;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +18,7 @@ import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.notfallsituation.notfallsituation;
@@ -27,10 +26,7 @@ import de.app.mepa.upload.Upload;
 import de.app.mepa.mepa.R;
 
 public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener{
-    private Button safe, laden, loeschen;
-    private EditText eingabe;
-    private SharedPreferences speicher;
-    private Editor editor;
+    private EditText edtxt_bemerkung;
     private ImageView imgv_before;
     private ImageView imgv_menü;
     private DrawerLayout drawerlayout_bemerkung;
@@ -45,6 +41,8 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     private View view;
 
     Toolbar toolbar;
+    
+    private GlobaleDaten mfall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +60,9 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        safe = (Button)findViewById(R.id.btn_bemerkung_speichern);
-        laden = (Button)findViewById(R.id.btn_bemerkung_laden);
-        eingabe = (EditText)findViewById(R.id.edtxt_bemerkung);
-        loeschen = (Button)findViewById(R.id.btn_bemerkung_loeschen);
+        edtxt_bemerkung=(EditText) findViewById(R.id.edtxt_bemerkung);
 
-        safe.setOnClickListener(this);
-        laden.setOnClickListener(this);
-        loeschen.setOnClickListener(this);
-
-        speicher = getApplicationContext().getSharedPreferences("Bemerkung",0);
-        editor = speicher.edit();
+        setWerte();
         /* von Vivien Stumpe, 11.04.16
         Wechseln der Aktivität mittels Swipe
         Hauptelement der Activity finden und der Variable zuweisen
@@ -139,15 +129,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     }
     @Override
     public void onClick(View v) {
-        if (v == safe){
-            TextSpeichern(eingabe.getText().toString());
-        }
-        if (v == laden){
-            TextLaden();
-        }
-        if (v == loeschen){
-            TextLoeschen();
-        }
+
         /* von Vivien Stumpe, 25.04.16
         Deklaration und Initialisierung einer Hilfsvariablen (clicked element),
         die die ID der geklickten View erhält
@@ -167,29 +149,19 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
             drawerlayout_bemerkung.openDrawer(GravityCompat.START);
         }
     }
-    private void TextLaden(){
-        if (speicher.getString("Bemerkung1", null)!= null){
-            eingabe.setText(speicher.getString("Bemerkung1", null));
-        }
-        else {
-            Toast.makeText(this, "keine Daten im Speicher", Toast.LENGTH_LONG).show();
-        }
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
     }
-    private void TextSpeichern(String inhalt){
-        if (inhalt != null){
-            editor.putString("Bemerkung1", inhalt);
-            editor.commit();
-            Toast.makeText(this, "Daten gespeichert", Toast.LENGTH_LONG).show();
-        }
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setBem_bemerkung(edtxt_bemerkung.getText().toString());
     }
-    private void TextLoeschen(){
-        if (speicher.getString("Bemerkung1", null)!= null){
-            editor.clear();
-            editor.commit();
-            Toast.makeText(this, "Daten gelöscht", Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(this, "keine Daten im Speicher", Toast.LENGTH_LONG).show();
+    public void setWerte() {
+        mfall = (GlobaleDaten) getApplication();
+        if ((mfall.getBem_bemerkung() != null)) {
+            edtxt_bemerkung.setText(mfall.getBem_bemerkung());
         }
     }
 }
