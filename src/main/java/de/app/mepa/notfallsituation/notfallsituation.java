@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 01.05.16
+//Zuletzt bearbeitet von Emile Yoncaova, 17.05.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -21,6 +22,7 @@ import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
@@ -29,6 +31,8 @@ import de.app.mepa.upload.Upload;
 
 public class notfallsituation extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
+    private EditText etxt_notfallsituation;
+    private GlobaleDaten mfall;
     //von Vivien Stumpe, 10.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
@@ -77,6 +81,9 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        etxt_notfallsituation=(EditText) findViewById(R.id.etxt_notfallsituation);
+
+        setWerte();
         /* von Vivien Stumpe, 19.04.16
         Wechseln der Aktivität mittels Swipe
         Hauptelement der Activity finden und der Variable zuweisen
@@ -184,6 +191,21 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
          */
         if(ce == R.id.imgv_menu){
             drawerlayout_notfall.openDrawer(GravityCompat.START);
+        }
+    }
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
+    }
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setNotf_notfallsituation(etxt_notfallsituation.getText().toString());
+    }
+    public void setWerte() {
+        mfall = (GlobaleDaten) getApplication();
+        if ((mfall.getNotf_notfallsituation() != null)) {
+            etxt_notfallsituation.setText(mfall.getNotf_notfallsituation());
         }
     }
 }
