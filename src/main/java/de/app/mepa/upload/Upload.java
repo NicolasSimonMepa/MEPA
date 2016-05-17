@@ -1,8 +1,9 @@
 //Zuletzt geändert von Vivien Stumpe, 10.04.16
-//Zuletzt geändert von Nathalie Horn, 02.05.16
+//Zuletzt geändert von Nathalie Horn, 17.05.16
 package de.app.mepa.upload;
 
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -114,9 +116,15 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Upload durch E-Mail
         //von Nathalie Horn am 27.04.16
         if(ce == R.id.txtv_upload_email){
-            String adresse = "spam@deinedomain.de";
+
+            //von Nathalie Horn, 17.05.16
+            //Variablen, die nötig sind um Apps zu filtern
+            boolean found;
+            found = false;
+
+            String adresse = "patient@krankenhaus.de";
             String adressarray[] = { adresse };
-            String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
+            String nachricht = "Dies ist der Text der in der Mail erscheint.\n Viele Grüße";
 
             //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
             File ordner;
@@ -147,8 +155,6 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             // Intent anlegen der die Funktion "Action_Send" aufruft.
             Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
-            //Legt fest, dass nur EMail Apps zum Versand verwendet werden sollen.
-            //Intent.setData(Uri.parse("mailto:"));
 
             // Fügt der E-Mail Eigenschaften und unseren Text hinzu
             emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
@@ -160,10 +166,35 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             emailversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
 
 
-            startActivity(Intent.createChooser(emailversand, "Protokoll senden"));
+            //Von Nathalie Horn, 17.05.16
+            // Erhält die Liste an Intents, die E-Mails verschicken können.
+            List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversand, 0);
+            if (!resInfo.isEmpty()) {
+                for (ResolveInfo info : resInfo) {
+                    if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
+                            info.activityInfo.name.toLowerCase().contains("mail")) {
+                        emailversand.setPackage(info.activityInfo.packageName);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    return;
+                }
+                //startet den Intent
+                startActivity(Intent.createChooser(emailversand, "Select"));
+            }
+
         }
+
         //von Nathalie Horn am 02.05.16
         if(ce == R.id.txtv_upload_bluetooth){
+
+            //von Nathalie Horn, 17.05.16
+            //Variablen, die nötig sind um Apps zu filtern
+            boolean found;
+            found = false;
+
             String nachricht = "Dies ist der Text der in der Mail erscheint.'\n'Viele Grüße von mir";
 
             //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
@@ -198,7 +229,26 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             bluetoothversand.setType("*/*");
             bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
 
-            startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
+            //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
+
+            //Von Nathalie Horn, 17.05.16
+            // Erhält die Liste an Intents, die E-Mails verschicken können.
+            List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(bluetoothversand, 0);
+            if (!resInfo.isEmpty()) {
+                for (ResolveInfo info : resInfo) {
+                    if (info.activityInfo.packageName.toLowerCase().contains("bluetooth") ||
+                            info.activityInfo.name.toLowerCase().contains("bluetooth")) {
+                        bluetoothversand.setPackage(info.activityInfo.packageName);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    return;
+                }
+                //startet den Intent
+                startActivity(Intent.createChooser(bluetoothversand, "Select"));
+            }
 
         }
 
