@@ -81,6 +81,17 @@ public class GlobaleDaten extends Application {
     private String ver_date;
     private Boolean ver_vorh=false;
     
+    //Fall ID - Dienste, Simon 18.05.16
+        public void setFallID(boolean a) {
+        if (a == true){
+            this.fallID = UUID.randomUUID().hashCode();
+            if (fallID < 0 ){fallID = -fallID;}
+        }
+        else {fallID = 0;}
+    }
+    public int getFallID(){return fallID;}
+    public void loescheFallID(){setFallID(false);}
+    
     //Notfallsituation - Dienste
     public void setNotfallsituation(String notfallsituation){this.notfallsituation=notfallsituation;}
     public String getNotfallsituation(){return notfallsituation;}
