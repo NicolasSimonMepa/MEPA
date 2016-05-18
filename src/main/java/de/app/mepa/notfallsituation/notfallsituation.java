@@ -200,12 +200,12 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
-        mfall.setNotf_notfallsituation(etxt_notfallsituation.getText().toString());
+        mfall.setNotfallsituation(etxt_notfallsituation.getText().toString());
     }
     public void setWerte() {
         mfall = (GlobaleDaten) getApplication();
-        if ((mfall.getNotf_notfallsituation() != null)) {
-            etxt_notfallsituation.setText(mfall.getNotf_notfallsituation());
+        if ((mfall.getNotfallsituation() != null)) {
+            etxt_notfallsituation.setText(mfall.getNotfallsituation());
         }
     }
 }
