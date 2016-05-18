@@ -1,14 +1,16 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 16.05.16
+//Zuletzt bearbeitet von Indra Marcheel am 18.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -30,8 +32,6 @@ import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
-
-import de.app.mepa.mepa.MainActivity;
 import de.app.mepa.mepa.R;
 import de.app.mepa.upload.Upload;
 
@@ -124,6 +124,70 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         etxt_ort=(EditText)findViewById(R.id.etxt_ort);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
         etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung);
+        
+         /* von Indra Marcheel, 18.05.2016
+        es können nur character eingegeben werden
+         */
+        etxt_kreisverband.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_ort.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_ortsverein.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_veranstaltung.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+        
         /* von Vivien Stumpe, 01.05.16
         TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
         Damit entsprechend auf Eingaben reagiert werden kann
