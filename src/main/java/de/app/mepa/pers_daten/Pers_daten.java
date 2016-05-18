@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 16.05.16
+//Zuletzt bearbeitet von Indra Marcheel, 18.05.16
 
 package de.app.mepa.pers_daten;
 
@@ -9,10 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +26,7 @@ import android.widget.Spinner;
 
 import java.util.Calendar;
 
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -37,7 +36,6 @@ import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.R;
 import de.app.mepa.upload.Upload;
 import de.app.mepa.verletzung.Verletzung;
-import de.app.mepa.GlobaleDaten;
 
 
 public class Pers_daten extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
@@ -233,6 +231,60 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
         etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
 
+
+        etxt_fundort_pers_daten=(EditText) findViewById(R.id.etxt_fundort_pers_daten);
+        etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
+
+        etxt_ort_pers_daten=(EditText) findViewById(R.id.etxt_ort_pers_daten);
+        /* von Indra Marcheel, 18.05.2016
+        es können nur character eingegeben werden
+         */
+        etxt_ort_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_land_pers_daten=(EditText) findViewById(R.id.etxt_land_pers_daten);
+        etxt_land_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_krankenkasse_pers_daten=(EditText) findViewById(R.id.etxt_krankenkasse_pers_daten);
+        etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
 
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
