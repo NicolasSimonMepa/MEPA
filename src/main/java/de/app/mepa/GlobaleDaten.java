@@ -9,6 +9,9 @@ import android.util.Log;
  */
 public class GlobaleDaten extends Application {
     
+    // Fall ID - Variable, Simon 18.05.16
+    private int fallID;
+    
     //Notfallsituation - Variablen
     private String notfallsituation;
 
