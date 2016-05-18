@@ -465,6 +465,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     Die Icons werden zurückgesetzt
      */
     public void speichern(){
+        
+        //Simon, 18.05.16, Die ID wird generiert:
+        int fallID = UUID.randomUUID().hashCode();
+        if (fallID < 0 ){fallID = -fallID;}
+        Toast.makeText(Falleingabe.this, "ID Hash: " + fallID, Toast.LENGTH_LONG).show();
+        
         //Animation
         //Daten speichern in der DB
         //Icons zurücksetzen
