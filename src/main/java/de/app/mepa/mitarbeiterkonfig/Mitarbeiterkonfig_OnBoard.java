@@ -1,7 +1,7 @@
 /**
  * Created by vstumpe on 16.05.2016.
  */
-// Zuletzt bearbeitet von Vivien Stumpe, 16.05.16
+// Zuletzt bearbeitet von Indra Marcheel, 18.05.16
 package de.app.mepa.mitarbeiterkonfig;
 
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +67,39 @@ public class Mitarbeiterkonfig_OnBoard extends AppCompatActivity implements View
         etxt_mitarbeiter_name=(EditText)findViewById(R.id.etxt_mitarbeiter_name_onb);
         etxt_mitarbeiter_vorname=(EditText)findViewById(R.id.etxt_mitarbeiter_vorname_onb);
 
+
+         /* von Indra Marcheel, 18.05.2016
+        es können nur character eingegeben werden
+         */
+        etxt_mitarbeiter_vorname.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+
+        etxt_mitarbeiter_name.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
         /*
         Zuweisen der Buttonvariablen zu den Buttons in der Activity
         Setzen des OnClickListeners, damit auf Klicks reagiert wird
