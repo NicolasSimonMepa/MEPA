@@ -1,22 +1,24 @@
-// zuletzt geändert von Emile Yoncaova, 02.05.16
+// zuletzt geändert von Indra Marcheel, 18.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.format.DateFormat;
+import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.support.v7.widget.Toolbar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -62,6 +64,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
+
+    //Indra Marcheel, 18.05.2016
+    private EditText edtxt_entlassung_zeuge;
 
     private View view;
 
@@ -185,6 +190,25 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(camera_intent,CAM_REQUEST);
             }
+        });
+
+        edtxt_entlassung_zeuge=(EditText) findViewById(R.id.edtxt_entlassung_zeuge);
+         /* von Indra Marcheel, 18.05.2016
+        es können nur character eingegeben werden
+         */
+        edtxt_entlassung_zeuge.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
         });
     }
     
