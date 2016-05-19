@@ -156,12 +156,12 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
-        mfall.setBemerkung(edtxt_bemerkung.getText().toString());
+        mfall.setBem_bemerkung(edtxt_bemerkung.getText().toString());
     }
     public void setWerte() {
         mfall = (GlobaleDaten) getApplication();
-        if ((mfall.getBemerkung() != null)) {
-            edtxt_bemerkung.setText(mfall.getBemerkung());
+        if ((mfall.getBem_bemerkung() != null)) {
+            edtxt_bemerkung.setText(mfall.getBem_bemerkung());
         }
     }
 }
