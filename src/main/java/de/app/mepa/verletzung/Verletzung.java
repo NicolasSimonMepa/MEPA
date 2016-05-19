@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Nicolas Simon, 30.04.16
+//Zuletzt bearbeitet von Emile Yoncaova, 19.05.16
 package de.app.mepa.verletzung;
 
 import android.content.Intent;
@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -51,7 +53,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner spin_beine_grad;
     private Spinner spin_weichteile_grad;
 
+    private CheckBox cck_prellung_verletzung;
+    private CheckBox cck_verbrennung_verletzung;
+    private CheckBox cck_wunde_verletzung;
+    private CheckBox cck_elektro_verletzung;
+    private CheckBox cck_inhalation_verletzung;
+    private CheckBox cck_sonstiges_verletzung;
 
+    private GlobaleDaten mfall;
 
     //String Array erstellen mit den Elementen, die im Dropdown-Menü des Spinners in der Activity ausgewählt werden können
     //Nicolas Simon, übernommen von Vivien Stumpe, 04.04.16
@@ -184,6 +193,22 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         spin_weichteile_grad = (Spinner)findViewById(R.id.spin_weichteile_grad);
         spin_weichteile_grad.setAdapter(adapter_grad);
         spin_weichteile_grad.setOnItemSelectedListener(this);
+
+        cck_prellung_verletzung=(CheckBox)findViewById(R.id.cck_prellung_verletzung);
+        cck_verbrennung_verletzung=(CheckBox)findViewById(R.id.cck_verbrennung_verletzung);
+        cck_wunde_verletzung=(CheckBox)findViewById(R.id.cck_wunde_verletzung);
+        cck_elektro_verletzung=(CheckBox)findViewById(R.id.cck_elektro_verletzung);
+        cck_inhalation_verletzung=(CheckBox)findViewById(R.id.cck_inhalation_verletzung);
+        cck_sonstiges_verletzung=(CheckBox)findViewById(R.id.cck_sonstiges_verletzung);
+
+        cck_prellung_verletzung.setOnClickListener(this);
+        cck_verbrennung_verletzung.setOnClickListener(this);
+        cck_wunde_verletzung.setOnClickListener(this);
+        cck_elektro_verletzung.setOnClickListener(this);
+        cck_inhalation_verletzung.setOnClickListener(this);
+        cck_sonstiges_verletzung.setOnClickListener(this);
+
+        setWerte();
         //Nicolas Simon, übernommen von Vivien Stumpe, 10.04.16
         //zuweisen des Drawers und der ListView zu den Elementen in der xml Datei
         drawerlayout_verletzung=(DrawerLayout) findViewById(R.id.drawerLayout_Verletzung);
@@ -316,5 +341,416 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
        if(ce == R.id.imgv_menu){
          drawerlayout_verletzung.openDrawer(GravityCompat.START);
        }
+    }
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
+    }
+    public void speichereEingaben(){
+        mfall=(GlobaleDaten)getApplication();
+        if (cck_prellung_verletzung.isChecked()){
+            mfall.setVerl_prellung_verletzung(1);
+        }
+        else
+            mfall.setVerl_prellung_verletzung(0);
+        if (cck_verbrennung_verletzung.isChecked()){
+            mfall.setVerl_verbrennung(1);
+        }
+        else
+            mfall.setVerl_verbrennung(0);
+        if (cck_wunde_verletzung.isChecked()){
+            mfall.setVerl_wunde_verletzung(1);
+        }
+        else
+            mfall.setVerl_wunde_verletzung(0);
+        if (cck_elektro_verletzung.isChecked()){
+            mfall.setVerl_elektrounfall(1);
+        }
+        else
+            mfall.setVerl_elektrounfall(0);
+        if (cck_inhalation_verletzung.isChecked()){
+            mfall.setVerl_inhalationstrauma(1);
+        }
+        else
+            mfall.setVerl_inhalationstrauma(0);
+        if (cck_sonstiges_verletzung.isChecked()){
+            mfall.setVerl_sonstiges(1);
+        }
+        else
+            mfall.setVerl_sonstiges(0);
+        if((spin_schaedel_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_schaedel_art("offen");
+        }
+        if((spin_schaedel_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_schaedel_art("geschlossen");
+        }
+        if((spin_schaedel_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_schaedel_grad("leicht");
+        }
+        if((spin_schaedel_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_schaedel_grad("mittel");
+        }
+        if((spin_schaedel_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_schaedel_grad("schwer");
+        }
+        if((spin_gesicht_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_gesicht_art("offen");
+        }
+        if((spin_gesicht_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_gesicht_art("geschlossen");
+        }
+        if((spin_gesicht_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_gesicht_grad("leicht");
+        }
+        if((spin_gesicht_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_gesicht_grad("mittel");
+        }
+        if((spin_gesicht_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_gesicht_grad("schwer");
+        }
+        if((spin_hws_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_hws_art("offen");
+        }
+        if((spin_hws_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_hws_art("geschlossen");
+        }
+        if((spin_hws_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_hws_grad("leicht");
+        }
+        if((spin_hws_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_hws_grad("mittel");
+        }
+        if((spin_hws_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_hws_grad("schwer");
+        }
+        if((spin_brustkorb_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_brustkorb_art("offen");
+        }
+        if((spin_brustkorb_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_brustkorb_art("geschlossen");
+        }
+        if((spin_brustkorb_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_brustkorb_grad("leicht");
+        }
+        if((spin_brustkorb_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_brustkorb_grad("mittel");
+        }
+        if((spin_brustkorb_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_brustkorb_grad("schwer");
+        }
+        if((spin_bauch_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_bauch_art("offen");
+        }
+        if((spin_bauch_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_bauch_art("geschlossen");
+        }
+        if((spin_bauch_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_bauch_grad("leicht");
+        }
+        if((spin_bauch_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_bauch_grad("mittel");
+        }
+        if((spin_bauch_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_bauch_grad("schwer");
+        }
+        if((spin_bws_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_bws_lws_art("offen");
+        }
+        if((spin_bws_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_bws_lws_art("geschlossen");
+        }
+        if((spin_bws_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_bws_lws_grad("leicht");
+        }
+        if((spin_bws_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_bws_lws_grad("mittel");
+        }
+        if((spin_bws_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_bws_lws_grad("schwer");
+        }
+        if((spin_becken_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_becken_art("offen");
+        }
+        if((spin_becken_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_becken_art("geschlossen");
+        }
+        if((spin_becken_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_becken_grad("leicht");
+        }
+        if((spin_becken_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_becken_grad("mittel");
+        }
+        if((spin_becken_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_becken_grad("schwer");
+        }
+        if((spin_arme_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_arme_art("offen");
+        }
+        if((spin_arme_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_arme_art("geschlossen");
+        }
+        if((spin_arme_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_arme_grad("leicht");
+        }
+        if((spin_arme_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_arme_grad("mittel");
+        }
+        if((spin_arme_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_arme_grad("schwer");
+        }
+        if((spin_beine_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_beine_art("offen");
+        }
+        if((spin_beine_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_beine_art("geschlossen");
+        }
+        if((spin_beine_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_beine_grad("leicht");
+        }
+        if((spin_beine_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_beine_grad("mittel");
+        }
+        if((spin_beine_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_beine_grad("schwer");
+        }
+        if((spin_weichteile_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_weichteile_art("offen");
+        }
+        if((spin_weichteile_art.getSelectedItem().toString().equals("geschlossen"))){
+            mfall.setVerl_weichteile_art("geschlossen");
+        }
+        if((spin_weichteile_grad.getSelectedItem().toString().equals("leicht"))){
+            mfall.setVerl_weichteile_grad("leicht");
+        }
+        if((spin_weichteile_grad.getSelectedItem().toString().equals("mittel"))){
+            mfall.setVerl_weichteile_grad("mittel");
+        }
+        if((spin_weichteile_grad.getSelectedItem().toString().equals("schwer"))){
+            mfall.setVerl_weichteile_grad("schwer");
+        }
+    }
+    public void setWerte() {
+        mfall = (GlobaleDaten) getApplication();
+        if(mfall.getVerl_prellung_verletzung()!=null) {
+            if (mfall.getVerl_prellung_verletzung() == 1) {
+                cck_prellung_verletzung.setChecked(true);
+            }
+        }
+        if(mfall.getVerl_verbrennung()!=null) {
+            if (mfall.getVerl_verbrennung() == 1) {
+                cck_verbrennung_verletzung.setChecked(true);
+            }
+        }
+        if(mfall.getVerl_wunde_verletzung()!=null) {
+            if (mfall.getVerl_wunde_verletzung() == 1) {
+                cck_wunde_verletzung.setChecked(true);
+            }
+        }
+        if(mfall.getVerl_elektrounfall()!=null) {
+            if (mfall.getVerl_elektrounfall() == 1) {
+                cck_elektro_verletzung.setChecked(true);
+            }
+        }
+        if(mfall.getVerl_inhalationstrauma()!=null) {
+            if (mfall.getVerl_inhalationstrauma() == 1) {
+                cck_inhalation_verletzung.setChecked(true);
+            }
+        }
+        if(mfall.getVerl_sonstiges()!=null) {
+            if (mfall.getVerl_sonstiges() == 1) {
+                cck_sonstiges_verletzung.setChecked(true);
+            }
+        }
+        if((mfall.getVerl_schaedel_art()!=null)){
+            if(mfall.getVerl_schaedel_art().equals("offen")){
+                spin_schaedel_art.setSelection(1);
+            }
+            if(mfall.getVerl_schaedel_art().equals("geschlossen")){
+                spin_schaedel_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_schaedel_grad()!=null)){
+            if(mfall.getVerl_schaedel_grad().equals("leicht")){
+                spin_schaedel_grad.setSelection(1);
+            }
+            if(mfall.getVerl_schaedel_grad().equals("mittel")){
+                spin_schaedel_grad.setSelection(2);
+            }
+            if(mfall.getVerl_schaedel_grad().equals("schwer")){
+                spin_schaedel_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_gesicht_art()!=null)){
+            if(mfall.getVerl_gesicht_art().equals("offen")){
+                spin_gesicht_art.setSelection(1);
+            }
+            if(mfall.getVerl_gesicht_art().equals("geschlossen")){
+                spin_gesicht_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_gesicht_grad()!=null)){
+            if(mfall.getVerl_gesicht_grad().equals("leicht")){
+                spin_gesicht_grad.setSelection(1);
+            }
+            if(mfall.getVerl_gesicht_grad().equals("mittel")){
+                spin_gesicht_grad.setSelection(2);
+            }
+            if(mfall.getVerl_gesicht_grad().equals("schwer")){
+                spin_gesicht_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_hws_art()!=null)){
+            if(mfall.getVerl_hws_art().equals("offen")){
+                spin_hws_art.setSelection(1);
+            }
+            if(mfall.getVerl_hws_art().equals("geschlossen")){
+                spin_hws_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_hws_grad()!=null)){
+            if(mfall.getVerl_hws_grad().equals("leicht")){
+                spin_hws_grad.setSelection(1);
+            }
+            if(mfall.getVerl_hws_grad().equals("mittel")){
+                spin_hws_grad.setSelection(2);
+            }
+            if(mfall.getVerl_hws_grad().equals("schwer")){
+                spin_hws_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_brustkorb_art()!=null)){
+            if(mfall.getVerl_brustkorb_art().equals("offen")){
+                spin_brustkorb_art.setSelection(1);
+            }
+            if(mfall.getVerl_brustkorb_art().equals("geschlossen")){
+                spin_brustkorb_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_brustkorb_grad()!=null)){
+            if(mfall.getVerl_brustkorb_grad().equals("leicht")){
+                spin_brustkorb_grad.setSelection(1);
+            }
+            if(mfall.getVerl_brustkorb_grad().equals("mittel")){
+                spin_brustkorb_grad.setSelection(2);
+            }
+            if(mfall.getVerl_brustkorb_grad().equals("schwer")){
+                spin_brustkorb_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_bauch_art()!=null)){
+            if(mfall.getVerl_bauch_art().equals("offen")){
+                spin_bauch_art.setSelection(1);
+            }
+            if(mfall.getVerl_bauch_art().equals("geschlossen")){
+                spin_bauch_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_bauch_grad()!=null)){
+            if(mfall.getVerl_bauch_grad().equals("leicht")){
+                spin_bauch_grad.setSelection(1);
+            }
+            if(mfall.getVerl_bauch_grad().equals("mittel")){
+                spin_bauch_grad.setSelection(2);
+            }
+            if(mfall.getVerl_bauch_grad().equals("schwer")){
+                spin_bauch_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_bws_lws_art()!=null)){
+            if(mfall.getVerl_bws_lws_art().equals("offen")){
+                spin_bws_art.setSelection(1);
+            }
+            if(mfall.getVerl_bws_lws_art().equals("geschlossen")){
+                spin_bws_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_bws_lws_grad()!=null)){
+            if(mfall.getVerl_bws_lws_grad().equals("leicht")){
+                spin_bws_grad.setSelection(1);
+            }
+            if(mfall.getVerl_bws_lws_grad().equals("mittel")){
+                spin_bws_grad.setSelection(2);
+            }
+            if(mfall.getVerl_bws_lws_grad().equals("schwer")){
+                spin_bws_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_becken_art()!=null)){
+            if(mfall.getVerl_becken_art().equals("offen")){
+                spin_becken_art.setSelection(1);
+            }
+            if(mfall.getVerl_becken_art().equals("geschlossen")){
+                spin_becken_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_becken_grad()!=null)){
+            if(mfall.getVerl_becken_grad().equals("leicht")){
+                spin_becken_grad.setSelection(1);
+            }
+            if(mfall.getVerl_becken_grad().equals("mittel")){
+                spin_becken_grad.setSelection(2);
+            }
+            if(mfall.getVerl_becken_grad().equals("schwer")){
+                spin_becken_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_arme_art()!=null)){
+            if(mfall.getVerl_arme_art().equals("offen")){
+                spin_arme_art.setSelection(1);
+            }
+            if(mfall.getVerl_arme_art().equals("geschlossen")){
+                spin_arme_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_arme_grad()!=null)){
+            if(mfall.getVerl_arme_grad().equals("leicht")){
+                spin_arme_grad.setSelection(1);
+            }
+            if(mfall.getVerl_arme_grad().equals("mittel")){
+                spin_arme_grad.setSelection(2);
+            }
+            if(mfall.getVerl_arme_grad().equals("schwer")){
+                spin_arme_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_beine_art()!=null)){
+            if(mfall.getVerl_beine_art().equals("offen")){
+                spin_beine_art.setSelection(1);
+            }
+            if(mfall.getVerl_beine_art().equals("geschlossen")){
+                spin_beine_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_beine_grad()!=null)){
+            if(mfall.getVerl_beine_grad().equals("leicht")){
+                spin_beine_grad.setSelection(1);
+            }
+            if(mfall.getVerl_beine_grad().equals("mittel")){
+                spin_beine_grad.setSelection(2);
+            }
+            if(mfall.getVerl_beine_grad().equals("schwer")){
+                spin_beine_grad.setSelection(3);
+            }
+        }
+        if((mfall.getVerl_weichteile_art()!=null)){
+            if(mfall.getVerl_weichteile_art().equals("offen")){
+                spin_weichteile_art.setSelection(1);
+            }
+            if(mfall.getVerl_weichteile_art().equals("geschlossen")){
+                spin_weichteile_art.setSelection(2);
+            }
+        }
+        if((mfall.getVerl_weichteile_grad()!=null)){
+            if(mfall.getVerl_weichteile_grad().equals("leicht")){
+                spin_weichteile_grad.setSelection(1);
+            }
+            if(mfall.getVerl_weichteile_grad().equals("mittel")){
+                spin_weichteile_grad.setSelection(2);
+            }
+            if(mfall.getVerl_weichteile_grad().equals("schwer")){
+                spin_weichteile_grad.setSelection(3);
+            }
+        }
     }
 }
