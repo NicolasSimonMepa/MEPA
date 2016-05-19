@@ -2,6 +2,7 @@ package de.app.mepa;
 
 import android.app.Application;
 import android.util.Log;
+import java.util.UUID;
 
 /**
  * Created by vivienstumpe on 14.05.16.
