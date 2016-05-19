@@ -12,6 +12,34 @@ public class GlobaleDaten extends Application {
     // Fall ID - Variable, Simon 18.05.16
     private int fallID;
     
+    //Verletzung - Variablen
+    private Integer verl_prellung_verletzung;
+    private Integer verl_verbrennung;
+    private Integer verl_wunde_verletzung;
+    private Integer verl_elektrounfall;
+    private Integer verl_inhalationstrauma;
+    private Integer verl_sonstiges;
+    private String verl_schaedel_art;
+    private String verl_schaedel_grad;
+    private String verl_gesicht_art;
+    private String verl_gesicht_grad;
+    private String verl_hws_art;
+    private String verl_hws_grad;
+    private String verl_brustkorb_art;
+    private String verl_brustkorb_grad;
+    private String verl_bauch_art;
+    private String verl_bauch_grad;
+    private String verl_bws_lws_art;
+    private String verl_bws_lws_grad;
+    private String verl_becken_art;
+    private String verl_becken_grad;
+    private String verl_arme_art;
+    private String verl_arme_grad;
+    private String verl_beine_art;
+    private String verl_beine_grad;
+    private String verl_weichteile_art;
+    private String verl_weichteile_grad;
+    
     //Erstbefund - Variablen
     private String erst_bewusstsein;
     private String erst_kreislauf;
@@ -106,6 +134,88 @@ public class GlobaleDaten extends Application {
     }
     public int getFallID(){return fallID;}
     public void loescheFallID(){setFallID(false);}
+    
+    //Verletzung - Dienste
+    public void setVerl_prellung_verletzung(Integer prellung_verletzung){this.verl_prellung_verletzung=prellung_verletzung;}
+    public void setVerl_verbrennung(Integer verbrennung){this.verl_verbrennung=verbrennung;}
+    public void setVerl_wunde_verletzung(Integer wunde_verletzung){this.verl_wunde_verletzung=wunde_verletzung;}
+    public void setVerl_elektrounfall(Integer elektrounfall){this.verl_elektrounfall=elektrounfall;}
+    public void setVerl_inhalationstrauma(Integer inhalationstrauma){this.verl_inhalationstrauma=inhalationstrauma;}
+    public void setVerl_sonstiges(Integer sonstiges){this.verl_sonstiges=sonstiges;}
+    public void setVerl_schaedel_art(String verl_schaedel_art){this.verl_schaedel_art=verl_schaedel_art;}
+    public void setVerl_schaedel_grad(String verl_schaedel_grad){this.verl_schaedel_grad=verl_schaedel_grad;}
+    public void setVerl_gesicht_art(String verl_gesicht_art){this.verl_gesicht_art=verl_gesicht_art;}
+    public void setVerl_gesicht_grad(String verl_gesicht_grad){this.verl_gesicht_grad=verl_gesicht_grad;}
+    public void setVerl_hws_art(String verl_hws_art){this.verl_hws_art=verl_hws_art;}
+    public void setVerl_hws_grad(String verl_hws_grad){this.verl_hws_grad=verl_hws_grad;}
+    public void setVerl_brustkorb_art(String verl_brustkorb_art){this.verl_brustkorb_art=verl_brustkorb_art;}
+    public void setVerl_brustkorb_grad(String verl_brustkorb_grad){this.verl_brustkorb_grad=verl_brustkorb_grad;}
+    public void setVerl_bauch_art(String verl_bauch_art){this.verl_bauch_art=verl_bauch_art;}
+    public void setVerl_bauch_grad(String verl_bauch_grad){this.verl_bauch_grad=verl_bauch_grad;}
+    public void setVerl_bws_lws_art(String verl_bws_lws_art){this.verl_bws_lws_art=verl_bws_lws_art;}
+    public void setVerl_bws_lws_grad(String verl_bws_lws_grad){this.verl_bws_lws_grad=verl_bws_lws_grad;}
+    public void setVerl_becken_art(String verl_becken_art){this.verl_becken_art=verl_becken_art;}
+    public void setVerl_becken_grad(String verl_becken_grad){this.verl_becken_grad=verl_becken_grad;}
+    public void setVerl_arme_art(String verl_arme_art){this.verl_arme_art=verl_arme_art;}
+    public void setVerl_arme_grad(String verl_arme_grad){this.verl_arme_grad=verl_arme_grad;}
+    public void setVerl_beine_art(String verl_beine_art){this.verl_beine_art=verl_beine_art;}
+    public void setVerl_beine_grad(String verl_beine_grad){this.verl_beine_grad=verl_beine_grad;}
+    public void setVerl_weichteile_art(String verl_weichteile_art){this.verl_weichteile_art=verl_weichteile_art;}
+    public void setVerl_weichteile_grad(String verl_weichteile_grad){this.verl_weichteile_grad=verl_weichteile_grad;}
+    public Integer getVerl_prellung_verletzung(){return verl_prellung_verletzung;}
+    public Integer getVerl_verbrennung(){return verl_verbrennung;}
+    public Integer getVerl_wunde_verletzung(){return verl_wunde_verletzung;}
+    public Integer getVerl_elektrounfall(){return verl_elektrounfall;}
+    public Integer getVerl_inhalationstrauma(){return verl_inhalationstrauma;}
+    public Integer getVerl_sonstiges(){return verl_sonstiges;}
+    public String getVerl_schaedel_art(){return verl_schaedel_art;}
+    public String getVerl_schaedel_grad(){return verl_schaedel_grad;}
+    public String getVerl_gesicht_art(){return verl_gesicht_art;}
+    public String getVerl_gesicht_grad(){return verl_gesicht_grad;}
+    public String getVerl_hws_art(){return verl_hws_art;}
+    public String getVerl_hws_grad(){return verl_hws_grad;}
+    public String getVerl_brustkorb_art(){return verl_brustkorb_art;}
+    public String getVerl_brustkorb_grad(){return verl_brustkorb_grad;}
+    public String getVerl_bauch_art(){return verl_bauch_art;}
+    public String getVerl_bauch_grad(){return verl_bauch_grad;}
+    public String getVerl_bws_lws_art(){return verl_bws_lws_art;}
+    public String getVerl_bws_lws_grad(){return verl_bws_lws_grad;}
+    public String getVerl_becken_art(){return verl_becken_art;}
+    public String getVerl_becken_grad(){return verl_becken_grad;}
+    public String getVerl_arme_art(){return verl_arme_art;}
+    public String getVerl_arme_grad(){return verl_arme_grad;}
+    public String getVerl_beine_art(){return verl_beine_art;}
+    public String getVerl_beine_grad(){return verl_beine_grad;}
+    public String getVerl_weichteile_art(){return verl_weichteile_art;}
+    public String getVerl_weichteile_grad(){return verl_weichteile_grad;}
+    public void loescheVerl(){
+        setVerl_prellung_verletzung(0);
+        setVerl_verbrennung(0);
+        setVerl_wunde_verletzung(0);
+        setVerl_elektrounfall(0);
+        setVerl_inhalationstrauma(0);
+        setVerl_sonstiges(0);
+        setVerl_schaedel_art("");
+        setVerl_schaedel_grad("");
+        setVerl_gesicht_art("");
+        setVerl_gesicht_grad("");
+        setVerl_hws_art("");
+        setVerl_hws_grad("");
+        setVerl_brustkorb_art("");
+        setVerl_brustkorb_grad("");
+        setVerl_bauch_art("");
+        setVerl_bauch_grad("");
+        setVerl_bws_lws_art("");
+        setVerl_bws_lws_grad("");
+        setVerl_becken_art("");
+        setVerl_becken_grad("");
+        setVerl_arme_art("");
+        setVerl_arme_grad("");
+        setVerl_beine_art("");
+        setVerl_beine_grad("");
+        setVerl_weichteile_art("");
+        setVerl_weichteile_grad("");
+    }
     
     //Erstbefund - Dienste
     public void setErst_bewusstsein(String erst_bewusstsein){this.erst_bewusstsein=erst_bewusstsein;}
