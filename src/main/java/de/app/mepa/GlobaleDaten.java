@@ -12,6 +12,31 @@ public class GlobaleDaten extends Application {
     // Fall ID - Variable, Simon 18.05.16
     private int fallID;
     
+    //Maßnahmen - Variablen
+    private Integer mas_keine;
+    private Integer mas_stb_seitenlage;
+    private Integer mas_oberkoerperhochlage;
+    private Integer mas_flachlagerung;
+    private Integer mas_schocklagerung;
+    private Integer mas_vakuummatratze;
+    private Integer mas_hws_stuetzkragen;
+    private Integer mas_medikamente;
+    private Integer mas_extr_schienung;
+    private Integer mas_wundversorgung;
+    private Integer mas_ekg;
+    private Integer mas_ven_zugang;
+    private Integer mas_infusion;
+    private Integer mas_atemwege_freim;
+    private Integer mas_notkompetenz;
+    private Integer mas_sauerstoffgabe;
+    private Integer mas_intubation;
+    private Integer mas_beatmung;
+    private Integer mas_herzdruckmassage;
+    private Integer mas_erstdefibrillation;
+    private Integer mas_betreuung;
+    private Integer mas_sonstiges;
+    private String mas_sonstiges_text;
+    
     //Verletzung - Variablen
     private Integer verl_prellung_verletzung;
     private Integer verl_verbrennung;
@@ -134,6 +159,79 @@ public class GlobaleDaten extends Application {
     }
     public int getFallID(){return fallID;}
     public void loescheFallID(){setFallID(false);}
+    
+    //Maßnahmen - Dienste
+    public void setMas_keine(Integer keine){this.mas_keine=keine;}
+    public void setMas_stb_seitenlage(Integer stb_seitenlage){this.mas_stb_seitenlage=stb_seitenlage;}
+    public void setMas_herzdruckmassage(Integer herzdruckmassage){this.mas_herzdruckmassage=herzdruckmassage;}
+    public void setMas_schocklagerung(Integer schocklagerung){this.mas_schocklagerung=schocklagerung;}
+    public void setMas_oberkoerperhochlage(Integer oberkoerperhochlage){this.mas_oberkoerperhochlage=oberkoerperhochlage;}
+    public void setMas_flachlagerung(Integer flachlagerung){this.mas_flachlagerung=flachlagerung;}
+    public void setMas_wundversorgung(Integer wundversorgung){this.mas_wundversorgung=wundversorgung;}
+    public void setMas_sauerstoffgabe(Integer sauerstoffgabe){this.mas_sauerstoffgabe=sauerstoffgabe;}
+    public void setMas_vakuummatratze(Integer vakuummatratze){this.mas_vakuummatratze=vakuummatratze;}
+    public void setMas_hws_stuetzkragen(Integer hws_stuetzkragen){this.mas_hws_stuetzkragen=hws_stuetzkragen;}
+    public void setMas_extr_schienung(Integer extr_schienung){this.mas_extr_schienung=extr_schienung;}
+    public void setMas_ekg(Integer ekg){this.mas_ekg=ekg;}
+    public void setMas_atemwege_freim(Integer atemwege_freim){this.mas_atemwege_freim=atemwege_freim;}
+    public void setMas_notkompetenz(Integer notkompetenz){this.mas_notkompetenz=notkompetenz;}
+    public void setMas_erstdefibrillation(Integer erstdefibrillation){this.mas_erstdefibrillation=erstdefibrillation;}
+    public void setMas_ven_zugang(Integer ven_zugang){this.mas_ven_zugang=ven_zugang;}
+    public void setMas_medikamente(Integer medikamente){this.mas_medikamente=medikamente;}
+    public void setMas_beatmung(Integer beatmung){this.mas_beatmung=beatmung;}
+    public void setMas_betreuung(Integer betreuung){this.mas_betreuung=betreuung;}
+    public void setMas_infusion(Integer infusion){this.mas_infusion=infusion;}
+    public void setMas_intubation(Integer intubation){this.mas_intubation=intubation;}
+    public void setMas_sonstiges(Integer sonstiges){this.mas_sonstiges=sonstiges;}
+    public void setMas_sonstiges_text(String sonstiges_text){this.mas_sonstiges_text=sonstiges_text;}
+    public Integer getMas_keine(){return mas_keine;}
+    public Integer getMas_stb_seitenlage(){return mas_stb_seitenlage;}
+    public Integer getMas_herzdruckmassage(){return mas_herzdruckmassage;}
+    public Integer getMas_schocklagerung(){return mas_schocklagerung;}
+    public Integer getMas_oberkoerperhochlage(){return mas_oberkoerperhochlage;}
+    public Integer getMas_flachlagerung(){return mas_flachlagerung;}
+    public Integer getMas_wundversorgung(){return mas_wundversorgung;}
+    public Integer getMas_sauerstoffgabe(){return mas_sauerstoffgabe;}
+    public Integer getMas_vakuummatratze(){return mas_vakuummatratze;}
+    public Integer getMas_hws_stuetzkragen(){return mas_hws_stuetzkragen;}
+    public Integer getMas_extr_schienung(){return mas_extr_schienung;}
+    public Integer getMas_ekg(){return mas_ekg;}
+    public Integer getMas_atemwege_freim(){return mas_atemwege_freim;}
+    public Integer getMas_notkompetenz(){return mas_notkompetenz;}
+    public Integer getMas_erstdefibrillation(){return mas_erstdefibrillation;}
+    public Integer getMas_ven_zugang(){return mas_ven_zugang;}
+    public Integer getMas_medikamente(){return mas_medikamente;}
+    public Integer getMas_beatmung(){return mas_beatmung;}
+    public Integer getMas_betreuung(){return mas_betreuung;}
+    public Integer getMas_infusion(){return mas_infusion;}
+    public Integer getMas_intubation(){return mas_intubation;}
+    public Integer getMas_sonstiges(){return mas_sonstiges;}
+    public String getMas_sonstiges_text(){return mas_sonstiges_text;}
+    public void loescheMas(){
+        setMas_keine(0);
+        setMas_stb_seitenlage(0);
+        setMas_herzdruckmassage(0);
+        setMas_schocklagerung(0);
+        setMas_oberkoerperhochlage(0);
+        setMas_flachlagerung(0);
+        setMas_wundversorgung(0);
+        setMas_sauerstoffgabe(0);
+        setMas_vakuummatratze(0);
+        setMas_hws_stuetzkragen(0);
+        setMas_extr_schienung(0);
+        setMas_ekg(0);
+        setMas_atemwege_freim(0);
+        setMas_notkompetenz(0);
+        setMas_erstdefibrillation(0);
+        setMas_ven_zugang(0);
+        setMas_medikamente(0);
+        setMas_beatmung(0);
+        setMas_betreuung(0);
+        setMas_infusion(0);
+        setMas_intubation(0);
+        setMas_sonstiges(0);
+        setMas_sonstiges_text("");
+    }
     
     //Verletzung - Dienste
     public void setVerl_prellung_verletzung(Integer prellung_verletzung){this.verl_prellung_verletzung=prellung_verletzung;}
