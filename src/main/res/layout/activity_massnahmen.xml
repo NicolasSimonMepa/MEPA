@@ -149,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_keine"
-                        android:id="@+id/checkBox13"
+                        android:id="@+id/cck_massnahmen_keine"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -160,7 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_seitenlage"
-                        android:id="@+id/checkBox14"
+                        android:id="@+id/cck_massnahmen_stabile_seitenlage"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -171,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_herzdruckmassage"
-                        android:id="@+id/checkBox15"
+                        android:id="@+id/cck_massnahmen_herzdruckmassage"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -182,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_schocklagerung"
-                        android:id="@+id/checkBox16"
+                        android:id="@+id/cck_massnahmen_schocklagerung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -193,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_oberkoerperhochlage"
-                        android:id="@+id/checkBox18"
+                        android:id="@+id/cck_massnahmen_oberkoerperhochlagerung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -204,7 +204,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_flachlagerung"
-                        android:id="@+id/checkBox19"
+                        android:id="@+id/cck_massnahmen_flachlagerung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -215,7 +215,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_wundversorgung"
-                        android:id="@+id/checkBox20"
+                        android:id="@+id/cck_massnahmen_wundversorgung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -226,7 +226,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_sauerstoffgabe"
-                        android:id="@+id/checkBox21"
+                        android:id="@+id/cck_massnahmen_sauerstoffgabe"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -250,7 +250,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cck_massnahmen_hwsstuetzkragen"
-                        android:id="@+id/cck_massnahmen_hwsstuetzkragen"
+                        android:id="@+id/cck_massnahmen_hws_stuetzkragen"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -274,7 +274,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_ekgmonitoring"
-                        android:id="@+id/cck_massnahmen_ekgmonitoring"
+                        android:id="@+id/cck_massnahmen_ekg"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -322,7 +322,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_venoeserzugang"
-                        android:id="@+id/checkBox23"
+                        android:id="@+id/cck_massnahmen_venoeser_zugang"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -333,7 +333,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_medikamente"
-                        android:id="@+id/checkBox24"
+                        android:id="@+id/cck_massnahmen_medikamente"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -344,7 +344,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_beatmung"
-                        android:id="@+id/checkBox25"
+                        android:id="@+id/cck_massnahmen_beatmung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -355,7 +355,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_betreuung"
-                        android:id="@+id/checkBox26"
+                        android:id="@+id/cck_massnahmen_betreuung"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -366,7 +366,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_infusion"
-                        android:id="@+id/checkBox27"
+                        android:id="@+id/cck_massnahmen_infusion"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -377,7 +377,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_intubation"
-                        android:id="@+id/checkBox28"
+                        android:id="@+id/cck_massnahmen_intubation"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
@@ -388,7 +388,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtv_sonstiges"
-                        android:id="@+id/checkBox29"
+                        android:id="@+id/cck_massnahmen_sonstiges"
                         android:checked="false"
                         android:textSize="20sp" />
                 </TableRow>
