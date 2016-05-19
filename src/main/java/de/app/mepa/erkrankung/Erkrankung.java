@@ -407,3 +407,4 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
             edtxt_erkrankung_sonstiges.setText(mfall.getErk_edtxt_sonstiges());
         }
     }
+}
