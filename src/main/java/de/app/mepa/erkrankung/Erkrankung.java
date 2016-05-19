@@ -224,85 +224,85 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         else
             mfall.setErk_keine(0);
         if (cck_erkrankung_alkoholisiert.isChecked()){
-            mfall.setAlkoholisiert(1);
+            mfall.setErk_alkoholisiert(1);
         }
         else
-            mfall.setAlkoholisiert(0);
+            mfall.setErk_alkoholisiert(0);
         if (cck_erkrankung_erbrechen.isChecked()){
-            mfall.setUebelkeit_erbrechen(1);
+            mfall.setErk_erbrechen(1);
         }
         else
-            mfall.setUebelkeit_erbrechen(0);
+            mfall.setErk_erbrechen(0);
         if (cck_erkrankung_schwindel.isChecked()){
-            mfall.setSchwindel(1);
+            mfall.setErk_schwindel(1);
         }
         else
-            mfall.setSchwindel(0);
+            mfall.setErk_schwindel(0);
         if (cck_erkrankung_herzkreislauf.isChecked()){
-            mfall.setHerz_kreislauf(1);
+            mfall.setErk_herzkreislauf(1);
         }
         else
-            mfall.setHerz_kreislauf(0);
+            mfall.setErk_herzkreislauf(0);
         if (cck_erkrankung_hitzeschlag.isChecked()){
-            mfall.setHitzeschlag(1);
+            mfall.setErk_hitzeschlag(1);
         }
         else
-            mfall.setHitzeschlag(0);
+            mfall.setErk_hitzeschlag(0);
         if (cck_erkrankung_hitzeerschoepfung.isChecked()){
-            mfall.setHitzeerschoepfung(1);
+            mfall.setErk_hitzeerschoepfung(1);
         }
         else
-            mfall.setHitzeerschoepfung(0);
+            mfall.setErk_hitzeerschoepfung(0);
         if (cck_erkrankung_vergiftung.isChecked()){
-            mfall.setVergiftung(1);
+            mfall.setErk_vergiftung(1);
         }
         else
-            mfall.setVergiftung(0);
+            mfall.setErk_vergiftung(0);
         if (cck_erkrankung_atmung.isChecked()){
-            mfall.setAtmung(1);
+            mfall.setErk_atmung(1);
         }
         else
-            mfall.setAtmung(0);
+            mfall.setErk_atmung(0);
         if (cck_erkrankung_unterkuehlung.isChecked()){
-            mfall.setUnterkuehlung(1);
+            mfall.setErk_unterkuehlung(1);
         }
         else
-            mfall.setUnterkuehlung(0);
+            mfall.setErk_unterkuehlung(0);
         if (cck_erkrankung_baucherkrankung.isChecked()){
-            mfall.setBaucherkrankung(1);
+            mfall.setErk_baucherkrankung(1);
         }
         else
-            mfall.setBaucherkrankung(0);
+            mfall.setErk_baucherkrankung(0);
         if (cck_erkrankung_stoffwechsel.isChecked()){
-            mfall.setStoffwechsel(1);
+            mfall.setErk_stoffwechsel(1);
         }
         else
-            mfall.setStoffwechsel(0);
+            mfall.setErk_stoffwechsel(0);
         if (cck_erkrankung_neurologie.isChecked()){
-            mfall.setNeurologie(1);
+            mfall.setErk_neurologie(1);
         }
         else
-            mfall.setNeurologie(0);
+            mfall.setErk_neurologie(0);
         if (cck_erkrankung_psychatrie.isChecked()){
-            mfall.setPsychatrie(1);
+            mfall.setErk_psychatrie(1);
         }
         else
-            mfall.setPsychatrie(0);
+            mfall.setErk_psychatrie(0);
         if (cck_erkrankung_gynaekologie.isChecked()){
-            mfall.setGynaekologie(1);
+            mfall.setErk_gynaekologie(1);
         }
         else
-            mfall.setGynaekologie(0);
+            mfall.setErk_gynaekologie(0);
         if (cck_erkrankung_kindernotfall.isChecked()){
-            mfall.setKindernotfall(1);
+            mfall.setErk_kindernotfall(1);
         }
         else
-            mfall.setKindernotfall(0);
+            mfall.setErk_kindernotfall(0);
         if (cck_erkrankung_geburtshilfe.isChecked()){
-            mfall.setGeburtshilfe(1);
+            mfall.setErk_geburtshilfe(1);
         }
         else
-            mfall.setGeburtshilfe(0);
+            mfall.setErk_geburtshilfe(0);
         if (cck_erkrankung_sonstiges.isChecked()){
             mfall.setErk_sonstiges(1);
         }
@@ -318,83 +318,83 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
                 cck_erkrankung_keine.setChecked(true);
             }
         }
-        if(mfall.getAlkoholisiert()!=null) {
-            if (mfall.getAlkoholisiert() == 1) {
+        if(mfall.getErk_alkoholisiert()!=null) {
+            if (mfall.getErk_alkoholisiert() == 1) {
                 cck_erkrankung_alkoholisiert.setChecked(true);
             }
         }
-        if(mfall.getUebelkeit_erbrechen()!=null) {
-            if (mfall.getUebelkeit_erbrechen() == 1) {
+        if(mfall.getErk_erbrechen()!=null) {
+            if (mfall.getErk_erbrechen() == 1) {
                 cck_erkrankung_erbrechen.setChecked(true);
             }
         }
-        if(mfall.getSchwindel()!=null) {
-            if (mfall.getSchwindel() == 1) {
+        if(mfall.getErk_schwindel()!=null) {
+            if (mfall.getErk_schwindel() == 1) {
                 cck_erkrankung_schwindel.setChecked(true);
             }
         }
-        if(mfall.getHerz_kreislauf()!=null) {
-            if (mfall.getHerz_kreislauf() == 1) {
+        if(mfall.getErk_herzkreislauf()!=null) {
+            if (mfall.getErk_herzkreislauf() == 1) {
                 cck_erkrankung_herzkreislauf.setChecked(true);
             }
         }
-        if(mfall.getHitzeschlag()!=null) {
-            if (mfall.getHitzeschlag() == 1) {
+        if(mfall.getErk_hitzeschlag()!=null) {
+            if (mfall.getErk_hitzeschlag() == 1) {
                 cck_erkrankung_hitzeschlag.setChecked(true);
             }
         }
-        if(mfall.getHitzeerschoepfung()!=null) {
-            if (mfall.getHitzeerschoepfung() == 1) {
+        if(mfall.getErk_hitzeerschoepfung()!=null) {
+            if (mfall.getErk_hitzeerschoepfung() == 1) {
                 cck_erkrankung_hitzeerschoepfung.setChecked(true);
             }
         }
-        if(mfall.getVergiftung()!=null) {
-            if (mfall.getVergiftung() == 1) {
+        if(mfall.getErk_vergiftung()!=null) {
+            if (mfall.getErk_vergiftung() == 1) {
                 cck_erkrankung_vergiftung.setChecked(true);
             }
         }
-        if(mfall.getAtmung()!=null) {
-            if (mfall.getAtmung() == 1) {
+        if(mfall.getErk_atmung()!=null) {
+            if (mfall.getErk_atmung() == 1) {
                 cck_erkrankung_atmung.setChecked(true);
             }
         }
-        if(mfall.getUnterkuehlung()!=null) {
-            if (mfall.getUnterkuehlung() == 1) {
+        if(mfall.getErk_unterkuehlung()!=null) {
+            if (mfall.getErk_unterkuehlung() == 1) {
                 cck_erkrankung_unterkuehlung.setChecked(true);
             }
         }
-        if(mfall.getBaucherkrankung()!=null) {
-            if (mfall.getBaucherkrankung() == 1) {
+        if(mfall.getErk_baucherkrankung()!=null) {
+            if (mfall.getErk_baucherkrankung() == 1) {
                 cck_erkrankung_baucherkrankung.setChecked(true);
             }
         }
-        if(mfall.getStoffwechsel()!=null) {
-            if (mfall.getStoffwechsel() == 1) {
+        if(mfall.getErk_stoffwechsel()!=null) {
+            if (mfall.getErk_stoffwechsel() == 1) {
                 cck_erkrankung_stoffwechsel.setChecked(true);
             }
         }
-        if(mfall.getNeurologie()!=null) {
-            if (mfall.getNeurologie() == 1) {
+        if(mfall.getErk_neurologie()!=null) {
+            if (mfall.getErk_neurologie() == 1) {
                 cck_erkrankung_neurologie.setChecked(true);
             }
         }
-        if(mfall.getPsychatrie()!=null) {
-            if (mfall.getPsychatrie() == 1) {
+        if(mfall.getErk_psychatrie()!=null) {
+            if (mfall.getErk_psychatrie() == 1) {
                 cck_erkrankung_psychatrie.setChecked(true);
             }
         }
-        if(mfall.getGynaekologie()!=null) {
-            if (mfall.getGynaekologie() == 1) {
+        if(mfall.getErk_gynaekologie()!=null) {
+            if (mfall.getErk_gynaekologie() == 1) {
                 cck_erkrankung_gynaekologie.setChecked(true);
             }
         }
-        if(mfall.getKindernotfall()!=null) {
-            if (mfall.getKindernotfall() == 1) {
+        if(mfall.getErk_kindernotfall()!=null) {
+            if (mfall.getErk_kindernotfall() == 1) {
                 cck_erkrankung_kindernotfall.setChecked(true);
             }
         }
-        if(mfall.getGeburtshilfe()!=null) {
-            if (mfall.getGeburtshilfe() == 1) {
+        if(mfall.getErk_geburtshilfe()!=null) {
+            if (mfall.getErk_geburtshilfe() == 1) {
                 cck_erkrankung_geburtshilfe.setChecked(true);
             }
         }
@@ -407,4 +407,3 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
             edtxt_erkrankung_sonstiges.setText(mfall.getErk_edtxt_sonstiges());
         }
     }
-}
