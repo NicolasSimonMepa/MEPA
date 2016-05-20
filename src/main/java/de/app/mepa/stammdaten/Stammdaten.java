@@ -1,7 +1,8 @@
-//Zuletzt bearbeitet von Indra Marcheel am 18.05.16
+//Zuletzt bearbeitet von Vivien Stumpe am 20.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +27,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
@@ -88,6 +92,11 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
     aktueller Fall mit den zwischengespeicherten Werten
     */
     private GlobaleDaten mfall;
+    /* von Vivien Stumpe, 20.05.16
+    Timer deklarieren mit der Zeit DELAY in Millisekunden
+     */
+    private Timer timer = new Timer();
+    private final long DELAY = 2000; // in ms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,7 +216,27 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
                 buttons.setVisibility(buttons.VISIBLE);
+
+                //Timer erst starten nachdem 3 Zeichen eingegeben wurden
+                if (s.length() >= 3) {
+
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //Tastatur ausblenden
+                            InputMethodManager imm =
+                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(etxt_kreisverband.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_ortsverein.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_ort.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_veranstaltung.getWindowToken(), 0);
+                        }
+
+                    }, DELAY);
+                }
             }
+
         };
         /* von Vivien Stumpe, 01.05.16
         TextChangedListener muss auf die Eingabefelder gesetzt werden
@@ -231,6 +260,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         cck_sanw.setOnClickListener(this);
         etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
         etxt_date.setOnClickListener(Stammdaten.this);
+
         /* von Vivien Stumpe, 16.05.16
         Aktuelle Werte (falls vorhanden) im Screen anzeigen
         */
