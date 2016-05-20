@@ -377,6 +377,21 @@ public class GlobaleDaten extends Application {
     public String getVerl_beine_grad(){return verl_beine_grad;}
     public String getVerl_weichteile_art(){return verl_weichteile_art;}
     public String getVerl_weichteile_grad(){return verl_weichteile_grad;}
+    public Boolean Verl_spinner_notNull(){
+        return ((getVerl_arme_art()!=null)|(getVerl_arme_grad()!=null)|(getVerl_bauch_art()!=null)|
+                (getVerl_bauch_grad()!=null)|(getVerl_becken_art()!=null)|(getVerl_becken_grad()!=null)|
+                (getVerl_brustkorb_art()!=null)|(getVerl_brustkorb_grad()!=null)|(getVerl_bws_lws_art()!=null)|
+                (getVerl_bws_lws_grad()!=null)|(getVerl_gesicht_art()!=null)|(getVerl_gesicht_grad()!=null)|
+                (getVerl_schaedel_art()!=null)|(getVerl_schaedel_grad()!=null)|(getVerl_hws_art()!=null)|
+                (getVerl_hws_grad()!=null)|(getVerl_weichteile_art()!=null)|(getVerl_weichteile_grad()!=null));
+
+        }
+    public Boolean Verl_check_notNull(){
+         return ((getVerl_prellung_verletzung()!=null)|(getVerl_verbrennung()!=null)|(getVerl_wunde_verletzung()!=null)|
+                (getVerl_elektrounfall()!=null)|(getVerl_inhalationstrauma()!=null|(getVerl_sonstiges()!=null)));
+
+    }
+
     public void loescheVerl(){
         setVerl_prellung_verletzung(0);
         setVerl_verbrennung(0);
@@ -761,6 +776,4 @@ public class GlobaleDaten extends Application {
     public Boolean getVer_vorh(){
         return ver_vorh;
     }
-
-
 }
