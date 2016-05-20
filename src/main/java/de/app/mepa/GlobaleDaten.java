@@ -185,27 +185,27 @@ public class GlobaleDaten extends Application {
     public void loescheFallID(){setFallID(false);}
     
     //Ergebnis (Übergabe) - Dienste
-    public void setErg_ersthelfermassn(String erg_ersthelfermassn){this.erg_ersthelfermassn=erg_ersthelfermassn;}
-    public void setErg_zustand(String erg_zustand){this.erg_zustand=erg_zustand;}
-    public void setErg_transport(String erg_transport){this.erg_transport=erg_transport;}
-    public void setErg_notarzt(String erg_notarzt){this.erg_notarzt=erg_notarzt;}
-    public void setErg_hausarzt_informiert(Integer erg_hausarzt_informiert){this.erg_hausarzt_informiert=erg_hausarzt_informiert;}
-    public void setErg_tod(Integer erg_tod){this.erg_tod=erg_tod;}
-    public void setErg_wertsachen(String erg_wertsachen){this.erg_wertsachen=erg_wertsachen;}
-    public void setErg_nachforderung_ktw(Integer erg_nachforderung_ktw){this.erg_nachforderung_ktw=erg_nachforderung_ktw;}
-    public void setErg_nachforderung_rtw(Integer erg_nachforderung_rtw){this.erg_nachforderung_rtw=erg_nachforderung_rtw;}
-    public void setErg_nachforderung_nef(Integer erg_nachforderung_nef){this.erg_nachforderung_nef=erg_nachforderung_nef;}
-    public void setErg_nachforderung_naw(Integer erg_nachforderung_naw){this.erg_nachforderung_naw=erg_nachforderung_naw;}
-    public void setErg_nachforderung_rth(Integer erg_nachforderung_rth){this.erg_nachforderung_rth=erg_nachforderung_rth;}
-    public void setErg_nachforderung_feuerwehr(Integer erg_nachforderung_feuerwehr){this.erg_nachforderung_feuerwehr=erg_nachforderung_feuerwehr;}
-    public void setErg_nachforderung_polizei(Integer erg_nachforderung_polizei){this.erg_nachforderung_polizei=erg_nachforderung_polizei;}
-    public void setErg_funkruf(String erg_funkruf){this.erg_funkruf=erg_funkruf;}
-    public void setErg_transport_art(String erg_transport_art){this.erg_transport_art=erg_transport_art;}
-    public void setErg_transport_ziel(String erg_transport_ziel){this.erg_transport_ziel=erg_transport_ziel;}
-    public void setErg_transport_sonstiges(String erg_transport_sonstiges){this.erg_transport_sonstiges=erg_transport_sonstiges;}
-    public void setErg_entlassung_ev(Integer erg_entlassung_ev){this.erg_entlassung_ev=erg_entlassung_ev;}
-    public void setErg_zeuge(String erg_zeuge){this.erg_zeuge=erg_zeuge;}
-    public void setErg_ergebnis_zeit(String erg_ergebnis_zeit){this.erg_ergebnis_zeit=erg_ergebnis_zeit;}
+    public void setErg_ersthelfermassn(String ersthelfermassn){this.erg_ersthelfermassn=ersthelfermassn;}
+    public void setErg_zustand(String zustand){this.erg_zustand=zustand;}
+    public void setErg_transport(String transport){this.erg_transport=transport;}
+    public void setErg_notarzt(String notarzt){this.erg_notarzt=notarzt;}
+    public void setErg_hausarzt_informiert(Integer hausarzt_informiert){this.erg_hausarzt_informiert=hausarzt_informiert;}
+    public void setErg_tod(Integer tod){this.erg_tod=tod;}
+    public void setErg_wertsachen(String wertsachen){this.erg_wertsachen=wertsachen;}
+    public void setErg_nachforderung_ktw(Integer nachforderung_ktw){this.erg_nachforderung_ktw=nachforderung_ktw;}
+    public void setErg_nachforderung_rtw(Integer nachforderung_rtw){this.erg_nachforderung_rtw=nachforderung_rtw;}
+    public void setErg_nachforderung_nef(Integer nachforderung_nef){this.erg_nachforderung_nef=nachforderung_nef;}
+    public void setErg_nachforderung_naw(Integer nachforderung_naw){this.erg_nachforderung_naw=nachforderung_naw;}
+    public void setErg_nachforderung_rth(Integer nachforderung_rth){this.erg_nachforderung_rth=nachforderung_rth;}
+    public void setErg_nachforderung_feuerwehr(Integer nachforderung_feuerwehr){this.erg_nachforderung_feuerwehr=nachforderung_feuerwehr;}
+    public void setErg_nachforderung_polizei(Integer nachforderung_polizei){this.erg_nachforderung_polizei=nachforderung_polizei;}
+    public void setErg_funkruf(String funkruf){this.erg_funkruf=funkruf;}
+    public void setErg_transport_art(String transport_art){this.erg_transport_art=transport_art;}
+    public void setErg_transport_ziel(String transport_ziel){this.erg_transport_ziel=transport_ziel;}
+    public void setErg_transport_sonstiges(String transport_sonstiges){this.erg_transport_sonstiges=transport_sonstiges;}
+    public void setErg_entlassung_ev(Integer entlassung_ev){this.erg_entlassung_ev=entlassung_ev;}
+    public void setErg_zeuge(String zeuge){this.erg_zeuge=zeuge;}
+    public void setErg_ergebnis_zeit(String ergebnis_zeit){this.erg_ergebnis_zeit=ergebnis_zeit;}
     public String getErg_ersthelfermassn(){return erg_ersthelfermassn;}
     public String getErg_zustand(){return erg_zustand;}
     public String getErg_transport(){return erg_transport;}
