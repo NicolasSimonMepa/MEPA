@@ -467,9 +467,10 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     public void speichern(){
         
         //Simon, 18.05.16, Die ID wird generiert:
-       /* int fallID = UUID.randomUUID().hashCode();
-        if (fallID < 0 ){fallID = -fallID;}
-        Toast.makeText(Falleingabe.this, "ID Hash: " + fallID, Toast.LENGTH_LONG).show(); */
+        GlobaleDaten mfall = new GlobaleDaten();
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setFallID(true);
+        //Toast.makeText(Falleingabe.this, "ID Hash: " + mfall.getFallID(), Toast.LENGTH_LONG).show(); //Zum Testen, dass sie erzeugt wird
         
         //Animation
         //Daten speichern in der DB
