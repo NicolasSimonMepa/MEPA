@@ -1,6 +1,8 @@
+//Zuletzt geändert von Vivien Stumpe, 20.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -20,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.OnBoarding;
@@ -68,6 +73,11 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
     //---
     private GlobaleDaten mfall;
     private ImageView imgv_back;
+    /* von Vivien Stumpe, 20.05.16
+    Timer deklarieren mit der Zeit DELAY in Millisekunden
+     */
+    private Timer timer = new Timer();
+    private final long DELAY = 2000; // in ms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +182,25 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
                 buttons.setVisibility(buttons.VISIBLE);
+                // von Vivien Stumpe, 20.05.16
+                // Timer erst starten nachdem 3 Zeichen eingegeben wurden
+                if (s.length() >= 3) {
+
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //Tastatur ausblenden
+                            InputMethodManager imm =
+                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(etxt_kreisverband.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_ortsverein.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_ort.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_veranstaltung.getWindowToken(), 0);
+                        }
+
+                    }, DELAY);
+                }
             }
         };
         /* von Vivien Stumpe, 01.05.16
