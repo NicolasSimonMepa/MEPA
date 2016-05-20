@@ -353,10 +353,12 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         setWerte();
     }
 
-
+/* von Vivien Stumpe, 20.05.16
+    Prozedur, die die Tastatur 2 Sekunden nach der Eingabe von 3 Zeichen ausblendet
+*/
     public void tastaturausblenden(){
 
-         /* von Vivien Stumpe, 01.05.16
+         /* von Vivien Stumpe, 20.05.16
         TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
         Damit entsprechend auf Eingaben reagiert werden kann
          */
