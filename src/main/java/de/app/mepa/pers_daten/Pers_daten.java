@@ -373,9 +373,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.equals("D")){
-                    etxt_land_pers_daten.setText("Deutschland");
-                }
+                
                 //Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
 
