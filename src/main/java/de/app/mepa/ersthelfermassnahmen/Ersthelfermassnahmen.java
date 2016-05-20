@@ -1,6 +1,7 @@
-// zuletzt geändert von Emile Yoncaova, 20.05.16
+// zuletzt geändert von Vivien Stumpe, 20.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,10 +10,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +30,8 @@ import android.widget.TextView;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
@@ -91,7 +97,13 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private EditText edtxt_entlassung_zeuge;
 
     private View view;
-
+    /* von Vivien Stumpe, 20.05.16
+    Textwatcher deklarieren
+    Timer deklarieren mit der Zeit DELAY in Millisekunden
+    */
+    private Timer timer = new Timer();
+    private final long DELAY = 2000; // in ms
+    private TextWatcher tw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -290,6 +302,62 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 // Was soll passieren, wenn das vierte Element gewählt wurde?
                 break;
         }
+                /* von Vivien Stumpe, 20.05.16
+        Tastatur ausblenden
+         */
+        tastaturausblenden();
+    }
+    /* von Vivien Stumpe, 20.05.16
+         Prozedur, die die Tastatur 2 Sekunden nach der Eingabe von 3 Zeichen ausblendet
+     */
+    public void tastaturausblenden(){
+
+         /* von Vivien Stumpe, 20.05.16
+        TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
+        Damit entsprechend auf Eingaben reagiert werden kann
+         */
+        tw=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                //Timer erst starten nachdem 3 Zeichen eingegeben wurden
+                if (s.length() >= 3) {
+
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //Tastatur ausblenden
+                            InputMethodManager imm =
+                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(edtxt_entlassung_zeuge.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(edtxt_wertsachen.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(edtxt_entlassung_ziel.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(edtxt_funkruf.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(edtxt_entlassung_sonstiges.getWindowToken(), 0);
+                        }
+
+                    }, DELAY);
+                }
+            }
+
+        };
+        edtxt_entlassung_zeuge.addTextChangedListener(tw);
+        edtxt_entlassung_ziel.addTextChangedListener(tw);
+        edtxt_funkruf.addTextChangedListener(tw);
+        edtxt_entlassung_sonstiges.addTextChangedListener(tw);
+        edtxt_wertsachen.addTextChangedListener(tw);
     }
     @Override
     public void onNothingSelected(AdapterView<?>parent){
