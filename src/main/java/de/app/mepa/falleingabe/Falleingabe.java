@@ -310,37 +310,30 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_notfall) {
-            setIconNotfall(R.drawable.notfallsituation_save);
             Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_verletzung) {
-            setIconVerletzung(R.drawable.verletzung_save);
             Intent intent = new Intent(Falleingabe.this, Verletzung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_erkrankung) {
-            setIconErkrankung(R.drawable.erkrankung_vergiftung_save);
             Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_maßnahmen) {
-            setIconMaßnahmen(R.drawable.massnahmen_save);
             Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_erstbef) {
-            setIconErstbefund(R.drawable.befund_save);
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_bemerkung) {
-            setIconBemerkung(R.drawable.bemerkung_save);
             Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_uebergabe) {
-            setIconUebergabe(R.drawable.uebergabe_save);
             Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
             startActivity(intent);
         }
@@ -407,8 +400,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setIconBemerkung(R.drawable.bemerkung);
     }
 
-    
-    /* von Vivien Stumpe, 15.05.16
+     /* von Vivien Stumpe, 15.05.16
     Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
     */
     protected void IconsSave() {
@@ -425,13 +417,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             if(mfall.Verl_check()) {
                 setIconVerletzung(R.drawable.verletzung_save);
             }
-        } else {
-            if (mfall.Verl_spinner_notNull()) {
+        }
+        if (mfall.Verl_spinner_notNull()) {
                 setIconVerletzung(R.drawable.verletzung_save);
             } else {
                 setIconVerletzung(R.drawable.verletzung);
             }
-        }
+
         if(mfall.Erk_notNull()){
             if(mfall.Erk_eingabe()) {
                 setIconErkrankung(R.drawable.erkrankung_vergiftung_save);
