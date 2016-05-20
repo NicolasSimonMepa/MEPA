@@ -1,30 +1,38 @@
-//Zuletzt bearbeitet von Indra Marcheel, 18.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
 
 package de.app.mepa.pers_daten;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
@@ -101,6 +109,13 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private EditText etxt_plz_pers_daten, etxt_ort_pers_daten, etxt_land_pers_daten, etxt_tel_pers_daten,
     etxt_krankenkasse_pers_daten, etxt_versnr_pers_daten, etxt_versichertennr_pers_daten, etxt_fundort_pers_daten;
     private RadioButton rbtn_weibl, rbtn_maennl;
+    /* von Vivien Stumpe, 20.05.16
+    Textwatcher deklarieren
+    Timer deklarieren mit der Zeit DELAY in Millisekunden
+    */
+    private Timer timer = new Timer();
+    private final long DELAY = 2000; // in ms
+    private TextWatcher tw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -330,6 +345,8 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         rbtn_maennl.setOnClickListener(this);
         rbtn_weibl.setOnClickListener(this);
 
+        tastaturausblenden();
+
         /* von Vivien Stumpe, 15.05.16
         Falls Werte vorhanden sind, werden diese im Screen geladen
          */
@@ -337,7 +354,70 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     }
 
 
+    public void tastaturausblenden(){
 
+         /* von Vivien Stumpe, 01.05.16
+        TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
+        Damit entsprechend auf Eingaben reagiert werden kann
+         */
+        tw=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.equals("D")){
+                    etxt_land_pers_daten.setText("Deutschland");
+                }
+                //Timer erst starten nachdem 3 Zeichen eingegeben wurden
+                if (s.length() >= 3) {
+
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //Tastatur ausblenden
+                            InputMethodManager imm =
+                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(etxt_name_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_vorname_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_str_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_plz_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_ort_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_land_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_tel_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_krankenkasse_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_versichertennr_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_versnr_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_fundort_pers_daten.getWindowToken(), 0);
+                            imm.hideSoftInputFromWindow(etxt_sonstiges.getWindowToken(), 0);
+                        }
+
+                    }, DELAY);
+                }
+            }
+
+        };
+        etxt_name_pers_daten.addTextChangedListener(tw);
+        etxt_vorname_pers_daten.addTextChangedListener(tw);
+        etxt_str_pers_daten.addTextChangedListener(tw);
+        etxt_plz_pers_daten.addTextChangedListener(tw);
+        etxt_ort_pers_daten.addTextChangedListener(tw);
+        etxt_land_pers_daten.addTextChangedListener(tw);
+        etxt_tel_pers_daten.addTextChangedListener(tw);
+        etxt_krankenkasse_pers_daten.addTextChangedListener(tw);
+        etxt_versnr_pers_daten.addTextChangedListener(tw);
+        etxt_versichertennr_pers_daten.addTextChangedListener(tw);
+        etxt_fundort_pers_daten.addTextChangedListener(tw);
+        etxt_sonstiges.addTextChangedListener(tw);
+    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
