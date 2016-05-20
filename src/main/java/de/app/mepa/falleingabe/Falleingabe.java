@@ -407,7 +407,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setIconBemerkung(R.drawable.bemerkung);
     }
 
-       /* von Vivien Stumpe, 15.05.16
+    
+    /* von Vivien Stumpe, 15.05.16
     Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
     */
     protected void IconsSave() {
@@ -419,8 +420,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         } else {
             setIconPerson(R.drawable.person);
         }
+        //ähnliche Vergleiche für die anderen Screens müssen hier ergänzt werden
         if (mfall.Verl_check_notNull()) {
-            setIconVerletzung(R.drawable.verletzung_save);
+            if(mfall.Verl_check()) {
+                setIconVerletzung(R.drawable.verletzung_save);
+            }
         } else {
             if (mfall.Verl_spinner_notNull()) {
                 setIconVerletzung(R.drawable.verletzung_save);
@@ -428,8 +432,14 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 setIconVerletzung(R.drawable.verletzung);
             }
         }
-        //ähnliche Vergleiche für die anderen Screens müssen hier ergänzt werden
-        setIconErkrankung(R.drawable.erkrankung_vergiftung);
+        if(mfall.Erk_notNull()){
+            if(mfall.Erk_eingabe()) {
+                setIconErkrankung(R.drawable.erkrankung_vergiftung_save);
+            }
+        }
+        else {
+            setIconErkrankung(R.drawable.erkrankung_vergiftung);
+        }
         setIconMaßnahmen(R.drawable.massnahmen);
         setIconErstbefund(R.drawable.befund);
         setIconUebergabe(R.drawable.uebergabe);
@@ -450,7 +460,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             setIconBemerkung(R.drawable.bemerkung);
         }
     }
-
     /* von Vivien Stumpe, 02.05.16
     Prozedur, die prüft, ob sich ein Icon geändert hat
     und wenn dies der Fall ist, die Buttons zum Speichern oder Verwerfen anzeigt
