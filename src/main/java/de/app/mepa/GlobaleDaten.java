@@ -384,12 +384,16 @@ public class GlobaleDaten extends Application {
                 (getVerl_bws_lws_grad()!=null)|(getVerl_gesicht_art()!=null)|(getVerl_gesicht_grad()!=null)|
                 (getVerl_schaedel_art()!=null)|(getVerl_schaedel_grad()!=null)|(getVerl_hws_art()!=null)|
                 (getVerl_hws_grad()!=null)|(getVerl_weichteile_art()!=null)|(getVerl_weichteile_grad()!=null));
-
         }
     public Boolean Verl_check_notNull(){
          return ((getVerl_prellung_verletzung()!=null)|(getVerl_verbrennung()!=null)|(getVerl_wunde_verletzung()!=null)|
                 (getVerl_elektrounfall()!=null)|(getVerl_inhalationstrauma()!=null|(getVerl_sonstiges()!=null)));
 
+    }
+
+    public Boolean Verl_check(){
+        return ((getVerl_prellung_verletzung()==1)|(getVerl_verbrennung()==1)|(getVerl_wunde_verletzung()==1)|
+                (getVerl_elektrounfall()==1)|(getVerl_inhalationstrauma()==1|(getVerl_sonstiges()==1)));
     }
 
     public void loescheVerl(){
@@ -517,6 +521,20 @@ public class GlobaleDaten extends Application {
     public Integer getErk_geburtshilfe(){return erk_geburtshilfe;}
     public Integer getErk_sonstiges(){return erk_sonstiges;}
     public String getErk_edtxt_sonstiges(){return erk_edtxt_sonstiges;}
+    public Boolean Erk_notNull(){
+        return ((getErk_keine() !=null)|(getErk_alkoholisiert()!=null)|(getErk_erbrechen()!=null)|(getErk_schwindel()!=null)|
+                (getErk_herzkreislauf()!=null)|(getErk_hitzeschlag()!=null)|(getErk_vergiftung()!=null)|(getErk_atmung()!=null)|
+                (getErk_unterkuehlung()!= null)|(getErk_baucherkrankung() !=null)|(getErk_stoffwechsel()!=null)|
+                (getErk_neurologie() !=null)|(getErk_gynaekologie()!=null)|(getErk_psychatrie() !=null)|(getErk_kindernotfall()!=null)|
+                (getErk_geburtshilfe()!=null)|(getErk_sonstiges()!=null)|(getErk_edtxt_sonstiges()!=null));
+    }
+    public Boolean Erk_eingabe(){
+        return ((getErk_keine() ==1)|(getErk_alkoholisiert()==1)|(getErk_erbrechen()==1)|(getErk_schwindel()==1)|
+                (getErk_herzkreislauf()==1)|(getErk_hitzeschlag()==1)|(getErk_vergiftung()==1)|(getErk_atmung()==1)|
+                (getErk_unterkuehlung()==1)|(getErk_baucherkrankung() ==1)|(getErk_stoffwechsel()==1)|
+                (getErk_neurologie()==1)|(getErk_gynaekologie()==1)|(getErk_psychatrie()==1)|(getErk_kindernotfall()==1)|
+                (getErk_geburtshilfe()==1)|(getErk_sonstiges()==1)|(getErk_edtxt_sonstiges().length()>0));
+    }
     public void loescheErk(){
         setErk_keine(0);
         setErk_alkoholisiert(0);
@@ -776,4 +794,6 @@ public class GlobaleDaten extends Application {
     public Boolean getVer_vorh(){
         return ver_vorh;
     }
+
+
 }
