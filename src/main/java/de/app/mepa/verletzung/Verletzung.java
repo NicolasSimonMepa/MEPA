@@ -93,9 +93,6 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verletzung);
-
-
-
         //ArrayAdapter erzeugen
         //Der ArrayAdapter generiert die Listenelemente des Spinners
         //Parameter sind die aktuelle Activity, Systemressource, Array mit den Listenelementen
@@ -382,11 +379,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_schaedel_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_schaedel_art("offen");
         }
+        if((spin_schaedel_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_schaedel_art(null);
+        }
         if((spin_schaedel_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_schaedel_art("geschlossen");
         }
         if((spin_schaedel_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_schaedel_grad("leicht");
+        }
+        if((spin_schaedel_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_schaedel_grad(null);
         }
         if((spin_schaedel_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_schaedel_grad("mittel");
@@ -397,11 +400,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_gesicht_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_gesicht_art("offen");
         }
+        if((spin_gesicht_art.getSelectedItem().toString().equals("offen"))){
+            mfall.setVerl_gesicht_art("-----");
+        }
         if((spin_gesicht_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_gesicht_art("geschlossen");
         }
         if((spin_gesicht_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_gesicht_grad("leicht");
+        }
+        if((spin_gesicht_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_gesicht_grad(null);
         }
         if((spin_gesicht_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_gesicht_grad("mittel");
@@ -412,11 +421,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_hws_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_hws_art("offen");
         }
+        if((spin_gesicht_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_gesicht_grad(null);
+        }
         if((spin_hws_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_hws_art("geschlossen");
         }
         if((spin_hws_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_hws_grad("leicht");
+        }
+        if((spin_hws_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_hws_grad(null);
         }
         if((spin_hws_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_hws_grad("mittel");
@@ -427,11 +442,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_brustkorb_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_brustkorb_art("offen");
         }
+        if((spin_brustkorb_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_brustkorb_art(null);
+        }
         if((spin_brustkorb_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_brustkorb_art("geschlossen");
         }
         if((spin_brustkorb_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_brustkorb_grad("leicht");
+        }
+        if((spin_brustkorb_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_brustkorb_grad(null);
         }
         if((spin_brustkorb_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_brustkorb_grad("mittel");
@@ -442,11 +463,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_bauch_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_bauch_art("offen");
         }
+        if((spin_bauch_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_bauch_art(null);
+        }
         if((spin_bauch_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_bauch_art("geschlossen");
         }
         if((spin_bauch_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_bauch_grad("leicht");
+        }
+        if((spin_bauch_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_bauch_grad(null);
         }
         if((spin_bauch_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_bauch_grad("mittel");
@@ -457,11 +484,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_bws_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_bws_lws_art("offen");
         }
+        if((spin_bws_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_bws_lws_art(null);
+        }
         if((spin_bws_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_bws_lws_art("geschlossen");
         }
         if((spin_bws_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_bws_lws_grad("leicht");
+        }
+        if((spin_bws_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_bws_lws_grad(null);
         }
         if((spin_bws_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_bws_lws_grad("mittel");
@@ -472,11 +505,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_becken_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_becken_art("offen");
         }
+        if((spin_becken_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_becken_art(null);
+        }
         if((spin_becken_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_becken_art("geschlossen");
         }
         if((spin_becken_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_becken_grad("leicht");
+        }
+        if((spin_becken_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_becken_grad(null);
         }
         if((spin_becken_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_becken_grad("mittel");
@@ -487,11 +526,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_arme_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_arme_art("offen");
         }
+        if((spin_arme_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_arme_art(null);
+        }
         if((spin_arme_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_arme_art("geschlossen");
         }
         if((spin_arme_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_arme_grad("leicht");
+        }
+        if((spin_arme_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_arme_grad(null);
         }
         if((spin_arme_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_arme_grad("mittel");
@@ -502,11 +547,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_beine_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_beine_art("offen");
         }
+        if((spin_beine_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_beine_art(null);
+        }
         if((spin_beine_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_beine_art("geschlossen");
         }
         if((spin_beine_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_beine_grad("leicht");
+        }
+        if((spin_beine_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_beine_grad(null);
         }
         if((spin_beine_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_beine_grad("mittel");
@@ -517,11 +568,17 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_weichteile_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_weichteile_art("offen");
         }
+        if((spin_weichteile_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_weichteile_art(null);
+        }
         if((spin_weichteile_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_weichteile_art("geschlossen");
         }
         if((spin_weichteile_grad.getSelectedItem().toString().equals("leicht"))){
             mfall.setVerl_weichteile_grad("leicht");
+        }
+        if((spin_weichteile_grad.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_weichteile_grad(null);
         }
         if((spin_weichteile_grad.getSelectedItem().toString().equals("mittel"))){
             mfall.setVerl_weichteile_grad("mittel");
