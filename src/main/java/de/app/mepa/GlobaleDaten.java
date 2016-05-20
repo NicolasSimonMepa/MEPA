@@ -13,6 +13,29 @@ public class GlobaleDaten extends Application {
     // Fall ID - Variable, Simon 18.05.16
     private int fallID;
     
+    //Ergebnis (Übergabe) - Variablen
+    private String erg_ersthelfermassn;
+    private String erg_zustand;
+    private String erg_transport;
+    private String erg_notarzt;
+    private Integer erg_hausarzt_informiert;
+    private Integer erg_tod;
+    private String erg_wertsachen;
+    private Integer erg_nachforderung_ktw;
+    private Integer erg_nachforderung_rtw;
+    private Integer erg_nachforderung_nef;
+    private Integer erg_nachforderung_naw;
+    private Integer erg_nachforderung_rth;
+    private Integer erg_nachforderung_feuerwehr;
+    private Integer erg_nachforderung_polizei;
+    private String erg_funkruf;
+    private String erg_transport_art;
+    private String erg_transport_ziel;
+    private String erg_transport_sonstiges;
+    private Integer erg_entlassung_ev;
+    private String erg_zeuge;
+    private String erg_ergebnis_zeit;
+    
     //Maßnahmen - Variablen
     private Integer mas_keine;
     private Integer mas_stb_seitenlage;
@@ -160,6 +183,73 @@ public class GlobaleDaten extends Application {
     }
     public int getFallID(){return fallID;}
     public void loescheFallID(){setFallID(false);}
+    
+    //Ergebnis (Übergabe) - Dienste
+    public void setErg_ersthelfermassn(String erg_ersthelfermassn){this.erg_ersthelfermassn=erg_ersthelfermassn;}
+    public void setErg_zustand(String erg_zustand){this.erg_zustand=erg_zustand;}
+    public void setErg_transport(String erg_transport){this.erg_transport=erg_transport;}
+    public void setErg_notarzt(String erg_notarzt){this.erg_notarzt=erg_notarzt;}
+    public void setErg_hausarzt_informiert(Integer erg_hausarzt_informiert){this.erg_hausarzt_informiert=erg_hausarzt_informiert;}
+    public void setErg_tod(Integer erg_tod){this.erg_tod=erg_tod;}
+    public void setErg_wertsachen(String erg_wertsachen){this.erg_wertsachen=erg_wertsachen;}
+    public void setErg_nachforderung_ktw(Integer erg_nachforderung_ktw){this.erg_nachforderung_ktw=erg_nachforderung_ktw;}
+    public void setErg_nachforderung_rtw(Integer erg_nachforderung_rtw){this.erg_nachforderung_rtw=erg_nachforderung_rtw;}
+    public void setErg_nachforderung_nef(Integer erg_nachforderung_nef){this.erg_nachforderung_nef=erg_nachforderung_nef;}
+    public void setErg_nachforderung_naw(Integer erg_nachforderung_naw){this.erg_nachforderung_naw=erg_nachforderung_naw;}
+    public void setErg_nachforderung_rth(Integer erg_nachforderung_rth){this.erg_nachforderung_rth=erg_nachforderung_rth;}
+    public void setErg_nachforderung_feuerwehr(Integer erg_nachforderung_feuerwehr){this.erg_nachforderung_feuerwehr=erg_nachforderung_feuerwehr;}
+    public void setErg_nachforderung_polizei(Integer erg_nachforderung_polizei){this.erg_nachforderung_polizei=erg_nachforderung_polizei;}
+    public void setErg_funkruf(String erg_funkruf){this.erg_funkruf=erg_funkruf;}
+    public void setErg_transport_art(String erg_transport_art){this.erg_transport_art=erg_transport_art;}
+    public void setErg_transport_ziel(String erg_transport_ziel){this.erg_transport_ziel=erg_transport_ziel;}
+    public void setErg_transport_sonstiges(String erg_transport_sonstiges){this.erg_transport_sonstiges=erg_transport_sonstiges;}
+    public void setErg_entlassung_ev(Integer erg_entlassung_ev){this.erg_entlassung_ev=erg_entlassung_ev;}
+    public void setErg_zeuge(String erg_zeuge){this.erg_zeuge=erg_zeuge;}
+    public void setErg_ergebnis_zeit(String erg_ergebnis_zeit){this.erg_ergebnis_zeit=erg_ergebnis_zeit;}
+    public String getErg_ersthelfermassn(){return erg_ersthelfermassn;}
+    public String getErg_zustand(){return erg_zustand;}
+    public String getErg_transport(){return erg_transport;}
+    public String getErg_notarzt(){return erg_notarzt;}
+    public Integer getErg_hausarzt_informiert(){return erg_hausarzt_informiert;}
+    public Integer getErg_tod(){return erg_tod;}
+    public String getErg_wertsachen(){return erg_wertsachen;}
+    public Integer getErg_nachforderung_ktw(){return erg_nachforderung_ktw;}
+    public Integer getErg_nachforderung_rtw(){return erg_nachforderung_rtw;}
+    public Integer getErg_nachforderung_nef(){return erg_nachforderung_nef;}
+    public Integer getErg_nachforderung_naw(){return erg_nachforderung_naw;}
+    public Integer getErg_nachforderung_rth(){return erg_nachforderung_rth;}
+    public Integer getErg_nachforderung_feuerwehr(){return erg_nachforderung_feuerwehr;}
+    public Integer getErg_nachforderung_polizei(){return erg_nachforderung_polizei;}
+    public String getErg_funkruf(){return erg_funkruf;}
+    public String getErg_transport_art(){return erg_transport_art;}
+    public String getErg_transport_ziel(){return erg_transport_ziel;}
+    public String getErg_transport_sonstiges(){return erg_transport_sonstiges;}
+    public Integer getErg_entlassung_ev(){return erg_entlassung_ev;}
+    public String getErg_zeuge(){return erg_zeuge;}
+    public String getErg_ergebnis_zeit(){return erg_ergebnis_zeit;}
+    public void loescheErg(){
+        setErg_ersthelfermassn("");
+        setErg_zustand("");
+        setErg_transport("");
+        setErg_notarzt("");
+        setErg_hausarzt_informiert(0);
+        setErg_tod(0);
+        setErg_wertsachen("");
+        setErg_nachforderung_ktw(0);
+        setErg_nachforderung_rtw(0);
+        setErg_nachforderung_nef(0);
+        setErg_nachforderung_naw(0);
+        setErg_nachforderung_rth(0);
+        setErg_nachforderung_feuerwehr(0);
+        setErg_nachforderung_polizei(0);
+        setErg_funkruf("");
+        setErg_transport_art("");
+        setErg_transport_ziel("");
+        setErg_transport_sonstiges("");
+        setErg_entlassung_ev(0);
+        setErg_zeuge("");
+        setErg_ergebnis_zeit("");
+    }
     
     //Maßnahmen - Dienste
     public void setMas_keine(Integer keine){this.mas_keine=keine;}
