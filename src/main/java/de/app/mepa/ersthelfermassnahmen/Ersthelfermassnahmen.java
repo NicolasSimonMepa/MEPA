@@ -1,4 +1,4 @@
-// zuletzt geändert von Indra Marcheel, 18.05.16
+// zuletzt geändert von Emile Yoncaova, 20.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Intent;
@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -56,11 +58,31 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
     Toolbar toolbar;
 
+    private EditText edtxt_uebergabe_zeit;
+    Button aktualisieren;
+    private String[] uhrzeit = new String[1];
+
     private String[]ersthelfermassnahmen={"-----","keine","suffizient","insuffizient","AED"};
     private String[]zustand={"-----", "unverändert", "verbessert", "verschlechtert"};
     private String[]transport={"-----", "nicht erforderlich", "Pat. lehnt transport ab"};
     private String[]notarzt={"-----", "nachgefordert", "abbestellt"};
     private String[]entlassung={"-----", "KTW", "RTW", "RTH", "Polizei", "Taxi/PKW", "ÖPNV", "eigenständig", "Angehörige", "zurück zur Veranstaltung"};
+
+    private CheckBox cck_hausarzt;
+    private CheckBox cck_tod_unfallort;
+    private CheckBox cck_ktw;
+    private CheckBox cck_rtw;
+    private CheckBox cck_nef;
+    private CheckBox cck_naw;
+    private CheckBox cck_rth;
+    private CheckBox cck_feuerwehr;
+    private CheckBox cck_polizei;
+    private CheckBox cck_entlassungsrevers;
+    private EditText edtxt_wertsachen;
+    private EditText edtxt_funkruf;
+    private EditText edtxt_entlassung_ziel;
+    private EditText edtxt_entlassung_sonstiges;
+    private GlobaleDaten mfall;
 
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
@@ -84,7 +106,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_ersthelfermassnahmen=(Spinner)findViewById(R.id.spin_ersthelfermassnahmen);
         spin_ersthelfermassnahmen.setAdapter(adapter_ersthelfermassnahmen);
         spin_ersthelfermassnahmen.setOnItemSelectedListener(this);
-        
+
         ArrayAdapter<String> adapter_zustand=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
                 R.layout.spinner_layout,zustand);
 
@@ -111,7 +133,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         spin_notarzt=(Spinner)findViewById(R.id.spin_notarzt);
         spin_notarzt.setAdapter(adapter_notarzt);
         spin_notarzt.setOnItemSelectedListener(this);
-        
+
         ArrayAdapter<String> adapter_entlassung=new ArrayAdapter<String>(Ersthelfermassnahmen.this,
                 R.layout.spinner_layout,entlassung);
 
@@ -123,18 +145,16 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
         //von Nathalie Horn, 01.05.16
         //Systemzeit anzeigen, Deklaration und Initialisierung der Variablen
-        final TextView uebergabe_zeit;
-        Button aktualisieren;
-        final String[] uhrzeit = new String[1];
 
-        uebergabe_zeit = (TextView) findViewById(R.id.edtxt_uebergabe_zeit);
+
+        edtxt_uebergabe_zeit = (EditText) findViewById(R.id.edtxt_uebergabe_zeit);
         aktualisieren = (Button) findViewById(R.id.aktualisieren);
 
         aktualisieren.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.GERMANY);
-                uebergabe_zeit.setText(dateFormat.format(new java.util.Date()));
+                edtxt_uebergabe_zeit.setText(dateFormat.format(new java.util.Date()));
 
             }
         });
@@ -153,11 +173,40 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         setSupportActionBar(toolbar);
 
 
-                 // von Vivien Stumpe, 19.04.16
-                //Wechseln der Aktivität mittels Swipe
-                 //Hauptelement der Activity finden und der Variable zuweisen
-                 //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
-                 //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
+        cck_hausarzt=(CheckBox)findViewById(R.id.cck_hausarzt);
+        cck_tod_unfallort=(CheckBox)findViewById(R.id.cck_tod_unfallort);
+        edtxt_wertsachen=(EditText)findViewById(R.id.edtxt_wertsachen);
+        cck_ktw=(CheckBox)findViewById(R.id.cck_ktw);
+        cck_rtw=(CheckBox)findViewById(R.id.cck_rtw);
+        cck_nef=(CheckBox)findViewById(R.id.cck_nef);
+        cck_naw=(CheckBox)findViewById(R.id.cck_naw);
+        cck_rth=(CheckBox)findViewById(R.id.cck_rth);
+        cck_feuerwehr=(CheckBox)findViewById(R.id.cck_feuerwehr);
+        cck_polizei=(CheckBox)findViewById(R.id.cck_polizei);
+        edtxt_funkruf=(EditText)findViewById(R.id.edtxt_funkruf);
+        edtxt_entlassung_ziel=(EditText)findViewById(R.id.edtxt_entlassung_ziel);
+        edtxt_entlassung_sonstiges=(EditText)findViewById(R.id.edtxt_entlassung_sonstiges);
+        cck_entlassungsrevers=(CheckBox)findViewById(R.id.cck_entlassungsrevers);
+        edtxt_entlassung_zeuge=(EditText)findViewById(R.id.edtxt_entlassung_zeuge);
+
+        cck_hausarzt.setOnClickListener(this);
+        cck_tod_unfallort.setOnClickListener(this);
+        cck_ktw.setOnClickListener(this);
+        cck_rtw.setOnClickListener(this);
+        cck_nef.setOnClickListener(this);
+        cck_naw.setOnClickListener(this);
+        cck_rth.setOnClickListener(this);
+        cck_feuerwehr.setOnClickListener(this);
+        cck_polizei.setOnClickListener(this);
+        cck_entlassungsrevers.setOnClickListener(this);
+
+        setWerte();
+
+        // von Vivien Stumpe, 19.04.16
+        //Wechseln der Aktivität mittels Swipe
+        //Hauptelement der Activity finden und der Variable zuweisen
+        //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
+        //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
 
         view=(View) findViewById(R.id.scrV_ersthelfermassnahmen);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -166,6 +215,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_ersthelfermassnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Ersthelfermassnahmen.this, Erstbefund.class);
@@ -188,22 +238,22 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File file = getFile();
                 camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(camera_intent,CAM_REQUEST);
+                startActivityForResult(camera_intent, CAM_REQUEST);
             }
         });
 
-        edtxt_entlassung_zeuge=(EditText) findViewById(R.id.edtxt_entlassung_zeuge);
+
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        edtxt_entlassung_zeuge.setFilters(new InputFilter[] {
+        edtxt_entlassung_zeuge.setFilters(new InputFilter[]{
                 new InputFilter() {
                     public CharSequence filter(CharSequence src, int start,
                                                int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
+                        if (src.equals("")) { // for backspace
                             return src;
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
+                        if (src.toString().matches("[a-zA-Z ]+")) {
                             return src;
                         }
                         return "";
@@ -211,7 +261,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                 }
         });
     }
-    
+
     private File getFile() {
         File folder = new File("sdcard/mepa");
 
@@ -297,6 +347,271 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         }
         if(ce == R.id.imgv_menu){
             drawerlayout_ersthelfermassnahmen.openDrawer(GravityCompat.START);
+        }
+    }
+    public void onPause(){
+        super.onPause();
+        //Eingaben werden lokal gespeichert
+        speichereEingaben();
+    }
+    public void speichereEingaben() {
+        mfall = (GlobaleDaten) getApplication();
+        if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("keine"))) {
+            mfall.setErg_ersthelfermassn("keine");
+        }
+        if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("suffizient"))) {
+            mfall.setErg_ersthelfermassn("suffizient");
+        }
+        if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("insuffizient"))) {
+            mfall.setErg_ersthelfermassn("insuffizient");
+        }
+        if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("AED"))) {
+            mfall.setErg_ersthelfermassn("AED");
+        }
+        if ((spin_zustand.getSelectedItem().toString().equals("unverändert"))) {
+            mfall.setErg_zustand("unverändert");
+        }
+        if ((spin_zustand.getSelectedItem().toString().equals("verbessert"))) {
+            mfall.setErg_zustand("verbessert");
+        }
+        if ((spin_zustand.getSelectedItem().toString().equals("verschlechtert"))) {
+            mfall.setErg_zustand("verschlechtert");
+        }
+        if ((spin_transport.getSelectedItem().toString().equals("nicht erforderlich"))) {
+            mfall.setErg_transport("nicht erforderlich");
+        }
+        if ((spin_transport.getSelectedItem().toString().equals("Pat. lehnt transport ab"))) {
+            mfall.setErg_transport("Pat. lehnt transport ab");
+        }
+        if ((spin_notarzt.getSelectedItem().toString().equals("nachgefordert"))) {
+            mfall.setErg_notarzt("nachgefordert");
+        }
+        if ((spin_notarzt.getSelectedItem().toString().equals("abbestellt"))) {
+            mfall.setErg_notarzt("abbestellt");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("KTW"))) {
+            mfall.setErg_transport_art("KTW");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("RTW"))) {
+            mfall.setErg_transport_art("RTW");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("RTH"))) {
+            mfall.setErg_transport_art("RTH");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("Polizei"))) {
+            mfall.setErg_transport_art("Polizei");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("Taxi/PKW"))) {
+            mfall.setErg_transport_art("Taxi/PKW");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("ÖPNV"))) {
+            mfall.setErg_transport_art("ÖPNV");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("eigenständig"))) {
+            mfall.setErg_transport_art("eigenständig");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("Angehörige"))) {
+            mfall.setErg_transport_art("Angehörige");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("zurück zur Veranstaltung"))) {
+            mfall.setErg_transport_art("zurück zur Veranstaltung");
+        }
+        if (cck_hausarzt.isChecked()){
+            mfall.setErg_hausarzt_informiert(1);
+        }
+        else
+            mfall.setErg_hausarzt_informiert(0);
+        if (cck_tod_unfallort.isChecked()){
+            mfall.setErg_tod(1);
+        }
+        else
+            mfall.setErg_tod(0);
+        if (cck_ktw.isChecked()){
+            mfall.setErg_nachforderung_ktw(1);
+        }
+        else
+            mfall.setErg_nachforderung_ktw(0);
+        if (cck_rtw.isChecked()){
+            mfall.setErg_nachforderung_rtw(1);
+        }
+        else
+            mfall.setErg_nachforderung_rtw(0);
+        if (cck_nef.isChecked()){
+            mfall.setErg_nachforderung_nef(1);
+        }
+        else
+            mfall.setErg_nachforderung_nef(0);
+        if (cck_naw.isChecked()){
+            mfall.setErg_nachforderung_naw(1);
+        }
+        else
+            mfall.setErg_nachforderung_naw(0);
+        if (cck_rth.isChecked()){
+            mfall.setErg_nachforderung_rth(1);
+        }
+        else
+            mfall.setErg_nachforderung_rth(0);
+        if (cck_feuerwehr.isChecked()){
+            mfall.setErg_nachforderung_feuerwehr(1);
+        }
+        else
+            mfall.setErg_nachforderung_feuerwehr(0);
+        if (cck_polizei.isChecked()){
+            mfall.setErg_nachforderung_polizei(1);
+        }
+        else
+            mfall.setErg_nachforderung_polizei(0);
+        if (cck_entlassungsrevers.isChecked()){
+            mfall.setErg_entlassung_ev(1);
+        }
+        else
+            mfall.setErg_entlassung_ev(0);
+        mfall.setErg_wertsachen(edtxt_wertsachen.getText().toString());
+        mfall.setErg_funkruf(edtxt_funkruf.getText().toString());
+        mfall.setErg_transport_ziel(edtxt_entlassung_ziel.getText().toString());
+        mfall.setErg_transport_sonstiges(edtxt_entlassung_sonstiges.getText().toString());
+        mfall.setErg_zeuge(edtxt_entlassung_zeuge.getText().toString());
+        mfall.setErg_ergebnis_zeit(edtxt_uebergabe_zeit.getText().toString());
+    }
+    public void setWerte() {
+        mfall = (GlobaleDaten) getApplication();
+        if ((mfall.getErg_ersthelfermassn() != null)) {
+            if (mfall.getErg_ersthelfermassn().equals("keine")) {
+                spin_ersthelfermassnahmen.setSelection(1);
+            }
+            if (mfall.getErg_ersthelfermassn().equals("suffizient")) {
+                spin_ersthelfermassnahmen.setSelection(2);
+            }
+            if (mfall.getErg_ersthelfermassn().equals("insuffizient")) {
+                spin_ersthelfermassnahmen.setSelection(3);
+            }
+            if (mfall.getErg_ersthelfermassn().equals("AED")) {
+                spin_ersthelfermassnahmen.setSelection(4);
+            }
+        }
+        if ((mfall.getErg_zustand() != null)) {
+            if (mfall.getErg_zustand().equals("unverändert")) {
+                spin_zustand.setSelection(1);
+            }
+            if (mfall.getErg_zustand().equals("verbessert")) {
+                spin_zustand.setSelection(2);
+            }
+            if (mfall.getErg_zustand().equals("verschlechtert")) {
+                spin_zustand.setSelection(3);
+            }
+        }
+        if ((mfall.getErg_transport() != null)) {
+            if (mfall.getErg_transport().equals("nicht erforderlich")) {
+                spin_transport.setSelection(1);
+            }
+            if (mfall.getErg_transport().equals("Pat. lehnt transport ab")) {
+                spin_transport.setSelection(2);
+            }
+        }
+        if ((mfall.getErg_notarzt() != null)) {
+            if (mfall.getErg_notarzt().equals("nachgefordert")) {
+                spin_notarzt.setSelection(1);
+            }
+            if (mfall.getErg_notarzt().equals("abbestellt")) {
+                spin_notarzt.setSelection(2);
+            }
+        }
+        if ((mfall.getErg_transport_art() != null)) {
+            if (mfall.getErg_transport_art().equals("KTW")) {
+                spin_entlassung.setSelection(1);
+            }
+            if (mfall.getErg_transport_art().equals("RTW")) {
+                spin_entlassung.setSelection(2);
+            }
+            if (mfall.getErg_transport_art().equals("RTH")) {
+                spin_entlassung.setSelection(3);
+            }
+            if (mfall.getErg_transport_art().equals("Polizei")) {
+                spin_entlassung.setSelection(4);
+            }
+            if (mfall.getErg_transport_art().equals("Taxi/PKW")) {
+                spin_entlassung.setSelection(5);
+            }
+            if (mfall.getErg_transport_art().equals("ÖPNV")) {
+                spin_entlassung.setSelection(6);
+            }
+            if (mfall.getErg_transport_art().equals("eigenständig")) {
+                spin_entlassung.setSelection(7);
+            }
+            if (mfall.getErg_transport_art().equals("Angehörige")) {
+                spin_entlassung.setSelection(8);
+            }
+            if (mfall.getErg_transport_art().equals("zurück zur Veranstaltung")) {
+                spin_entlassung.setSelection(9);
+            }
+        }
+        if(mfall.getErg_hausarzt_informiert()!=null) {
+            if (mfall.getErg_hausarzt_informiert() == 1) {
+                cck_hausarzt.setChecked(true);
+            }
+        }
+        if(mfall.getErg_tod()!=null) {
+            if (mfall.getErg_tod() == 1) {
+                cck_tod_unfallort.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_ktw()!=null) {
+            if (mfall.getErg_nachforderung_ktw() == 1) {
+                cck_ktw.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_rtw()!=null) {
+            if (mfall.getErg_nachforderung_rtw() == 1) {
+                cck_rtw.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_nef()!=null) {
+            if (mfall.getErg_nachforderung_nef() == 1) {
+                cck_nef.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_naw()!=null) {
+            if (mfall.getErg_nachforderung_naw() == 1) {
+                cck_naw.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_rth()!=null) {
+            if (mfall.getErg_nachforderung_rth() == 1) {
+                cck_rth.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_feuerwehr()!=null) {
+            if (mfall.getErg_nachforderung_feuerwehr() == 1) {
+                cck_feuerwehr.setChecked(true);
+            }
+        }
+        if(mfall.getErg_nachforderung_polizei()!=null) {
+            if (mfall.getErg_nachforderung_polizei() == 1) {
+                cck_polizei.setChecked(true);
+            }
+        }
+        if(mfall.getErg_entlassung_ev()!=null) {
+            if (mfall.getErg_entlassung_ev() == 1) {
+                cck_entlassungsrevers.setChecked(true);
+            }
+        }
+        if((mfall.getErg_wertsachen()!=null)){
+            edtxt_wertsachen.setText(mfall.getErg_wertsachen());
+        }
+        if((mfall.getErg_funkruf()!=null)){
+            edtxt_funkruf.setText(mfall.getErg_funkruf());
+        }
+        if((mfall.getErg_transport_ziel()!=null)){
+            edtxt_entlassung_ziel.setText(mfall.getErg_transport_ziel());
+        }
+        if((mfall.getErg_transport_sonstiges()!=null)){
+            edtxt_entlassung_sonstiges.setText(mfall.getErg_transport_sonstiges());
+        }
+        if((mfall.getErg_zeuge()!=null)){
+            edtxt_entlassung_zeuge.setText(mfall.getErg_zeuge());
+        }
+        if((mfall.getErg_ergebnis_zeit()!=null)){
+            edtxt_uebergabe_zeit.setText(mfall.getErg_ergebnis_zeit());
         }
     }
 }
