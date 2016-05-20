@@ -407,27 +407,48 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setIconBemerkung(R.drawable.bemerkung);
     }
 
-    /* von Vivien Stumpe, 15.05.16
+       /* von Vivien Stumpe, 15.05.16
     Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
     */
-    protected void IconsSave(){
+    protected void IconsSave() {
         mfall = (GlobaleDaten) getApplication();
         //Vergleich, ob die Pflichtfelder eingegeben wurden -> muss im Screen noch sichergestellt sein!
-        if ((mfall.getPat_name() != null)&(mfall.getPat_vorname() != null)&(mfall.getPat_geb() != null)) {
-            if ((mfall.getPat_name().length() != 0)&(mfall.getPat_vorname().length() != 0)&(mfall.getPat_geb().length() != 0))
+        if ((mfall.getPat_name() != null) & (mfall.getPat_vorname() != null) & (mfall.getPat_geb() != null)) {
+            if ((mfall.getPat_name().length() != 0) & (mfall.getPat_vorname().length() != 0) & (mfall.getPat_geb().length() != 0))
                 setIconPerson(R.drawable.person_save);
-        }
-        else{
+        } else {
             setIconPerson(R.drawable.person);
         }
+        if (mfall.Verl_check_notNull()) {
+            setIconVerletzung(R.drawable.verletzung_save);
+        } else {
+            if (mfall.Verl_spinner_notNull()) {
+                setIconVerletzung(R.drawable.verletzung_save);
+            } else {
+                setIconVerletzung(R.drawable.verletzung);
+            }
+        }
         //ähnliche Vergleiche für die anderen Screens müssen hier ergänzt werden
-        setIconVerletzung(R.drawable.verletzung);
         setIconErkrankung(R.drawable.erkrankung_vergiftung);
         setIconMaßnahmen(R.drawable.massnahmen);
         setIconErstbefund(R.drawable.befund);
         setIconUebergabe(R.drawable.uebergabe);
-        setIconNotfall(R.drawable.notfallsituation);
-        setIconBemerkung(R.drawable.bemerkung);
+
+        if(mfall.getNotf_notfallsituation()!=null){
+            if(mfall.getNotf_notfallsituation().length()>0)
+                setIconNotfall(R.drawable.notfallsituation_save);
+        }
+        else {
+            setIconNotfall(R.drawable.notfallsituation);
+        }
+
+        if(mfall.getBem_bemerkung()!=null){
+            if(mfall.getBem_bemerkung().length()>0)
+                setIconBemerkung(R.drawable.bemerkung_save);
+        }
+        else {
+            setIconBemerkung(R.drawable.bemerkung);
+        }
     }
 
     /* von Vivien Stumpe, 02.05.16
