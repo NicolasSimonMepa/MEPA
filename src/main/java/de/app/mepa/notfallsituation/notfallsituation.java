@@ -1,6 +1,7 @@
-//Zuletzt bearbeitet von Emile Yoncaova, 17.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
 package de.app.mepa.notfallsituation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,12 +9,18 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnSwipeTouchListener;
@@ -59,6 +66,13 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
      */
     private ImageView imgv_before;
     private ImageView imgv_menü;
+    /* von Vivien Stumpe, 20.05.16
+    Textwatcher deklarieren
+    Timer deklarieren mit der Zeit DELAY in Millisekunden
+    */
+    private Timer timer = new Timer();
+    private final long DELAY = 3000; // in ms
+    private TextWatcher tw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,9 +142,56 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         Der Drawer (Hamburger Menü) ist gesperrt und kann nicht geöffnet werden
         */
         drawerlayout_notfall.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        /* von Vivien Stumpe, 20.05.16
+        Tastatur ausblenden
+         */
+        tastaturausblenden();
 
     }
+    /* von Vivien Stumpe, 20.05.16
+            Prozedur, die die Tastatur 3 Sekunden nach der Eingabe von 3 Zeichen ausblendet
+        */
+    public void tastaturausblenden(){
 
+         /* von Vivien Stumpe, 20.05.16
+        TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
+        Damit entsprechend auf Eingaben reagiert werden kann
+         */
+        tw=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                //Timer erst starten nachdem 3 Zeichen eingegeben wurden
+                if (s.length() >= 3) {
+
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //Tastatur ausblenden
+                            InputMethodManager imm =
+                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(etxt_notfallsituation.getWindowToken(), 0);
+                        }
+
+                    }, DELAY);
+                }
+            }
+
+        };
+        etxt_notfallsituation.addTextChangedListener(tw);
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
