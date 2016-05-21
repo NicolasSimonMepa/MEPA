@@ -404,7 +404,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
     geändert von Vivien Stumpe, 21.05.16
     */
-    protected void IconsSave() {
+        protected void IconsSave() {
         mfall = (GlobaleDaten) getApplication();
         //Persönliche Daten
         //Vergleich, ob die Pflichtfelder eingegeben wurden -> muss im Screen noch sichergestellt sein!
@@ -425,30 +425,30 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                     setIconVerletzung(R.drawable.verletzung);
                 }
             }
+        } else {
+            setIconVerletzung(R.drawable.verletzung);
         }
         //Erkrankung
-        if(mfall.Erk_notNull()){
-            if(mfall.Erk_eingabe()) {
+        if (mfall.Erk_notNull()) {
+            if (mfall.Erk_eingabe()) {
                 setIconErkrankung(R.drawable.erkrankung_vergiftung_save);
             }
-        }
-        else {
+        } else {
             setIconErkrankung(R.drawable.erkrankung_vergiftung);
         }
         //Maßnahmen
-        if(mfall.Mas_notNull()){
-            if(mfall.Mas_eingabe()) {
+        if (mfall.Mas_notNull()) {
+            if (mfall.Mas_eingabe()) {
                 setIconMaßnahmen(R.drawable.massnahmen_save);
             }
-        }
-        else {
+        } else {
             setIconMaßnahmen(R.drawable.massnahmen);
         }
         //Erstbefund
+
         if (mfall.Erst_spinner_notNull()) {
             setIconErstbefund(R.drawable.befund_save);
-        }
-        else {
+        } else {
             if (mfall.Erst_edit_notNull()) {
 
                 if (mfall.Erst_eingabe()) {
@@ -458,12 +458,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 }
             }
         }
+
+
         //Übergabe
-        if(mfall.Erg_spinner_notNull()){
+        if (mfall.Erg_spinner_notNull()) {
             setIconUebergabe(R.drawable.uebergabe_save);
-        }
-        else{
-            if(mfall.Erg_check_notNull()) {
+        } else {
+            if (mfall.Erg_check_notNull()) {
                 if (mfall.Erg_check()) {
                     setIconUebergabe(R.drawable.uebergabe_save);
                 } else {
