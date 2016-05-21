@@ -436,6 +436,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("AED"))) {
             mfall.setErg_ersthelfermassn("AED");
         }
+        if ((spin_ersthelfermassnahmen.getSelectedItem().toString().equals("-----"))) {
+            mfall.setErg_ersthelfermassn(null);
+        }
         if ((spin_zustand.getSelectedItem().toString().equals("unverändert"))) {
             mfall.setErg_zustand("unverändert");
         }
@@ -445,17 +448,26 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         if ((spin_zustand.getSelectedItem().toString().equals("verschlechtert"))) {
             mfall.setErg_zustand("verschlechtert");
         }
+        if ((spin_zustand.getSelectedItem().toString().equals("-----"))) {
+            mfall.setErg_zustand(null);
+        }
         if ((spin_transport.getSelectedItem().toString().equals("nicht erforderlich"))) {
             mfall.setErg_transport("nicht erforderlich");
         }
         if ((spin_transport.getSelectedItem().toString().equals("Pat. lehnt transport ab"))) {
             mfall.setErg_transport("Pat. lehnt transport ab");
         }
+        if ((spin_transport.getSelectedItem().toString().equals("-----"))) {
+            mfall.setErg_transport(null);
+        }
         if ((spin_notarzt.getSelectedItem().toString().equals("nachgefordert"))) {
             mfall.setErg_notarzt("nachgefordert");
         }
         if ((spin_notarzt.getSelectedItem().toString().equals("abbestellt"))) {
             mfall.setErg_notarzt("abbestellt");
+        }
+        if ((spin_notarzt.getSelectedItem().toString().equals("-----"))) {
+            mfall.setErg_notarzt(null);
         }
         if ((spin_entlassung.getSelectedItem().toString().equals("KTW"))) {
             mfall.setErg_transport_art("KTW");
@@ -483,6 +495,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         }
         if ((spin_entlassung.getSelectedItem().toString().equals("zurück zur Veranstaltung"))) {
             mfall.setErg_transport_art("zurück zur Veranstaltung");
+        }
+        if ((spin_entlassung.getSelectedItem().toString().equals("-----"))) {
+            mfall.setErg_transport_art(null);
         }
         if (cck_hausarzt.isChecked()){
             mfall.setErg_hausarzt_informiert(1);
