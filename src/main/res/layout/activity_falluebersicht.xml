@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Zuletzt geändert von Vivien Stumpe, 21.05.16 -->
 <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
@@ -50,16 +51,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="405dp"
-                    android:id="@+id/scrollView2">
 
-                    <TableLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TableLayout>
-                </ScrollView>
+<!-- von Vivien Stumpe, 21.05.16 ListView für die Fälle -->
+                    <ListView
+                        android:listSelector="@color/colorPrimaryDark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_falluebersicht"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin">
+
+                    </ListView>
+
 
 
                 <TableRow
