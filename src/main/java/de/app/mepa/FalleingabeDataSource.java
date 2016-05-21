@@ -108,5 +108,73 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Patient.TABLE_NAME + " eingefügt.");
     }
+    // von Nicolas Simon, 21.05.16
+    public void insertVeranstaltung(SQLiteDatabase db, String verName, String verOrt, String verDate, String verbandID) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_NAME, verName);
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_ORT, verOrt);
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_DATUM, verDate);
 
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERBAND_ID, verbandID);
+
+        long insertId = db.insert(FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME + " eingefügt.");
+    }
+    // von Nicolas Simon, 21.05.16
+    public void insertSani(SQLiteDatabase db, String sName, String sVname, String verbandID) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Sani.COL_NAME, sName);
+        values.put(FalleingabeContract.Tbl_Sani.COL_VORNAME, sVname);
+
+        values.put(FalleingabeContract.Tbl_Sani.COL_VERBAND_ID, verbandID);
+
+        long insertId = db.insert(FalleingabeContract.Tbl_Sani.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Sani.TABLE_NAME + " eingefügt.");
+    }
+    /* von Vivien Stumpe, 09.05.16, ergänzt von Nicolas Simon, 21.05.16
+    Test, ob Daten in die DB geschrieben werden können
+    */
+    public void insertPatient(Integer id, String name, String vname, String gebdat, Integer sani_id, String sex, String str, String plz,
+                              String ort, String land, String tel, String kk, String versicherungNum, String versichertenNum) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Patient.COL_ID, id);
+        values.put(FalleingabeContract.Tbl_Patient.COL_NAME, name);
+        values.put(FalleingabeContract.Tbl_Patient.COL_VORNAME, vname);
+        values.put(FalleingabeContract.Tbl_Patient.COL_GEBURTSDATUM, gebdat);
+        values.put(FalleingabeContract.Tbl_Patient.COL_GESCHLECHT, sex);
+        values.put(FalleingabeContract.Tbl_Patient.COL_STRASSE, str);
+        values.put(FalleingabeContract.Tbl_Patient.COL_PLZ, plz);
+        values.put(FalleingabeContract.Tbl_Patient.COL_WOHNORT, ort);
+        values.put(FalleingabeContract.Tbl_Patient.COL_LAND, land);
+        values.put(FalleingabeContract.Tbl_Patient.COL_TELEFON, tel);
+        values.put(FalleingabeContract.Tbl_Patient.COL_KRANKENKASSE, kk);
+        values.put(FalleingabeContract.Tbl_Patient.COL_VERSICHERUNG_NUMMER, versicherungNum);
+        values.put(FalleingabeContract.Tbl_Patient.COL_VERSICHERTENNUMMER, versichertenNum);
+        values.put(FalleingabeContract.Tbl_Patient.COL_SANI_ID, sani_id);
+
+        long insertId = database.insert(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Patient.TABLE_NAME + " eingefügt.");
+    }
+    // von Nicolas Simon, 21.05.16
+    public void insertEinsatz(Integer id, String date, String zeitV, String zeitB, String zugefuehrt, Integer hilfsStelle, Integer mosan, Integer san,
+                              String polizei, String rtw, String sanTeam, String notfall, String fundort, Integer fallID) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_PAT_ID, id);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_DATUM, date);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_VON, zeitV);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_BIS, zeitB);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_ZUGEFUEHRT_DURCH, zugefuehrt);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_HILFSSTELLE, hilfsStelle);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_MOSAN_TEAM, mosan);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_SAN_WACHE, san);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_POLIZEI_TXT, polizei);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_RTW_KTW_TXT, rtw);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_SAN_TEAM_TXT, sanTeam);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_NOTFALL, notfall);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_FUNDORT, fundort);
+        values.put(FalleingabeContract.Tbl_Einsatz.COL_ID, fallID);
+
+        long insertId = database.insert(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME + " eingefügt.");
+    }
 }
