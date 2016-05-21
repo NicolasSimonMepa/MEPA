@@ -298,7 +298,7 @@ public class GlobaleDaten extends Application {
     public Integer getMas_intubation(){return mas_intubation;}
     public Integer getMas_sonstiges(){return mas_sonstiges;}
     public String getMas_sonstiges_text(){return mas_sonstiges_text;}
-        public Boolean Mas_notNull(){
+    public Boolean Mas_notNull(){
         return (((getMas_atemwege_freim() !=null)|(getMas_beatmung()!=null)|(getMas_betreuung()!=null)|(getMas_ekg()!=null)|
                 (getMas_erstdefibrillation()!=null)|(getMas_extr_schienung()!=null)|(getMas_flachlagerung()!=null)|(getMas_herzdruckmassage()!=null)|
                 (getMas_hws_stuetzkragen()!= null)|(getMas_infusion() !=null)|(getMas_intubation()!=null)|
@@ -468,6 +468,21 @@ public class GlobaleDaten extends Application {
     public String getErst_af(){return erst_af;}
     public String getErst_spo(){return erst_spo;}
     public String getErst_bz(){return erst_bz;}
+
+    public Boolean Erst_spinner_notNull(){
+        return ((getErst_bewusstsein()!=null)|(getErst_kreislauf()!=null)|(getErst_pupille_li()!=null)|
+                (getErst_pupille_re()!=null)|(getErst_ekg()!=null)|(getErst_schmerzen()!=null)|
+                (getErst_atmung()!=null));
+    }
+    public Boolean Erst_edit_notNull(){
+        return ((getErst_rr_sys()!=null)|(getErst_rr_dia()!=null)|(getErst_puls()!=null)|
+                (getErst_af()!=null)|(getErst_spo()!=null)| (getErst_bz()!=null));
+    }
+    public Boolean Erst_eingabe(){
+        return ((getErst_rr_sys().length()!=0)|(getErst_rr_dia().length()!=0)|
+                (getErst_puls().length()!=0)|(getErst_af().length()!=0)|(getErst_spo().length()!=0)| (getErst_bz().length()!=0));
+    }
+
     public void loescheErst(){
         setErst_bewusstsein("");
         setErst_kreislauf("");
