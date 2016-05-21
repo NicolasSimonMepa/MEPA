@@ -255,27 +255,27 @@ public class GlobaleDaten extends Application {
                 (getErg_transport_sonstiges().length()!=0)|(getErg_zeuge().length()!=0)| (getErg_ergebnis_zeit().length()!=0));
     }
     public void loescheErg(){
-        setErg_ersthelfermassn("");
-        setErg_zustand("");
-        setErg_transport("");
-        setErg_notarzt("");
-        setErg_hausarzt_informiert(0);
-        setErg_tod(0);
-        setErg_wertsachen("");
-        setErg_nachforderung_ktw(0);
-        setErg_nachforderung_rtw(0);
-        setErg_nachforderung_nef(0);
-        setErg_nachforderung_naw(0);
-        setErg_nachforderung_rth(0);
-        setErg_nachforderung_feuerwehr(0);
-        setErg_nachforderung_polizei(0);
-        setErg_funkruf("");
-        setErg_transport_art("");
-        setErg_transport_ziel("");
-        setErg_transport_sonstiges("");
-        setErg_entlassung_ev(0);
-        setErg_zeuge("");
-        setErg_ergebnis_zeit("");
+        setErg_ersthelfermassn(null);
+        setErg_zustand(null);
+        setErg_transport(null);
+        setErg_notarzt(null);
+        setErg_hausarzt_informiert(null);
+        setErg_tod(null);
+        setErg_wertsachen(null);
+        setErg_nachforderung_ktw(null);
+        setErg_nachforderung_rtw(null);
+        setErg_nachforderung_nef(null);
+        setErg_nachforderung_naw(null);
+        setErg_nachforderung_rth(null);
+        setErg_nachforderung_feuerwehr(null);
+        setErg_nachforderung_polizei(null);
+        setErg_funkruf(null);
+        setErg_transport_art(null);
+        setErg_transport_ziel(null);
+        setErg_transport_sonstiges(null);
+        setErg_entlassung_ev(null);
+        setErg_zeuge(null);
+        setErg_ergebnis_zeit(null);
     }
     
     //Maßnahmen - Dienste
@@ -342,29 +342,29 @@ public class GlobaleDaten extends Application {
                     |(getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()==1)|(getMas_ven_zugang()==1)|(getMas_wundversorgung()==1)));
     }
     public void loescheMas(){
-        setMas_keine(0);
-        setMas_stb_seitenlage(0);
-        setMas_herzdruckmassage(0);
-        setMas_schocklagerung(0);
-        setMas_oberkoerperhochlage(0);
-        setMas_flachlagerung(0);
-        setMas_wundversorgung(0);
-        setMas_sauerstoffgabe(0);
-        setMas_vakuummatratze(0);
-        setMas_hws_stuetzkragen(0);
-        setMas_extr_schienung(0);
-        setMas_ekg(0);
-        setMas_atemwege_freim(0);
-        setMas_notkompetenz(0);
-        setMas_erstdefibrillation(0);
-        setMas_ven_zugang(0);
-        setMas_medikamente(0);
-        setMas_beatmung(0);
-        setMas_betreuung(0);
-        setMas_infusion(0);
-        setMas_intubation(0);
-        setMas_sonstiges(0);
-        setMas_sonstiges_text("");
+        setMas_keine(null);
+        setMas_stb_seitenlage(null);
+        setMas_herzdruckmassage(null);
+        setMas_schocklagerung(null);
+        setMas_oberkoerperhochlage(null);
+        setMas_flachlagerung(null);
+        setMas_wundversorgung(null);
+        setMas_sauerstoffgabe(null);
+        setMas_vakuummatratze(null);
+        setMas_hws_stuetzkragen(null);
+        setMas_extr_schienung(null);
+        setMas_ekg(null);
+        setMas_atemwege_freim(null);
+        setMas_notkompetenz(null);
+        setMas_erstdefibrillation(null);
+        setMas_ven_zugang(null);
+        setMas_medikamente(null);
+        setMas_beatmung(null);
+        setMas_betreuung(null);
+        setMas_infusion(null);
+        setMas_intubation(null);
+        setMas_sonstiges(null);
+        setMas_sonstiges_text(null);
     }
     
     //Verletzung - Dienste
@@ -440,32 +440,32 @@ public class GlobaleDaten extends Application {
     }
 
     public void loescheVerl(){
-        setVerl_prellung_verletzung(0);
-        setVerl_verbrennung(0);
-        setVerl_wunde_verletzung(0);
-        setVerl_elektrounfall(0);
-        setVerl_inhalationstrauma(0);
-        setVerl_sonstiges(0);
-        setVerl_schaedel_art("");
-        setVerl_schaedel_grad("");
-        setVerl_gesicht_art("");
-        setVerl_gesicht_grad("");
-        setVerl_hws_art("");
-        setVerl_hws_grad("");
-        setVerl_brustkorb_art("");
-        setVerl_brustkorb_grad("");
-        setVerl_bauch_art("");
-        setVerl_bauch_grad("");
-        setVerl_bws_lws_art("");
-        setVerl_bws_lws_grad("");
-        setVerl_becken_art("");
-        setVerl_becken_grad("");
-        setVerl_arme_art("");
-        setVerl_arme_grad("");
-        setVerl_beine_art("");
-        setVerl_beine_grad("");
-        setVerl_weichteile_art("");
-        setVerl_weichteile_grad("");
+        setVerl_prellung_verletzung(null);
+        setVerl_verbrennung(null);
+        setVerl_wunde_verletzung(null);
+        setVerl_elektrounfall(null);
+        setVerl_inhalationstrauma(null);
+        setVerl_sonstiges(null);
+        setVerl_schaedel_art(null);
+        setVerl_schaedel_grad(null);
+        setVerl_gesicht_art(null);
+        setVerl_gesicht_grad(null);
+        setVerl_hws_art(null);
+        setVerl_hws_grad(null);
+        setVerl_brustkorb_art(null);
+        setVerl_brustkorb_grad(null);
+        setVerl_bauch_art(null);
+        setVerl_bauch_grad(null);
+        setVerl_bws_lws_art(null);
+        setVerl_bws_lws_grad(null);
+        setVerl_becken_art(null);
+        setVerl_becken_grad(null);
+        setVerl_arme_art(null);
+        setVerl_arme_grad(null);
+        setVerl_beine_art(null);
+        setVerl_beine_grad(null);
+        setVerl_weichteile_art(null);
+        setVerl_weichteile_grad(null);
     }
     
     //Erstbefund - Dienste
@@ -511,19 +511,19 @@ public class GlobaleDaten extends Application {
     }
 
     public void loescheErst(){
-        setErst_bewusstsein("");
-        setErst_kreislauf("");
-        setErst_pupille_li("");
-        setErst_pupille_re("");
-        setErst_ekg("");
-        setErst_schmerzen("");
-        setErst_atmung("");
-        setErst_rr_sys("");
-        setErst_rr_dia("");
-        setErst_puls("");
-        setErst_af("");
-        setErst_spo("");
-        setErst_bz("");
+        setErst_bewusstsein(null);
+        setErst_kreislauf(null);
+        setErst_pupille_li(null);
+        setErst_pupille_re(null);
+        setErst_ekg(null);
+        setErst_schmerzen(null);
+        setErst_atmung(null);
+        setErst_rr_sys(null);
+        setErst_rr_dia(null);
+        setErst_puls(null);
+        setErst_af(null);
+        setErst_spo(null);
+        setErst_bz(null);
     }
 
     //Notfallsituation - Dienste
@@ -594,25 +594,25 @@ public class GlobaleDaten extends Application {
                 (getErk_geburtshilfe()==1)|(getErk_sonstiges()==1)|(getErk_edtxt_sonstiges().length()>0));
     }
     public void loescheErk(){
-        setErk_keine(0);
-        setErk_alkoholisiert(0);
-        setErk_erbrechen(0);
-        setErk_schwindel(0);
-        setErk_herzkreislauf(0);
-        setErk_hitzeschlag(0);
-        setErk_hitzeerschoepfung(0);
-        setErk_vergiftung(0);
-        setErk_atmung(0);
-        setErk_unterkuehlung(0);
-        setErk_baucherkrankung(0);
-        setErk_stoffwechsel(0);
-        setErk_neurologie(0);
-        setErk_psychatrie(0);
-        setErk_gynaekologie(0);
-        setErk_kindernotfall(0);
-        setErk_geburtshilfe(0);
-        setErk_sonstiges(0);
-        setErk_edtxt_sonstiges("");
+        setErk_keine(null);
+        setErk_alkoholisiert(null);
+        setErk_erbrechen(null);
+        setErk_schwindel(null);
+        setErk_herzkreislauf(null);
+        setErk_hitzeschlag(null);
+        setErk_hitzeerschoepfung(null);
+        setErk_vergiftung(null);
+        setErk_atmung(null);
+        setErk_unterkuehlung(null);
+        setErk_baucherkrankung(null);
+        setErk_stoffwechsel(null);
+        setErk_neurologie(null);
+        setErk_psychatrie(null);
+        setErk_gynaekologie(null);
+        setErk_kindernotfall(null);
+        setErk_geburtshilfe(null);
+        setErk_sonstiges(null);
+        setErk_edtxt_sonstiges(null);
     }
 
     //Patient - Dienste
@@ -695,18 +695,18 @@ public class GlobaleDaten extends Application {
         return pat_sani;
     }
     public void loeschePat(){
-        setPat_name("");
-        setPat_vorname("");
-        setPat_geb("");
-        setPat_str("");
-        setPat_plz("");
-        setPat_ort("");
-        setPat_land("");
-        setPat_tel("");
-        setPat_krankenkasse("");
-        setPat_versnr("");
-        setPat_versichertennr("");
-        setPat_sex("");
+        setPat_name(null);
+        setPat_vorname(null);
+        setPat_geb(null);
+        setPat_str(null);
+        setPat_plz(null);
+        setPat_ort(null);
+        setPat_land(null);
+        setPat_tel(null);
+        setPat_krankenkasse(null);
+        setPat_versnr(null);
+        setPat_versichertennr(null);
+        setPat_sex(null);
         setPat_sani(null);
     }
 
@@ -742,11 +742,11 @@ public class GlobaleDaten extends Application {
         return ein_sanw;
     }
     public void loescheEin(){
-        setEin_zugef("");
-        setEin_fundort("");
-        setEin_hilfs(0);
-        setEin_sanw(0);
-        setEin_mosan(0);
+        setEin_zugef(null);
+        setEin_fundort(null);
+        setEin_hilfs(null);
+        setEin_sanw(null);
+        setEin_mosan(null);
     }
 
     //Stammdaten - Dienste
@@ -788,8 +788,8 @@ public class GlobaleDaten extends Application {
     }
 
     public void loescheSan(){
-        setSan_name("");
-        setSan_vorname("");
+        setSan_name(null);
+        setSan_vorname(null);
         setSan_vorh();
     }
     //Verband - Dienste
@@ -814,8 +814,8 @@ public class GlobaleDaten extends Application {
         return verb_vorh;
     }
     public void loescheVerb(){
-        setVerb_ortsv("");
-        setVerb_kreisv("");
+        setVerb_ortsv(null);
+        setVerb_kreisv(null);
         setVerb_vorh();
     }
 
@@ -836,9 +836,9 @@ public class GlobaleDaten extends Application {
         this.ver_date=d;
     }
     public void loescheVer(){
-        setVer_name("");
-        setVer_ort("");
-        setVer_date("");
+        setVer_name(null);
+        setVer_ort(null);
+        setVer_date(null);
         setVer_vorh();
     }
     public String getVer_date(){
