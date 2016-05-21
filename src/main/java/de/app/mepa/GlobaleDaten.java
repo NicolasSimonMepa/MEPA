@@ -298,6 +298,22 @@ public class GlobaleDaten extends Application {
     public Integer getMas_intubation(){return mas_intubation;}
     public Integer getMas_sonstiges(){return mas_sonstiges;}
     public String getMas_sonstiges_text(){return mas_sonstiges_text;}
+        public Boolean Mas_notNull(){
+        return (((getMas_atemwege_freim() !=null)|(getMas_beatmung()!=null)|(getMas_betreuung()!=null)|(getMas_ekg()!=null)|
+                (getMas_erstdefibrillation()!=null)|(getMas_extr_schienung()!=null)|(getMas_flachlagerung()!=null)|(getMas_herzdruckmassage()!=null)|
+                (getMas_hws_stuetzkragen()!= null)|(getMas_infusion() !=null)|(getMas_intubation()!=null)|
+                (getMas_keine() !=null)|(getMas_medikamente()!=null)|(getMas_notkompetenz() !=null)|(getMas_oberkoerperhochlage()!=null)|
+                (getMas_sauerstoffgabe()!=null)|(getMas_schocklagerung()!=null)|(getMas_sonstiges()!=null)|(getMas_sonstiges_text()!=null)
+                |(getMas_stb_seitenlage()!=null)|(getMas_vakuummatratze()!=null)|(getMas_ven_zugang()!=null)|(getMas_wundversorgung()!=null)));
+    }
+    public Boolean Mas_eingabe(){
+            return (((getMas_atemwege_freim() ==1)|(getMas_beatmung()==1)|(getMas_betreuung()==1)|(getMas_ekg()==1)|
+                    (getMas_erstdefibrillation()==1)|(getMas_extr_schienung()==1)|(getMas_flachlagerung()==1)|(getMas_herzdruckmassage()==1)|
+                    (getMas_hws_stuetzkragen()==1)|(getMas_infusion()==1)|(getMas_intubation()==1)|
+                    (getMas_keine()==1)|(getMas_medikamente()==1)|(getMas_notkompetenz()==1)|(getMas_oberkoerperhochlage()==1)|
+                    (getMas_sauerstoffgabe()==1)|(getMas_schocklagerung()==1)|(getMas_sonstiges()==1)|(getMas_sonstiges_text().length()>0)
+                    |(getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()==1)|(getMas_ven_zugang()==1)|(getMas_wundversorgung()==1)));
+    }
     public void loescheMas(){
         setMas_keine(0);
         setMas_stb_seitenlage(0);
