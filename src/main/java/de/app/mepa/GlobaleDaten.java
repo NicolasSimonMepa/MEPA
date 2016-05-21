@@ -227,6 +227,33 @@ public class GlobaleDaten extends Application {
     public Integer getErg_entlassung_ev(){return erg_entlassung_ev;}
     public String getErg_zeuge(){return erg_zeuge;}
     public String getErg_ergebnis_zeit(){return erg_ergebnis_zeit;}
+
+    public Boolean Erg_spinner_notNull(){
+        return ((getErg_ersthelfermassn()!=null)|(getErg_zustand()!=null)|(getErg_transport()!=null)|
+                (getErg_notarzt()!=null)|(getErg_transport_art()!=null));
+    }
+    public Boolean Erg_check_notNull(){
+        return ((getErg_hausarzt_informiert()!=null)|(getErg_tod()!=null)|(getErg_nachforderung_ktw()!=null)|
+                (getErg_nachforderung_rtw()!=null)|(getErg_nachforderung_nef()!=null|(getErg_nachforderung_naw()!=null)|
+                (getErg_nachforderung_rth()!=null)| (getErg_nachforderung_feuerwehr()!= null)|(getErg_nachforderung_polizei()!=null)|
+                (getErg_entlassung_ev()!=null)));
+    }
+
+    public Boolean Erg_check(){
+        return ((getErg_hausarzt_informiert()==1)|(getErg_tod()==1)|(getErg_nachforderung_ktw()==1)|
+                (getErg_nachforderung_rtw()==1)|(getErg_nachforderung_nef()==1|(getErg_nachforderung_naw()==1)|
+                (getErg_nachforderung_rth()==1)| (getErg_nachforderung_feuerwehr()==1)|(getErg_nachforderung_polizei()==1)|
+                (getErg_entlassung_ev()==1)));
+    }
+
+    public Boolean Erg_edit_notNull(){
+        return ((getErg_wertsachen()!=null)|(getErg_funkruf()!=null)|(getErg_transport_ziel()!=null)|
+                (getErg_transport_sonstiges()!=null)|(getErg_zeuge()!=null)| (getErg_ergebnis_zeit()!=null));
+    }
+    public Boolean Erg_eingabe(){
+        return ((getErg_wertsachen().length()!=0)|(getErg_funkruf().length()!=0)|(getErg_transport_ziel().length()!=0)|
+                (getErg_transport_sonstiges().length()!=0)|(getErg_zeuge().length()!=0)| (getErg_ergebnis_zeit().length()!=0));
+    }
     public void loescheErg(){
         setErg_ersthelfermassn("");
         setErg_zustand("");
@@ -825,6 +852,4 @@ public class GlobaleDaten extends Application {
     public Boolean getVer_vorh(){
         return ver_vorh;
     }
-
-
 }
