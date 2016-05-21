@@ -562,6 +562,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
+       eingabenZuruecksetzen();
         IconsStart();
         lnl_buttons.setVisibility(lnl_buttons.GONE);
         //Die View wird wieder unsichtbar -> Animation
@@ -589,7 +590,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         mfall=(GlobaleDaten)getApplication();
         mfall.loeschePat();
         mfall.loescheEin();
-        // hier folgen noch die Dienste für die anderen Screens
+        mfall.loescheBem();
+        mfall.loescheErg();
+        mfall.loescheErst();
+        mfall.loescheNotf();
+        mfall.loescheVerl();
+        mfall.loescheMas();
+        mfall.loescheErk();
     }
 
     public void onBoard() {
