@@ -350,6 +350,9 @@ private void selectItemFromDrawer(int position){
         if((spin_bewusstseinslage.getSelectedItem().toString().equals("bewusstlos"))){
             mfall.setErst_bewusstsein("bewusstlos");
         }
+        if((spin_bewusstseinslage.getSelectedItem().toString().equals("-----"))){
+            mfall.setErst_bewusstsein(null);
+        }
         if((spin_kreislauf.getSelectedItem().toString().equals("schock"))){
             mfall.setErst_kreislauf("schock");
         }
@@ -361,6 +364,9 @@ private void selectItemFromDrawer(int position){
         }
         if((spin_kreislauf.getSelectedItem().toString().equals("puls unregelmäßig"))){
             mfall.setErst_kreislauf("Puls unregelmäßig");
+        }
+        if((spin_kreislauf.getSelectedItem().toString().equals("-----"))){
+            mfall.setErst_kreislauf(null);
         }
         if((spin_pupillenfunktion_links.getSelectedItem().toString().equals("eng"))){
             mfall.setErst_pupille_li("eng");
@@ -377,6 +383,9 @@ private void selectItemFromDrawer(int position){
         if((spin_pupillenfunktion_links.getSelectedItem().toString().equals("lichtreaktion"))){
             mfall.setErst_pupille_li("lichtreaktion");
         }
+        if((spin_pupillenfunktion_links.getSelectedItem().toString().equals("links"))){
+            mfall.setErst_pupille_li(null);
+        }
         if((spin_pupillenfunktion_rechts.getSelectedItem().toString().equals("eng"))){
             mfall.setErst_pupille_re("eng");
         }
@@ -392,6 +401,9 @@ private void selectItemFromDrawer(int position){
         if((spin_pupillenfunktion_rechts.getSelectedItem().toString().equals("lichtreaktion"))){
             mfall.setErst_pupille_re("lichtreaktion");
         }
+        if((spin_pupillenfunktion_rechts.getSelectedItem().toString().equals("rechts"))){
+            mfall.setErst_pupille_re(null);
+        }
         if((spin_ekg.getSelectedItem().toString().equals("sinusrhythmus"))){
             mfall.setErst_ekg("sinusrhythmus");
         }
@@ -404,6 +416,9 @@ private void selectItemFromDrawer(int position){
         if((spin_ekg.getSelectedItem().toString().equals("asystolie"))){
             mfall.setErst_ekg("asystolie");
         }
+        if((spin_ekg.getSelectedItem().toString().equals("-----"))){
+            mfall.setErst_ekg(null);
+        }
         if((spin_schmerzen.getSelectedItem().toString().equals("leicht"))){
             mfall.setErst_schmerzen("leicht");
         }
@@ -412,6 +427,9 @@ private void selectItemFromDrawer(int position){
         }
         if((spin_schmerzen.getSelectedItem().toString().equals("stark"))){
             mfall.setErst_schmerzen("stark");
+        }
+        if((spin_schmerzen.getSelectedItem().toString().equals("-----"))){
+            mfall.setErst_schmerzen(null);
         }
         if((spin_atmung.getSelectedItem().toString().equals("spontan/frei"))){
             mfall.setErst_atmung("spontan/frei");
@@ -424,6 +442,9 @@ private void selectItemFromDrawer(int position){
         }
         if((spin_atmung.getSelectedItem().toString().equals("atemstillstand"))){
             mfall.setErst_atmung("atemstillstand");
+        }
+        if((spin_atmung.getSelectedItem().toString().equals("-----"))){
+            mfall.setErst_atmung(null);
         }
         mfall.setErst_rr_sys(edtxt_rr_systolisch.getText().toString());
         mfall.setErst_rr_dia(edtxt_rr_diastolisch.getText().toString());
