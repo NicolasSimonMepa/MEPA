@@ -400,7 +400,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         setIconBemerkung(R.drawable.bemerkung);
     }
 
-     /* von Vivien Stumpe, 15.05.16
+    /* von Vivien Stumpe, 15.05.16
     Prozedur, die prüft, ob Daten eingegeben wurden und dementsprechend die Icons für das Kachelmenü lädt
     */
     protected void IconsSave() {
@@ -432,7 +432,15 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         else {
             setIconErkrankung(R.drawable.erkrankung_vergiftung);
         }
-        setIconMaßnahmen(R.drawable.massnahmen);
+        if(mfall.Mas_notNull()){
+            if(mfall.Mas_eingabe()) {
+                setIconMaßnahmen(R.drawable.massnahmen_save);
+            }
+        }
+        else {
+            setIconMaßnahmen(R.drawable.massnahmen);
+        }
+
         setIconErstbefund(R.drawable.befund);
         setIconUebergabe(R.drawable.uebergabe);
 
