@@ -137,65 +137,74 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        etxt_kreisverband.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        mfall=(GlobaleDaten)getApplication();
+        if(mfall.getVerb_kreisv()==null){
+            etxt_kreisverband.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_ort.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVer_ort()==null){
+            etxt_ort.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_ortsverein.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVerb_ortsv()==null){
+            etxt_ortsverein.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_veranstaltung.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVer_name()==null){
+            etxt_veranstaltung.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
         
         /* von Vivien Stumpe, 01.05.16
         TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
@@ -265,7 +274,6 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         Aktuelle Werte (falls vorhanden) im Screen anzeigen
         */
         setWerte();
-
     }
 
 
@@ -344,7 +352,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             //Inhalt des Textfeldes löschen?
         }
     }
-        //von Vivien Stumoe, 10.04.16
+        //von Vivien Stumpe, 10.04.16
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
