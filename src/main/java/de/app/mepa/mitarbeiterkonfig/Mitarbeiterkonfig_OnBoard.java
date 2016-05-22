@@ -25,6 +25,7 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.OnBoarding;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -56,6 +57,7 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
 */
     private Timer timer = new Timer();
     private final long DELAY = 2000; // in ms
+    private FalleingabeDataSource dataSource;
 
 
     @Override
@@ -190,6 +192,16 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             //muss noch angepasst werden -> Daten werden ja auch gelöscht?
             // & Vergleich mit bestehenden Daten fehlt
             speichereEingaben();
+            mfall=(GlobaleDaten)getApplication();
+            mfall.setSaniID(true);
+
+
+
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+
+            dataSource.insertSani(mfall.getSaniID(), mfall.getSan_name(), mfall.getSan_vorname(), mfall.getVerbandID());
+
             if(mfall.getFall_angelegt()){
                 Intent fallein=new Intent(Mitarbeiterkonfig_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
