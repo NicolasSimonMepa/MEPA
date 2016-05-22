@@ -94,6 +94,16 @@ public class FalleingabeDataSource {
         long insertId = db.insert(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verband.TABLE_NAME + " eingefügt.");
     }
+        public void insertVerband(int id, String kreisver, String ortsver) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Verband.COL_ID, id);
+        values.put(FalleingabeContract.Tbl_Verband.COL_KREISVERBAND, kreisver);
+        values.put(FalleingabeContract.Tbl_Verband.COL_ORTSVEREIN, ortsver);
+
+        long insertid= database.insert(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verband.TABLE_NAME + " eingefügt.");
+        Log.d(LOG_TAG, insertid+"Insert id");
+    }
     /* von Vivien Stumpe, 09.05.16
     Test, ob Daten in die DB geschrieben werden können
     */
