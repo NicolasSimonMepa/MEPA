@@ -373,18 +373,19 @@ public class FalleingabeDataSource {
     /* von Vivien Stumpe, 22.05.16
     Dienste, die die vorhandenen Stammdaten laden und zurückgeben
     */
-        public GlobaleDaten selectVerband(){
+ public GlobaleDaten selectVerband(){
         //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
         String[] columns={FalleingabeContract.Tbl_Verband.COL_ID, FalleingabeContract.Tbl_Verband.COL_KREISVERBAND, FalleingabeContract.Tbl_Verband.COL_ORTSVEREIN};
         Cursor cursor=database.query(FalleingabeContract.Tbl_Verband.TABLE_NAME, columns, null, null, null, null, null, "1");
-        if (cursor != null)
+
+        GlobaleDaten mfall=new GlobaleDaten();if(cursor.getCount() >= 1){
             cursor.moveToFirst();
 
-        GlobaleDaten mfall=new GlobaleDaten();
-        mfall.setVerb_ID(cursor.getInt(0));
-        mfall.setVerb_kreisv(cursor.getString(1));
-        mfall.setVerb_ortsv(cursor.getString(2));
-        Log.d(LOG_TAG, mfall.toString());
+            mfall.setVerb_ID(cursor.getInt(0));
+            mfall.setVerb_kreisv(cursor.getString(1));
+            mfall.setVerb_ortsv(cursor.getString(2));
+            Log.d(LOG_TAG, mfall.toString());
+        }
         return mfall;
     }
     public GlobaleDaten selectVeranstaltung(){
@@ -392,14 +393,14 @@ public class FalleingabeDataSource {
         String[] columns={FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_NAME, FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_DATUM,
                 FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_ORT};
         Cursor cursor=database.query(FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME, columns, null, null, null, null, null, "1");
-        if (cursor != null)
-            cursor.moveToFirst();
-
         GlobaleDaten mfall=new GlobaleDaten();
-        mfall.setVer_name(cursor.getString(0));
-        mfall.setVer_date(cursor.getString(1));
-        mfall.setVer_ort(cursor.getString(2));
-        Log.d(LOG_TAG, mfall.toString());
+        if(cursor.getCount() >= 1){
+            cursor.moveToFirst();
+            mfall.setVer_name(cursor.getString(0));
+            mfall.setVer_date(cursor.getString(1));
+            mfall.setVer_ort(cursor.getString(2));
+            Log.d(LOG_TAG, mfall.toString());
+        }
         return mfall;
     }
     public GlobaleDaten selectSani(){
@@ -407,14 +408,15 @@ public class FalleingabeDataSource {
         String[] columns={FalleingabeContract.Tbl_Sani.COL_NAME, FalleingabeContract.Tbl_Sani.COL_VORNAME,
                 FalleingabeContract.Tbl_Sani.COL_VERBAND_ID, FalleingabeContract.Tbl_Sani.COL_ID};
         Cursor cursor=database.query(FalleingabeContract.Tbl_Sani.TABLE_NAME, columns, null , null, null, null, null, "1");
-        if (cursor != null)
-            cursor.moveToFirst();
-
         GlobaleDaten mfall=new GlobaleDaten();
-        mfall.setSan_name(cursor.getString(0));
-        mfall.setSan_vorname(cursor.getString(1));
-        mfall.setSani_IDm(cursor.getInt(3));
-        Log.d(LOG_TAG, mfall.toString());
+        if(cursor.getCount() >= 1){
+            cursor.moveToFirst();
+            mfall.setSan_name(cursor.getString(0));
+            mfall.setSan_vorname(cursor.getString(1));
+            mfall.setSani_IDm(cursor.getInt(3));
+            Log.d(LOG_TAG, mfall.toString());
+        }
         return mfall;
     }
+}
 }
