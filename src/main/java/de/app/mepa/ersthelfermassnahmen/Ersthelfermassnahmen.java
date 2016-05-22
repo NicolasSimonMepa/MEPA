@@ -258,20 +258,23 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        edtxt_entlassung_zeuge.setFilters(new InputFilter[]{
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if (src.equals("")) { // for backspace
-                            return src;
+        mfall=(GlobaleDaten)getApplication();
+        if(mfall.getErg_zeuge()==null){
+            edtxt_entlassung_zeuge.setFilters(new InputFilter[]{
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if (src.equals("")) { // for backspace
+                                return src;
+                            }
+                            if (src.toString().matches("[a-zA-Z ]+")) {
+                                return src;
+                            }
+                            return "";
                         }
-                        if (src.toString().matches("[a-zA-Z ]+")) {
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
     }
 
     private File getFile() {
