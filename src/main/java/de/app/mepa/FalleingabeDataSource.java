@@ -302,14 +302,14 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verletzung.TABLE_NAME + " eingefügt.");
     }
     // von Daniel Semmler, 22.05.16
-    public void insertMassnahmen(Integer fall_id, Integer stb_seitenlage, Integer oberkoerperhochlage, Integer flachlagerung, Integer schocklagerung,
+    public void insertMassnahmen(Integer fallID,Integer stb_seitenlage, Integer oberkoerperhochlage, Integer flachlagerung, Integer schocklagerung,
                                  Integer vakuummatratze, Integer hws_st, Integer medikamente, Integer schienung, Integer wundversorgung,
                                  Integer ekg, Integer zugang, Integer infusion, Integer atemwege, 
                                  Integer notkompetenz, Integer sauerstoffgabe,Integer intubation, Integer beatmung, Integer herzdruckm,
                                  Integer erstdefi, Integer betreuung, Integer sonstiges, Integer sonstigestext, Integer aed,
                                  Integer keine) {
         ContentValues values = new ContentValues();
-        values.put(FalleingabeContract.Tbl_Massnahmen.COL_ID, fall_id);
+        values.put(FalleingabeContract.Tbl_Massnahmen.COL_PROT_ID, fallID);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_STB_SEITENLAGE, stb_seitenlage);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_OBERKOERPERHOCHLAGE, oberkoerperhochlage);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_FLACHLAGERUNG, flachlagerung);
