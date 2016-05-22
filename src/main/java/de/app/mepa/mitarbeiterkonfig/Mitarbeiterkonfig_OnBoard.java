@@ -81,35 +81,40 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        etxt_mitarbeiter_vorname.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        mfall=(GlobaleDaten)getApplication();
+        if(mfall.getSan_vorname()==null) {
+            etxt_mitarbeiter_vorname.setFilters(new InputFilter[]{
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if (src.equals("")) { // for backspace
+                                return src;
+                            }
+                            if (src.toString().matches("[a-zA-Z ]+")) {
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_mitarbeiter_name.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getSan_name()==null){
+            etxt_mitarbeiter_name.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
         /*
         Zuweisen der Buttonvariablen zu den Buttons in der Activity
         Setzen des OnClickListeners, damit auf Klicks reagiert wird
@@ -232,4 +237,3 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         }
     }
 }
-
