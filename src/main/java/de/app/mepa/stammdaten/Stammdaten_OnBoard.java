@@ -77,7 +77,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
     Timer deklarieren mit der Zeit DELAY in Millisekunden
      */
     private Timer timer = new Timer();
-    private final long DELAY = 2000; // in ms
+    private final long DELAY = 10000; // in ms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
