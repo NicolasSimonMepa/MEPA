@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.OnBoarding;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -78,6 +79,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
      */
     private Timer timer = new Timer();
     private final long DELAY = 10000; // in ms
+    private FalleingabeDataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -238,6 +240,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         setWerte();
         imgv_back=(ImageView)findViewById(R.id.imgv_before_stammd_onb);
         imgv_back.setOnClickListener(this);
+        dataSource=new FalleingabeDataSource(this);
     }
 
     @Override
@@ -262,6 +265,16 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         }
         if(ce == R.id.btn_speichern_stammd_onb){
             speichereEingaben();
+            mfall=(GlobaleDaten)getApplication();
+            mfall.setVerbandID(true);
+
+
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+
+            dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
+
+
             if(mfall.getFall_angelegt()){
                 Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
