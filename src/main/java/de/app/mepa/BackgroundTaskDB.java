@@ -44,7 +44,7 @@ public class BackgroundTaskDB extends AsyncTask<String, Void, String> {
             String verband=params[1];
             String ortsverein=params[2];
             db=dbhelper.getWritableDatabase();
-            datasource.createVerband(db, verband, ortsverein);
+            datasource.insertVerband(db, verband, ortsverein);
             return "BackgroundTask: Einen Verein hinzugefügt";
         }
         // wenn ein Fall angezeigt werden soll könnte es so beginnen:
