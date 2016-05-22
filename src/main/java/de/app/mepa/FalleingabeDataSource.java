@@ -86,7 +86,7 @@ public class FalleingabeDataSource {
     Test, ob Daten in die DB geschrieben werden können
      -> für AsyncTask (BackgroundTaskDB)
     */
-    public void createVerband(SQLiteDatabase db, String kreisver, String ortsver) {
+    public void insertVerband(SQLiteDatabase db, String kreisver, String ortsver) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Verband.COL_KREISVERBAND, kreisver);
         values.put(FalleingabeContract.Tbl_Verband.COL_ORTSVEREIN, ortsver);
@@ -97,7 +97,7 @@ public class FalleingabeDataSource {
     /* von Vivien Stumpe, 09.05.16
     Test, ob Daten in die DB geschrieben werden können
     */
-    public void createPatient(Integer id, String name, String vname, String gebdat, Integer sani_id) {
+    public void insertPatient(Integer id, String name, String vname, String gebdat, Integer sani_id) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Patient.COL_ID, id);
         values.put(FalleingabeContract.Tbl_Patient.COL_NAME, name);
