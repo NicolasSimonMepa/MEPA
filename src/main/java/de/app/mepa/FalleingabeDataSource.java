@@ -177,4 +177,32 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME + " eingefügt.");
     }
+        // von Daniel Semmler, 22.05.16
+    public void insertErkrankung(Integer id, Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
+                                 Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, Integer sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer prot_id) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_ID, id);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_ATMUNG, atmung);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_HERZ_KREISLAUF, kreislauf);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_BAUCHERKRANKUNG, baucherkrankung);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_STOFFWECHSEL, stoffwechsel);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_HITZSCHLAG, hitzschlag);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_VERGIFTUNG, vergiftung);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_UNTERKUEHLUNG, untetrkunft);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_GYNAEKOLOGIE, gynaekologie);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_GEBURTSHILFE, geburtshilfe);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_HITZEERSCHOEPFUNG, hitzeerschoepfung);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_KINDERNOTFALL, kindernotfall);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_NEUROLOGIE, neurologie);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_PSYCHATRIE, psychatrie);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_ALKOHOLISIERT, alkoholiisiert);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_SONSTIGES, sonsiges);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_SONSTIGESTEXT, sonstigestext);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_SCHWINDEL, schwindel);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_UEBELKEIT_ERBRECHEN, uebelkeit_erbrechen);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_PROT_ID, prot_id);
+
+        long insertId = database.insert(FalleingabeContract.Tbl_Erkrankung.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Erkrankung.TABLE_NAME + " eingefügt.");
+    }
 }
