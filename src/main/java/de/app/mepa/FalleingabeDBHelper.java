@@ -108,7 +108,6 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
                     FalleingabeContract.Tbl_Ergebnis.COL_HAUSARZT_INFORMIERT + " INTEGER, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_TOD + " INTEGER, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_TRANSPORT_SONSTIGES + " TEXT, " +
-                    FalleingabeContract.Tbl_Ergebnis.COL_ERGEBNIS_ZEIT + " TEXT, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_ERSTHELFERMASSN + " TEXT, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_KTW + " INTEGER, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_RTW + " INTEGER, " +
