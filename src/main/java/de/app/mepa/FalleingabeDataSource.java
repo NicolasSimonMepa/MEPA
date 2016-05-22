@@ -130,6 +130,17 @@ public class FalleingabeDataSource {
         long insertId = db.insert(FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME + " eingefügt.");
     }
+        public void insertVeranstaltung( String verName, String verOrt, String verDate, int verbandID) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_NAME, verName);
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_ORT, verOrt);
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERANSTALTUNG_DATUM, verDate);
+
+        values.put(FalleingabeContract.Tbl_Veranstaltung.COL_VERBAND_ID, verbandID);
+
+        long insertId = database.insert(FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME + " eingefügt.");
+    }
     // von Nicolas Simon, 21.05.16
     public void insertSani(SQLiteDatabase db, String sName, String sVname, Integer verbandID, Integer saniID) {
         ContentValues values = new ContentValues();
