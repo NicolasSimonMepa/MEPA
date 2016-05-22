@@ -609,8 +609,29 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         mfall = (GlobaleDaten) getApplication();
         // Wurde übersprungen?
         if (!mfall.getUebersprungen()) {
-            //wenn nicht -> Gibt es Stammdaten zum Fall?
-            if (!mfall.getFall_angelegt()) {
+            GlobaleDaten mverband, mveranstaltung, msani;
+            dataSource=new FalleingabeDataSource(this);
+            dataSource.open();
+            mverband=dataSource.selectVerband();
+            mveranstaltung=dataSource.selectVeranstaltung();
+            msani=dataSource.selectSani();
+            dataSource.close();
+            mfall.setVerb_ID(mverband.getVerbandID());
+            mfall.setVerb_kreisv(mverband.getVerb_kreisv());
+            mfall.setVerb_ortsv(mverband.getVerb_ortsv());
+            mfall.setVer_name(mveranstaltung.getVer_name());
+            mfall.setVer_ort(mveranstaltung.getVer_ort());
+            mfall.setVer_date(mveranstaltung.getVer_date());
+            mfall.setSan_name(msani.getSan_name());
+            mfall.setSan_vorname(msani.getSan_vorname());
+            mfall.setSani_IDm(msani.getSaniID());
+  //wenn nicht -> Gibt es Stammdaten zum Fall?
+            if(!((mfall.getVer_name()!=null&mfall.getVer_ort()!=null&mfall.getVer_date()!=null)
+                    &(mfall.getSan_name()!=null&mfall.getSan_vorname()!=null)
+                    &(mfall.getVerb_kreisv()!=null&mfall.getVerb_ortsv()!=null))){
+
+          
+           // if (!mfall.getFall_angelegt()) {
                 //wenn nicht -> onBoarding Activity starten
                 Intent onboarding = new Intent(this, OnBoarding.class);
                 startActivity(onboarding);
