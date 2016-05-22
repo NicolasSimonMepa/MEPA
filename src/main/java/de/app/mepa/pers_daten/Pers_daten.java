@@ -29,6 +29,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -194,40 +195,46 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         etxt_name_pers_daten=(EditText) findViewById(R.id.etxt_name_pers_daten);
         /* von Indra Marcheel, 09.05.2016
         es können nur character eingegeben werden
-         */
-        etxt_name_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        */
+        mfall=(GlobaleDaten)getApplication();
+        if(mfall.getPat_name()==null) {
+            etxt_name_pers_daten.setFilters(new InputFilter[]{
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if (src.equals("")) { // for backspace
+                                return src;
+                            }
+                            if (src.toString().matches("[a-zA-Z ]+")) {
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
+
 
         etxt_vorname_pers_daten=(EditText) findViewById(R.id.etxt_vorname_pers_daten);
          /* von Indra Marcheel, 09.05.2016
         es können nur character eingegeben werden
          */
-        etxt_vorname_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getPat_vorname()==null) {
+            etxt_vorname_pers_daten.setFilters(new InputFilter[]{
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if (src.equals("")) { // for backspace
+                                return src;
+                            }
+                            if (src.toString().matches("[a-zA-Z ]+")) {
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
          /* von Indra Marcheel, 09.05.2016
         es können nur character, - , und zahlen eingegebne werden 
          */
@@ -244,62 +251,72 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             }
         };
 
-        etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
+        if(mfall.getPat_str()==null){
+            etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
+        }
 
 
         etxt_fundort_pers_daten=(EditText) findViewById(R.id.etxt_fundort_pers_daten);
-        etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
+        if(mfall.getEin_fundort()==null){
+            etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
+        }
 
         etxt_ort_pers_daten=(EditText) findViewById(R.id.etxt_ort_pers_daten);
         /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        etxt_ort_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getPat_ort()==null){
+            etxt_ort_pers_daten.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
         etxt_land_pers_daten=(EditText) findViewById(R.id.etxt_land_pers_daten);
-        etxt_land_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getPat_land()==null){
+            etxt_land_pers_daten.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
         etxt_krankenkasse_pers_daten=(EditText) findViewById(R.id.etxt_krankenkasse_pers_daten);
-        etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getPat_krankenkasse()==null){
+            etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
@@ -671,7 +688,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         mfall=(GlobaleDaten)getApplication();
 
         if((mfall.getPat_name()!=null)){
-            etxt_name_pers_daten.setText(mfall.getPat_name());
+           etxt_name_pers_daten.setText(mfall.getPat_name());
         }
         if((mfall.getPat_vorname()!=null)){
             etxt_vorname_pers_daten.setText(mfall.getPat_vorname());
