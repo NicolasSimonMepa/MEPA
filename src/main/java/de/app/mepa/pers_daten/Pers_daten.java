@@ -604,6 +604,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
      */
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
+         mfall.setPatID(true);
         mfall.setPat_name(etxt_name_pers_daten.getText().toString());
         Log.d("Fall", "Name gespeichert");
 
