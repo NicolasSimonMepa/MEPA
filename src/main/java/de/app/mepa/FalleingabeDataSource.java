@@ -265,4 +265,40 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Ergebnis.TABLE_NAME + " eingefügt.");
     }
+        // von Nicolas Simon, 22.05.16
+    public void insertVerletzung(Integer fallID, Integer elektroUnfall, Integer wundeVerletzung, Integer inhalationstrauma, Integer sonstig, Integer verbrennung, Integer prellungVerletzung, String schaedelart,
+                                 String gesichtArt, String brustkorbArt, String bwsArt , String hwsArt, String beckenArt, String bauchArt, String beineArt, String armeArt,
+                                 String weichteileArt, String schaedelGrad, String gesichtGrad, String brustkorbGrad, String bwsGrad, String hwsGrad, String beckenGrad, String bauchGrad,
+                                 String beineGrad, String armeGrad, String weichteileGrad) {
+        ContentValues values = new ContentValues();
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_PROT_ID, fallID);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_ELEKTROUNFALL, elektroUnfall);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_WUNDE_VERLETZUNG, wundeVerletzung);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_INHALATIONSTRAUMA, inhalationstrauma);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_SONSTIGES, sonstig);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_VERBRENNUNG, verbrennung);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_PRELLUNG_VERLETZUNG, prellungVerletzung);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_SCHAEDEL_ART, schaedelart);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_GESICHT_ART, gesichtArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BRUSTKORB_ART, brustkorbArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BWS_ART, bwsArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_HWS_ART, hwsArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BECKEN_ART, beckenArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BAUCH_ART, bauchArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BEINE_ART, beineArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_ARME_ART, armeArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_WEICHTEILE_ART, weichteileArt);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_SCHAEDEL_GRAD, schaedelGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_GESICHT_GRAD, gesichtGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BRUSTKORB_GRAD, brustkorbGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_HWS_GRAD, hwsGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BECKEN_GRAD, beckenGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BAUCH_GRAD, bauchGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_BEINE_GRAD, beineGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_ARME_GRAD, armeGrad);
+        values.put(FalleingabeContract.Tbl_Verletzung.COL_WEICHTEILE_GRAD, weichteileGrad);
+
+        long insertId = database.insert(FalleingabeContract.Tbl_Verletzung.TABLE_NAME, null, values);
+        Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verletzung.TABLE_NAME + " eingefügt.");
+    }
 }
