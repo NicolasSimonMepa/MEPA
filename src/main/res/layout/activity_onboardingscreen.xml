@@ -48,6 +48,19 @@
         android:id="@+id/lnl_onb_kacheln"
         android:layout_below="@+id/txtv_onb_willkommenText"
         android:gravity="center_horizontal">
+        <!-- von Vivien Stumpe, 15.05.16
+ Stammdaten als Option bei den Einstellungen-->
+        <TextView
+            android:id="@+id/txtv_onb_stammdaten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtv_stammdaten"
+            android:layout_marginBottom="20dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:clickable="true" />
     <TextView
         android:id="@+id/txtv_onb_mitarbeiter"
         android:layout_width="wrap_content"
@@ -59,19 +72,7 @@
         android:gravity="center_horizontal"
         android:textStyle="bold"
         android:clickable="true" />
-    <!-- von Vivien Stumpe, 25.04.16
-    Stammdaten als Option bei den Einstellungen-->
-    <TextView
-        android:id="@+id/txtv_onb_stammdaten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtv_stammdaten"
-        android:layout_marginBottom="20dp"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:clickable="true" />
+
     </LinearLayout>
     <Button
         android:layout_height="wrap_content"
