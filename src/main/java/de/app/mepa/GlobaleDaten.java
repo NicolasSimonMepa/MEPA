@@ -12,7 +12,7 @@ public class GlobaleDaten extends Application {
     
     // Fall ID - Variable, Simon 18.05.16
     private int fallID;
-    private int patID = 1;
+    private int patID;
     
     //Ergebnis (Übergabe) - Variablen
     private String erg_ersthelfermassn;
@@ -159,13 +159,13 @@ public class GlobaleDaten extends Application {
     private Boolean uebersprungen=false;
 
     //Sanitäter - Attribute
-    private int saniID = 1;
+    private int saniID;
     private String san_name;
     private String san_vname;
     private Boolean san_vorh=false;
 
     //Verband - Attribute
-    private int verbandID = 1;
+    private int verbandID;
     private String verb_kreisv;
     private String verb_ortsv;
     private Boolean verb_vorh=false;
@@ -176,26 +176,32 @@ public class GlobaleDaten extends Application {
     private String ver_date;
     private Boolean ver_vorh=false;
     
-        //Sani, Verband, Pat ID - Dienste, Simon 21.05.16
+    //Sani, Verband, Pat ID - Dienste, Simon 21.05.16
     public void setSaniID(boolean a) {
         if (a == true){
-            this.saniID = 1+saniID;}
-        else {saniID = 0;}}
+            this.saniID = UUID.randomUUID().hashCode();
+            if (saniID < 0 ){saniID = -saniID;}
+        }
+        else {saniID = 0;}
+    }
     public int getSaniID(){return saniID;}
     public void loescheSaniID(){setSaniID(false);}
 
     public void setVerbandID(boolean a) {
         if (a == true){
-            this.verbandID = 1+verbandID;}
+            this.verbandID = UUID.randomUUID().hashCode();
+            if (verbandID < 0 ){verbandID = -verbandID;}
+        }
         else {verbandID = 0;}
-        
     }
     public int getVerbandID(){return verbandID;}
     public void loescheVerbandID(){setVerbandID(false);}
 
     public void setPatID(boolean a) {
         if (a == true){
-            this.patID = 1+patID; }
+            this.patID = UUID.randomUUID().hashCode();
+            if (patID < 0 ){patID = -patID;}
+        }
         else {patID = 0;}
     }
     public int getPatID(){return patID;}
