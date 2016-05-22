@@ -117,7 +117,6 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
                     FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_RTH + " INTEGER, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_FEUERWEHR + " INTEGER, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_POLIZEI + " INTEGER, " +
-                    FalleingabeContract.Tbl_Ergebnis.COL_FOTO + " TEXT, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_SONSTIGESTEXT + " TEXT, " +
                     FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + " INTEGER NOT NULL, " +
     "FOREIGN KEY("+FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID+") REFERENCES "+FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"("+FalleingabeContract.Tbl_Einsatz.COL_ID+"));";
