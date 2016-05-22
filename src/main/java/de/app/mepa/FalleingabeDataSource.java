@@ -177,7 +177,7 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME + " eingefügt.");
     }
-        // von Daniel Semmler, 22.05.16
+    // von Daniel Semmler, 22.05.16
     public void insertErkrankung( Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
                                  Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, String sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer fallID) {
         ContentValues values = new ContentValues();
@@ -205,7 +205,7 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Erkrankung.TABLE_NAME + " eingefügt.");
     }
     
-       // von Nicolas Simon, 22.05.16
+    // von Nicolas Simon, 22.05.16
     public void insertErstbefund(Integer fallID, String bewust, String schmerz, String kreislauf, String ekg, String atmung, Integer rrSys, Integer rrDia,
                               Integer puls, Integer af, float spo , float bz, String pupilleLi, String pupilleRe) {
         ContentValues values = new ContentValues();
@@ -265,7 +265,7 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Ergebnis.TABLE_NAME + " eingefügt.");
     }
-        // von Nicolas Simon, 22.05.16
+    // von Nicolas Simon, 22.05.16
     public void insertVerletzung(Integer fallID, Integer elektroUnfall, Integer wundeVerletzung, Integer inhalationstrauma, Integer sonstig, Integer verbrennung, Integer prellungVerletzung, String schaedelart,
                                  String gesichtArt, String brustkorbArt, String bwsArt , String hwsArt, String beckenArt, String bauchArt, String beineArt, String armeArt,
                                  String weichteileArt, String schaedelGrad, String gesichtGrad, String brustkorbGrad, String bwsGrad, String hwsGrad, String beckenGrad, String bauchGrad,
@@ -301,9 +301,9 @@ public class FalleingabeDataSource {
         long insertId = database.insert(FalleingabeContract.Tbl_Verletzung.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Verletzung.TABLE_NAME + " eingefügt.");
     }
-        // von Daniel Semmler, 22.05.16
-    public void insertMassnahmen(Integer fall_id, Integer stb_seitenlage, Integer oberkoerperhochlage, Integer flachlagerung, Integer schocklagerung, 
-                                 Integer vakuumm, Integer hws_st, Integer medikamente, Integer schienung, Integer wundversorgung,
+    // von Daniel Semmler, 22.05.16
+    public void insertMassnahmen(Integer fall_id, Integer stb_seitenlage, Integer oberkoerperhochlage, Integer flachlagerung, Integer schocklagerung,
+                                 Integer vakuummatratze, Integer hws_st, Integer medikamente, Integer schienung, Integer wundversorgung,
                                  Integer ekg, Integer zugang, Integer infusion, Integer atemwege, 
                                  Integer notkompetenz, Integer sauerstoffgabe,Integer intubation, Integer beatmung, Integer herzdruckm,
                                  Integer erstdefi, Integer betreuung, Integer sonstiges, Integer sonstigestext, Integer aed,
@@ -314,7 +314,7 @@ public class FalleingabeDataSource {
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_OBERKOERPERHOCHLAGE, oberkoerperhochlage);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_FLACHLAGERUNG, flachlagerung);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_SCHOCKLAGERUNG, schocklagerung);
-        values.put(FalleingabeContract.Tbl_Massnahmen.COL_VAKUUMM, vakuumm);
+        values.put(FalleingabeContract.Tbl_Massnahmen.COL_VAKUUMM, vakuummatratze);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_HWS_ST, hws_st);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_MEDIKAMENTE, medikamente);
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_SCHIENUNG, schienung);
