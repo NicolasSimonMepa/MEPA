@@ -178,10 +178,9 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME + " eingefügt.");
     }
         // von Daniel Semmler, 22.05.16
-    public void insertErkrankung(Integer id, Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
+    public void insertErkrankung( Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
                                  Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, Integer sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer prot_id) {
         ContentValues values = new ContentValues();
-        values.put(FalleingabeContract.Tbl_Erkrankung.COL_ID, id);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_ATMUNG, atmung);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_HERZ_KREISLAUF, kreislauf);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_BAUCHERKRANKUNG, baucherkrankung);
