@@ -104,65 +104,74 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        etxt_kreisverband.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        mfall=(GlobaleDaten)getApplication();
+        if(mfall.getVerb_kreisv()==null){
+            etxt_kreisverband.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_ort.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVer_ort()==null){
+            etxt_ort.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_ortsverein.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVerb_ortsv()==null){
+            etxt_ortsverein.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
 
-        etxt_veranstaltung.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+        if(mfall.getVer_name()==null){
+            etxt_veranstaltung.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
                     }
-                }
-        });
+            });
+        }
         /* von Vivien Stumpe, 01.05.16
         TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
         Damit entsprechend auf Eingaben reagiert werden kann
