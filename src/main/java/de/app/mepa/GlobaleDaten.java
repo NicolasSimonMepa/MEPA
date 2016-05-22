@@ -9,11 +9,11 @@ import java.util.UUID;
  * enthält Variablen und Dienste, die während der Laufzeit in allen Activities verfügbar sind
  */
 public class GlobaleDaten extends Application {
-    
+
     // Fall ID - Variable, Simon 18.05.16
     private int fallID;
     private int patID;
-    
+
     //Ergebnis (Übergabe) - Variablen
     private String erg_ersthelfermassn;
     private String erg_zustand;
@@ -36,7 +36,7 @@ public class GlobaleDaten extends Application {
     private Integer erg_entlassung_ev;
     private String erg_zeuge;
     private String erg_ergebnis_zeit;
-    
+
     //Maßnahmen - Variablen
     private Integer mas_keine;
     private Integer mas_stb_seitenlage;
@@ -61,7 +61,7 @@ public class GlobaleDaten extends Application {
     private Integer mas_betreuung;
     private Integer mas_sonstiges;
     private String mas_sonstiges_text;
-    
+
     //Verletzung - Variablen
     private Integer verl_prellung_verletzung;
     private Integer verl_verbrennung;
@@ -89,7 +89,7 @@ public class GlobaleDaten extends Application {
     private String verl_beine_grad;
     private String verl_weichteile_art;
     private String verl_weichteile_grad;
-    
+
     //Erstbefund - Variablen
     private String erst_bewusstsein;
     private String erst_kreislauf;
@@ -175,7 +175,7 @@ public class GlobaleDaten extends Application {
     private String ver_ort;
     private String ver_date;
     private Boolean ver_vorh=false;
-    
+
     //Sani, Verband, Pat ID - Dienste, Simon 21.05.16
     public void setSaniID(boolean a) {
         if (a == true){
@@ -183,6 +183,9 @@ public class GlobaleDaten extends Application {
             if (saniID < 0 ){saniID = -saniID;}
         }
         else {saniID = 0;}
+    }
+    public void setSani_IDm(int id){
+        this.saniID=id;
     }
     public int getSaniID(){return saniID;}
     public void loescheSaniID(){setSaniID(false);}
@@ -195,6 +198,9 @@ public class GlobaleDaten extends Application {
         else {verbandID = 0;}
     }
     public int getVerbandID(){return verbandID;}
+    public void setVerb_ID(int id){
+        this.verbandID=id;
+    }
     public void loescheVerbandID(){setVerbandID(false);}
 
     public void setPatID(boolean a) {
@@ -206,9 +212,9 @@ public class GlobaleDaten extends Application {
     }
     public int getPatID(){return patID;}
     public void loeschePatID(){setPatID(false);}
-    
+
     //Fall ID - Dienste, Simon 18.05.16
-        public void setFallID(boolean a) {
+    public void setFallID(boolean a) {
         if (a == true){
             this.fallID = UUID.randomUUID().hashCode();
             if (fallID < 0 ){fallID = -fallID;}
@@ -220,7 +226,7 @@ public class GlobaleDaten extends Application {
     }
     public int getFallID(){return fallID;}
     public void loescheFallID(){setFallID(false);}
-    
+
     //Ergebnis (Übergabe) - Dienste
     public void setErg_ersthelfermassn(String ersthelfermassn){this.erg_ersthelfermassn=ersthelfermassn;}
     public void setErg_zustand(String zustand){this.erg_zustand=zustand;}
@@ -314,7 +320,7 @@ public class GlobaleDaten extends Application {
         setErg_zeuge(null);
         setErg_ergebnis_zeit(null);
     }
-    
+
     //Maßnahmen - Dienste
     public void setMas_keine(Integer keine){this.mas_keine=keine;}
     public void setMas_stb_seitenlage(Integer stb_seitenlage){this.mas_stb_seitenlage=stb_seitenlage;}
@@ -371,12 +377,12 @@ public class GlobaleDaten extends Application {
                 |(getMas_stb_seitenlage()!=null)|(getMas_vakuummatratze()!=null)|(getMas_ven_zugang()!=null)|(getMas_wundversorgung()!=null)));
     }
     public Boolean Mas_eingabe(){
-            return (((getMas_atemwege_freim() ==1)|(getMas_beatmung()==1)|(getMas_betreuung()==1)|(getMas_ekg()==1)|
-                    (getMas_erstdefibrillation()==1)|(getMas_extr_schienung()==1)|(getMas_flachlagerung()==1)|(getMas_herzdruckmassage()==1)|
-                    (getMas_hws_stuetzkragen()==1)|(getMas_infusion()==1)|(getMas_intubation()==1)|
-                    (getMas_keine()==1)|(getMas_medikamente()==1)|(getMas_notkompetenz()==1)|(getMas_oberkoerperhochlage()==1)|
-                    (getMas_sauerstoffgabe()==1)|(getMas_schocklagerung()==1)|(getMas_sonstiges()==1)|(getMas_sonstiges_text().length()>0)
-                    |(getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()==1)|(getMas_ven_zugang()==1)|(getMas_wundversorgung()==1)));
+        return (((getMas_atemwege_freim() ==1)|(getMas_beatmung()==1)|(getMas_betreuung()==1)|(getMas_ekg()==1)|
+                (getMas_erstdefibrillation()==1)|(getMas_extr_schienung()==1)|(getMas_flachlagerung()==1)|(getMas_herzdruckmassage()==1)|
+                (getMas_hws_stuetzkragen()==1)|(getMas_infusion()==1)|(getMas_intubation()==1)|
+                (getMas_keine()==1)|(getMas_medikamente()==1)|(getMas_notkompetenz()==1)|(getMas_oberkoerperhochlage()==1)|
+                (getMas_sauerstoffgabe()==1)|(getMas_schocklagerung()==1)|(getMas_sonstiges()==1)|(getMas_sonstiges_text().length()>0)
+                |(getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()==1)|(getMas_ven_zugang()==1)|(getMas_wundversorgung()==1)));
     }
     public void loescheMas(){
         setMas_keine(null);
@@ -403,7 +409,7 @@ public class GlobaleDaten extends Application {
         setMas_sonstiges(null);
         setMas_sonstiges_text(null);
     }
-    
+
     //Verletzung - Dienste
     public void setVerl_prellung_verletzung(Integer prellung_verletzung){this.verl_prellung_verletzung=prellung_verletzung;}
     public void setVerl_verbrennung(Integer verbrennung){this.verl_verbrennung=verbrennung;}
@@ -464,9 +470,9 @@ public class GlobaleDaten extends Application {
                 (getVerl_bws_lws_grad()!=null)|(getVerl_gesicht_art()!=null)|(getVerl_gesicht_grad()!=null)|
                 (getVerl_schaedel_art()!=null)|(getVerl_schaedel_grad()!=null)|(getVerl_hws_art()!=null)|
                 (getVerl_hws_grad()!=null)|(getVerl_weichteile_art()!=null)|(getVerl_weichteile_grad()!=null));
-        }
+    }
     public Boolean Verl_check_notNull(){
-         return ((getVerl_prellung_verletzung()!=null)|(getVerl_verbrennung()!=null)|(getVerl_wunde_verletzung()!=null)|
+        return ((getVerl_prellung_verletzung()!=null)|(getVerl_verbrennung()!=null)|(getVerl_wunde_verletzung()!=null)|
                 (getVerl_elektrounfall()!=null)|(getVerl_inhalationstrauma()!=null|(getVerl_sonstiges()!=null)));
 
     }
@@ -504,7 +510,7 @@ public class GlobaleDaten extends Application {
         setVerl_weichteile_art(null);
         setVerl_weichteile_grad(null);
     }
-    
+
     //Erstbefund - Dienste
     public void setErst_bewusstsein(String erst_bewusstsein){this.erst_bewusstsein=erst_bewusstsein;}
     public void setErst_kreislauf(String erst_kreislauf){this.erst_kreislauf=erst_kreislauf;}
