@@ -263,25 +263,18 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             Intent onboard=new Intent(Stammdaten_OnBoard.this, OnBoarding.class);
             startActivity(onboard);
         }
-        if(ce == R.id.btn_speichern_stammd_onb){
+       if(ce == R.id.btn_speichern_stammd_onb){
             speichereEingaben();
             mfall=(GlobaleDaten)getApplication();
             mfall.setVerbandID(true);
-
-
             dataSource = new FalleingabeDataSource(this);
             dataSource.open();
-
             dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
-
-
+            dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
             if(mfall.getFall_angelegt()){
                 Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
             }
-            //Buttons wieder ausblenden
-            buttons.setVisibility(buttons.GONE);
-        }
         /* von Vivien Stumpe, 14.05.2016
         DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
         Kalender öffnet sich, wenn auf das Eingabefeld "Datum" geklickt wird
