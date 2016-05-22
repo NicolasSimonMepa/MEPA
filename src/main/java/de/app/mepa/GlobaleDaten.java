@@ -215,6 +215,9 @@ public class GlobaleDaten extends Application {
         }
         else {fallID = 0;}
     }
+    public void setEin_ID(int id){
+        this.fallID=id;
+    }
     public int getFallID(){return fallID;}
     public void loescheFallID(){setFallID(false);}
     
