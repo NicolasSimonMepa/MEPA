@@ -121,11 +121,11 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME + " eingefügt.");
     }
     // von Nicolas Simon, 21.05.16
-    public void insertSani(SQLiteDatabase db, String sName, String sVname, String verbandID) {
+    public void insertSani(SQLiteDatabase db, String sName, String sVname, Integer verbandID, Integer saniID) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Sani.COL_NAME, sName);
         values.put(FalleingabeContract.Tbl_Sani.COL_VORNAME, sVname);
-
+        values.put(FalleingabeContract.Tbl_Sani.COL_ID, saniID);
         values.put(FalleingabeContract.Tbl_Sani.COL_VERBAND_ID, verbandID);
 
         long insertId = db.insert(FalleingabeContract.Tbl_Sani.TABLE_NAME, null, values);
