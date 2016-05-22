@@ -179,7 +179,7 @@ public class FalleingabeDataSource {
     }
         // von Daniel Semmler, 22.05.16
     public void insertErkrankung( Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
-                                 Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, Integer sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer fallID) {
+                                 Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, String sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer fallID) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_ATMUNG, atmung);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_HERZ_KREISLAUF, kreislauf);
