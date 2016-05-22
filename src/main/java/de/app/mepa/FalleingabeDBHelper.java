@@ -200,7 +200,7 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
     */
     public static final String SQL_CREATE_Patient =
             "CREATE TABLE " + FalleingabeContract.Tbl_Patient.TABLE_NAME +
-                    "(" + FalleingabeContract.Tbl_Patient.COL_ID + " INTEGER PRIMARY, " +
+                    "(" + FalleingabeContract.Tbl_Patient.COL_ID + " INTEGER PRIMARY KEY, " +
                     FalleingabeContract.Tbl_Patient.COL_NAME + " TEXT NOT NULL, " +
                     FalleingabeContract.Tbl_Patient.COL_VORNAME + " TEXT NOT NULL, " +
                     FalleingabeContract.Tbl_Patient.COL_GEBURTSDATUM + " TEXT NOT NULL, " +
@@ -221,7 +221,7 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
     */
     public static final String SQL_CREATE_Sani =
             "CREATE TABLE " + FalleingabeContract.Tbl_Sani.TABLE_NAME +
-                    "(" + FalleingabeContract.Tbl_Sani.COL_ID + " INTEGER PRIMARY, " +
+                    "(" + FalleingabeContract.Tbl_Sani.COL_ID + " INTEGER PRIMARY KEY, " +
                     FalleingabeContract.Tbl_Sani.COL_NAME + " TEXT NOT NULL, " +
                     FalleingabeContract.Tbl_Sani.COL_VORNAME + " TEXT NOT NULL, " +
                     FalleingabeContract.Tbl_Sani.COL_VERBAND_ID + " INTEGER NOT NULL, "+
@@ -232,7 +232,7 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
     */
     public static final String SQL_CREATE_Verband =
             "CREATE TABLE " + FalleingabeContract.Tbl_Verband.TABLE_NAME +
-                    "(" + FalleingabeContract.Tbl_Verband.COL_ID + " INTEGER PRIMARY, " +
+                    "(" + FalleingabeContract.Tbl_Verband.COL_ID + " INTEGER PRIMARY KEY, " +
                     FalleingabeContract.Tbl_Verband.COL_KREISVERBAND + " TEXT NOT NULL, " +
                     FalleingabeContract.Tbl_Verband.COL_ORTSVEREIN + " TEXT NOT NULL );";
     public static final String SQL_DROP_Verband = "DROP TABLE IF EXISTS " + FalleingabeContract.Tbl_Verband.TABLE_NAME + ";";
