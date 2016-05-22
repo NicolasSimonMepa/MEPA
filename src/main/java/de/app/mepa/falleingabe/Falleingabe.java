@@ -278,6 +278,8 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         dataSource.createSanitaeter("Schulze", "Marianne", 2);
         dataSource.createPatient(34, "Stumpe", "Vivien", "22.02.1994", 1);
         */
+       // dataSource.insertVerband(200, mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
+        //dataSource.insertVerband(100, "Test", "Test2");
 
         //Verbindung zur DB trennen
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
@@ -479,7 +481,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             }
         }
 
-
         //Notfallsituation
         if(mfall.getNotf_notfallsituation()!=null){
             if(mfall.getNotf_notfallsituation().length()>0)
@@ -534,7 +535,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     public void speichern(){
         
         //Simon, 18.05.16, Die ID wird generiert:
-        GlobaleDaten mfall = new GlobaleDaten();
+
         mfall=(GlobaleDaten)getApplication();
         mfall.setFallID(true);
         //Toast.makeText(Falleingabe.this, "ID Hash: " + mfall.getFallID(), Toast.LENGTH_LONG).show(); //Zum Testen, dass sie erzeugt wird
@@ -560,7 +561,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         // -> siehe doInBackground(...) im BackgroundTaskDB
         bgtask.execute("Verein hinzufügen", verband, ortsverein);
         */
-        
+        dataSource.open();
+        dataSource.insertPatient(mfall.getPatID(), mfall.getPat_name(), mfall.getPat_vorname(), mfall.getPat_geb(),
+                mfall.getSaniID(), mfall.getPat_sex(), mfall.getPat_str(), mfall.getPat_plz(), mfall.getPat_ort(),
+                mfall.getPat_land(), mfall.getPat_tel(), mfall.getPat_krankenkasse(),
+                mfall.getPat_versnr(), mfall.getPat_versichertennr());
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
        eingabenZuruecksetzen();
