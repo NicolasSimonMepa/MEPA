@@ -6,7 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import de.app.mepa.pers_daten.Pers_daten;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vivienstumpe on 06.05.16.
