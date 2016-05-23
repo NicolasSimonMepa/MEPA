@@ -164,6 +164,12 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if( etxt_mitarbeiter_vorname.getText().toString().length() == 0 ) {
+                    etxt_mitarbeiter_vorname.setError( "Bitte gib deinen Vornamen ein" );
+                }
+                if( etxt_mitarbeiter_name.getText().toString().length() == 0 ) {
+                    etxt_mitarbeiter_name.setError( "Bitte gib deinen Nachnamen ein" );
+                }
 
             }
 
