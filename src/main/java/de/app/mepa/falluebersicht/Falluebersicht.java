@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.app.mepa.Adapter_Falluebersicht;
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -74,6 +75,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
    };
     ListView falluebersichtListView;
     Adapter_Falluebersicht faelleAdapter;
+    FalleingabeDataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,15 +120,23 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         Die Einträge in der ListView sind klickbar (Löschen Icon siehe Adapter_Falluebersicht.java)
         Wird ein Eintrag geklickt gelangt man zur Falleingabe und die gespeicherten Daten werden angezeigt
          */
+        dataSource=new FalleingabeDataSource(this);
         showAllListEntries();
         falluebersichtListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent fall=new Intent(Falluebersicht.this, Falleingabe.class);
-                ladeFallDaten(position);
+                // von Vivien Stumpe, 23.05.16
+                //Teilt den String bei einem Leerzeichen
+                String string = faelleArray[position];
+                String[] parts = string.split("\\s+");
+                String prot_id_string = parts[0];
+                String name = parts[1];
+                //prot_id enthält die ID des ausgewählten Falls
+                int prot_id=Integer.parseInt(prot_id_string);
+                //dataSource.selectFall(prot_id);
                 startActivity(fall);
-
-                Log.d("Fall", id+" ID");
+                Log.d("Fall", prot_id + " ID");
             }
         });
     }
