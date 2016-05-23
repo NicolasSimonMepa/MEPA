@@ -256,20 +256,17 @@ public class FalleingabeDataSource {
     }
 
     // von Nicolas Simon, 22.05.16
-    public void insertErgebnis(Integer fallID, String ergzeit, String zustVerbess, String wertsachen, String wertsachenZeit, String bemerk, String nachfZeit, String funkruf,
-                               String funkrufZeit, String transport, String transportZiel , Integer entlassungEV, String zeuge, String zustand, String notarzt,
+    public void insertErgebnis(Integer fallID, String ergzeit, String zustVerbess, String wertsachen, String bemerk, String funkruf,
+                                String transport, String transportZiel , Integer entlassungEV, String zeuge, String zustand, String notarzt,
                                Integer hausarztInfo, Integer tod, String transportSonstig, String ersthelfermassmahme, Integer nKTW, Integer nRTW,
-                               Integer nNEF, Integer nNAW, Integer nRTH, Integer nFeuerwehr, Integer nPolizei, String sonstigesTxt) {
+                               Integer nNEF, Integer nNAW, Integer nRTH, Integer nFeuerwehr, Integer nPolizei) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID, fallID);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_ERGEBNISZEIT, ergzeit);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_ZUST_VERBESSERT, zustVerbess);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_WERTSACHEN, wertsachen);
-        values.put(FalleingabeContract.Tbl_Ergebnis.COL_WERTSACHEN_ZEIT, wertsachenZeit);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_BEMERKUNG, bemerk);
-        values.put(FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_ZEIT, nachfZeit);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_FUNKRUF, funkruf);
-        values.put(FalleingabeContract.Tbl_Ergebnis.COL_FUNKRUF_ZEIT, funkrufZeit);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_TRANSPORT, transport);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_TRANSPORT_ZIEL, transportZiel);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_ENTLASSUNG_EV, entlassungEV);
@@ -287,7 +284,6 @@ public class FalleingabeDataSource {
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_RTW, nRTH);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_FEUERWEHR, nFeuerwehr);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_NACHFORDERUNG_POLIZEI, nPolizei);
-        values.put(FalleingabeContract.Tbl_Ergebnis.COL_SONSTIGESTEXT, sonstigesTxt);
 
         long insertId = database.insert(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME, null, values);
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Ergebnis.TABLE_NAME + " eingefügt.");
