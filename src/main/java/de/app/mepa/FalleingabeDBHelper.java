@@ -178,15 +178,10 @@ public class FalleingabeDBHelper extends SQLiteOpenHelper{
             "CREATE TABLE " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME +
                     "(" + FalleingabeContract.Tbl_Einsatz.COL_ID + " INTEGER PRIMARY KEY, " +
                     FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_DATUM + " TEXT, " +
-                    FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_VON + " TEXT, " +
-                    FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_BIS + " TEXT, " +
                     FalleingabeContract.Tbl_Einsatz.COL_ZUGEFUEHRT_DURCH + " TEXT, " +
                     FalleingabeContract.Tbl_Einsatz.COL_HILFSSTELLE + " INTEGER, " +
                     FalleingabeContract.Tbl_Einsatz.COL_MOSAN_TEAM + " INTEGER, " +
                     FalleingabeContract.Tbl_Einsatz.COL_SAN_WACHE + " INTEGER, " +
-                    FalleingabeContract.Tbl_Einsatz.COL_POLIZEI_TXT + " TEXT, " +
-                    FalleingabeContract.Tbl_Einsatz.COL_RTW_KTW_TXT + " TEXT, " +
-                    FalleingabeContract.Tbl_Einsatz.COL_SAN_TEAM_TXT + " TEXT, " +
                     FalleingabeContract.Tbl_Einsatz.COL_NOTFALL + " TEXT, " +
                     FalleingabeContract.Tbl_Einsatz.COL_FUNDORT + " TEXT, " +
                     FalleingabeContract.Tbl_Einsatz.COL_PAT_ID + " INTEGER NOT NULL, " +
