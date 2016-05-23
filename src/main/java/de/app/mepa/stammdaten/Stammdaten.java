@@ -238,6 +238,19 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etxt_kreisverband.getText().toString().length() == 0) {
+                    etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+                }
+                if (etxt_ortsverein.getText().toString().length() == 0){
+                    etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+
+                }
+                if (etxt_veranstaltung.getText().toString().length() == 0){
+                    etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+                }
+                if (etxt_date.getText().toString().length() == 0){
+                    etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+                }
             }
 
             @Override
