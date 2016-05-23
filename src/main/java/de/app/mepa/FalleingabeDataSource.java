@@ -188,20 +188,15 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Patient.TABLE_NAME + " eingefügt.");
     }
     // von Nicolas Simon, 21.05.16
-    public void insertEinsatz(Integer id, String date, String zeitV, String zeitB, String zugefuehrt, Integer hilfsStelle, Integer mosan, Integer san,
-                              String polizei, String rtw, String sanTeam, String notfall, String fundort, Integer fallID) {
+    public void insertEinsatz(Integer id, String date, String zugefuehrt, Integer hilfsStelle, Integer mosan, Integer san,
+                              String notfall, String fundort, Integer fallID) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Einsatz.COL_PAT_ID, id);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_DATUM, date);
-        values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_VON, zeitV);
-        values.put(FalleingabeContract.Tbl_Einsatz.COL_EINSATZ_ZEIT_BIS, zeitB);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_ZUGEFUEHRT_DURCH, zugefuehrt);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_HILFSSTELLE, hilfsStelle);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_MOSAN_TEAM, mosan);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_SAN_WACHE, san);
-        values.put(FalleingabeContract.Tbl_Einsatz.COL_POLIZEI_TXT, polizei);
-        values.put(FalleingabeContract.Tbl_Einsatz.COL_RTW_KTW_TXT, rtw);
-        values.put(FalleingabeContract.Tbl_Einsatz.COL_SAN_TEAM_TXT, sanTeam);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_NOTFALL, notfall);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_FUNDORT, fundort);
         values.put(FalleingabeContract.Tbl_Einsatz.COL_ID, fallID);
@@ -210,8 +205,8 @@ public class FalleingabeDataSource {
         Log.d(LOG_TAG, "Datensätze in die Tabelle " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME + " eingefügt.");
     }
     // von Daniel Semmler, 22.05.16
-    public void insertErkrankung( Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer untetrkunft,
-                                 Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonsiges, String sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer fallID) {
+    public void insertErkrankung( Integer atmung, Integer kreislauf, Integer baucherkrankung, Integer stoffwechsel, Integer hitzschlag, Integer vergiftung, Integer unterkuehlung,
+                                 Integer gynaekologie, Integer geburtshilfe, Integer hitzeerschoepfung, Integer kindernotfall, Integer neurologie, Integer psychatrie, Integer alkoholiisiert, Integer sonstiges, String sonstigestext, Integer schwindel, Integer uebelkeit_erbrechen, Integer fallID) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_ATMUNG, atmung);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_HERZ_KREISLAUF, kreislauf);
@@ -219,7 +214,7 @@ public class FalleingabeDataSource {
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_STOFFWECHSEL, stoffwechsel);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_HITZSCHLAG, hitzschlag);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_VERGIFTUNG, vergiftung);
-        values.put(FalleingabeContract.Tbl_Erkrankung.COL_UNTERKUEHLUNG, untetrkunft);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_UNTERKUEHLUNG, unterkuehlung);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_GYNAEKOLOGIE, gynaekologie);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_GEBURTSHILFE, geburtshilfe);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_HITZEERSCHOEPFUNG, hitzeerschoepfung);
@@ -227,7 +222,7 @@ public class FalleingabeDataSource {
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_NEUROLOGIE, neurologie);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_PSYCHATRIE, psychatrie);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_ALKOHOLISIERT, alkoholiisiert);
-        values.put(FalleingabeContract.Tbl_Erkrankung.COL_SONSTIGES, sonsiges);
+        values.put(FalleingabeContract.Tbl_Erkrankung.COL_SONSTIGES, sonstiges);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_SONSTIGESTEXT, sonstigestext);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_SCHWINDEL, schwindel);
         values.put(FalleingabeContract.Tbl_Erkrankung.COL_UEBELKEIT_ERBRECHEN, uebelkeit_erbrechen);
