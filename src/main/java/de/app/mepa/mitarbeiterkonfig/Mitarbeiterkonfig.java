@@ -1,10 +1,9 @@
 /**
  * Created by Nathalie on 18.04.2016.
  */
-// Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+// Zuletzt bearbeitet von Indra Marcheel, 23.05.16
 package de.app.mepa.mitarbeiterkonfig;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -17,16 +16,12 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
@@ -71,11 +66,6 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     private TextWatcher textWatcher;
 
     private GlobaleDaten mfall;
-    /* von Vivien Stumpe, 20.05.16
-Timer deklarieren mit der Zeit DELAY in Millisekunden
- */
-    private Timer timer = new Timer();
-    private final long DELAY = 2000; // in ms
 
 
     @Override
@@ -110,46 +100,51 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         lnl_buttons=(LinearLayout)findViewById(R.id.lnl_buttons);
         lnl_buttons.setVisibility(lnl_buttons.GONE);
         etxt_mitarbeiter_name=(EditText)findViewById(R.id.etxt_mitarbeiter_name);
+              /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_mitarbeiter_name.getText().toString().length() == 0 ) {
+            etxt_mitarbeiter_name.setError( "Bitte gib deinen Nachnamen ein" );
+        }
         etxt_mitarbeiter_vorname=(EditText)findViewById(R.id.etxt_mitarbeiter_vorname);
+              /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_mitarbeiter_vorname.getText().toString().length() == 0 ) {
+            etxt_mitarbeiter_vorname.setError( "Bitte gib deinen Vornamen ein" );
+        }
 
 
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        mfall=(GlobaleDaten)getApplication();
-        if(mfall.getSan_vorname()==null) {
-            etxt_mitarbeiter_vorname.setFilters(new InputFilter[]{
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if (src.equals("")) { // for backspace
-                                return src;
-                            }
-                            if (src.toString().matches("[a-zA-Z ]+")) {
-                                return src;
-                            }
-                            return "";
+        etxt_mitarbeiter_vorname.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
+                }
+        });
 
-        if(mfall.getSan_name()==null){
-            etxt_mitarbeiter_name.setFilters(new InputFilter[] {
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
-                            }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+        etxt_mitarbeiter_name.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
+                }
+        });
         /*
         Zuweisen der Buttonvariablen zu den Buttons in der Activity
         Setzen des OnClickListeners, damit auf Klicks reagiert wird
@@ -174,23 +169,6 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
                 lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
-                // von Vivien Stumpe, 20.05.16
-                // Timer erst starten nachdem 3 Zeichen eingegeben wurden
-                if (s.length() >= 3) {
-
-                    timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            //Tastatur ausblenden
-                            InputMethodManager imm =
-                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(etxt_mitarbeiter_name.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_mitarbeiter_vorname.getWindowToken(), 0);
-                        }
-
-                    }, DELAY);
-                }
             }
         };
 
@@ -311,6 +289,6 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         }
         if((mfall.getSan_vorname()!=null)){
             etxt_mitarbeiter_vorname.setText(mfall.getSan_vorname());
-            }
         }
+    }
 }
