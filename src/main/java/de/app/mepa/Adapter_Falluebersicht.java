@@ -1,15 +1,17 @@
-//Zuletzt geändert von Vivien Stumpe, 21.05.16
+//Zuletzt geändert von Vivien Stumpe, 23.05.16
 package de.app.mepa;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.app.mepa.mepa.R;
 
@@ -23,6 +25,7 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
     String[] faelle;
     LayoutInflater inflater;
     int layout;
+    FalleingabeDataSource dataSource;
     public Adapter_Falluebersicht(Context context, int layout, String[] faelle) {
         super(context, layout, faelle );
         this.ctx=context;
@@ -31,6 +34,7 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
     }
     public View getView(int position,View convertView,ViewGroup parent) {
         View row=null;
+        final int position_clicked;
         if(convertView==null)
         {
             inflater= (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,6 +49,7 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
         ImageView img_delete = (ImageView) row.findViewById(R.id.imgv_delete_falluebersicht);
         TextView txtv_fall=(TextView)row.findViewById(R.id.txtv_falluebersicht_listview);
         txtv_fall.setText(faelle[position]);
+        position_clicked=position;
         img_delete.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -60,7 +65,18 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
-                                //datasource.loescheFall(); ->
+                                // von Vivien Stumpe, 23.05.16
+                                String string = faelle[position_clicked];
+                                //Teilt den String bei einem Leerzeichen
+                                String[] parts = string.split("\\s+");
+                                String prot_id_string = parts[0];
+                                String name = parts[1];
+                                //prot_id enthält die ID des ausgewählten Falls
+                                int prot_id=Integer.parseInt(prot_id_string);
+                                Log.d("Fall", prot_id+" ID");
+                                dataSource=new FalleingabeDataSource(getContext());
+                                //Fall löschen
+                                //dataSource.deleteFall(prot_id);
                             }
                         })
 
