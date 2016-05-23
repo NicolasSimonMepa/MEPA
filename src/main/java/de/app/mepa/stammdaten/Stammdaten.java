@@ -130,9 +130,24 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         buttons=(LinearLayout)findViewById(R.id.lnl_stammdaten_buttons);
         buttons.setVisibility(buttons.GONE);
         etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband);
+            /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_kreisverband.getText().toString().length() == 0 ) {
+            etxt_kreisverband.setError( "Bitte gib deinen Kreisverband ein" );
+        }
         etxt_ort=(EditText)findViewById(R.id.etxt_ort);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
+            /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_ortsverein.getText().toString().length() == 0 ) {
+            etxt_ortsverein.setError( "Bitte gib deinen Ortsverein ein" );
+    }
         etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung);
+            /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_veranstaltung.getText().toString().length() == 0 ) {
+            etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
+        }
         
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
