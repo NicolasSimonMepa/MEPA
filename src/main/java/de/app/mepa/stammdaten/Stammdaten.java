@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 20.05.16
+//Zuletzt bearbeitet von Indra Marcheel am 23.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
@@ -24,7 +24,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -87,6 +86,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
     Variablen für den Kalender zur Auswahl des Datums
  */
     private EditText etxt_date;
+
     private DatePickerDialog datepicker;
     private Calendar calendar=Calendar.getInstance();
     /* von Vivien Stumpe, 16.05.16
@@ -145,12 +145,16 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             etxt_ortsverein.setError( "Bitte gib deinen Ortsverein ein" );
     }
         etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung);
+
             /* von Indra Marcheel, 23.05.2016
         */
         if( etxt_veranstaltung.getText().toString().length() == 0 ) {
             etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
         }
-        
+        etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
+        if( etxt_date.getText().toString().length() == 0 ) {
+            etxt_date.setError( "Bitte wähle das Datum der Veranstaltung aus" );
+        }
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
@@ -235,6 +239,17 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if( etxt_veranstaltung.getText().toString().length() == 0 ) {
+                    etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
+                }
+
+                if( etxt_ortsverein.getText().toString().length() == 0 ) {
+                    etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+                }
+
+                if( etxt_kreisverband.getText().toString().length() == 0 ) {
+                    etxt_kreisverband.setError( "Bitte gib deinen Kreisverband ein" );
+                }
 
             }
 
@@ -242,6 +257,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
                 buttons.setVisibility(buttons.VISIBLE);
+
 
                 //Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
@@ -286,6 +302,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         cck_sanw.setOnClickListener(this);
         etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
         etxt_date.setOnClickListener(Stammdaten.this);
+
 
         /* von Vivien Stumpe, 16.05.16
         Aktuelle Werte (falls vorhanden) im Screen anzeigen
@@ -350,9 +367,11 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
 
                     String dateString= DateUtils.formatDateTime(Stammdaten.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE);
                     etxt_date.setText(dateString);
+
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             datepicker.show();
+
         }
         if(ce==R.id.btn_verwerfen_stammd){
             //Buttons werden ausgeblendet
