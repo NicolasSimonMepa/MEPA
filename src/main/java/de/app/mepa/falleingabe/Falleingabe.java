@@ -538,6 +538,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         mfall=(GlobaleDaten)getApplication();
         mfall.setFallID(true);
+         mfall.setPatID(true);
         //Toast.makeText(Falleingabe.this, "ID Hash: " + mfall.getFallID(), Toast.LENGTH_LONG).show(); //Zum Testen, dass sie erzeugt wird
         
         //Animation
