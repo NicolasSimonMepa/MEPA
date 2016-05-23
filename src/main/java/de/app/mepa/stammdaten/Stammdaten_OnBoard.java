@@ -290,6 +290,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                 Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
             }
+       }
         /* von Vivien Stumpe, 14.05.2016
         DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
         Kalender öffnet sich, wenn auf das Eingabefeld "Datum" geklickt wird
@@ -320,7 +321,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             //Inhalt des Textfeldes löschen?
         }
     }
-}
+
 
     /* von Vivien Stumpe, 15.05.16
     Prozedur, die die eingegebenen Daten in den Variablen speichert
