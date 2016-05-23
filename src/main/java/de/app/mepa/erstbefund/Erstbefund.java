@@ -78,7 +78,7 @@ public class Erstbefund extends AppCompatActivity implements AdapterView.OnItemS
     Timer deklarieren mit der Zeit DELAY in Millisekunden
     */
     private Timer timer = new Timer();
-    private final long DELAY = 1000; // in ms
+    private final long DELAY = 4000; // in ms
     private TextWatcher tw;
 
 
