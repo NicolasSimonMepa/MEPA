@@ -77,16 +77,15 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         lnl_buttons=(LinearLayout)findViewById(R.id.lnl_buttons_mitarbeiter_onb);
         lnl_buttons.setVisibility(lnl_buttons.GONE);
         etxt_mitarbeiter_name=(EditText)findViewById(R.id.etxt_mitarbeiter_name_onb);
-              /* von Indra Marcheel, 23.05.2016
+
+        etxt_mitarbeiter_vorname=(EditText)findViewById(R.id.etxt_mitarbeiter_vorname_onb);
+        if( etxt_mitarbeiter_vorname.getText().toString().length() == 0 ) {
+            etxt_mitarbeiter_vorname.setError( "Bitte gib deinen Vornamen ein" );
+        }
+                       /* von Indra Marcheel, 23.05.2016
         */
         if( etxt_mitarbeiter_name.getText().toString().length() == 0 ) {
             etxt_mitarbeiter_name.setError( "Bitte gib deinen Namen ein" );
-        }
-        etxt_mitarbeiter_vorname=(EditText)findViewById(R.id.etxt_mitarbeiter_vorname_onb);
-              /* von Indra Marcheel, 23.05.2016
-        */
-        if( etxt_mitarbeiter_vorname.getText().toString().length() == 0 ) {
-            etxt_mitarbeiter_vorname.setError( "Bitte gib deinen Vornamen ein" );
         }
 
 
@@ -146,6 +145,16 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                      /* von Indra Marcheel, 23.05.2016
+        */
+                if( etxt_mitarbeiter_vorname.getText().toString().length() == 0 ) {
+                    etxt_mitarbeiter_vorname.setError( "Bitte gib deinen Vornamen ein" );
+                }
+                       /* von Indra Marcheel, 23.05.2016
+        */
+                if( etxt_mitarbeiter_name.getText().toString().length() == 0 ) {
+                    etxt_mitarbeiter_name.setError( "Bitte gib deinen Namen ein" );
+                }
 
             }
 
