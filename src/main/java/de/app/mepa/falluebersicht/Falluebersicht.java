@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe 21.05.16
+//Zuletzt geändert von Vivien Stumpe 23.05.16
 package de.app.mepa.falluebersicht;
 
 
@@ -20,6 +20,7 @@ import java.util.List;
 
 import de.app.mepa.Adapter_Falluebersicht;
 import de.app.mepa.FalleingabeDataSource;
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
@@ -37,7 +38,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     private LinearLayout lnl_buttons;
     */
 
-   //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
+    //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
     //DrawerLayout für das Hamburger Menü
     //ListView, die die Einträge des Menüs enthält
     //Adapter, der die Einträge der ListView darstellt
@@ -62,20 +63,22 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     String Array mit Testdaten, die in der ListView dargestellt werden sollen
     Adapter vom Typ Adapter_Falluebersicht, damit die Daten auch dargestellt werden können
     */
-   String [] faelleArray = {
-           "12343 Müller, Peter",
-           "12234 Schulze, Klaus",
-           "13542 Meier Hans",
-           "16532 Wolf Michael",
-           "17532 Blümel Petra",
-           "14785 Kalend Tina",
-           "14674 Fels Sophie",
-           "36743 Nutella Lisa",
-           "23454 Ulten Ute"
-   };
+    String [] faelleArray = {
+            "12343 Müller, Peter",
+            "12234 Schulze, Klaus",
+            "13542 Meier Hans",
+            "16532 Wolf Michael",
+            "17532 Blümel Petra",
+            "14785 Kalend Tina",
+            "14674 Fels Sophie",
+            "36743 Nutella Lisa",
+            "23454 Ulten Ute"
+    };
     ListView falluebersichtListView;
     Adapter_Falluebersicht faelleAdapter;
     FalleingabeDataSource dataSource;
+    GlobaleDaten mfall;
+    GlobaleDaten mfalldaten;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,11 +124,13 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         Wird ein Eintrag geklickt gelangt man zur Falleingabe und die gespeicherten Daten werden angezeigt
          */
         dataSource=new FalleingabeDataSource(this);
-        showAllListEntries();
-        falluebersichtListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        dataSource.open();
+       // showAllListEntries();
+        showAllListEntriesNeu();
+       falluebersichtListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent fall=new Intent(Falluebersicht.this, Falleingabe.class);
+                Intent fall = new Intent(Falluebersicht.this, Falleingabe.class);
                 // von Vivien Stumpe, 23.05.16
                 //Teilt den String bei einem Leerzeichen
                 String string = faelleArray[position];
@@ -133,12 +138,15 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
                 String prot_id_string = parts[0];
                 String name = parts[1];
                 //prot_id enthält die ID des ausgewählten Falls
-                int prot_id=Integer.parseInt(prot_id_string);
-                //dataSource.selectFall(prot_id);
+                int prot_id = Integer.parseInt(prot_id_string);
+                ladeFallDaten(prot_id);
                 startActivity(fall);
                 Log.d("Fall", prot_id + " ID");
             }
         });
+
+        mfall=(GlobaleDaten)getApplication();
+        dataSource.close();
     }
     /* von Vivien Stumpe, 21.05.16
     Prozedur, die alle Fälle aus der DB liest und in der ListView darstellt
@@ -153,10 +161,48 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
                         faelleArray); // Beispieldaten in einer ArrayList
         falluebersichtListView = (ListView)findViewById(R.id.list_falluebersicht);
         falluebersichtListView.setAdapter(faelleAdapter);
+      /*  GlobaleDaten pat;
+        dataSource=new FalleingabeDataSource(this);
+        dataSource.open();
+        pat=dataSource.selectPatient();
+        dataSource.close();
+        mfall.setPat_name(pat.getPat_name());
+        Log.d("Fall", mfall.getPat_name());
+        */
+    }
+    public void showAllListEntriesNeu () {
+        String[] patList = dataSource.getAllPat();
+
+        faelleAdapter =
+                new Adapter_Falluebersicht(
+                        Falluebersicht.this, // Die aktuelle Umgebung (diese Activity)
+                        R.layout.falluebersicht_listview_item, // ID der XML-Layout Datei
+                        patList); // Beispieldaten in einer ArrayList
+        falluebersichtListView = (ListView)findViewById(R.id.list_falluebersicht);
+        falluebersichtListView.setAdapter(faelleAdapter);
     }
 
+
+    /*
+
+    //von Nathalie Horn, 23.05.16
+    //FalleingabeDataSource datasource = new FalleingabeDataSource(this);
+
+    public void showAllListEntries() {
+        List<GlobaleDaten> UebersichtList = dataSource.getUebersicht();
+
+        ArrayAdapter<GlobaleDaten> UebersichtAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_multiple_choice,
+                UebersichtList);
+
+        ListView UebersichtListView = (ListView) findViewById(R.id.list_falluebersicht);
+        UebersichtListView.setAdapter(UebersichtAdapter);
+    }
+    */
+
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
+    protected void onPostCreate(Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
         //Hamburger Symbol mit dem Status des Drawers gleichsetzen (ob es geschlossen oder geöffnet ist)
         actionbardrawertoggle.syncState();
@@ -228,8 +274,16 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     damit die gespeicherten Werte in den Screens angezeigt werden können
     !FOLGT!
      */
+    /* von Vivien Stumpe, 23.05.16
+    Prozedur, die die Daten zum Fall lädt
+    */
+    public void ladeFallDaten(int id){
+        dataSource.open();
+        dataSource.selectFall(id);
+        mfall=(GlobaleDaten)getApplication();
+// Hier würden eigentlich die Falldaten geladen
+        mfalldaten=dataSource.selectFall(id);
+            mfall.setMas_betreuung(mfalldaten.getMas_betreuung());
 
-    public void ladeFallDaten(int position){
-        Log.d("Fall","Fall "+faelleArray[position]);
     }
 }
