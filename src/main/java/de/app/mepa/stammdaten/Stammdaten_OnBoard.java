@@ -320,6 +320,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             //Inhalt des Textfeldes löschen?
         }
     }
+}
 
     /* von Vivien Stumpe, 15.05.16
     Prozedur, die die eingegebenen Daten in den Variablen speichert
