@@ -586,6 +586,23 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 mfall.getErst_ekg(), mfall.getErst_atmung(), mfall.getErst_rr_sys(), mfall.getErst_rr_dia(),
                 mfall.getErst_puls(), mfall.getErst_af(), mfall.getErst_spo(), mfall.getErst_bz(), 
                 mfall.getErst_pupille_li(), mfall.getErst_pupille_re());
+                
+                        //von Nicolas Simon 23.05.16
+        dataSource.insertVerletzung(mfall.getFallID(), mfall.getVerl_elektrounfall(), mfall.getVerl_wunde_verletzung(), mfall.getVerl_inhalationstrauma(),
+                mfall.getVerl_sonstiges(), mfall.getVerl_verbrennung(), mfall.getVerl_prellung_verletzung(), mfall.getVerl_schaedel_art(), mfall.getVerl_gesicht_art(),
+                mfall.getVerl_brustkorb_art(), mfall.getVerl_bws_lws_art(), mfall.getVerl_hws_art(), mfall.getVerl_becken_art(), mfall.getVerl_bauch_art(),
+                mfall.getVerl_beine_art(), mfall.getVerl_arme_art(), mfall.getVerl_weichteile_art(), mfall.getVerl_schaedel_grad(), mfall.getVerl_gesicht_grad(),
+                mfall.getVerl_brustkorb_grad(), mfall.getVerl_bws_lws_grad(), mfall.getVerl_hws_grad(), mfall.getVerl_becken_grad(), mfall.getVerl_bauch_grad(),
+                mfall.getVerl_beine_grad(), mfall.getVerl_arme_grad(), mfall.getVerl_weichteile_grad());
+
+        //von Nicolas Simon 23.05.16
+        dataSource.insertErgebnis(mfall.getFallID(), mfall.getErg_ergebnis_zeit(), mfall.getErg_zustand(), mfall.getErg_wertsachen(),
+                mfall.getBem_bemerkung(), mfall.getErg_funkruf(), mfall.getErg_transport(), mfall.getErg_transport_ziel(),
+                mfall.getErg_entlassung_ev(), mfall.getErg_zeuge(), mfall.getErg_zustand(),
+                mfall.getErg_notarzt(), mfall.getErg_hausarzt_informiert(), mfall.getErg_tod(), mfall.getErg_transport_sonstiges(),
+                mfall.getErg_ersthelfermassn(),
+                mfall.getErg_nachforderung_ktw(), mfall.getErg_nachforderung_rtw(), mfall.getErg_nachforderung_nef(), mfall.getErg_nachforderung_naw(),
+                mfall.getErg_nachforderung_rth(), mfall.getErg_nachforderung_feuerwehr(), mfall.getErg_nachforderung_polizei());
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
        eingabenZuruecksetzen();
