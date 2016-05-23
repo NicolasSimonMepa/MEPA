@@ -262,7 +262,7 @@ public class FalleingabeDataSource {
                                Integer nNEF, Integer nNAW, Integer nRTH, Integer nFeuerwehr, Integer nPolizei, String sonstigesTxt) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID, fallID);
-        values.put(FalleingabeContract.Tbl_Ergebnis.COL_ERGEBNIS_ZEIT, ergzeit);
+        values.put(FalleingabeContract.Tbl_Ergebnis.COL_ERGEBNISZEIT, ergzeit);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_ZUST_VERBESSERT, zustVerbess);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_WERTSACHEN, wertsachen);
         values.put(FalleingabeContract.Tbl_Ergebnis.COL_WERTSACHEN_ZEIT, wertsachenZeit);
