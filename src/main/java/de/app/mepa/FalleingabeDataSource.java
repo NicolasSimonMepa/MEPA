@@ -446,5 +446,176 @@ public class FalleingabeDataSource {
         database.delete(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id, null);
         database.close();
     }
+    
+    /* von Vivien Stumpe, 23.05.16
+    Prozedur, die alle Daten aus der DB lädt zu einer bestimmten Fall ID
+     */
+    public GlobaleDaten selectFall(int id){
+        //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
+        String[] columns={FalleingabeContract.Tbl_Einsatz.COL_PAT_ID};
+        int fall_id;
+        //Man muss an die ID des Patienten rankommen, damit diese dann als Suchkriterium eingesetzt werden kann für den Patienten
+        //Außerdem müssen die Ergebnisse im mfall gespeichert werden
+        //Patienten ID des Einsatzes abfragen
+        Cursor cursor_einsatz=database.query(FalleingabeContract.Tbl_Einsatz.TABLE_NAME,
+                columns, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id,
+                null, null, null, null);
+        if(cursor_einsatz.getCount() >= 1){
+            cursor_einsatz.moveToFirst();
+            fall_id=(cursor_einsatz.getInt(0));
+            Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME,
+                    null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + fall_id,
+                    null, null, null, null);
+        }
+        Cursor cursor_verletzung=database.query(FalleingabeContract.Tbl_Verletzung.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Verletzung.COL_PROT_ID + "=" + id,
+                null, null, null, null);
+        Cursor cursor_erkrankung=database.query(FalleingabeContract.Tbl_Erkrankung.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Erkrankung.COL_PROT_ID + "=" + id,
+                null, null, null, null);
+        Cursor cursor_massnahmen=database.query(FalleingabeContract.Tbl_Massnahmen.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Massnahmen.COL_PROT_ID + "=" + id,
+                null, null, null, null);
+        Cursor cursor_erstbefund=database.query(FalleingabeContract.Tbl_Erstbefund.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Erstbefund.COL_PROT_ID + "=" + id,
+                null, null, null, null);
+        Cursor cursor_ergebnis=database.query(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + "=" + id,
+                null, null, null, null);
+
+        GlobaleDaten mfall=new GlobaleDaten();
+        if(cursor_verletzung.getCount() >= 1){
+            cursor_verletzung.moveToFirst();
+            mfall.setVerl_elektrounfall(cursor_verletzung.getInt(1));
+            mfall.setVerl_wunde_verletzung(cursor_verletzung.getInt(2));
+            mfall.setVerl_inhalationstrauma(cursor_verletzung.getInt(3));
+            mfall.setVerl_sonstiges(cursor_verletzung.getInt(4));
+            mfall.setVerl_verbrennung(cursor_verletzung.getInt(5));
+            mfall.setVerl_prellung_verletzung(cursor_verletzung.getInt(6));
+            mfall.setVerl_schaedel_art(cursor_verletzung.getString(7));
+            mfall.setVerl_gesicht_art(cursor_verletzung.getString(8));
+            mfall.setVerl_brustkorb_art(cursor_verletzung.getString(9));
+            mfall.setVerl_bws_lws_art(cursor_verletzung.getString(10));
+            mfall.setVerl_hws_art(cursor_verletzung.getString(11));
+            mfall.setVerl_becken_art(cursor_verletzung.getString(12));
+            mfall.setVerl_bauch_art(cursor_verletzung.getString(13));
+            mfall.setVerl_beine_art(cursor_verletzung.getString(14));
+            mfall.setVerl_arme_art(cursor_verletzung.getString(15));
+            mfall.setVerl_weichteile_art(cursor_verletzung.getString(16));
+            mfall.setVerl_schaedel_grad(cursor_verletzung.getString(17));
+            mfall.setVerl_gesicht_grad(cursor_verletzung.getString(18));
+            mfall.setVerl_brustkorb_grad(cursor_verletzung.getString(19));
+            mfall.setVerl_bws_lws_grad(cursor_verletzung.getString(20));
+            mfall.setVerl_hws_grad(cursor_verletzung.getString(21));
+            mfall.setVerl_becken_grad(cursor_verletzung.getString(22));
+            mfall.setVerl_bauch_grad(cursor_verletzung.getString(23));
+            mfall.setVerl_beine_grad(cursor_verletzung.getString(24));
+            mfall.setVerl_arme_grad(cursor_verletzung.getString(25));
+            mfall.setVerl_weichteile_art(cursor_verletzung.getString(26));
+            Log.d(LOG_TAG, mfall.toString());
+        }
+        if(cursor_erkrankung.getCount() >= 1){
+            cursor_erkrankung.moveToFirst();
+            mfall.setErk_atmung(cursor_erkrankung.getInt(1));
+            mfall.setErk_herzkreislauf(cursor_erkrankung.getInt(2));
+            mfall.setErk_baucherkrankung(cursor_erkrankung.getInt(3));
+            mfall.setErk_stoffwechsel(cursor_erkrankung.getInt(4));
+            mfall.setErk_hitzeschlag(cursor_erkrankung.getInt(5));
+            mfall.setErk_vergiftung(cursor_erkrankung.getInt(6));
+            mfall.setErk_unterkuehlung(cursor_erkrankung.getInt(7));
+            mfall.setErk_gynaekologie(cursor_erkrankung.getInt(8));
+            mfall.setErk_geburtshilfe(cursor_erkrankung.getInt(9));
+            mfall.setErk_hitzeerschoepfung(cursor_erkrankung.getInt(10));
+            mfall.setErk_kindernotfall(cursor_erkrankung.getInt(11));
+            mfall.setErk_neurologie(cursor_erkrankung.getInt(12));
+            mfall.setErk_psychatrie(cursor_erkrankung.getInt(13));
+            mfall.setErk_alkoholisiert(cursor_erkrankung.getInt(14));
+            mfall.setErk_sonstiges(cursor_erkrankung.getInt(15));
+            mfall.setErk_edtxt_sonstiges(cursor_erkrankung.getString(16));
+            mfall.setErk_schwindel(cursor_erkrankung.getInt(17));
+            mfall.setErk_erbrechen(cursor_erkrankung.getInt(18));
+            Log.d(LOG_TAG, mfall.toString());
+        }
+        if(cursor_massnahmen.getCount() >= 1){
+            cursor_massnahmen.moveToFirst();
+            mfall.setMas_stb_seitenlage(cursor_massnahmen.getInt(1));
+            mfall.setMas_oberkoerperhochlage(cursor_massnahmen.getInt(2));
+            mfall.setMas_flachlagerung(cursor_massnahmen.getInt(3));
+            mfall.setMas_schocklagerung(cursor_massnahmen.getInt(4));
+            mfall.setMas_vakuummatratze(cursor_massnahmen.getInt(5));
+            mfall.setMas_hws_stuetzkragen(cursor_massnahmen.getInt(6));
+            mfall.setMas_medikamente(cursor_massnahmen.getInt(7));
+            mfall.setMas_extr_schienung(cursor_massnahmen.getInt(8));
+            mfall.setMas_wundversorgung(cursor_massnahmen.getInt(9));
+            mfall.setMas_ekg(cursor_massnahmen.getInt(10));
+            mfall.setMas_ven_zugang(cursor_massnahmen.getInt(11));
+            mfall.setMas_infusion(cursor_massnahmen.getInt(12));
+            mfall.setMas_atemwege_freim(cursor_massnahmen.getInt(13));
+            mfall.setMas_notkompetenz(cursor_massnahmen.getInt(14));
+            mfall.setMas_sauerstoffgabe(cursor_massnahmen.getInt(15));
+            mfall.setMas_intubation(cursor_massnahmen.getInt(16));
+            mfall.setMas_beatmung(cursor_massnahmen.getInt(17));
+            mfall.setMas_herzdruckmassage(cursor_massnahmen.getInt(18));
+            mfall.setMas_erstdefibrillation(cursor_massnahmen.getInt(19));
+            mfall.setMas_betreuung(cursor_massnahmen.getInt(20));
+            mfall.setMas_sonstiges(cursor_massnahmen.getInt(21));
+            mfall.setMas_sonstiges_text(cursor_massnahmen.getString(22));
+            //aed?
+            mfall.setMas_keine(cursor_massnahmen.getInt(24));
+            Log.d(LOG_TAG, mfall.toString());
+        }
+        if(cursor_erstbefund.getCount() >= 1){
+            cursor_erstbefund.moveToFirst();
+            mfall.setErst_bewusstsein(cursor_erstbefund.getString(1));
+            mfall.setErst_schmerzen(cursor_erstbefund.getString(2));
+            mfall.setErst_kreislauf(cursor_erstbefund.getString(3));
+            mfall.setErst_ekg(cursor_erstbefund.getString(4));
+            mfall.setErst_atmung(cursor_erstbefund.getString(5));
+            mfall.setErst_rr_sys(cursor_erstbefund.getString(6));
+            mfall.setErst_rr_dia(cursor_erstbefund.getString(7));
+            mfall.setErst_puls(cursor_erstbefund.getString(8));
+            mfall.setErst_af(cursor_erstbefund.getString(9));
+            mfall.setErst_spo(cursor_erstbefund.getString(10));
+            mfall.setErst_bz(cursor_erstbefund.getString(11));
+            mfall.setErst_pupille_li(cursor_erstbefund.getString(12));
+            mfall.setErst_pupille_re(cursor_erstbefund.getString(13));
+            Log.d(LOG_TAG, mfall.toString());
+        }
+        if(cursor_ergebnis.getCount() >= 1){
+            cursor_ergebnis.moveToFirst();
+            mfall.setErg_ergebnis_zeit(cursor_ergebnis.getString(1));
+            //zustand verbessert?
+            mfall.setErg_wertsachen(cursor_ergebnis.getString(3));
+            //wertsachen zeit?
+            //Bemerkung?
+            //nachforderung zeit?
+            mfall.setErg_funkruf(cursor_ergebnis.getString(7));
+            //Funkruf zeit?
+            mfall.setErg_transport(cursor_ergebnis.getString(9));
+            mfall.setErg_transport_ziel(cursor_ergebnis.getString(10));
+            mfall.setErg_entlassung_ev(cursor_ergebnis.getInt(11));
+            mfall.setErg_zeuge(cursor_ergebnis.getString(12));
+            mfall.setErg_zustand(cursor_ergebnis.getString(13));
+            mfall.setErg_notarzt(cursor_ergebnis.getString(14));
+            mfall.setErg_hausarzt_informiert(cursor_ergebnis.getInt(15));
+            mfall.setErg_tod(cursor_ergebnis.getInt(16));
+            mfall.setErg_transport_sonstiges(cursor_ergebnis.getString(17));
+            mfall.setErg_ersthelfermassn(cursor_ergebnis.getString(18));
+            mfall.setErg_nachforderung_ktw(cursor_ergebnis.getInt(19));
+            mfall.setErg_nachforderung_rtw(cursor_ergebnis.getInt(20));
+            mfall.setErg_nachforderung_nef(cursor_ergebnis.getInt(21));
+            mfall.setErg_nachforderung_naw(cursor_ergebnis.getInt(22));
+            mfall.setErg_nachforderung_rth(cursor_ergebnis.getInt(23));
+            mfall.setErg_nachforderung_feuerwehr(cursor_ergebnis.getInt(24));
+            mfall.setErg_nachforderung_polizei(cursor_ergebnis.getInt(25));
+            mfall.setErg_transport_sonstiges(cursor_ergebnis.getString(26));
+            Log.d(LOG_TAG, mfall.toString());
+        }
+        return mfall;
+
+        //Patient fehlt
+        //Stammdaten und Sani fehlen
+
+    }
 }
 
