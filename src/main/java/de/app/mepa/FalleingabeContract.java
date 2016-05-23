@@ -185,15 +185,10 @@ public final class FalleingabeContract {
         public static final String TABLE_NAME = "einsatz";
         public static final String COL_ID = "_id";
         public static final String COL_EINSATZ_DATUM = "datum";
-        public static final String COL_EINSATZ_ZEIT_VON = "zeit_von";
-        public static final String COL_EINSATZ_ZEIT_BIS = "zeit_bis";
         public static final String COL_ZUGEFUEHRT_DURCH = "zugefuehrt_durch";
         public static final String COL_HILFSSTELLE = "hilfsstelle";
         public static final String COL_MOSAN_TEAM = "mosan_team";
         public static final String COL_SAN_WACHE = "san_wache";
-        public static final String COL_POLIZEI_TXT = "polizei_txt";
-        public static final String COL_RTW_KTW_TXT = "rtw_ktw_txt";
-        public static final String COL_SAN_TEAM_TXT = "san_team_txt";
         public static final String COL_FUNDORT = "fundort";
         public static final String COL_NOTFALL = "notfallsituation";
         public static final String COL_PAT_ID = "patienten_id";
