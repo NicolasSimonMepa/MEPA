@@ -427,8 +427,8 @@ public class FalleingabeDataSource {
         database.delete(FalleingabeContract.Tbl_Erstbefund.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Erkrankung.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Verletzung.TABLE_NAME, null, null);
-        database.delete(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, null, null);
+        database.delete(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Sani.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Veranstaltung.TABLE_NAME, null, null);
         database.delete(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, null);
