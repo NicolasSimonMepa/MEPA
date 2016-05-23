@@ -581,6 +581,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 mfall.getMas_ekg(), mfall.getMas_ven_zugang(), mfall.getMas_infusion(), mfall.getMas_atemwege_freim(),
                 mfall.getMas_notkompetenz(), mfall.getMas_sauerstoffgabe(), mfall.getMas_intubation(), mfall.getMas_beatmung(), mfall.getMas_herzdruckmassage(),
                 mfall.getMas_erstdefibrillation(), mfall.getMas_betreuung(), mfall.getMas_sonstiges(), mfall.getMas_sonstiges_text(), mfall.getMas_keine());
+        
+        dataSource.insertErstbefund(mfall.getFallID(), mfall.getErst_bewusstsein(), mfall.getErst_schmerzen(), mfall.getErst_kreislauf(),
+                mfall.getErst_ekg(), mfall.getErst_atmung(), mfall.getErst_rr_sys(), mfall.getErst_rr_dia(),
+                mfall.getErst_puls(), mfall.getErst_af(), mfall.getErst_spo(), mfall.getErst_bz(), 
+                mfall.getErst_pupille_li(), mfall.getErst_pupille_re());
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
        eingabenZuruecksetzen();
