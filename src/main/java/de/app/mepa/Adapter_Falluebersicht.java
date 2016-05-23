@@ -3,6 +3,7 @@ package de.app.mepa;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.mepa.R;
 
 /**
@@ -75,8 +77,11 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 int prot_id=Integer.parseInt(prot_id_string);
                                 Log.d("Fall", prot_id+" ID");
                                 dataSource=new FalleingabeDataSource(getContext());
+                                dataSource.open();
                                 //Fall löschen
-                                //dataSource.deleteFall(prot_id);
+                                dataSource.deleteFall(prot_id);
+
+
                             }
                         })
 
