@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Indra Marcheel am 23.05.16
+//Zuletzt bearbeitet von Vivien Stumpe am 20.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
@@ -134,25 +134,24 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband);
             /* von Indra Marcheel, 23.05.2016
         */
-        if( etxt_kreisverband.getText().toString().length() == 0 ) {
+       /* if( etxt_kreisverband.getText().toString().length() == 0 ) {
             etxt_kreisverband.setError( "Bitte gib deinen Kreisverband ein" );
-        }
+        }*/
         etxt_ort=(EditText)findViewById(R.id.etxt_ort);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
             /* von Indra Marcheel, 23.05.2016
         */
-        if( etxt_ortsverein.getText().toString().length() == 0 ) {
+        /*if( etxt_ortsverein.getText().toString().length() == 0 ) {
             etxt_ortsverein.setError( "Bitte gib deinen Ortsverein ein" );
-    }
+    }*/
         etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung);
-
             /* von Indra Marcheel, 23.05.2016
         */
-        if( etxt_veranstaltung.getText().toString().length() == 0 ) {
+        /*if( etxt_veranstaltung.getText().toString().length() == 0 ) {
             etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
-        }
+        }*/
         etxt_date=(EditText)findViewById(R.id.etxt_veranstaltung_datum);
-        if( etxt_date.getText().toString().length() == 0 ) {
+        /*if( etxt_date.getText().toString().length() == 0 ) {
             etxt_date.setError( "Bitte wähle das Datum der Veranstaltung aus" );
         }
          /* von Indra Marcheel, 18.05.2016
@@ -239,18 +238,6 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if( etxt_veranstaltung.getText().toString().length() == 0 ) {
-                    etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
-                }
-
-                if( etxt_ortsverein.getText().toString().length() == 0 ) {
-                    etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                }
-
-                if( etxt_kreisverband.getText().toString().length() == 0 ) {
-                    etxt_kreisverband.setError( "Bitte gib deinen Kreisverband ein" );
-                }
-
             }
 
             @Override
@@ -336,19 +323,40 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         if(ce == R.id.cck_sanw){
             buttons.setVisibility(buttons.VISIBLE);
         }
-        if(ce == R.id.btn_speichern_stammd){
+        if(ce == R.id.btn_speichern_stammd) {
             //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
             //muss noch angepasst werden -> Daten werden ja auch gelöscht?
             // & Vergleich mit bestehenden Daten fehlt
-            speichereEingaben();
-            mfall=(GlobaleDaten)getApplication();
-            mfall.setVerbandID(true);
-            dataSource = new FalleingabeDataSource(this);
-            dataSource.open();
-            dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
-            dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
-            //Buttons wieder ausblenden
-            buttons.setVisibility(buttons.GONE);
+                 /* von Indra Marcheel, 23.05.2016
+        */
+            if (etxt_kreisverband.getText().toString().length() == 0) {
+                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            }
+            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
+                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            }
+            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
+                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            }if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            }
+            else {
+                speichereEingaben();
+                mfall = (GlobaleDaten) getApplication();
+                mfall.setVerbandID(true);
+                dataSource = new FalleingabeDataSource(this);
+                dataSource.open();
+                dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
+                dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
+                //Buttons wieder ausblenden
+                buttons.setVisibility(buttons.GONE);
+            }
         }
         /* von Vivien Stumpe, 14.05.2016
         DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
