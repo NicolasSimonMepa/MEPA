@@ -101,19 +101,13 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband_onb);
               /* von Indra Marcheel, 23.05.2016
         */
-        if( etxt_kreisverband.getText().toString().length() == 0 ) {
-            etxt_kreisverband.setError( "Bitte gib deinen Kreisverband ein" );
-        }
         etxt_ort=(EditText)findViewById(R.id.etxt_ort_onb);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein_onb);
               /* von Indra Marcheel, 23.05.2016
         */
-        if( etxt_ortsverein.getText().toString().length() == 0 ) {
-            etxt_ortsverein.setError( "Bitte gib deinen Ortsverein ein" );
-        }
         etxt_veranstaltung=(EditText)findViewById(R.id.etxt_veranstaltung_onb);
                /* von Indra Marcheel, 23.05.2016
-        */
+
         if( etxt_veranstaltung.getText().toString().length() == 0 ) {
             etxt_veranstaltung.setError( "Bitte gib die Veranstaltung ein" );
         }
@@ -201,7 +195,6 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -279,6 +272,24 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             startActivity(onboard);
         }
        if(ce == R.id.btn_speichern_stammd_onb){
+           if (etxt_kreisverband.getText().toString().length() == 0) {
+               etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+           }
+           if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
+               etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+               etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+           }
+           if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
+               etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+               etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+               etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+           }if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+               etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+               etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+               etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+               etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+           }
+           else {
             speichereEingaben();
             mfall=(GlobaleDaten)getApplication();
             mfall.setVerbandID(true);
@@ -290,6 +301,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                 Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
             }
+       }
        }
         /* von Vivien Stumpe, 14.05.2016
         DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
