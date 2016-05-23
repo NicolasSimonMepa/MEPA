@@ -605,7 +605,55 @@ public class FalleingabeDataSource {
 
         //Patient fehlt
         //Stammdaten und Sani fehlen
+    }
+       private GlobaleDaten cursorToGlobaleDaten(Cursor cursor) {
+        int idIndex = cursor.getColumnIndex(FalleingabeContract.Tbl_Patient.COL_ID);
+        int idProduct = cursor.getColumnIndex(FalleingabeContract.Tbl_Patient.COL_NAME);
+        int idQuantity = cursor.getColumnIndex(FalleingabeContract.Tbl_Patient.COL_VORNAME);
+        int idFallID = cursor.getColumnIndex(FalleingabeContract.Tbl_Einsatz.COL_ID);
 
+        String product = cursor.getString(idProduct);
+        String quantity = cursor.getString(idQuantity);
+        Integer id = cursor.getInt(idFallID);
+
+        GlobaleDaten globaleDaten = new GlobaleDaten();
+        globaleDaten.setPat_name(product);
+        globaleDaten.setPat_vorname(quantity);
+        globaleDaten.setEin_ID(id);
+
+        return globaleDaten;
+    }
+
+    public String[] getAllPat() {
+        List<GlobaleDaten> patList = new ArrayList<>();
+        Integer pat_id;
+        String[] columns={FalleingabeContract.Tbl_Patient.COL_ID, FalleingabeContract.Tbl_Patient.COL_NAME, FalleingabeContract.Tbl_Patient.COL_VORNAME, FalleingabeContract.Tbl_Einsatz.COL_ID};
+
+        String[] columns_ein={FalleingabeContract.Tbl_Einsatz.COL_ID, FalleingabeContract.Tbl_Einsatz.COL_PAT_ID};
+        Cursor cursor = database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME
+                        + " INNER JOIN "+FalleingabeContract.Tbl_Einsatz.TABLE_NAME+" ON "+FalleingabeContract.Tbl_Patient.TABLE_NAME+"._id="
+                        +FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_PAT_ID, null, null, null,
+                null, null, FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_ID+ " ASC");
+
+        cursor.moveToFirst();
+        GlobaleDaten globDaten;
+        while(!cursor.isAfterLast()) {
+            globDaten = cursorToGlobaleDaten(cursor);
+            patList.add(globDaten);
+            Log.d(LOG_TAG, "ID: " + globDaten.getPatID() + ", Inhalt: " + globDaten.toString());
+            cursor.moveToNext();
+        }
+        cursor.close();
+        int j = 0;
+        int l =patList.size();
+        String[] patListString = new String[l];
+
+        while (j < patList.size()) {
+            String id=String.valueOf(patList.get(j).getFallID());
+            patListString[j]=(id + " " + patList.get(j).getPat_name()) + ", " + (patList.get(j).getPat_vorname());
+            j++;
+        }
+        return patListString;
     }
 }
 
