@@ -279,13 +279,15 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
     private File getFile() {
         File folder = new File("sdcard/mepa");
+        mfall.setPatID(true);
+        String PatID = String.valueOf(mfall.getPatID());
 
         if (!folder.exists())
         {
             folder.mkdir();
         }
 
-        File image_file = new File(folder,"entlassungsrevers.jpg");
+        File image_file = new File(folder, PatID + ".jpeg");
         return image_file;
     }
 
