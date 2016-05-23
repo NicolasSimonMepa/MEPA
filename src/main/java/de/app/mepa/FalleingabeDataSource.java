@@ -233,8 +233,8 @@ public class FalleingabeDataSource {
     }
     
     // von Nicolas Simon, 22.05.16
-    public void insertErstbefund(Integer fallID, String bewust, String schmerz, String kreislauf, String ekg, String atmung, Integer rrSys, Integer rrDia,
-                              Integer puls, Integer af, float spo , float bz, String pupilleLi, String pupilleRe) {
+    public void insertErstbefund(Integer fallID, String bewust, String schmerz, String kreislauf, String ekg, String atmung, String rrSys, String rrDia,
+                              String puls, String af, String spo , String bz, String pupilleLi, String pupilleRe) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Erstbefund.COL_PROT_ID, fallID);
         values.put(FalleingabeContract.Tbl_Erstbefund.COL_BEWUSSTSEIN, bewust);
