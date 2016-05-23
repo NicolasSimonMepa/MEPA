@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -66,6 +67,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     private TextWatcher textWatcher;
 
     private GlobaleDaten mfall;
+    private FalleingabeDataSource dataSource;
 
 
     @Override
@@ -184,6 +186,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
         Falls Werte vorhanden sind, werden diese im Screen geladen
          */
         setWerte();
+        dataSource=new FalleingabeDataSource(this);
     }
 
     @Override
@@ -208,6 +211,13 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
                 Toast.makeText(this, "Mitarbeiter gespeichert", Toast.LENGTH_LONG).show();
             }
             speichereEingaben();
+            mfall=(GlobaleDaten)getApplication();
+            mfall.setSaniID(true);
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+
+            dataSource.insertSani(mfall.getSaniID(), mfall.getSan_name(), mfall.getSan_vorname(), mfall.getVerbandID());
+
 
             //Buttons wieder ausblenden
             lnl_buttons.setVisibility(lnl_buttons.GONE);
