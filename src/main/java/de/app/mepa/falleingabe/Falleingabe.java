@@ -566,6 +566,21 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 mfall.getSaniID(), mfall.getPat_sex(), mfall.getPat_str(), mfall.getPat_plz(), mfall.getPat_ort(),
                 mfall.getPat_land(), mfall.getPat_tel(), mfall.getPat_krankenkasse(),
                 mfall.getPat_versnr(), mfall.getPat_versichertennr());
+        
+        dataSource.insertEinsatz(mfall.getPatID(), mfall.getVer_date(), mfall.getEin_zugef(), mfall.getEin_hilfs(),
+                mfall.getEin_mosan(), mfall.getEin_sanw(), mfall.getNotf_notfallsituation(), mfall.getEin_fundort(), mfall.getFallID());
+
+        dataSource.insertErkrankung(mfall.getErk_atmung(), mfall.getErk_herzkreislauf(), mfall.getErk_baucherkrankung(),
+                mfall.getErk_stoffwechsel(), mfall.getErk_hitzeschlag(), mfall.getErk_vergiftung(), mfall.getErk_unterkuehlung(),
+                mfall.getErk_gynaekologie(), mfall.getErk_geburtshilfe(), mfall.getErk_hitzeerschoepfung(), mfall.getErk_kindernotfall(),
+                mfall.getErk_neurologie(), mfall.getErk_psychatrie(), mfall.getErk_alkoholisiert(), mfall.getErk_sonstiges(),
+                mfall.getErk_edtxt_sonstiges(), mfall.getErk_schwindel(), mfall.getErk_erbrechen(), mfall.getFallID());
+
+        dataSource.insertMassnahmen(mfall.getFallID(), mfall.getMas_stb_seitenlage(), mfall.getMas_oberkoerperhochlage(), mfall.getMas_flachlagerung(), mfall.getMas_schocklagerung(),
+                mfall.getMas_vakuummatratze(), mfall.getMas_hws_stuetzkragen(), mfall.getMas_medikamente(), mfall.getMas_extr_schienung(), mfall.getMas_wundversorgung(),
+                mfall.getMas_ekg(), mfall.getMas_ven_zugang(), mfall.getMas_infusion(), mfall.getMas_atemwege_freim(),
+                mfall.getMas_notkompetenz(), mfall.getMas_sauerstoffgabe(), mfall.getMas_intubation(), mfall.getMas_beatmung(), mfall.getMas_herzdruckmassage(),
+                mfall.getMas_erstdefibrillation(), mfall.getMas_betreuung(), mfall.getMas_sonstiges(), mfall.getMas_sonstiges_text(), mfall.getMas_keine());
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
        eingabenZuruecksetzen();
