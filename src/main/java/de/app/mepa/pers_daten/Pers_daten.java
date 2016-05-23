@@ -1,39 +1,30 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+//Zuletzt bearbeitet von Indra Marcheel, 23.05.16
 
 package de.app.mepa.pers_daten;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
@@ -110,13 +101,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     private EditText etxt_plz_pers_daten, etxt_ort_pers_daten, etxt_land_pers_daten, etxt_tel_pers_daten,
     etxt_krankenkasse_pers_daten, etxt_versnr_pers_daten, etxt_versichertennr_pers_daten, etxt_fundort_pers_daten;
     private RadioButton rbtn_weibl, rbtn_maennl;
-    /* von Vivien Stumpe, 20.05.16
-    Textwatcher deklarieren
-    Timer deklarieren mit der Zeit DELAY in Millisekunden
-    */
-    private Timer timer = new Timer();
-    private final long DELAY = 2000; // in ms
-    private TextWatcher tw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,50 +177,57 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         etxt_sonstiges.invalidate();
 
         etxt_name_pers_daten=(EditText) findViewById(R.id.etxt_name_pers_daten);
+        /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_name_pers_daten.getText().toString().length() == 0 ) {
+	etxt_name_pers_daten.setError( "Bitte gib den Namen der Person ein" );
+            }
+
         /* von Indra Marcheel, 09.05.2016
         es können nur character eingegeben werden
-        */
-        mfall=(GlobaleDaten)getApplication();
-        if(mfall.getPat_name()==null) {
-            etxt_name_pers_daten.setFilters(new InputFilter[]{
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if (src.equals("")) { // for backspace
-                                return src;
-                            }
-                            if (src.toString().matches("[a-zA-Z ]+")) {
-                                return src;
-                            }
-                            return "";
+         */
+        etxt_name_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
-
+                }
+        });
 
         etxt_vorname_pers_daten=(EditText) findViewById(R.id.etxt_vorname_pers_daten);
          /* von Indra Marcheel, 09.05.2016
         es können nur character eingegeben werden
          */
-        if(mfall.getPat_vorname()==null) {
-            etxt_vorname_pers_daten.setFilters(new InputFilter[]{
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if (src.equals("")) { // for backspace
-                                return src;
-                            }
-                            if (src.toString().matches("[a-zA-Z ]+")) {
-                                return src;
-                            }
-                            return "";
-                        }
-                    }
-            });
+
+        /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_vorname_pers_daten.getText().toString().length() == 0 ) {
+            etxt_vorname_pers_daten.setError( "Bitte gib den Vornamen der Person ein" );
         }
+
+        etxt_vorname_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
+                        }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
          /* von Indra Marcheel, 09.05.2016
-        es können nur character, - , und zahlen eingegebne werden 
+        es können nur character, - , und zahlen eingegeben werden
          */
         etxt_str_pers_daten=(EditText) findViewById(R.id.etxt_str_pers_daten);
         InputFilter filter = new InputFilter() {
@@ -251,72 +242,62 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             }
         };
 
-        if(mfall.getPat_str()==null){
-            etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
-        }
+        etxt_str_pers_daten.setFilters(new InputFilter[]{filter});
 
 
         etxt_fundort_pers_daten=(EditText) findViewById(R.id.etxt_fundort_pers_daten);
-        if(mfall.getEin_fundort()==null){
-            etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
-        }
+        etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
 
         etxt_ort_pers_daten=(EditText) findViewById(R.id.etxt_ort_pers_daten);
         /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
          */
-        if(mfall.getPat_ort()==null){
-            etxt_ort_pers_daten.setFilters(new InputFilter[] {
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
-                            }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+        etxt_ort_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
+                }
+        });
 
         etxt_land_pers_daten=(EditText) findViewById(R.id.etxt_land_pers_daten);
-        if(mfall.getPat_land()==null){
-            etxt_land_pers_daten.setFilters(new InputFilter[] {
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
-                            }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+        etxt_land_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
+                }
+        });
 
         etxt_krankenkasse_pers_daten=(EditText) findViewById(R.id.etxt_krankenkasse_pers_daten);
-        if(mfall.getPat_krankenkasse()==null){
-            etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
-                    new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
-                            }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+        etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if(src.equals("")){ // for backspace
+                            return src;
                         }
+                        if(src.toString().matches("[a-zA-Z ]+")){
+                            return src;
+                        }
+                        return "";
                     }
-            });
-        }
+                }
+        });
 
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
@@ -345,6 +326,11 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
 
         // Variablen für das Geburtsdatum
         etxt_gebdat=(EditText)findViewById(R.id.etxt_geb_pers_daten);
+            /* von Indra Marcheel, 23.05.2016
+        */
+        if( etxt_gebdat.getText().toString().length() == 0 ) {
+            etxt_gebdat.setError( "Bitte gib den Geburtstag der Person ein" );
+        }
         etxt_gebdat.setOnClickListener(this);
         /* von Vivien Stumpe, 15.05.16
         Views im Screen den Variablen zuordnen
@@ -362,79 +348,14 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         rbtn_maennl.setOnClickListener(this);
         rbtn_weibl.setOnClickListener(this);
 
-        tastaturausblenden();
-
         /* von Vivien Stumpe, 15.05.16
         Falls Werte vorhanden sind, werden diese im Screen geladen
          */
         setWerte();
     }
 
-/* von Vivien Stumpe, 20.05.16
-    Prozedur, die die Tastatur 2 Sekunden nach der Eingabe von 3 Zeichen ausblendet
-*/
-    public void tastaturausblenden(){
 
-         /* von Vivien Stumpe, 20.05.16
-        TextWatcher "beobachtet" den User bei der Eingabe in ein EditText
-        Damit entsprechend auf Eingaben reagiert werden kann
-         */
-        tw=new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                
-                //Timer erst starten nachdem 3 Zeichen eingegeben wurden
-                if (s.length() >= 3) {
-
-                    timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            //Tastatur ausblenden
-                            InputMethodManager imm =
-                                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(etxt_name_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_vorname_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_str_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_plz_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_ort_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_land_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_tel_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_krankenkasse_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_versichertennr_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_versnr_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_fundort_pers_daten.getWindowToken(), 0);
-                            imm.hideSoftInputFromWindow(etxt_sonstiges.getWindowToken(), 0);
-                        }
-
-                    }, DELAY);
-                }
-            }
-
-        };
-        etxt_name_pers_daten.addTextChangedListener(tw);
-        etxt_vorname_pers_daten.addTextChangedListener(tw);
-        etxt_str_pers_daten.addTextChangedListener(tw);
-        etxt_plz_pers_daten.addTextChangedListener(tw);
-        etxt_ort_pers_daten.addTextChangedListener(tw);
-        etxt_land_pers_daten.addTextChangedListener(tw);
-        etxt_tel_pers_daten.addTextChangedListener(tw);
-        etxt_krankenkasse_pers_daten.addTextChangedListener(tw);
-        etxt_versnr_pers_daten.addTextChangedListener(tw);
-        etxt_versichertennr_pers_daten.addTextChangedListener(tw);
-        etxt_fundort_pers_daten.addTextChangedListener(tw);
-        etxt_sonstiges.addTextChangedListener(tw);
-    }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
@@ -604,7 +525,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
      */
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
-         mfall.setPatID(true);
         mfall.setPat_name(etxt_name_pers_daten.getText().toString());
         Log.d("Fall", "Name gespeichert");
 
@@ -689,7 +609,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         mfall=(GlobaleDaten)getApplication();
 
         if((mfall.getPat_name()!=null)){
-           etxt_name_pers_daten.setText(mfall.getPat_name());
+            etxt_name_pers_daten.setText(mfall.getPat_name());
         }
         if((mfall.getPat_vorname()!=null)){
             etxt_vorname_pers_daten.setText(mfall.getPat_vorname());
