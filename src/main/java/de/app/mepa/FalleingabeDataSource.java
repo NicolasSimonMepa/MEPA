@@ -434,5 +434,17 @@ public class FalleingabeDataSource {
         database.delete(FalleingabeContract.Tbl_Verband.TABLE_NAME, null, null);
         database.close();
     }
+        /* von Vivien Stumpe, 23.05.16
+    Alle Daten eines Falls mit einer bestimmten Protokoll ID in der DB werden gelöscht
+    */
+    public void deleteFall(int id){
+        database.delete(FalleingabeContract.Tbl_Massnahmen.TABLE_NAME, FalleingabeContract.Tbl_Massnahmen.COL_PROT_ID + "=" + id, null);
+        database.delete(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME, FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + "=" + id, null);
+        database.delete(FalleingabeContract.Tbl_Erstbefund.TABLE_NAME, FalleingabeContract.Tbl_Erstbefund.COL_PROT_ID + "=" + id, null);
+        database.delete(FalleingabeContract.Tbl_Erkrankung.TABLE_NAME, FalleingabeContract.Tbl_Erkrankung.COL_PROT_ID + "=" + id, null);
+        database.delete(FalleingabeContract.Tbl_Verletzung.TABLE_NAME, FalleingabeContract.Tbl_Verletzung.COL_PROT_ID + "=" + id, null);
+        database.delete(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id, null);
+        database.close();
+    }
 }
 
