@@ -333,7 +333,7 @@ public class FalleingabeDataSource {
                                  Integer vakuummatratze, Integer hws_st, Integer medikamente, Integer schienung, Integer wundversorgung,
                                  Integer ekg, Integer zugang, Integer infusion, Integer atemwege, 
                                  Integer notkompetenz, Integer sauerstoffgabe,Integer intubation, Integer beatmung, Integer herzdruckm,
-                                 Integer erstdefi, Integer betreuung, Integer sonstiges, Integer sonstigestext,
+                                 Integer erstdefi, Integer betreuung, Integer sonstiges, String sonstigestext,
                                  Integer keine) {
         ContentValues values = new ContentValues();
         values.put(FalleingabeContract.Tbl_Massnahmen.COL_PROT_ID, fallID);
