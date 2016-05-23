@@ -30,6 +30,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -97,6 +98,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
      */
     private Timer timer = new Timer();
     private final long DELAY = 10000; // in ms
+    private FalleingabeDataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,6 +291,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         Aktuelle Werte (falls vorhanden) im Screen anzeigen
         */
         setWerte();
+        dataSource=new FalleingabeDataSource(this);
     }
 
 
@@ -320,23 +323,13 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
             //muss noch angepasst werden -> Daten werden ja auch gelöscht?
             // & Vergleich mit bestehenden Daten fehlt
-            if (etxt_kreisverband.getText().length()!=0){
-                //aktObjekt.setKreisverband(etxt_kreisverband.getText().toString())
-                Toast.makeText(this, "Kreisverband gespeichert", Toast.LENGTH_LONG).show();
-            }
-            if (etxt_ortsverein.getText().length()!=0){
-                //aktObjekt.setOrtsverein(etxt_ortsverein.getText().toString())
-                Toast.makeText(this, "Ortsverein gespeichert", Toast.LENGTH_LONG).show();
-            }
-            if (etxt_ort.getText().length()!=0){
-                //aktObjekt.setOrt(etxt_ort.getText().toString())
-                Toast.makeText(this, "Ort gespeichert", Toast.LENGTH_LONG).show();
-            }
-            if (etxt_veranstaltung.getText().length()!=0){
-                //aktObjekt.setVeranstaltung(etxt_veranstaltung.getText().toString())
-                Toast.makeText(this, "Veranstaltung gespeichert", Toast.LENGTH_LONG).show();
-            }
             speichereEingaben();
+            mfall=(GlobaleDaten)getApplication();
+            mfall.setVerbandID(true);
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+            dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
+            dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
             //Buttons wieder ausblenden
             buttons.setVisibility(buttons.GONE);
         }
