@@ -833,7 +833,7 @@ public class GlobaleDaten extends Application {
     public void loescheSan(){
         setSan_name(null);
         setSan_vorname(null);
-        setSan_vorh();
+     //   setSan_vorh();
     }
     //Verband - Dienste
     public void setVerb_kreisv(String k){
@@ -859,7 +859,7 @@ public class GlobaleDaten extends Application {
     public void loescheVerb(){
         setVerb_ortsv(null);
         setVerb_kreisv(null);
-        setVerb_vorh();
+       // setVerb_vorh();
     }
 
     //Veranstaltung - Dienste
@@ -882,7 +882,7 @@ public class GlobaleDaten extends Application {
         setVer_name(null);
         setVer_ort(null);
         setVer_date(null);
-        setVer_vorh();
+       // setVer_vorh();
     }
     public String getVer_date(){
         return ver_date;
