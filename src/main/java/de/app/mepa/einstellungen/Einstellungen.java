@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import de.app.mepa.FalleingabeDataSource;
+import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
@@ -64,6 +65,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private Button btn_loeschen;
     private Button btn_abbrechen;
     private FalleingabeDataSource dataSource;
+    private GlobaleDaten mfall;
 
 
     @Override
@@ -124,6 +126,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         btn_abbrechen.setOnClickListener(this);
         btn_loeschen.setOnClickListener(this);
         dataSource=new FalleingabeDataSource(this);
+
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -178,6 +181,12 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             */
             dataSource.open();
             dataSource.deleteAll();
+            mfall=(GlobaleDaten)getApplication();
+            //von Vivien Stumpe, 24.05.16
+            //lokal gespeicherte Stammdaten werden auch gelöscht
+            mfall.loescheVerb();
+            mfall.loescheSan();
+            mfall.loescheVer();
             Toast.makeText(this, "Daten werden gelöscht", Toast.LENGTH_SHORT).show();
             //werden die Buttons ausgeblendet
             lnl_buttons.setVisibility(View.GONE);
