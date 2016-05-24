@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 20.05.16
+//Zuletzt geändert von Vivien Stumpe, 24.05.16
 package de.app.mepa.stammdaten;
 
         import android.app.DatePickerDialog;
@@ -362,7 +362,9 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                 dataSource.open();
                 dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
                 dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
+                buttons.setVisibility(buttons.GONE);
                 if(mfall.getFall_angelegt()){
+                    mfall.setUebersprungen(false);
                     Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
                     startActivity(fallein);
                 }
