@@ -1,9 +1,11 @@
-//Zuletzt geändert von Vivien Stumpe am 21.05.2016
+//Zuletzt geändert von Vivien Stumpe am 24.05.2016
 package de.app.mepa.falleingabe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -329,6 +331,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         }
         if (ce == R.id.txtv_fallein_erstbef) {
             Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
+
             startActivity(intent);
         }
         if (ce == R.id.txtv_fallein_bemerkung) {
@@ -343,7 +346,40 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         */
         // von Vivien Stumpe, 02.05.16
         if (ce == R.id.btn_speichern_fallein) {
-            speichern();
+            /* von Vivien Stumpe, 24.05.16
+               Wurde der Onboarding Prozess übersprungen?
+                Wenn ja wird er jetzt gestartet, damit die Stammdaten erfasst werden
+             */
+            if(mfall.getUebersprungen()& mfall.getVerb_kreisv()==null & mfall.getVerb_ortsv()==null
+                    & mfall.getVer_name()==null & mfall.getVer_date()==null
+                    &mfall.getSan_name()==null & mfall.getSan_vorname()==null){
+                Intent onboarding = new Intent(this, OnBoarding.class);
+                startActivity(onboarding);
+                //Falleingabe schließen
+                finish();
+            }
+            else{
+                //sind alle Pflichtfelder von Patientendaten ausgefüllt?
+                if(!(mfall.getPat_name()==null & mfall.getPat_vorname()==null & mfall.getPat_geb()==null)){
+                    speichern();
+                }
+                else{
+                    //Wenn nicht wird eine Fehlermeldung ausgegebeben
+                    new AlertDialog.Builder(this)
+                            .setTitle("Patientendaten fehlen")
+                            .setMessage("Geben Sie erst die Daten Ihres Patienten ein")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+
+                                }
+                            })
+
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+            }
+
         }
         if (ce == R.id.btn_verwerfen_fallein) {
             verwerfen();
