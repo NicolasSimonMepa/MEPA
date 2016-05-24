@@ -2,6 +2,7 @@
 package de.app.mepa;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -444,7 +445,8 @@ public class FalleingabeDataSource {
     public GlobaleDaten selectFall(int id){
         //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
         String[] columns={FalleingabeContract.Tbl_Einsatz.COL_PAT_ID};
-        int fall_id;
+        int pat_id;
+        GlobaleDaten mfall=new GlobaleDaten();
         //Man muss an die ID des Patienten rankommen, damit diese dann als Suchkriterium eingesetzt werden kann für den Patienten
         //Außerdem müssen die Ergebnisse im mfall gespeichert werden
         //Patienten ID des Einsatzes abfragen
@@ -452,12 +454,39 @@ public class FalleingabeDataSource {
                 columns, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id,
                 null, null, null, null);
         if(cursor_einsatz.getCount() >= 1){
-            cursor_einsatz.moveToFirst();
-            fall_id=(cursor_einsatz.getInt(0));
-            Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME,
-                    null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + fall_id,
-                    null, null, null, null);
+            //cursor_einsatz.moveToFirst();
+            pat_id=(cursor_einsatz.getInt(0));
+            Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + pat_id, null, null, null, null);
+            if(cursor_patient.getCount()>=1){
+                //  cursor_patient.moveToFirst();
+                mfall.setPat_name(cursor_patient.getString(1));
+                mfall.setPat_vorname(cursor_patient.getString(2));
+                mfall.setPat_geb(cursor_patient.getString(3));
+                mfall.setPat_sex(cursor_patient.getString(4));
+                mfall.setPat_str(cursor_patient.getString(5));
+                mfall.setPat_plz(cursor_patient.getString(6));
+                mfall.setPat_ort(cursor_patient.getString(7));
+                mfall.setPat_land(cursor_patient.getString(8));
+                mfall.setPat_tel(cursor_patient.getString(9));
+                mfall.setPat_krankenkasse(cursor_patient.getString(10));
+                mfall.setPat_versichertennr(cursor_patient.getString(11));
+                mfall.setPat_versnr(cursor_patient.getString(12));
+                mfall.setPat_sani(cursor_patient.getInt(13));
+            }
         }
+        Cursor cursor_pat=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME
+                        + " INNER JOIN " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME +" ON "+FalleingabeContract.Tbl_Patient.TABLE_NAME+"._id="
+                        +FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_PAT_ID, null, null, null,
+                null, null, FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_ID+ " ASC");
+        /* if(cursor_patient.getCount() >= 1){
+            cursor_patient.moveToFirst();
+            pat_id=(cursor_patient.getInt(0));
+        }
+        /*
+        Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME,
+                null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + fall_id,
+                null, null, null, null);
+        */
         Cursor cursor_verletzung=database.query(FalleingabeContract.Tbl_Verletzung.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Verletzung.COL_PROT_ID + "=" + id,
                 null, null, null, null);
@@ -474,9 +503,32 @@ public class FalleingabeDataSource {
                 null, FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + "=" + id,
                 null, null, null, null);
 
-        GlobaleDaten mfall=new GlobaleDaten();
+
+        /*
+        while(!cursor_patient.isAfterLast()) {
+
+            //patList.add(globDaten);
+            mfall.setPat_name(cursor_patient.getString(1));
+            mfall.setPat_vorname(cursor_patient.getString(2));
+            mfall.setPat_geb(cursor_patient.getString(3));
+            mfall.setPat_sex(cursor_patient.getString(4));
+            mfall.setPat_str(cursor_patient.getString(5));
+            mfall.setPat_plz(cursor_patient.getString(6));
+            mfall.setPat_ort(cursor_patient.getString(7));
+            mfall.setPat_land(cursor_patient.getString(8));
+            mfall.setPat_tel(cursor_patient.getString(9));
+            mfall.setPat_krankenkasse(cursor_patient.getString(10));
+            mfall.setPat_versichertennr(cursor_patient.getString(11));
+            mfall.setPat_versnr(cursor_patient.getString(12));
+            mfall.setPat_sani(cursor_patient.getInt(13));
+            Log.d(LOG_TAG, "ID: " + mfall.getPatID() + ", Inhalt: " + mfall.toString());
+            cursor_patient.moveToNext();
+        }
+    */
+
+
         if(cursor_verletzung.getCount() >= 1){
-            cursor_verletzung.moveToFirst();
+           // cursor_verletzung.moveToFirst();
             mfall.setVerl_elektrounfall(cursor_verletzung.getInt(1));
             mfall.setVerl_wunde_verletzung(cursor_verletzung.getInt(2));
             mfall.setVerl_inhalationstrauma(cursor_verletzung.getInt(3));
@@ -506,7 +558,7 @@ public class FalleingabeDataSource {
             Log.d(LOG_TAG, mfall.toString());
         }
         if(cursor_erkrankung.getCount() >= 1){
-            cursor_erkrankung.moveToFirst();
+           // cursor_erkrankung.moveToFirst();
             mfall.setErk_atmung(cursor_erkrankung.getInt(1));
             mfall.setErk_herzkreislauf(cursor_erkrankung.getInt(2));
             mfall.setErk_baucherkrankung(cursor_erkrankung.getInt(3));
@@ -528,7 +580,7 @@ public class FalleingabeDataSource {
             Log.d(LOG_TAG, mfall.toString());
         }
         if(cursor_massnahmen.getCount() >= 1){
-            cursor_massnahmen.moveToFirst();
+            //cursor_massnahmen.moveToFirst();
             mfall.setMas_stb_seitenlage(cursor_massnahmen.getInt(1));
             mfall.setMas_oberkoerperhochlage(cursor_massnahmen.getInt(2));
             mfall.setMas_flachlagerung(cursor_massnahmen.getInt(3));
@@ -556,7 +608,7 @@ public class FalleingabeDataSource {
             Log.d(LOG_TAG, mfall.toString());
         }
         if(cursor_erstbefund.getCount() >= 1){
-            cursor_erstbefund.moveToFirst();
+           // cursor_erstbefund.moveToFirst();
             mfall.setErst_bewusstsein(cursor_erstbefund.getString(1));
             mfall.setErst_schmerzen(cursor_erstbefund.getString(2));
             mfall.setErst_kreislauf(cursor_erstbefund.getString(3));
@@ -573,7 +625,7 @@ public class FalleingabeDataSource {
             Log.d(LOG_TAG, mfall.toString());
         }
         if(cursor_ergebnis.getCount() >= 1){
-            cursor_ergebnis.moveToFirst();
+            //cursor_ergebnis.moveToFirst();
             mfall.setErg_ergebnis_zeit(cursor_ergebnis.getString(1));
             //zustand verbessert?
             mfall.setErg_wertsachen(cursor_ergebnis.getString(3));
@@ -604,7 +656,6 @@ public class FalleingabeDataSource {
         }
         return mfall;
 
-        //Patient fehlt
         //Stammdaten und Sani fehlen
     }
        private GlobaleDaten cursorToGlobaleDaten(Cursor cursor) {
@@ -657,4 +708,3 @@ public class FalleingabeDataSource {
         return patListString;
     }
 }
-
