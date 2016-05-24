@@ -220,8 +220,9 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             dataSource.open();
 
             dataSource.insertSani(mfall.getSaniID(), mfall.getSan_name(), mfall.getSan_vorname(), mfall.getVerbandID());
-
+            lnl_buttons.setVisibility(lnl_buttons.GONE);
             if(mfall.getFall_angelegt()){
+                mfall.setUebersprungen(false);
                 Intent fallein=new Intent(Mitarbeiterkonfig_OnBoard.this, Falleingabe.class);
                 startActivity(fallein);
             }
