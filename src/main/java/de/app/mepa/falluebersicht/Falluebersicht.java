@@ -139,9 +139,9 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
                 String name = parts[1];
                 //prot_id enthält die ID des ausgewählten Falls
                 int prot_id = Integer.parseInt(prot_id_string);
-                ladeFallDaten(prot_id);
+               ladeFallDaten(prot_id);
                 startActivity(fall);
-                Log.d("Fall", prot_id + " ID");
+               Log.d("Fall", prot_id + " ID");
             }
         });
 
@@ -281,9 +281,10 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         dataSource.open();
         dataSource.selectFall(id);
         mfall=(GlobaleDaten)getApplication();
-// Hier würden eigentlich die Falldaten geladen
+        // Hier würden eigentlich die Falldaten geladen
         mfalldaten=dataSource.selectFall(id);
-            mfall.setMas_betreuung(mfalldaten.getMas_betreuung());
+        mfall.setPat_name(mfalldaten.getPat_name());
+        mfall.setMas_betreuung(mfalldaten.getMas_betreuung());
 
     }
 }
