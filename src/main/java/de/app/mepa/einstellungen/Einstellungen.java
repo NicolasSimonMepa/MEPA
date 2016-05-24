@@ -183,10 +183,19 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             dataSource.deleteAll();
             mfall=(GlobaleDaten)getApplication();
             //von Vivien Stumpe, 24.05.16
-            //lokal gespeicherte Stammdaten werden auch gelöscht
+            //lokal gespeicherte Daten werden auch gelöscht
             mfall.loescheVerb();
             mfall.loescheSan();
             mfall.loescheVer();
+            mfall.loeschePat();
+            mfall.loescheSan();
+            mfall.loescheVerl();
+            mfall.loescheMas();
+            mfall.loescheErk();
+            mfall.loescheErg();
+            mfall.loescheBem();
+            mfall.loescheErst();
+            mfall.loescheEin();
             Toast.makeText(this, "Daten werden gelöscht", Toast.LENGTH_SHORT).show();
             //werden die Buttons ausgeblendet
             lnl_buttons.setVisibility(View.GONE);
