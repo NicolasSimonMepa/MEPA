@@ -1,10 +1,11 @@
-//Zuletzt geändert von Vivien Stumpe, 23.05.16
+//Zuletzt geändert von Vivien Stumpe, 24.05.16
 package de.app.mepa;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,6 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
             row=convertView;
         }
 
-
         ImageView img_delete = (ImageView) row.findViewById(R.id.imgv_delete_falluebersicht);
         TextView txtv_fall=(TextView)row.findViewById(R.id.txtv_falluebersicht_listview);
         txtv_fall.setText(faelle[position]);
@@ -69,6 +69,7 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 // continue with delete
                                 // von Vivien Stumpe, 23.05.16
                                 String string = faelle[position_clicked];
+
                                 //Teilt den String bei einem Leerzeichen
                                 String[] parts = string.split("\\s+");
                                 String prot_id_string = parts[0];
@@ -81,7 +82,10 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 //Fall löschen
                                 dataSource.deleteFall(prot_id);
 
-
+                               // Fallübersicht neu laden, damit der gelöschte Fall aus der Übersicht verschwendet
+                                Intent intent=new Intent(ctx.getApplicationContext(), Falluebersicht.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                                ctx.getApplicationContext().startActivity(intent);
                             }
                         })
 
@@ -90,7 +94,5 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
             }
         });
         return row;
-
     };
-
 }
