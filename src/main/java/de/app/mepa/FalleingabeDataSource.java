@@ -531,15 +531,15 @@ public class FalleingabeDataSource {
         Cursor cursor_ergebnis=database.query(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + "=" + id,
                 null, null, null, null);
-        if(cursor_einsatz.getCount()>=1&cursor_einsatz.moveToFirst()){
+         if(cursor_einsatz.getCount()>=1&cursor_einsatz.moveToFirst()){
             mfall.setEin_ID(cursor_einsatz.getInt(0));
             mfall.setVer_date(cursor_einsatz.getString(1));
-            mfall.setEin_zugef(cursor_einsatz.getString(4));
-            mfall.setEin_hilfs(cursor_einsatz.getInt(5));
-            mfall.setEin_mosan(cursor_einsatz.getInt(6));
-            mfall.setEin_sanw(cursor_einsatz.getInt(7));
-            mfall.setNotf_notfallsituation(cursor_einsatz.getString(12));
-            mfall.setEin_fundort(cursor_einsatz.getString(13));
+            mfall.setEin_zugef(cursor_einsatz.getString(2));
+            mfall.setEin_hilfs(cursor_einsatz.getInt(3));
+            mfall.setEin_mosan(cursor_einsatz.getInt(4));
+            mfall.setEin_sanw(cursor_einsatz.getInt(5));
+            mfall.setNotf_notfallsituation(cursor_einsatz.getString(6));
+            mfall.setEin_fundort(cursor_einsatz.getString(7));
         }
         if(cursor_verletzung.getCount() >= 1&cursor_verletzung.moveToFirst()){
            // cursor_verletzung.moveToFirst();
