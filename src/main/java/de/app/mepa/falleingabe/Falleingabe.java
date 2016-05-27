@@ -573,8 +573,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Simon, 18.05.16, Die ID wird generiert:
 
         mfall=(GlobaleDaten)getApplication();
-        mfall.setFallID(true);
-         mfall.setPatID(true);
+
+        //if(!(mfall.getFallID()!=0)) {
+            mfall.setFallID(true);
+        //}
+       //  if(!(mfall.getPatID()!=0)){
+             mfall.setPatID(true);
+//         }
         //Toast.makeText(Falleingabe.this, "ID Hash: " + mfall.getFallID(), Toast.LENGTH_LONG).show(); //Zum Testen, dass sie erzeugt wird
         
         //Animation
