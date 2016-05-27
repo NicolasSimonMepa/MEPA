@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 10.05.16
+//Zuletzt geändert von Vivien Stumpe, 27.05.16
 package de.app.mepa;
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -377,6 +378,7 @@ public class FalleingabeDataSource {
             mfall.setVerb_kreisv(cursor.getString(1));
             mfall.setVerb_ortsv(cursor.getString(2));
             Log.d(LOG_TAG, mfall.toString());
+         cursor.close();
         }
         return mfall;
     }
@@ -392,6 +394,7 @@ public class FalleingabeDataSource {
             mfall.setVer_date(cursor.getString(1));
             mfall.setVer_ort(cursor.getString(2));
             Log.d(LOG_TAG, mfall.toString());
+            cursor.close();
         }
         return mfall;
     }
@@ -407,6 +410,7 @@ public class FalleingabeDataSource {
             mfall.setSan_vorname(cursor.getString(1));
             mfall.setSani_IDm(cursor.getInt(3));
             Log.d(LOG_TAG, mfall.toString());
+            cursor.close();
         }
         return mfall;
     }
@@ -438,55 +442,80 @@ public class FalleingabeDataSource {
         database.delete(FalleingabeContract.Tbl_Einsatz.TABLE_NAME, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id, null);
         database.close();
     }
+    /* von Vivien Stumpe, 27.05.16
+    Funktion, die die Daten des Patienten zurückliefert, zu dem der Fall ausgewählt wurde
+    Erst wird die Pat-ID mittels Inner Join ermittelt
+    Falls es einen Einsatz und eine Pat-ID gibt, werden die Patientendaten geladen und zwischengespeichert
+     */
+    public GlobaleDaten selectPat(int id){
+        //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
+        //Spalten, die zurückgegeben werden sollen
+        String[] columns_pat={FalleingabeContract.Tbl_Patient.TABLE_NAME+"."+FalleingabeContract.Tbl_Patient.COL_ID,
+                FalleingabeContract.Tbl_Patient.COL_NAME, FalleingabeContract.Tbl_Patient.COL_VORNAME,
+                FalleingabeContract.Tbl_Patient.COL_GEBURTSDATUM, FalleingabeContract.Tbl_Patient.COL_GESCHLECHT,
+                FalleingabeContract.Tbl_Patient.COL_STRASSE, FalleingabeContract.Tbl_Patient.COL_PLZ,
+                FalleingabeContract.Tbl_Patient.COL_WOHNORT, FalleingabeContract.Tbl_Patient.COL_LAND,
+                FalleingabeContract.Tbl_Patient.COL_TELEFON, FalleingabeContract.Tbl_Patient.COL_KRANKENKASSE,
+                FalleingabeContract.Tbl_Patient.COL_VERSICHERTENNUMMER, FalleingabeContract.Tbl_Patient.COL_VERSICHERUNG_NUMMER,
+                FalleingabeContract.Tbl_Patient.COL_SANI_ID};
+        // von Vivien Stumpe, 27.05.16
+        //So sieht das SQL Statement aus:
+        //SELECT patient._id FROM einsatz INNER JOIN patient ON einsatz.patienten_id=patient._id WHERE einsatz._id=12234 ORDER BY einsatz._id ASC
+        Integer pat_id;
+        GlobaleDaten mpat=new GlobaleDaten();
+        Cursor cursor_join = database.query(FalleingabeContract.Tbl_Einsatz.TABLE_NAME
+                        + " INNER JOIN "+FalleingabeContract.Tbl_Patient.TABLE_NAME+" ON "+FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_PAT_ID+"="
+                        +FalleingabeContract.Tbl_Patient.TABLE_NAME+"."+FalleingabeContract.Tbl_Patient.COL_ID, columns_pat, FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_ID+"="+id, null,
+                null, null, FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_ID+ " ASC");
+
+        if(cursor_join.getCount()>=1&cursor_join.moveToFirst()){
+            //wenn es einen Einsatz gibt, wird die Pat-ID dazu gespeichert
+            pat_id=cursor_join.getInt(0);
+            //Patientendaten zu dieser ID abfragen
+            Cursor cursor_pat=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME,
+                    null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + pat_id,
+                    null, null, null, null);
+            //wenn es einen Patienten zu der pat_id gibt werden die Daten zwischengespeichert
+            if(cursor_pat.getCount()>=1&cursor_pat.moveToFirst()){
+                    mpat.setEin_ID(id);
+                    mpat.setPat_IDm(cursor_pat.getInt(0));
+                    mpat.setPat_name(cursor_pat.getString(1));
+                    mpat.setPat_vorname(cursor_pat.getString(2));
+                    mpat.setPat_geb(cursor_pat.getString(3));
+                    mpat.setPat_sex(cursor_pat.getString(4));
+                    mpat.setPat_str(cursor_pat.getString(5));
+                    mpat.setPat_plz(cursor_pat.getString(6));
+                    mpat.setPat_ort(cursor_pat.getString(7));
+                    mpat.setPat_land(cursor_pat.getString(8));
+                    mpat.setPat_tel(cursor_pat.getString(9));
+                    mpat.setPat_krankenkasse(cursor_pat.getString(10));
+                    mpat.setPat_versichertennr(cursor_pat.getString(11));
+                    mpat.setPat_versnr(cursor_pat.getString(12));
+                    mpat.setPat_sani(cursor_pat.getInt(13));
+                cursor_pat.close();
+                Log.d("Fall", mpat.getPat_name()+ " das ist der Name aus der DB gelesen");
+            }
+        }
+        cursor_join.close();
+
+        return mpat;
+}
     
     /* von Vivien Stumpe, 23.05.16
     Prozedur, die alle Daten aus der DB lädt zu einer bestimmten Fall ID
+    geändert von Vivien Stumpe, am 27.05.16
      */
     public GlobaleDaten selectFall(int id){
         //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
         String[] columns={FalleingabeContract.Tbl_Einsatz.COL_PAT_ID};
-        int pat_id;
         GlobaleDaten mfall=new GlobaleDaten();
         //Man muss an die ID des Patienten rankommen, damit diese dann als Suchkriterium eingesetzt werden kann für den Patienten
         //Außerdem müssen die Ergebnisse im mfall gespeichert werden
         //Patienten ID des Einsatzes abfragen
         Cursor cursor_einsatz=database.query(FalleingabeContract.Tbl_Einsatz.TABLE_NAME,
-                columns, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id,
+                null, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id,
                 null, null, null, null);
-        if(cursor_einsatz.getCount() >= 1){
-            //cursor_einsatz.moveToFirst();
-            pat_id=(cursor_einsatz.getInt(0));
-            Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME, null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + pat_id, null, null, null, null);
-            if(cursor_patient.getCount()>=1){
-                //  cursor_patient.moveToFirst();
-                mfall.setPat_name(cursor_patient.getString(1));
-                mfall.setPat_vorname(cursor_patient.getString(2));
-                mfall.setPat_geb(cursor_patient.getString(3));
-                mfall.setPat_sex(cursor_patient.getString(4));
-                mfall.setPat_str(cursor_patient.getString(5));
-                mfall.setPat_plz(cursor_patient.getString(6));
-                mfall.setPat_ort(cursor_patient.getString(7));
-                mfall.setPat_land(cursor_patient.getString(8));
-                mfall.setPat_tel(cursor_patient.getString(9));
-                mfall.setPat_krankenkasse(cursor_patient.getString(10));
-                mfall.setPat_versichertennr(cursor_patient.getString(11));
-                mfall.setPat_versnr(cursor_patient.getString(12));
-                mfall.setPat_sani(cursor_patient.getInt(13));
-            }
-        }
-        Cursor cursor_pat=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME
-                        + " INNER JOIN " + FalleingabeContract.Tbl_Einsatz.TABLE_NAME +" ON "+FalleingabeContract.Tbl_Patient.TABLE_NAME+"._id="
-                        +FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_PAT_ID, null, null, null,
-                null, null, FalleingabeContract.Tbl_Einsatz.TABLE_NAME+"."+FalleingabeContract.Tbl_Einsatz.COL_ID+ " ASC");
-        /* if(cursor_patient.getCount() >= 1){
-            cursor_patient.moveToFirst();
-            pat_id=(cursor_patient.getInt(0));
-        }
-        /*
-        Cursor cursor_patient=database.query(FalleingabeContract.Tbl_Patient.TABLE_NAME,
-                null, FalleingabeContract.Tbl_Patient.COL_ID + "=" + fall_id,
-                null, null, null, null);
-        */
+
         Cursor cursor_verletzung=database.query(FalleingabeContract.Tbl_Verletzung.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Verletzung.COL_PROT_ID + "=" + id,
                 null, null, null, null);
@@ -502,32 +531,17 @@ public class FalleingabeDataSource {
         Cursor cursor_ergebnis=database.query(FalleingabeContract.Tbl_Ergebnis.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Ergebnis.COL_PROT_ID + "=" + id,
                 null, null, null, null);
-
-
-        /*
-        while(!cursor_patient.isAfterLast()) {
-
-            //patList.add(globDaten);
-            mfall.setPat_name(cursor_patient.getString(1));
-            mfall.setPat_vorname(cursor_patient.getString(2));
-            mfall.setPat_geb(cursor_patient.getString(3));
-            mfall.setPat_sex(cursor_patient.getString(4));
-            mfall.setPat_str(cursor_patient.getString(5));
-            mfall.setPat_plz(cursor_patient.getString(6));
-            mfall.setPat_ort(cursor_patient.getString(7));
-            mfall.setPat_land(cursor_patient.getString(8));
-            mfall.setPat_tel(cursor_patient.getString(9));
-            mfall.setPat_krankenkasse(cursor_patient.getString(10));
-            mfall.setPat_versichertennr(cursor_patient.getString(11));
-            mfall.setPat_versnr(cursor_patient.getString(12));
-            mfall.setPat_sani(cursor_patient.getInt(13));
-            Log.d(LOG_TAG, "ID: " + mfall.getPatID() + ", Inhalt: " + mfall.toString());
-            cursor_patient.moveToNext();
+        if(cursor_einsatz.getCount()>=1&cursor_einsatz.moveToFirst()){
+            mfall.setEin_ID(cursor_einsatz.getInt(0));
+            mfall.setVer_date(cursor_einsatz.getString(1));
+            mfall.setEin_zugef(cursor_einsatz.getString(4));
+            mfall.setEin_hilfs(cursor_einsatz.getInt(5));
+            mfall.setEin_mosan(cursor_einsatz.getInt(6));
+            mfall.setEin_sanw(cursor_einsatz.getInt(7));
+            mfall.setNotf_notfallsituation(cursor_einsatz.getString(12));
+            mfall.setEin_fundort(cursor_einsatz.getString(13));
         }
-    */
-
-
-        if(cursor_verletzung.getCount() >= 1){
+        if(cursor_verletzung.getCount() >= 1&cursor_verletzung.moveToFirst()){
            // cursor_verletzung.moveToFirst();
             mfall.setVerl_elektrounfall(cursor_verletzung.getInt(1));
             mfall.setVerl_wunde_verletzung(cursor_verletzung.getInt(2));
@@ -554,10 +568,10 @@ public class FalleingabeDataSource {
             mfall.setVerl_bauch_grad(cursor_verletzung.getString(23));
             mfall.setVerl_beine_grad(cursor_verletzung.getString(24));
             mfall.setVerl_arme_grad(cursor_verletzung.getString(25));
-            mfall.setVerl_weichteile_art(cursor_verletzung.getString(26));
+            mfall.setVerl_weichteile_grad(cursor_verletzung.getString(26));
             Log.d(LOG_TAG, mfall.toString());
         }
-        if(cursor_erkrankung.getCount() >= 1){
+        if(cursor_erkrankung.getCount() >= 1&cursor_erkrankung.moveToFirst()){
            // cursor_erkrankung.moveToFirst();
             mfall.setErk_atmung(cursor_erkrankung.getInt(1));
             mfall.setErk_herzkreislauf(cursor_erkrankung.getInt(2));
@@ -579,7 +593,7 @@ public class FalleingabeDataSource {
             mfall.setErk_erbrechen(cursor_erkrankung.getInt(18));
             Log.d(LOG_TAG, mfall.toString());
         }
-        if(cursor_massnahmen.getCount() >= 1){
+        if(cursor_massnahmen.getCount() >= 1&cursor_massnahmen.moveToFirst()){
             //cursor_massnahmen.moveToFirst();
             mfall.setMas_stb_seitenlage(cursor_massnahmen.getInt(1));
             mfall.setMas_oberkoerperhochlage(cursor_massnahmen.getInt(2));
@@ -607,7 +621,7 @@ public class FalleingabeDataSource {
             mfall.setMas_keine(cursor_massnahmen.getInt(24));
             Log.d(LOG_TAG, mfall.toString());
         }
-        if(cursor_erstbefund.getCount() >= 1){
+        if(cursor_erstbefund.getCount() >= 1&cursor_erstbefund.moveToFirst()){
            // cursor_erstbefund.moveToFirst();
             mfall.setErst_bewusstsein(cursor_erstbefund.getString(1));
             mfall.setErst_schmerzen(cursor_erstbefund.getString(2));
@@ -624,13 +638,13 @@ public class FalleingabeDataSource {
             mfall.setErst_pupille_re(cursor_erstbefund.getString(13));
             Log.d(LOG_TAG, mfall.toString());
         }
-        if(cursor_ergebnis.getCount() >= 1){
+        if(cursor_ergebnis.getCount() >= 1&cursor_ergebnis.moveToFirst()){
             //cursor_ergebnis.moveToFirst();
             mfall.setErg_ergebnis_zeit(cursor_ergebnis.getString(1));
             //zustand verbessert?
             mfall.setErg_wertsachen(cursor_ergebnis.getString(3));
             //wertsachen zeit?
-            //Bemerkung?
+            mfall.setBem_bemerkung(cursor_ergebnis.getString(5));
             //nachforderung zeit?
             mfall.setErg_funkruf(cursor_ergebnis.getString(7));
             //Funkruf zeit?
@@ -658,6 +672,10 @@ public class FalleingabeDataSource {
 
         //Stammdaten und Sani fehlen
     }
+    /*  von Vivien Stumpe, 23.05.16
+        Funktion, die einen Cursor in ein Objekt vom Typ GlobaleDaten umwandelt
+        Patientennachname, Patientenvorname und Fall-ID werden zwischengespeichert
+     */
        private GlobaleDaten cursorToGlobaleDaten(Cursor cursor) {
         int idIndex = cursor.getColumnIndex(FalleingabeContract.Tbl_Patient.COL_ID);
         int idProduct = cursor.getColumnIndex(FalleingabeContract.Tbl_Patient.COL_NAME);
@@ -675,7 +693,11 @@ public class FalleingabeDataSource {
 
         return globaleDaten;
     }
-
+    /*  von Vivien Stumpe, 23.05.16
+        Funktion, die alle Einsätze aus der DB lädt
+        und diese in einem String Array speichert
+        -> Strings, die in der Fallübersicht angezeigt werden
+     */
     public String[] getAllPat() {
         List<GlobaleDaten> patList = new ArrayList<>();
         Integer pat_id;
