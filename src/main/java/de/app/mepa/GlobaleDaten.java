@@ -210,6 +210,9 @@ public class GlobaleDaten extends Application {
         }
         else {patID = 0;}
     }
+    public void setPat_IDm(int id){
+        this.patID=id;
+    }
     public int getPatID(){return patID;}
     public void loeschePatID(){setPatID(false);}
 
@@ -625,8 +628,8 @@ public class GlobaleDaten extends Application {
     public Boolean Erk_notNull(){
         return ((getErk_keine() !=null)|(getErk_alkoholisiert()!=null)|(getErk_erbrechen()!=null)|(getErk_schwindel()!=null)|
                 (getErk_herzkreislauf()!=null)|(getErk_hitzeschlag()!=null)|(getErk_vergiftung()!=null)|(getErk_atmung()!=null)|
-                (getErk_unterkuehlung()!= null)|(getErk_baucherkrankung() !=null)|(getErk_stoffwechsel()!=null)|
-                (getErk_neurologie() !=null)|(getErk_gynaekologie()!=null)|(getErk_psychatrie() !=null)|(getErk_kindernotfall()!=null)|
+                (getErk_unterkuehlung()!= null)|(getErk_baucherkrankung()!=null)|(getErk_stoffwechsel()!=null)|
+                (getErk_neurologie() !=null)|(getErk_gynaekologie()!=null)|(getErk_psychatrie()!=null)|(getErk_kindernotfall()!=null)|
                 (getErk_geburtshilfe()!=null)|(getErk_sonstiges()!=null)|(getErk_edtxt_sonstiges()!=null));
     }
     public Boolean Erk_eingabe(){
