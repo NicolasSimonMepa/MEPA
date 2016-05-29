@@ -394,7 +394,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             verwerfen();
         }
         if(ce==R.id.imgv_plus){
-            Toast.makeText(this, "Plus gedrückt", Toast.LENGTH_SHORT).show();
             mfall.setFallAusgewahelt(false);
             verwerfen();
         }
