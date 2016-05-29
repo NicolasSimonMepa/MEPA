@@ -393,6 +393,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         if (ce == R.id.btn_verwerfen_fallein) {
             verwerfen();
         }
+        /*  von Vivien Stumpe, 29.05.16
+            Wenn das + geklickt wird, werden die zwischengespeicherten Werte zurückgesetzt,
+            die Icons zurückgesetzt und die Variable FallAusgewaehlt auf false gesetzt,
+            damit ein neuer Fall angelegt werden kann
+            -> Eingabefelder etc. in den Screens werden wieder enabled
+        */
         if(ce==R.id.imgv_plus){
             mfall.setFallAusgewahelt(false);
             verwerfen();
