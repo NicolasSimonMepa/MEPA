@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.erstbefund;
 
 import android.content.Context;
@@ -204,6 +204,10 @@ protected void onCreate(Bundle savedInstanceState){
         Tastatur ausblenden
          */
         tastaturausblenden();
+        /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+    sperreFelder();
         }
 
     /* von Vivien Stumpe, 20.05.16
@@ -570,6 +574,27 @@ private void selectItemFromDrawer(int position){
         }
         if ((mfall.getErst_bz() != null)) {
             edtxt_blutzucker.setText(mfall.getErst_bz());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+         Prozedur, die alle Felder sperrt,
+         wenn ein Fall in der Fallübersicht ausgewählt wurde
+        */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            spin_atmung.setEnabled(false);
+            spin_bewusstseinslage.setEnabled(false);
+            spin_ekg.setEnabled(false);
+            spin_kreislauf.setEnabled(false);
+            spin_pupillenfunktion_links.setEnabled(false);
+            spin_pupillenfunktion_rechts.setEnabled(false);
+            spin_schmerzen.setEnabled(false);
+            edtxt_spo2.setEnabled(false);
+            edtxt_blutzucker.setEnabled(false);
+            edtxt_atemfrequenz.setEnabled(false);
+            edtxt_puls.setEnabled(false);
+            edtxt_rr_diastolisch.setEnabled(false);
+            edtxt_rr_systolisch.setEnabled(false);
         }
     }
 }
