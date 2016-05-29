@@ -316,7 +316,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     /*  von Vivien Stumpe, 27.05.16
         Prozedur, die die Daten aus der DB zum gewählten Fall übernimmt
         und diese dann zwischenspeichert,
-        damit sie im Screen angezeigt werden
+        damit sie in den Screens angezeigt werden
      */
     private void fallDatenSpeichern(GlobaleDaten meinsatz){
         mfall=(GlobaleDaten)getApplication();
@@ -349,11 +349,6 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mfall.setVerl_weichteile_grad(meinsatz.getVerl_weichteile_grad());
 
         //Erkrankung/Vergiftung
-/* Fehlermeldung:
-Caused by: java.lang.NullPointerException
-                                                       at de.app.mepa.GlobaleDaten.Erk_eingabe(GlobaleDaten.java:636)
-                                                       at de.app.mepa.falleingabe.Falleingabe.IconsSave(Falleingabe.java:471)
-                                                       at de.app.mepa.falleingabe.Falleingabe.onCreate(Falleingabe.java:291)
         mfall.setErk_atmung(meinsatz.getErk_atmung());
         mfall.setErk_herzkreislauf(meinsatz.getErk_herzkreislauf());
         mfall.setErk_baucherkrankung(meinsatz.getErk_baucherkrankung());
@@ -372,7 +367,7 @@ Caused by: java.lang.NullPointerException
         mfall.setErk_edtxt_sonstiges(meinsatz.getErk_edtxt_sonstiges());
         mfall.setErk_schwindel(meinsatz.getErk_schwindel());
         mfall.setErk_erbrechen(meinsatz.getErk_erbrechen());
-*/
+
         //Maßnahmen
         mfall.setMas_stb_seitenlage(meinsatz.getMas_stb_seitenlage());
         mfall.setMas_oberkoerperhochlage(meinsatz.getMas_oberkoerperhochlage());
