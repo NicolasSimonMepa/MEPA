@@ -428,7 +428,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
                     dateCalendar.set(Calendar.MONTH, monthOfYear);
                     dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                    String dateString= DateUtils.formatDateTime(Stammdaten.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE);
+                    String dateString= DateUtils.formatDateTime(Stammdaten.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_YEAR);
                     etxt_date.setText(dateString);
 
                 }
