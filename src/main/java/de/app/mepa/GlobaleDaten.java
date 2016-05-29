@@ -14,6 +14,8 @@ public class GlobaleDaten extends Application {
     private int fallID;
     private int patID;
 
+    private Boolean fallAusgewaehlt=false;
+
     //Ergebnis (Übergabe) - Variablen
     private String erg_ersthelfermassn;
     private String erg_zustand;
@@ -576,14 +578,14 @@ public class GlobaleDaten extends Application {
     public void setNotf_notfallsituation(String notfallsituation){this.notf_notfallsituation=notfallsituation;}
     public String getNotf_notfallsituation(){return notf_notfallsituation;}
     public void loescheNotf(){
-        setNotf_notfallsituation("");
+        setNotf_notfallsituation(null);
     }
 
     //Bemerkung - Dienste
     public void setBem_bemerkung(String bemerkung){this.bem_bemerkung=bemerkung;}
     public String getBem_bemerkung(){return bem_bemerkung;}
     public void loescheBem(){
-        setBem_bemerkung("");
+        setBem_bemerkung(null);
     }
 
     //Erkrankung - Dienste
@@ -912,5 +914,12 @@ public class GlobaleDaten extends Application {
     }
     public Boolean getVer_vorh(){
         return ver_vorh;
+    }
+
+    public void setFallAusgewahelt(Boolean aus){
+        this.fallAusgewaehlt=aus;
+    }
+    public Boolean getFallAusgewaehlt(){
+        return fallAusgewaehlt;
     }
 }
