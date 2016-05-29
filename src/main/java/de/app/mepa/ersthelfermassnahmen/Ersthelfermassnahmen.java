@@ -1,4 +1,4 @@
-// zuletzt geändert von Vivien Stumpe, 20.05.16
+// zuletzt geändert von Vivien Stumpe, 29.05.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Context;
@@ -275,6 +275,10 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
                     }
             });
         }
+         /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
     }
 
     private File getFile() {
@@ -700,6 +704,37 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         }
         if((mfall.getErg_ergebnis_zeit()!=null)){
             edtxt_uebergabe_zeit.setText(mfall.getErg_ergebnis_zeit());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+Prozedur, die alle Felder sperrt,
+wenn ein Fall in der Fallübersicht ausgewählt wurde
+*/
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            spin_entlassung.setEnabled(false);
+            spin_ersthelfermassnahmen.setEnabled(false);
+            spin_notarzt.setEnabled(false);
+            spin_transport.setEnabled(false);
+            spin_zustand.setEnabled(false);
+            cck_entlassungsrevers.setEnabled(false);
+            cck_feuerwehr.setEnabled(false);
+            cck_hausarzt.setEnabled(false);
+            cck_ktw.setEnabled(false);
+            cck_naw.setEnabled(false);
+            cck_nef.setEnabled(false);
+            cck_polizei.setEnabled(false);
+            cck_rth.setEnabled(false);
+            cck_rtw.setEnabled(false);
+            cck_tod_unfallort.setEnabled(false);
+            edtxt_entlassung_sonstiges.setEnabled(false);
+            edtxt_entlassung_ziel.setEnabled(false);
+            edtxt_entlassung_zeuge.setEnabled(false);
+            edtxt_funkruf.setEnabled(false);
+            edtxt_uebergabe_zeit.setEnabled(false);
+            edtxt_wertsachen.setEnabled(false);
+            aktualisieren.setEnabled(false);
+            button.setEnabled(false);
         }
     }
 }
