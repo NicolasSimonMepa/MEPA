@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.massnahmen;
 
 import android.content.Context;
@@ -177,6 +177,10 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         Tastatur ausblenden
          */
         tastaturausblenden();
+        /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
     }
     /* von Vivien Stumpe, 20.05.16
         Prozedur, die die Tastatur 2 Sekunden nach der Eingabe von 3 Zeichen ausblendet
@@ -487,6 +491,37 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         }
         if((mfall.getMas_sonstiges_text()!=null)){
             edtxt_massnahmen_sonstiges.setText(mfall.getMas_sonstiges_text());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+    Prozedur, die alle Felder sperrt,
+    wenn ein Fall in der Fallübersicht ausgewählt wurde
+*/
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            cck_massnahmen_atemwege.setEnabled(false);
+            cck_massnahmen_beatmung.setEnabled(false);
+            cck_massnahmen_betreuung.setEnabled(false);
+            cck_massnahmen_ekg.setEnabled(false);
+            cck_massnahmen_erstdefibrillation.setEnabled(false);
+            cck_massnahmen_extremitaetenschienung.setEnabled(false);
+            cck_massnahmen_flachlagerung.setEnabled(false);
+            cck_massnahmen_herzdruckmassage.setEnabled(false);
+            cck_massnahmen_hws_stuetzkragen.setEnabled(false);
+            cck_massnahmen_infusion.setEnabled(false);
+            cck_massnahmen_intubation.setEnabled(false);
+            cck_massnahmen_keine.setEnabled(false);
+            cck_massnahmen_medikamente.setEnabled(false);
+            cck_massnahmen_notkompetenz.setEnabled(false);
+            cck_massnahmen_oberkoerperhochlagerung.setEnabled(false);
+            cck_massnahmen_sauerstoffgabe.setEnabled(false);
+            cck_massnahmen_schocklagerung.setEnabled(false);
+            cck_massnahmen_sonstiges.setEnabled(false);
+            cck_massnahmen_stabile_seitenlage.setEnabled(false);
+            cck_massnahmen_vakuummatratze.setEnabled(false);
+            cck_massnahmen_venoeser_zugang.setEnabled(false);
+            cck_massnahmen_wundversorgung.setEnabled(false);
+            edtxt_massnahmen_sonstiges.setEnabled(false);
         }
     }
 }
