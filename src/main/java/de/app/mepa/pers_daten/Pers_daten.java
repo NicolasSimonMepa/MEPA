@@ -366,6 +366,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
          */
         setWerte();
         tastaturausblenden();
+        sperreFelder();
 
     }
 
@@ -759,5 +760,28 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         }
 
     }
-
+    /*  von Vivien Stumpe, 29.05.16
+        Prozedur, die alle Felder sperrt,
+        wenn ein Fall in der Fallübersicht ausgewählt wurde
+     */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            etxt_name_pers_daten.setEnabled(false);
+            etxt_vorname_pers_daten.setEnabled(false);
+            etxt_gebdat.setEnabled(false);
+            etxt_str_pers_daten.setEnabled(false);
+            etxt_plz_pers_daten.setEnabled(false);
+            etxt_ort_pers_daten.setEnabled(false);
+            etxt_land_pers_daten.setEnabled(false);
+            etxt_tel_pers_daten.setEnabled(false);
+            etxt_krankenkasse_pers_daten.setEnabled(false);
+            etxt_versichertennr_pers_daten.setEnabled(false);
+            etxt_versnr_pers_daten.setEnabled(false);
+            etxt_fundort_pers_daten.setEnabled(false);
+            etxt_sonstiges.setEnabled(false);
+            rbtn_maennl.setEnabled(false);
+            rbtn_weibl.setEnabled(false);
+            spin_zugef.setEnabled(false);
+        }
+    }
 }
