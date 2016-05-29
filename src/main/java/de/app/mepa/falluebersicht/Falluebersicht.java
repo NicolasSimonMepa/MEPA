@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.impressum.Impressum;
 import de.app.mepa.mepa.R;
+import de.app.mepa.pers_daten.Pers_daten;
 import de.app.mepa.upload.Upload;
 
 public class Falluebersicht extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
@@ -61,20 +64,9 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     private Button btn_loeschen_fallueb;
 
     /* Vivien Stumpe, 21.05.16
-    String Array mit Testdaten, die in der ListView dargestellt werden sollen
     Adapter vom Typ Adapter_Falluebersicht, damit die Daten auch dargestellt werden können
     */
-    String [] faelleArray = {
-            "12343 Müller, Peter",
-            "12234 Schulze, Klaus",
-            "13542 Meier Hans",
-            "16532 Wolf Michael",
-            "17532 Blümel Petra",
-            "14785 Kalend Tina",
-            "14674 Fels Sophie",
-            "36743 Nutella Lisa",
-            "23454 Ulten Ute"
-    };
+
     ListView falluebersichtListView;
     Adapter_Falluebersicht faelleAdapter;
     FalleingabeDataSource dataSource;
@@ -144,7 +136,9 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
                 Log.d("Fall", name + " Übergebener Name aus der Listview");
                 //prot_id enthält die ID des ausgewählten Falls
                 int prot_id = Integer.parseInt(prot_id_string);
-               ladeFallDaten(prot_id);
+                ladeFallDaten(prot_id);
+                mfall=(GlobaleDaten)getApplication();
+                mfall.setFallAusgewahelt(true);
                 startActivity(fall);
             }
         });
@@ -316,7 +310,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     /*  von Vivien Stumpe, 27.05.16
         Prozedur, die die Daten aus der DB zum gewählten Fall übernimmt
         und diese dann zwischenspeichert,
-        damit sie in den Screens angezeigt werden
+        damit sie im Screen angezeigt werden
      */
     private void fallDatenSpeichern(GlobaleDaten meinsatz){
         mfall=(GlobaleDaten)getApplication();
@@ -441,4 +435,5 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
 
         //Stammdaten??
     }
+
 }
