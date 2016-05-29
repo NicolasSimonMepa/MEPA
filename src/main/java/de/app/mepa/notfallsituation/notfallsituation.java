@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Context;
@@ -146,6 +146,10 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         Tastatur ausblenden
          */
         tastaturausblenden();
+         /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
 
     }
     /* von Vivien Stumpe, 20.05.16
@@ -267,6 +271,15 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         mfall = (GlobaleDaten) getApplication();
         if ((mfall.getNotf_notfallsituation() != null)) {
             etxt_notfallsituation.setText(mfall.getNotf_notfallsituation());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+        Prozedur, die alle Felder sperrt,
+        wenn ein Fall in der Fallübersicht ausgewählt wurde
+    */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            etxt_notfallsituation.setEnabled(false);
         }
     }
 }
