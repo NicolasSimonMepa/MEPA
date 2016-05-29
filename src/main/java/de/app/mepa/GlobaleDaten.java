@@ -632,13 +632,28 @@ public class GlobaleDaten extends Application {
                 (getErk_neurologie() !=null)|(getErk_gynaekologie()!=null)|(getErk_psychatrie()!=null)|(getErk_kindernotfall()!=null)|
                 (getErk_geburtshilfe()!=null)|(getErk_sonstiges()!=null)|(getErk_edtxt_sonstiges()!=null));
     }
+  /*
     public Boolean Erk_eingabe(){
+
         return ((getErk_keine() ==1)|(getErk_alkoholisiert()==1)|(getErk_erbrechen()==1)|(getErk_schwindel()==1)|
                 (getErk_herzkreislauf()==1)|(getErk_hitzeschlag()==1)|(getErk_vergiftung()==1)|(getErk_atmung()==1)|
                 (getErk_unterkuehlung()==1)|(getErk_baucherkrankung() ==1)|(getErk_stoffwechsel()==1)|
                 (getErk_neurologie()==1)|(getErk_gynaekologie()==1)|(getErk_psychatrie()==1)|(getErk_kindernotfall()==1)|
                 (getErk_geburtshilfe()==1)|(getErk_sonstiges()==1)|(getErk_edtxt_sonstiges().length()>0));
     }
+    */
+  public Boolean Erk_eingabe(){
+      return ((getErk_keine()!=null&&getErk_keine() ==1)|(getErk_alkoholisiert()!=null&&getErk_alkoholisiert()==1)|
+              (getErk_erbrechen()!=null&&getErk_erbrechen()==1)|(getErk_schwindel()!=null&&getErk_schwindel()==1)|
+              (getErk_herzkreislauf()!=null&&getErk_herzkreislauf()==1)|(getErk_hitzeschlag()!=null&&getErk_hitzeschlag()==1)
+              |(getErk_vergiftung()!=null&&getErk_vergiftung()==1)|(getErk_atmung()!=null&&getErk_atmung()==1)|
+              (getErk_unterkuehlung()!=null&&getErk_unterkuehlung()==1)|(getErk_baucherkrankung()!=null&&getErk_baucherkrankung() ==1)|
+              (getErk_stoffwechsel()!=null&&getErk_stoffwechsel()==1)| (getErk_neurologie()!=null&&getErk_neurologie()==1)
+              |(getErk_gynaekologie()!=null&&getErk_gynaekologie()==1)|(getErk_psychatrie()!=null&&getErk_psychatrie()==1)|
+              (getErk_kindernotfall()!=null&&getErk_kindernotfall()==1)| (getErk_geburtshilfe()!=null&&getErk_geburtshilfe()==1)|
+              (getErk_sonstiges()!=null&&getErk_sonstiges()==1)|(getErk_edtxt_sonstiges()!=null&&getErk_edtxt_sonstiges().length()>0));
+  }
+
     public void loescheErk(){
         setErk_keine(null);
         setErk_alkoholisiert(null);
