@@ -402,6 +402,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         if(ce==R.id.imgv_plus){
             mfall.setFallAusgewahelt(false);
             verwerfen();
+            img_plus.setVisibility(img_plus.INVISIBLE);
         }
     }
 
