@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Zuletzt bearbeitet von Vivien Stumpe, 14.04.16 -->
+<!-- Zuletzt bearbeitet von Vivien Stumpe, 29.05.16 -->
 <!-- von Vivien Stumpe, 12.04.16 -->
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,9 +12,25 @@
     app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     android:background="#ffeedd">
 <!--von Vivien Stumpe, 14.04.16 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/festivealth"/>
-
+        android:src="@drawable/festivealth"
+        />
+        <!--von Vivien Stumpe, 29.05.16
+         Plus als Zeichen, um einen neuen Fall zu erfassen 
+         defaultmaessig ausgeblendet -->
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus"
+        android:paddingTop="5dp"
+        android:id="@+id/imgv_plus"
+        android:layout_weight="1"
+        android:visibility="invisible"/>
+    </LinearLayout>
 </android.support.v7.widget.Toolbar>
