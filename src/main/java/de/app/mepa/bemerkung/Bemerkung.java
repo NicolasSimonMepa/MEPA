@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.bemerkung;
 
 import android.content.Context;
@@ -112,6 +112,10 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         Tastatur ausblenden
          */
         tastaturausblenden();
+         /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
 
     }
     /* von Vivien Stumpe, 20.05.16
@@ -227,6 +231,15 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
         mfall = (GlobaleDaten) getApplication();
         if ((mfall.getBem_bemerkung() != null)) {
             edtxt_bemerkung.setText(mfall.getBem_bemerkung());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+        Prozedur, die alle Felder sperrt,
+        wenn ein Fall in der Fallübersicht ausgewählt wurde
+    */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            edtxt_bemerkung.setEnabled(false);
         }
     }
 }
