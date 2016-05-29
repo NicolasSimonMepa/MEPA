@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 24.05.2016
+//Zuletzt geändert von Vivien Stumpe am 29.05.2016
 package de.app.mepa.falleingabe;
 
 import android.content.DialogInterface;
@@ -16,9 +16,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.app.mepa.BackgroundTaskDB;
 import de.app.mepa.FalleingabeDataSource;
@@ -91,6 +93,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     private LinearLayout lnl_buttons;
     private Button btn_speichern, btn_verwerfen;
     private GlobaleDaten mfall;
+    private ImageView img_plus;
 
     /* von Vivien Stumpe, 06.05.16
     Test der Datenbank
@@ -289,6 +292,12 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         // Icons ggf. ändern, wenn Daten gespeichert wurden
         IconsSave();
+        img_plus=(ImageView)findViewById(R.id.imgv_plus);
+        if(mfall.getFallAusgewaehlt()){
+            img_plus.setVisibility(img_plus.VISIBLE);
+            img_plus.setOnClickListener(this);
+        }
+
     }
 
     //von Vivien Stumpe, 12.04.16
@@ -382,6 +391,11 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         }
         if (ce == R.id.btn_verwerfen_fallein) {
+            verwerfen();
+        }
+        if(ce==R.id.imgv_plus){
+            Toast.makeText(this, "Plus gedrückt", Toast.LENGTH_SHORT).show();
+            mfall.setFallAusgewahelt(false);
             verwerfen();
         }
     }
@@ -557,10 +571,16 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         } else if (img_bemerkung!=R.drawable.bemerkung) {
             aenderung = true;
         }
-
-        if(aenderung){
-            lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+        /*  von Vivien Stumpe, 29.05.16
+            wenn kein Fall ausgewählt wurde, wird geprüft, ob ein Icon sich geändert hat
+            und wenn ja, werden die Speichern & Verwerfen Buttons angezeigt
+         */
+        if(!mfall.getFallAusgewaehlt()){
+            if(aenderung){
+                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+            }
         }
+
     }
     /* von Vivien Stumpe, 02.05.16
     Prozedur, die beim Betätigen des Speichern-Buttons aufgerufen wird
@@ -704,13 +724,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             mfall.setSan_name(msani.getSan_name());
             mfall.setSan_vorname(msani.getSan_vorname());
             mfall.setSani_IDm(msani.getSaniID());
-  //wenn nicht -> Gibt es Stammdaten zum Fall?
+            //wenn nicht -> Gibt es Stammdaten zum Fall?
             if(!((mfall.getVer_name()!=null&mfall.getVer_ort()!=null&mfall.getVer_date()!=null)
                     &(mfall.getSan_name()!=null&mfall.getSan_vorname()!=null)
                     &(mfall.getVerb_kreisv()!=null&mfall.getVerb_ortsv()!=null))){
 
           
-           // if (!mfall.getFall_angelegt()) {
+             // if (!mfall.getFall_angelegt()) {
                 //wenn nicht -> onBoarding Activity starten
                 Intent onboarding = new Intent(this, OnBoarding.class);
                 startActivity(onboarding);
