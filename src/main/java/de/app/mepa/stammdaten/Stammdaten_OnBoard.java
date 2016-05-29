@@ -385,7 +385,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                     dateCalendar.set(Calendar.MONTH, monthOfYear);
                     dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                    String dateString= DateUtils.formatDateTime(Stammdaten_OnBoard.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE);
+                    String dateString= DateUtils.formatDateTime(Stammdaten_OnBoard.this, dateCalendar.getTimeInMillis(), DateUtils.FORMAT_SHOW_YEAR);
                     etxt_date.setText(dateString);
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
