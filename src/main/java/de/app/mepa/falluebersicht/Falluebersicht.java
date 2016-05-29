@@ -157,12 +157,12 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     !!Muss noch angepasst werden, wenn Daten aus der DB kommen!
      */
     private void showAllListEntries() {
-        List<String> fallListe = new ArrayList<>(Arrays.asList(faelleArray));
+        List<String> fallListe = new ArrayList<>(Arrays.asList(patList));
         faelleAdapter =
                 new Adapter_Falluebersicht(
                         Falluebersicht.this, // Die aktuelle Umgebung (diese Activity)
                         R.layout.falluebersicht_listview_item, // ID der XML-Layout Datei
-                        faelleArray); // Beispieldaten in einer ArrayList
+                        patList); // Beispieldaten in einer ArrayList
         falluebersichtListView = (ListView)findViewById(R.id.list_falluebersicht);
         falluebersichtListView.setAdapter(faelleAdapter);
       /*  GlobaleDaten pat;
