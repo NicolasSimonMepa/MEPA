@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Emile Yoncaova, 19.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.verletzung;
 
 import android.content.Intent;
@@ -255,6 +255,10 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
        // imgv_next.setOnClickListener(this);
 
         drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
     }
 
 
@@ -808,6 +812,40 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
             if(mfall.getVerl_weichteile_grad().equals("schwer")){
                 spin_weichteile_grad.setSelection(3);
             }
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+    Prozedur, die alle Felder sperrt,
+    wenn ein Fall in der Fallübersicht ausgewählt wurde
+ */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            cck_elektro_verletzung.setEnabled(false);
+            cck_inhalation_verletzung.setEnabled(false);
+            cck_prellung_verletzung.setEnabled(false);
+            cck_sonstiges_verletzung.setEnabled(false);
+            cck_verbrennung_verletzung.setEnabled(false);
+            cck_wunde_verletzung.setEnabled(false);
+            spin_schaedel_art.setEnabled(false);
+            spin_arme_art.setEnabled(false);
+            spin_bauch_art.setEnabled(false);
+            spin_becken_art.setEnabled(false);
+            spin_beine_art.setEnabled(false);
+            spin_brustkorb_art.setEnabled(false);
+            spin_bws_art.setEnabled(false);
+            spin_gesicht_art.setEnabled(false);
+            spin_hws_art.setEnabled(false);
+            spin_weichteile_art.setEnabled(false);
+            spin_schaedel_grad.setEnabled(false);
+            spin_arme_grad.setEnabled(false);
+            spin_bauch_grad.setEnabled(false);
+            spin_becken_grad.setEnabled(false);
+            spin_beine_grad.setEnabled(false);
+            spin_brustkorb_grad.setEnabled(false);
+            spin_bws_grad.setEnabled(false);
+            spin_gesicht_grad.setEnabled(false);
+            spin_hws_grad.setEnabled(false);
+            spin_weichteile_grad.setEnabled(false);
         }
     }
 }
