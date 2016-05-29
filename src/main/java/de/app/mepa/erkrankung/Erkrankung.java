@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 20.05.16
+//Zuletzt geändert von Vivien Stumpe, 29.05.16
 package de.app.mepa.erkrankung;
 
 import android.content.Context;
@@ -171,6 +171,10 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         Tastatur ausblenden
          */
         tastaturausblenden();
+            /*  von Vivien Stumpe, 29.05.16
+            Felder sperren, wenn ein Fall gewählt wurde
+         */
+        sperreFelder();
     }
     /* von Vivien Stumpe, 20.05.16
            Prozedur, die die Tastatur 2 Sekunden nach der Eingabe von 3 Zeichen ausblendet
@@ -466,6 +470,33 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
         }
         if((mfall.getErk_edtxt_sonstiges()!=null)){
             edtxt_erkrankung_sonstiges.setText(mfall.getErk_edtxt_sonstiges());
+        }
+    }
+    /*  von Vivien Stumpe, 29.05.16
+        Prozedur, die alle Felder sperrt,
+        wenn ein Fall in der Fallübersicht ausgewählt wurde
+    */
+    public void sperreFelder(){
+        if(mfall.getFallAusgewaehlt()) {
+            cck_erkrankung_alkoholisiert.setEnabled(false);
+            cck_erkrankung_atmung.setEnabled(false);
+            cck_erkrankung_baucherkrankung.setEnabled(false);
+            cck_erkrankung_erbrechen.setEnabled(false);
+            cck_erkrankung_geburtshilfe.setEnabled(false);
+            cck_erkrankung_gynaekologie.setEnabled(false);
+            cck_erkrankung_herzkreislauf.setEnabled(false);
+            cck_erkrankung_hitzeerschoepfung.setEnabled(false);
+            cck_erkrankung_hitzeschlag.setEnabled(false);
+            cck_erkrankung_keine.setEnabled(false);
+            cck_erkrankung_kindernotfall.setEnabled(false);
+            cck_erkrankung_neurologie.setEnabled(false);
+            cck_erkrankung_psychatrie.setEnabled(false);
+            cck_erkrankung_schwindel.setEnabled(false);
+            cck_erkrankung_sonstiges.setEnabled(false);
+            cck_erkrankung_stoffwechsel.setEnabled(false);
+            cck_erkrankung_unterkuehlung.setEnabled(false);
+            cck_erkrankung_vergiftung.setEnabled(false);
+            edtxt_erkrankung_sonstiges.setEnabled(false);
         }
     }
 }
