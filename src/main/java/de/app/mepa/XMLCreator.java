@@ -201,6 +201,7 @@ public class XMLCreator {
         //XML Creator erstellen, damit eine XML Datei geschrieben werden kann
         XmlSerializer serializer = Xml.newSerializer();
         try {
+
             //FileOutputStream als Output des Serializers setzen, UTF-8 encoding
             serializer.setOutput(fileos, "UTF-8");
             // <?xml declaration (if encoding not null) and standalone flag (if standalone not null)
@@ -424,11 +425,21 @@ public class XMLCreator {
             serializer.endTag(null, EINSAN);
 
             serializer.startTag(null, FUNDORT);
-            serializer.text(fall.getEin_fundort());
+            if(fall.getEin_fundort()!=null) {
+                serializer.text(fall.getEin_fundort());
+            }
+            else{
+                serializer.text("keine Angabe");
+            }
             serializer.endTag(null, FUNDORT);
 
             serializer.startTag(null, NOTF);
-            serializer.text(fall.getNotf_notfallsituation());
+            if(fall.getNotf_notfallsituation()!=null) {
+                serializer.text(fall.getNotf_notfallsituation());
+            }
+            else{
+                serializer.text("keine Angabe");
+            }
             serializer.endTag(null, NOTF);
 
             serializer.endTag(null, SEC);
@@ -522,7 +533,12 @@ public class XMLCreator {
             serializer.endTag(null, SONST);
 
             serializer.startTag(null, SONSTTXT);
-            serializer.text(fall.getMas_sonstiges_text());
+            if(fall.getMas_sonstiges_text() != null) {
+                serializer.text(fall.getMas_sonstiges_text());
+            }
+            else{
+                serializer.text("keine Angabe");
+            }
             serializer.endTag(null, SONSTTXT);
 
             serializer.endTag(null, SEC);
@@ -1109,7 +1125,12 @@ public class XMLCreator {
             serializer.endTag(null, VERNAME);
 
             serializer.startTag(null, VERORT);
-            serializer.text(fall.getVer_ort());
+            if(fall.getVer_ort()!=null) {
+                serializer.text(fall.getVer_ort());
+            }
+            else{
+                serializer.text("keine Angabe");
+            }
             serializer.endTag(null, VERORT);
 
             serializer.startTag(null, VERDATE);
@@ -1134,5 +1155,3 @@ public class XMLCreator {
         }
     }
 }
-
-
