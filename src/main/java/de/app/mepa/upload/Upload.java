@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 30.05.16
+//Zuletzt geändert von Vivien Stumpe, 10.04.16
 //Zuletzt geändert von Nathalie Horn, 17.05.16
 package de.app.mepa.upload;
 
@@ -131,7 +131,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             String adressarray[] = { adresse };
             String nachricht = "Anbei die Daten zu Fall [Fall-ID] vom "+mfall.getVer_date()
                     +".\n\nViele Grüße\n" +
-                    mfall.getSan_name()+", "+mfall.getSan_vorname();
+                    mfall.getSan_vorname()+" "+mfall.getSan_name();
 
             //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
             File ordner;
@@ -226,6 +226,12 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             //Erstellung einer URI zur Datei
             File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
             Uri u = Uri.fromFile(f);
+            /*  von Vivien Stumpe, 30.05.16
+                XML-Datei zu einer Fall-ID wird als Anhang versandt
+                !! muss noch durch einen Parameter ersetzt werden !!
+             */
+            File root = Environment.getExternalStorageDirectory();
+            File file = new File( root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1225716742+".xml" );
 
             //von Nathalie Horn, 02.05.16
             //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
@@ -246,7 +252,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             Intent bluetoothversand = new Intent(android.content.Intent.ACTION_SEND);
             //Durch EXTRA_STREAM wird eine Datei versendet.
             bluetoothversand.setType("*/*");
-            bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+            //bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+            bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
 
             //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
 
@@ -315,5 +322,3 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         }
     }
 }
-
-
