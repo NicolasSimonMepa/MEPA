@@ -298,10 +298,14 @@ public class GlobaleDaten extends Application {
         return ((getErg_wertsachen()!=null)|(getErg_funkruf()!=null)|(getErg_transport_ziel()!=null)|
                 (getErg_transport_sonstiges()!=null)|(getErg_zeuge()!=null)| (getErg_ergebnis_zeit()!=null));
     }
+
     public Boolean Erg_eingabe(){
-        return ((getErg_wertsachen().length()!=0)|(getErg_funkruf().length()!=0)|(getErg_transport_ziel().length()!=0)|
-                (getErg_transport_sonstiges().length()!=0)|(getErg_zeuge().length()!=0)| (getErg_ergebnis_zeit().length()!=0));
+        return ((getErg_wertsachen()!=null&&getErg_wertsachen().length()!=0)|(getErg_funkruf()!=null&&getErg_funkruf().length()!=0)
+                |(getErg_transport_ziel()!=null&&getErg_transport_ziel().length()!=0)|
+                (getErg_transport_sonstiges()!=null&&getErg_transport_sonstiges().length()!=0)
+                |(getErg_zeuge()!=null&&getErg_zeuge().length()!=0)| (getErg_ergebnis_zeit()!=null&&getErg_ergebnis_zeit().length()!=0));
     }
+
     public void loescheErg(){
         setErg_ersthelfermassn(null);
         setErg_zustand(null);
@@ -560,8 +564,9 @@ public class GlobaleDaten extends Application {
                 (getErst_af()!=null)|(getErst_spo()!=null)| (getErst_bz()!=null));
     }
     public Boolean Erst_eingabe(){
-        return ((getErst_rr_sys().length()!=0)|(getErst_rr_dia().length()!=0)|
-                (getErst_puls().length()!=0)|(getErst_af().length()!=0)|(getErst_spo().length()!=0)| (getErst_bz().length()!=0));
+        return ((getErst_rr_sys()!=null&&getErst_rr_sys().length()!=0)|(getErst_rr_dia()!=null&&getErst_rr_dia().length()!=0)|
+                (getErst_puls()!=null&&getErst_puls().length()!=0)|(getErst_af()!=null&&getErst_af().length()!=0)
+                |(getErst_spo()!=null&&getErst_spo().length()!=0)| (getErst_bz()!=null&&getErst_bz().length()!=0));
     }
 
     public void loescheErst(){
@@ -640,16 +645,7 @@ public class GlobaleDaten extends Application {
                 (getErk_neurologie() !=null)|(getErk_gynaekologie()!=null)|(getErk_psychatrie()!=null)|(getErk_kindernotfall()!=null)|
                 (getErk_geburtshilfe()!=null)|(getErk_sonstiges()!=null)|(getErk_edtxt_sonstiges()!=null));
     }
-  /*
-    public Boolean Erk_eingabe(){
 
-        return ((getErk_keine() ==1)|(getErk_alkoholisiert()==1)|(getErk_erbrechen()==1)|(getErk_schwindel()==1)|
-                (getErk_herzkreislauf()==1)|(getErk_hitzeschlag()==1)|(getErk_vergiftung()==1)|(getErk_atmung()==1)|
-                (getErk_unterkuehlung()==1)|(getErk_baucherkrankung() ==1)|(getErk_stoffwechsel()==1)|
-                (getErk_neurologie()==1)|(getErk_gynaekologie()==1)|(getErk_psychatrie()==1)|(getErk_kindernotfall()==1)|
-                (getErk_geburtshilfe()==1)|(getErk_sonstiges()==1)|(getErk_edtxt_sonstiges().length()>0));
-    }
-    */
   public Boolean Erk_eingabe(){
       return ((getErk_keine()!=null&&getErk_keine() ==1)|(getErk_alkoholisiert()!=null&&getErk_alkoholisiert()==1)|
               (getErk_erbrechen()!=null&&getErk_erbrechen()==1)|(getErk_schwindel()!=null&&getErk_schwindel()==1)|
