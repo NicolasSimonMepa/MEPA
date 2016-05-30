@@ -1,9 +1,8 @@
-//Zuletzt geändert von Vivien Stumpe am 29.05.2016
+//Zuletzt geändert von Vivien Stumpe am 30.05.2016
 package de.app.mepa.falleingabe;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -20,13 +19,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import de.app.mepa.BackgroundTaskDB;
 import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.OnBoarding;
+import de.app.mepa.XMLCreator;
 import de.app.mepa.einstellungen.Einstellungen;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -194,11 +192,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_falleingabe);
-
-        // ------
-        //Stammdaten & Mitarbeiter müssen aus der DB ausgelesen werden & den Variablen zugewiesen werden!!
-
-
+        //VS - prüfen, ob der OnBoarding Prozess gestartet werden muss
         onBoard();
 
         //Verbindung zwischen Variable und TextView in der Activity herstellen
@@ -403,6 +397,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             mfall.setFallAusgewahelt(false);
             verwerfen();
             img_plus.setVisibility(img_plus.INVISIBLE);
+
         }
     }
 
@@ -652,7 +647,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         
         dataSource.insertErstbefund(mfall.getFallID(), mfall.getErst_bewusstsein(), mfall.getErst_schmerzen(), mfall.getErst_kreislauf(),
                 mfall.getErst_ekg(), mfall.getErst_atmung(), mfall.getErst_rr_sys(), mfall.getErst_rr_dia(),
-                mfall.getErst_puls(), mfall.getErst_af(), mfall.getErst_spo(), mfall.getErst_bz(), 
+                mfall.getErst_puls(), mfall.getErst_af(), mfall.getErst_spo(), mfall.getErst_bz(),
                 mfall.getErst_pupille_li(), mfall.getErst_pupille_re());
                 
                         //von Nicolas Simon 23.05.16
@@ -671,6 +666,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 mfall.getErg_ersthelfermassn(),
                 mfall.getErg_nachforderung_ktw(), mfall.getErg_nachforderung_rtw(), mfall.getErg_nachforderung_nef(), mfall.getErg_nachforderung_naw(),
                 mfall.getErg_nachforderung_rth(), mfall.getErg_nachforderung_feuerwehr(), mfall.getErg_nachforderung_polizei());
+
+        /*  von Vivien Stumpe, 30.05.16
+            XML Dokument mit Patientendaten erzeugen
+         */
+        XMLCreator xml=new XMLCreator();
+        xml.schreibeXML(mfall);
+
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
        eingabenZuruecksetzen();
