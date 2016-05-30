@@ -382,12 +382,18 @@ public class GlobaleDaten extends Application {
                 |(getMas_stb_seitenlage()!=null)|(getMas_vakuummatratze()!=null)|(getMas_ven_zugang()!=null)|(getMas_wundversorgung()!=null)));
     }
     public Boolean Mas_eingabe(){
-        return (((getMas_atemwege_freim() ==1)|(getMas_beatmung()==1)|(getMas_betreuung()==1)|(getMas_ekg()==1)|
-                (getMas_erstdefibrillation()==1)|(getMas_extr_schienung()==1)|(getMas_flachlagerung()==1)|(getMas_herzdruckmassage()==1)|
-                (getMas_hws_stuetzkragen()==1)|(getMas_infusion()==1)|(getMas_intubation()==1)|
-                (getMas_keine()==1)|(getMas_medikamente()==1)|(getMas_notkompetenz()==1)|(getMas_oberkoerperhochlage()==1)|
-                (getMas_sauerstoffgabe()==1)|(getMas_schocklagerung()==1)|(getMas_sonstiges()==1)|(getMas_sonstiges_text().length()>0)
-                |(getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()==1)|(getMas_ven_zugang()==1)|(getMas_wundversorgung()==1)));
+        return ((((getMas_atemwege_freim() !=null)&&getMas_atemwege_freim() ==1)|(getMas_beatmung()!=null&&getMas_beatmung()==1)|(getMas_betreuung()!=null&&getMas_betreuung()==1)
+                |(getMas_ekg()!=null&&getMas_ekg()==1)| (getMas_erstdefibrillation()!=null&&getMas_erstdefibrillation()==1)|
+                (getMas_extr_schienung()!=null&&getMas_extr_schienung()==1)|(getMas_flachlagerung()!=null&&getMas_flachlagerung()==1)
+                |(getMas_herzdruckmassage()!=null&&getMas_herzdruckmassage()==1)|
+                (getMas_hws_stuetzkragen()!= null&&getMas_hws_stuetzkragen()==1)|(getMas_infusion() !=null&&getMas_infusion()==1)
+                |(getMas_intubation()!=null&&getMas_intubation()==1)|
+                (getMas_keine() !=null&&getMas_keine()==1)|(getMas_medikamente()!=null&&getMas_medikamente()==1)
+                |(getMas_notkompetenz() !=null&&getMas_notkompetenz()==1)|(getMas_oberkoerperhochlage()!=null&&getMas_oberkoerperhochlage()==1)|
+                (getMas_sauerstoffgabe()!=null&&getMas_sauerstoffgabe()==1)|(getMas_schocklagerung()!=null&&getMas_schocklagerung()==1)
+                |(getMas_sonstiges()!=null&&getMas_sonstiges()==1)|(getMas_sonstiges_text()!=null&&getMas_sonstiges_text().length()>0)
+                |(getMas_stb_seitenlage()!=null&&getMas_stb_seitenlage()==1)|(getMas_vakuummatratze()!=null&&getMas_vakuummatratze()==1)
+                |(getMas_ven_zugang()!=null&&getMas_ven_zugang()==1)|(getMas_wundversorgung()!=null&&getMas_wundversorgung()==1)));
     }
     public void loescheMas(){
         setMas_keine(null);
