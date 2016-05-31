@@ -1184,4 +1184,20 @@ public class XMLCreator {
             return false;
         }
     }
+    /*  von Vivien Stumpe, 31.05.16
+    Prozedur zum Löschen aller Dokumente im MEPA_Dateiordner
+    */
+    public Boolean deleteAllXML() {
+        File dir = new File(Environment.getExternalStorageDirectory() + File.separator + "MEPA_Dateiordner" + File.separator);
+
+        if (dir != null && dir.isDirectory()) {
+            File[] files = dir.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    return f.delete();
+                }
+            }
+        }
+            return false;
+    }
 }
