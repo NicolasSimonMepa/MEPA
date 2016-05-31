@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 30.05.16
+//Zuletzt geändert von Vivien Stumpe, 31.05.16
 package de.app.mepa;
 
 import java.io.File;
@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import org.xmlpull.v1.XmlSerializer;
 
+import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 import android.util.Xml;
@@ -287,7 +288,14 @@ public class XMLCreator {
             serializer.endTag(null, NAME);
 
             serializer.startTag(null, GENCODE);
-            serializer.text("gencode");
+            String sex;
+            if(fall.getPat_sex()!=null) {
+                sex = fall.getPat_sex();
+            }
+            else{
+                sex="keine Angabe";
+            }
+            serializer.text(String.valueOf(fall.getPatID())+" "+sex);
             serializer.endTag(null, GENCODE);
 
             serializer.startTag(null, BIRTH);
@@ -383,6 +391,7 @@ public class XMLCreator {
             serializer.text(fall.getVer_date());
             serializer.endTag(null, EINDATE);
 
+           /* wird nicht erfasst
             serializer.startTag(null, EINBEG);
             serializer.text("Einsatzbeginn");
             serializer.endTag(null, EINBEG);
@@ -390,6 +399,7 @@ public class XMLCreator {
             serializer.startTag(null, EINEND);
             serializer.text("Einsatzende");
             serializer.endTag(null, EINEND);
+            */
 
             serializer.startTag(null, ZUGEF);
             if(fall.getEin_zugef()!=null) {
@@ -412,6 +422,8 @@ public class XMLCreator {
             serializer.text(String.valueOf(fall.getEin_sanw()));
             serializer.endTag(null, SANW);
 
+            /*
+            wird nicht erfasst
             serializer.startTag(null, EINPOL);
             serializer.text("Polizei");
             serializer.endTag(null, EINPOL);
@@ -424,6 +436,7 @@ public class XMLCreator {
             serializer.text("San Team");
             serializer.endTag(null, EINSAN);
 
+            */
             serializer.startTag(null, FUNDORT);
             if(fall.getEin_fundort()!=null) {
                 serializer.text(fall.getEin_fundort());
@@ -980,7 +993,8 @@ public class XMLCreator {
                 serializer.text("keine Angabe");
             }
             serializer.endTag(null, WERTS);
-
+            /*
+                wird nicht erfasst
             serializer.startTag(null, WERTSZ);
             serializer.text("Zeit");
             serializer.endTag(null, WERTSZ);
@@ -988,7 +1002,7 @@ public class XMLCreator {
             serializer.startTag(null, ZEITN);
             serializer.text("Zeit");
             serializer.endTag(null, ZEITN);
-
+            */
             serializer.startTag(null, KTWN);
             serializer.text(String.valueOf(fall.getErg_nachforderung_ktw()));
             serializer.endTag(null, KTWN);
@@ -1025,11 +1039,12 @@ public class XMLCreator {
                 serializer.text("keine Angabe");
             }
             serializer.endTag(null, FUNK);
-
+            /*
+                wird nicht erfasst
             serializer.startTag(null, FUNKZ);
             serializer.text("Zeit");
             serializer.endTag(null, FUNKZ);
-
+            */
             serializer.startTag(null, EV);
             serializer.text(String.valueOf(fall.getErg_entlassung_ev()));
             serializer.endTag(null, EV);
@@ -1042,11 +1057,12 @@ public class XMLCreator {
                 serializer.text("keine Angabe");
             }
             serializer.endTag(null, ZEUG);
-
+            /*
+                wird nicht erfasst
             serializer.startTag(null, ZUST);
             serializer.text("Zustand");
             serializer.endTag(null, ZUST);
-
+            */
             serializer.startTag(null, HAUSA);
             serializer.text(String.valueOf(fall.getErg_hausarzt_informiert()));
             serializer.endTag(null, HAUSA);
@@ -1081,7 +1097,8 @@ public class XMLCreator {
                 serializer.text("keine Angabe");
             }
             serializer.endTag(null, BEM);
-
+            /*
+                Wie geben wir das Foto aus?
             serializer.startTag(null, FOTO);
             serializer.text("??");
             serializer.endTag(null, FOTO);
@@ -1089,7 +1106,7 @@ public class XMLCreator {
             serializer.startTag(null, SONSTTXT);
             serializer.text("Text");
             serializer.endTag(null, SONSTTXT);
-
+            */
             serializer.endTag(null, SEC);
 
             //Tabelle Sanitäter
@@ -1152,6 +1169,19 @@ public class XMLCreator {
         } catch (Exception e) {
             Log.e("Exception", "error occurred while creating xml file");
             Log.e("Exception", e.toString());
+        }
+    }
+    /*  von Vivien Stumpe, 31.05.16
+        Funktion zum Löschen eines XML-Dokuments
+     */
+    public Boolean deleteXML(String id){
+        File file=new File(Environment.getExternalStorageDirectory() + File.separator + "MEPA_Dateiordner" + File.separator + id + ".xml");
+        if(file.exists()) {
+            return file.delete();
+        }
+        else {
+           Log.d("Fall", "XML-Dokument existiert nicht");
+            return false;
         }
     }
 }
