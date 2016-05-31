@@ -181,7 +181,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             //Durch EXTRA_STREAM wird eine Datei versendet.
             emailversand.setType("*/*");
-            emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
+            //emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
             //emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + foto.getAbsolutePath()));
 
 
@@ -253,7 +253,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             //Durch EXTRA_STREAM wird eine Datei versendet.
             bluetoothversand.setType("*/*");
             //bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
-            bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
+            //bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
 
             //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
 
