@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 23.05.16
+//Zuletzt geändert von Vivien Stumpe am 31.05.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
+import de.app.mepa.XMLCreator;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -196,6 +197,11 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             mfall.loescheBem();
             mfall.loescheErst();
             mfall.loescheEin();
+            /*  von Vivien Stumpe, 31.05.16
+                Löschen von allen Dokumenten im MEPA_Dateiordner
+             */
+            XMLCreator xml=new XMLCreator();
+            xml.deleteAllXML();
             Toast.makeText(this, "Daten werden gelöscht", Toast.LENGTH_SHORT).show();
             //werden die Buttons ausgeblendet
             lnl_buttons.setVisibility(View.GONE);
