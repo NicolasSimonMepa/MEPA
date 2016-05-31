@@ -176,7 +176,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+    //               lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
             }
         };
 
