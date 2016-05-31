@@ -256,7 +256,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                buttons.setVisibility(buttons.VISIBLE);
+                //buttons.setVisibility(buttons.VISIBLE);
 
 
                 //Timer erst starten nachdem 3 Zeichen eingegeben wurden
