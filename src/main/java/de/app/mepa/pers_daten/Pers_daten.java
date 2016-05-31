@@ -262,23 +262,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
 
         etxt_ort_pers_daten=(EditText) findViewById(R.id.etxt_ort_pers_daten);
-        /* von Indra Marcheel, 18.05.2016
-        es können nur character eingegeben werden
-         */
-        etxt_ort_pers_daten.setFilters(new InputFilter[] {
-                new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
-                        }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
-                    }
-                }
-        });
+        etxt_ort_pers_daten.setFilters(new InputFilter[]{filter});
 
         etxt_land_pers_daten=(EditText) findViewById(R.id.etxt_land_pers_daten);
         etxt_land_pers_daten.setFilters(new InputFilter[] {
