@@ -304,7 +304,7 @@
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:inputType="number"
+                                android:inputType="textCapCharacters"
                                 android:ems="10"
                                 android:maxLength="5"
                                 android:singleLine="true"
