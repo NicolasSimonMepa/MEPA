@@ -404,8 +404,8 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
         if((spin_gesicht_art.getSelectedItem().toString().equals("offen"))){
             mfall.setVerl_gesicht_art("offen");
         }
-        if((spin_gesicht_art.getSelectedItem().toString().equals("offen"))){
-            mfall.setVerl_gesicht_art("-----");
+        if((spin_gesicht_art.getSelectedItem().toString().equals("-----"))){
+            mfall.setVerl_gesicht_art(null);
         }
         if((spin_gesicht_art.getSelectedItem().toString().equals("geschlossen"))){
             mfall.setVerl_gesicht_art("geschlossen");
