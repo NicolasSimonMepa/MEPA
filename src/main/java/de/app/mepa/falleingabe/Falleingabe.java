@@ -363,7 +363,9 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             }
             else{
                 //sind alle Pflichtfelder von Patientendaten ausgefüllt?
-                if(!(mfall.getPat_name()==null & mfall.getPat_vorname()==null & mfall.getPat_geb()==null)){
+                if((mfall.getPat_name()!=null &&mfall.getPat_name().length()>0&&
+                        mfall.getPat_vorname()!=null&&mfall.getPat_vorname().length()>0 &&
+                        mfall.getPat_geb()!=null&&mfall.getPat_geb().length()>0)){
                     speichern();
                 }
                 else{
@@ -611,7 +613,6 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         viewToAnimate.startAnimation(in);
         viewToAnimate.setVisibility(View.VISIBLE);
 
-        // ---------------
         /* von Vivien Stumpe, 10.05.16
          * BackgroundTaskDB anlegen, um mit der Datenbank im Hintergrund zu interagieren
          * -> UI-Thread wird nicht belastet
