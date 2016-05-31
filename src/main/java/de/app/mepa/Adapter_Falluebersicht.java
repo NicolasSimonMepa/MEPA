@@ -1,11 +1,10 @@
-//Zuletzt geändert von Vivien Stumpe, 24.05.16
+//Zuletzt geändert von Vivien Stumpe, 31.05.16
 package de.app.mepa;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.mepa.R;
@@ -81,7 +79,11 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 dataSource.open();
                                 //Fall löschen
                                 dataSource.deleteFall(prot_id);
-
+                                /*  von Vivien Stumpe, 31.05.16
+                                    XML Datei des Falls wird ebenfalls gelöscht
+                                 */
+                                XMLCreator xml=new XMLCreator();
+                                xml.deleteXML(prot_id_string);
                                // Fallübersicht neu laden, damit der gelöschte Fall aus der Übersicht verschwendet
                                 Intent intent=new Intent(ctx.getApplicationContext(), Falluebersicht.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
