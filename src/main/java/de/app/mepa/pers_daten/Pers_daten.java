@@ -112,7 +112,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     Timer deklarieren mit der Zeit DELAY in Millisekunden
     */
     private Timer timer = new Timer();
-    private final long DELAY = 2000; // in ms
+    private final long DELAY = 4000; // in ms
     private TextWatcher tw;
 
     @Override
