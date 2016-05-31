@@ -295,6 +295,20 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
                     }
                 }
         });
+        etxt_plz_pers_daten=(EditText) findViewById(R.id.etxt_plz_pers_daten);
+        InputFilter filter2 = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if ( !Character.isLetterOrDigit(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ")) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+
+        etxt_plz_pers_daten.setFilters(new InputFilter[]{filter2});
 
         /* von Vivien Stumpe, 22.04.16
             Tastatur wird nicht automatisch beim Öffnen der Aktivität eingeblendet
