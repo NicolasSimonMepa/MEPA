@@ -77,8 +77,20 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 Log.d("Fall", prot_id+" ID");
                                 dataSource=new FalleingabeDataSource(getContext());
                                 dataSource.open();
-                                //Fall löschen
+                                //Fall aus der DB löschen
                                 dataSource.deleteFall(prot_id);
+                                //Fall aus dem Zwischenspeicher löschen
+                                GlobaleDaten fall=(GlobaleDaten)getContext().getApplicationContext();
+                                fall.loeschePat();
+                                fall.loescheVer();
+                                fall.loescheErk();
+                                fall.loescheMas();
+                                fall.loescheErg();
+                                fall.loescheNotf();
+                                fall.loescheBem();
+                                fall.loescheErst();
+                                fall.loescheEin();
+                                fall.setFallAusgewahelt(false);
                                 /*  von Vivien Stumpe, 31.05.16
                                     XML Datei des Falls wird ebenfalls gelöscht
                                  */
