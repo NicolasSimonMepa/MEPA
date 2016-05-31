@@ -844,9 +844,12 @@ public class GlobaleDaten extends Application {
         return san_vname;
     }
     public void setSan_vorh(){
-        if((getSan_name().length()>0)&(getSan_vorname().length()>0)){
-            san_vorh=true;
+        if((getSan_name()!=null&&getSan_name().length()>0)&(getSan_vorname()!=null&&getSan_vorname().length()>0)){
+            this.san_vorh=true;
         }
+    }
+    public void setSan_vorh_m(Boolean v){
+        this.san_vorh=false;
     }
     public Boolean getSan_vorh(){
         return san_vorh;
@@ -871,9 +874,12 @@ public class GlobaleDaten extends Application {
         return verb_ortsv;
     }
     public void setVerb_vorh(){
-        if((getVerb_kreisv().length()>0)&(getVerb_ortsv().length()>0)){
-            verb_vorh=true;
+        if((getVerb_kreisv()!=null&&getVerb_kreisv().length()>0)&(getVerb_ortsv()!=null&& getVerb_ortsv().length()>0)){
+            this.verb_vorh=true;
         }
+    }
+    public void setVerb_vorh_m(Boolean v){
+        this.verb_vorh=false;
     }
     public Boolean getVerb_vorh(){
         return verb_vorh;
@@ -910,9 +916,12 @@ public class GlobaleDaten extends Application {
         return ver_date;
     }
     public void setVer_vorh(){
-        if((getVer_name().length()>0)&(getVer_date().length()>0)){
-            ver_vorh=true;
+        if((getVer_name()!=null&&getVer_name().length()>0)&(getVer_date()!=null&&getVer_date().length()>0)){
+            this.ver_vorh=true;
         }
+    }
+    public void setVer_vorh_m(Boolean v){
+        this.ver_vorh=false;
     }
     public Boolean getVer_vorh(){
         return ver_vorh;
