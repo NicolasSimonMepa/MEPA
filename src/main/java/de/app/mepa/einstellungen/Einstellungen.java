@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -67,6 +70,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
     private Button btn_abbrechen;
     private FalleingabeDataSource dataSource;
     private GlobaleDaten mfall;
+    private ImageView img_ani;
 
 
     @Override
@@ -127,6 +131,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         btn_abbrechen.setOnClickListener(this);
         btn_loeschen.setOnClickListener(this);
         dataSource=new FalleingabeDataSource(this);
+        img_ani=(ImageView)findViewById(R.id.imgv_animation_einst);
 
     }
 
@@ -176,37 +181,7 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             lnl_buttons.invalidate();
         }
         if(ce == R.id.btn_einst_löschen){
-            /* von Vivien Stumpe, 23.05.16
-            Datenbank öffnen
-            Alle Datensätze löschen
-            */
-            dataSource.open();
-            dataSource.deleteAll();
-            mfall=(GlobaleDaten)getApplication();
-            //von Vivien Stumpe, 24.05.16
-            //lokal gespeicherte Daten werden auch gelöscht
-            mfall.loescheVerb();
-            mfall.loescheSan();
-            mfall.loescheVer();
-            mfall.loeschePat();
-            mfall.loescheSan();
-            mfall.loescheVerl();
-            mfall.loescheMas();
-            mfall.loescheErk();
-            mfall.loescheErg();
-            mfall.loescheBem();
-            mfall.loescheErst();
-            mfall.loescheEin();
-            /*  von Vivien Stumpe, 31.05.16
-                Löschen von allen Dokumenten im MEPA_Dateiordner
-             */
-            XMLCreator xml=new XMLCreator();
-            xml.deleteAllXML();
-            Toast.makeText(this, "Daten werden gelöscht", Toast.LENGTH_SHORT).show();
-            //werden die Buttons ausgeblendet
-            lnl_buttons.setVisibility(View.GONE);
-            //muss aufgerufen werden, um die View zu aktualisieren
-            lnl_buttons.invalidate();
+            loescheDaten();
         }
     }
     //Von Vivien Stumpe, 09.04.16
@@ -244,5 +219,58 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(Einstellungen.this, Impressum.class);
             startActivity(intent);
         }
+    }
+    /*  von Vivien Stumpe, 31.05.16
+        Wird aufgerufen, wenn alle Daten gelöscht werden sollen
+        Alle Datensätze aus der DB werden gelöscht
+        Zwischenspeicher wird gelöscht
+        Alle XML-Dateien werden gelöscht
+        Animation, wenn Dateien gelöscht wurden
+    */
+    private void loescheDaten(){
+        /* von Vivien Stumpe, 23.05.16
+            Datenbank öffnen
+            Alle Datensätze löschen
+        */
+        dataSource.open();
+        dataSource.deleteAll();
+        mfall=(GlobaleDaten)getApplication();
+        //von Vivien Stumpe, 24.05.16
+        //lokal gespeicherte Daten werden auch gelöscht
+        mfall.loescheVerb();
+        mfall.loescheSan();
+        mfall.loescheVer();
+        mfall.setVer_vorh_m(false);
+        mfall.setVerb_vorh_m(false);
+        mfall.setSan_vorh_m(false);
+        mfall.loeschePat();
+        mfall.loescheVerl();
+        mfall.loescheMas();
+        mfall.loescheErk();
+        mfall.loescheErg();
+        mfall.loescheBem();
+        mfall.loescheErst();
+        mfall.loescheEin();
+            /*  von Vivien Stumpe, 31.05.16
+                Löschen von allen Dokumenten im MEPA_Dateiordner
+             */
+        Boolean geloescht=false;
+        XMLCreator xml=new XMLCreator();
+        geloescht=xml.deleteAllXML();
+
+        if (geloescht){
+            // Die View wird sichtbar -> Animation
+            Animation in = AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left);
+            img_ani.startAnimation(in);
+            img_ani.setVisibility(View.VISIBLE);
+           // Animation out = AnimationUtils.makeOutAnimation(this, true);
+            //img_ani.startAnimation(out);
+            img_ani.setVisibility(View.INVISIBLE);
+        }
+
+        //werden die Buttons ausgeblendet
+        lnl_buttons.setVisibility(View.GONE);
+        //muss aufgerufen werden, um die View zu aktualisieren
+        lnl_buttons.invalidate();
     }
 }
