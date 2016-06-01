@@ -1,7 +1,7 @@
-//Zuletzt geändert von Vivien Stumpe, 24.05.16
+//Zuletzt geändert von Vivien Stumpe, 01.06.16
 package de.app.mepa.stammdaten;
 
-        import android.app.DatePickerDialog;
+import android.app.DatePickerDialog;
         import android.content.Context;
         import android.content.Intent;
         import android.os.Bundle;
@@ -34,17 +34,17 @@ package de.app.mepa.stammdaten;
 
 /**
  * Created by vivienstumpe on 16.05.16.
+ *
  */
 public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClickListener {
 
-
-    /*von Vivien Stumpe, 14.04.16
-    Toolbar anlegen
+    /*  von Vivien Stumpe, 14.04.16
+        Toolbar anlegen
     */
     Toolbar toolbar;
 
-    /* von Vivien Stumpe, 01.5.16
-    Attribute festlegen
+    /*  von Vivien Stumpe, 01.5.16
+        Attribute festlegen
      */
     protected String kreisverband;
     protected String ort;
@@ -64,19 +64,19 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
     private CheckBox cck_hilfs;
     private CheckBox cck_sanw;
 
-    /* von Vivien Stumpe, 14.05.16
-    Variablen für den Kalender zur Auswahl des Datums
- */
+    /*  von Vivien Stumpe, 14.05.16
+        Variablen für den Kalender zur Auswahl des Datums
+    */
     private EditText etxt_date;
     private DatePickerDialog datepicker;
     private Calendar calendar=Calendar.getInstance();
 
-    //---
     private GlobaleDaten mfall;
     private ImageView imgv_back;
-    /* von Vivien Stumpe, 20.05.16
-    Timer deklarieren mit der Zeit DELAY in Millisekunden
-     */
+
+    /*  von Vivien Stumpe, 20.05.16
+        Timer deklarieren mit der Zeit DELAY in Millisekunden
+    */
     private Timer timer = new Timer();
     private final long DELAY = 10000; // in ms
     private FalleingabeDataSource dataSource;
@@ -200,7 +200,6 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                 }
                 if (etxt_ortsverein.getText().toString().length() == 0){
                     etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-
                 }
                 if (etxt_veranstaltung.getText().toString().length() == 0){
                     etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
@@ -213,7 +212,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                buttons.setVisibility(buttons.VISIBLE);
+                buttonsSichtbar();
                 // von Vivien Stumpe, 20.05.16
                 // Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
@@ -285,90 +284,8 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             startActivity(onboard);
         }
         if(ce == R.id.btn_speichern_stammd_onb){
-            if (etxt_kreisverband.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-            }
-            if (etxt_ortsverein.getText().toString().length() == 0){
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
 
-            }
-            if (etxt_veranstaltung.getText().toString().length() == 0){
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-            }
-            if (etxt_date.getText().toString().length() == 0){
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-            }
-            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                speichern.setEnabled(true);
-            }
-            if (etxt_date.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                speichern.setEnabled(true);
-            }
-            if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                speichern.setEnabled(true);
-            }
-            if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_kreisverband.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                speichern.setEnabled(true);
-            }
-            if (etxt_date.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                speichern.setEnabled(true);
-            }
-            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                speichern.setEnabled(true);
-            }
-            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                speichern.setEnabled(true);
-            }
-            if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                speichern.setEnabled(true);
-            }
-            if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_kreisverband.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                speichern.setEnabled(true);
-            }
-            if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
-                etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
-                etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-                etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
-                etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
-                speichern.setEnabled(true);
-            }
-            else {
-                speichereEingaben();
-                mfall=(GlobaleDaten)getApplication();
-                mfall.setVerbandID(true);
-                dataSource = new FalleingabeDataSource(this);
-                dataSource.open();
-                dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
-                dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
-                buttons.setVisibility(buttons.GONE);
-                if(mfall.getFall_angelegt()){
-                    mfall.setUebersprungen(false);
-                    Intent fallein=new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
-                    startActivity(fallein);
-                }
-            }
+            speichern();
         }
         /* von Vivien Stumpe, 14.05.2016
         DatePickerDialog zum Anzeigen des Kalenders und auswählen des Datums
@@ -392,12 +309,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             datepicker.show();
         }
         if(ce==R.id.btn_verwerfen_stammd_onb){
-            mfall.loescheVer();
-            mfall.loescheVerb();
-            setWerte();
-            //Buttons werden ausgeblendet
-            buttons.setVisibility(buttons.GONE);
-            //Inhalt des Textfeldes löschen?
+            verwerfen();
         }
     }
 
@@ -479,6 +391,119 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         if(mfall.getEin_sanw()!=null) {
             if (mfall.getEin_sanw() == 1) {
                 cck_sanw.setChecked(true);
+            }
+        }
+    }
+    /*  von Vivien Stumpe, 01.06.16
+       Prozedur, die die Buttons zum Speichern & Verwerfen einblendet,
+       wenn die geforderten Eingaben gemacht wurden
+    */
+    private void buttonsSichtbar(){
+        if((etxt_kreisverband.getText()!=null&&etxt_kreisverband.getText().length()>0)
+                &&(etxt_ortsverein.getText()!=null&&etxt_ortsverein.getText().length()>0)
+                &&(etxt_veranstaltung.getText()!=null&&etxt_veranstaltung.getText().length()>0)){
+            buttons.setVisibility(View.VISIBLE);
+        }
+    }
+
+    // Was soll geschehen, wenn verworfen wird?
+    private void verwerfen(){
+        mfall.loescheVer();
+        mfall.loescheVerb();
+        setWerte();
+        //Inhalt des Textfeldes löschen
+        etxt_kreisverband.setText("");
+        etxt_ortsverein.setText("");
+        etxt_veranstaltung.setText("");
+        etxt_ort.setText("");
+        etxt_date.setText("");
+        //Buttons werden ausgeblendet
+        buttons.setVisibility(buttons.GONE);
+    }
+    //Was soll beim Betätigen des Speichern-Buttons geschehen?
+    private void speichern(){
+        if (etxt_kreisverband.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+        }
+        if (etxt_ortsverein.getText().toString().length() == 0){
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+
+        }
+        if (etxt_veranstaltung.getText().toString().length() == 0){
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+        }
+        if (etxt_date.getText().toString().length() == 0){
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+        }
+        if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            speichern.setEnabled(true);
+        }
+        if (etxt_date.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            speichern.setEnabled(true);
+        }
+        if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            speichern.setEnabled(true);
+        }
+        if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_kreisverband.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            speichern.setEnabled(true);
+        }
+        if (etxt_date.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0) {
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            speichern.setEnabled(true);
+        }
+        if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            speichern.setEnabled(true);
+        }
+        if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            speichern.setEnabled(true);
+        }
+        if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            speichern.setEnabled(true);
+        }
+        if (etxt_veranstaltung.getText().toString().length() == 0 & etxt_kreisverband.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            speichern.setEnabled(true);
+        }
+        if (etxt_kreisverband.getText().toString().length() == 0 & etxt_ortsverein.getText().toString().length() == 0 & etxt_veranstaltung.getText().toString().length() == 0 & etxt_date.getText().toString().length() == 0) {
+            etxt_kreisverband.setError("Bitte gib deinen Kreisverband ein");
+            etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
+            etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
+            etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
+            speichern.setEnabled(true);
+        }
+        else {
+            speichereEingaben();
+            mfall = (GlobaleDaten) getApplication();
+            mfall.setVerbandID(true);
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+            dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
+            dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
+            buttons.setVisibility(buttons.GONE);
+            if (mfall.getFall_angelegt()) {
+                mfall.setUebersprungen(false);
+                Intent fallein = new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
+                startActivity(fallein);
             }
         }
     }
