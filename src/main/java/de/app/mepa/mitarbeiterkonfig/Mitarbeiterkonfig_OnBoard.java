@@ -1,7 +1,7 @@
 /**
  * Created by vstumpe on 16.05.2016.
  */
-// Zuletzt bearbeitet von Vivien Stumpe, 20.05.16
+// Zuletzt bearbeitet von Vivien Stumpe, 01.06.16
 package de.app.mepa.mitarbeiterkonfig;
 
 import android.content.Context;
@@ -161,7 +161,7 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+                buttonsSichtbar();
                 // von Vivien Stumpe, 20.05.16
                 // Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
@@ -207,37 +207,11 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             startActivity(onboard);
         }
         if(ce == R.id.btn_speichern_mitarbeiter_konfig_onb) {
-            //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
-            //muss noch angepasst werden -> Daten werden ja auch gelöscht?
-            // & Vergleich mit bestehenden Daten fehlt
-            speichereEingaben();
-            mfall=(GlobaleDaten)getApplication();
-            mfall.setSaniID(true);
-
-
-
-            dataSource = new FalleingabeDataSource(this);
-            dataSource.open();
-
-            dataSource.insertSani(mfall.getSaniID(), mfall.getSan_name(), mfall.getSan_vorname(), mfall.getVerbandID());
-            lnl_buttons.setVisibility(lnl_buttons.GONE);
-            if(mfall.getFall_angelegt()){
-                mfall.setUebersprungen(false);
-                Intent fallein=new Intent(Mitarbeiterkonfig_OnBoard.this, Falleingabe.class);
-                startActivity(fallein);
-            }
-
-            //Buttons wieder ausblenden
-            lnl_buttons.setVisibility(lnl_buttons.GONE);
+            speichern();
         }
 
         if(ce==R.id.btn_verwerfen_mitarbeiter_konfig_onb){
-            Toast.makeText(this, "Mitarbeiter verworfen", Toast.LENGTH_LONG).show();
-            mfall.loescheSan();
-            setWerte();
-            //Buttons werden ausgeblendet
-            lnl_buttons.setVisibility(lnl_buttons.GONE);
-            //Inhalt des Textfeldes löschen?
+            verwerfen();
         }
     }
 
@@ -267,5 +241,47 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         if((mfall.getSan_vorname()!=null)){
             etxt_mitarbeiter_vorname.setText(mfall.getSan_vorname());
         }
+    }
+    /*  von Vivien Stumpe, 01.06.16
+        Prozedur, die die Buttons zum Speichern & Verwerfen einblendet,
+        wenn die geforderten Eingaben gemacht wurden
+     */
+    private void buttonsSichtbar(){
+        if((etxt_mitarbeiter_name.getText()!=null&&etxt_mitarbeiter_name.getText().length()>0)
+        &&(etxt_mitarbeiter_vorname.getText()!=null&&etxt_mitarbeiter_vorname.getText().length()>0)){
+            lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+        }
+    }
+    private void verwerfen(){
+        mfall.loescheSan();
+        //Inhalt des Textfeldes löschen
+        etxt_mitarbeiter_vorname.setText("");
+        etxt_mitarbeiter_name.setText("");
+        setWerte();
+        //Buttons werden ausgeblendet
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
+
+    }
+    private void speichern(){
+        //wenn das Eingabefeld nicht leer ist, werden die Buttons eingeblendet
+        //muss noch angepasst werden -> Daten werden ja auch gelöscht?
+        // & Vergleich mit bestehenden Daten fehlt
+        speichereEingaben();
+        mfall=(GlobaleDaten)getApplication();
+        mfall.setSaniID(true);
+
+        dataSource = new FalleingabeDataSource(this);
+        dataSource.open();
+
+        dataSource.insertSani(mfall.getSaniID(), mfall.getSan_name(), mfall.getSan_vorname(), mfall.getVerbandID());
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
+        if(mfall.getFall_angelegt()){
+            mfall.setUebersprungen(false);
+            Intent fallein=new Intent(Mitarbeiterkonfig_OnBoard.this, Falleingabe.class);
+            startActivity(fallein);
+        }
+
+        //Buttons wieder ausblenden
+        lnl_buttons.setVisibility(lnl_buttons.GONE);
     }
 }
