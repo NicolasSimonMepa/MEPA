@@ -86,6 +86,7 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                 fall.loescheErk();
                                 fall.loescheMas();
                                 fall.loescheErg();
+                                fall.loescheVerl();
                                 fall.loescheNotf();
                                 fall.loescheBem();
                                 fall.loescheErst();
