@@ -809,9 +809,6 @@ public class GlobaleDaten extends Application {
     public void loescheEin(){
         setEin_zugef(null);
         setEin_fundort(null);
-        setEin_hilfs(null);
-        setEin_sanw(null);
-        setEin_mosan(null);
     }
 
     //Stammdaten - Dienste
