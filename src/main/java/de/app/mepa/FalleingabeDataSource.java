@@ -515,7 +515,6 @@ public class FalleingabeDataSource {
         Cursor cursor_einsatz=database.query(FalleingabeContract.Tbl_Einsatz.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Einsatz.COL_ID + "=" + id,
                 null, null, null, null);
-
         Cursor cursor_verletzung=database.query(FalleingabeContract.Tbl_Verletzung.TABLE_NAME,
                 null, FalleingabeContract.Tbl_Verletzung.COL_PROT_ID + "=" + id,
                 null, null, null, null);
@@ -541,6 +540,7 @@ public class FalleingabeDataSource {
             mfall.setNotf_notfallsituation(cursor_einsatz.getString(6));
             mfall.setEin_fundort(cursor_einsatz.getString(7));
         }
+        cursor_einsatz.close();
         if(cursor_verletzung.getCount() >= 1&cursor_verletzung.moveToFirst()){
            // cursor_verletzung.moveToFirst();
             mfall.setVerl_elektrounfall(cursor_verletzung.getInt(1));
@@ -571,6 +571,7 @@ public class FalleingabeDataSource {
             mfall.setVerl_weichteile_grad(cursor_verletzung.getString(26));
             Log.d(LOG_TAG, mfall.toString());
         }
+        cursor_verletzung.close();
         if(cursor_erkrankung.getCount() >= 1&cursor_erkrankung.moveToFirst()){
            // cursor_erkrankung.moveToFirst();
             mfall.setErk_atmung(cursor_erkrankung.getInt(1));
@@ -593,6 +594,7 @@ public class FalleingabeDataSource {
             mfall.setErk_erbrechen(cursor_erkrankung.getInt(18));
             Log.d(LOG_TAG, mfall.toString());
         }
+        cursor_erkrankung.close();
         if(cursor_massnahmen.getCount() >= 1&cursor_massnahmen.moveToFirst()){
             //cursor_massnahmen.moveToFirst();
             mfall.setMas_stb_seitenlage(cursor_massnahmen.getInt(1));
@@ -621,6 +623,7 @@ public class FalleingabeDataSource {
             mfall.setMas_keine(cursor_massnahmen.getInt(24));
             Log.d(LOG_TAG, mfall.toString());
         }
+        cursor_massnahmen.close();
         if(cursor_erstbefund.getCount() >= 1&cursor_erstbefund.moveToFirst()){
            // cursor_erstbefund.moveToFirst();
             mfall.setErst_bewusstsein(cursor_erstbefund.getString(1));
@@ -638,6 +641,7 @@ public class FalleingabeDataSource {
             mfall.setErst_pupille_re(cursor_erstbefund.getString(13));
             Log.d(LOG_TAG, mfall.toString());
         }
+        cursor_erstbefund.close();
         if(cursor_ergebnis.getCount() >= 1&cursor_ergebnis.moveToFirst()){
             //cursor_ergebnis.moveToFirst();
             mfall.setErg_ergebnis_zeit(cursor_ergebnis.getString(1));
@@ -668,9 +672,25 @@ public class FalleingabeDataSource {
             mfall.setErg_transport_sonstiges(cursor_ergebnis.getString(26));
             Log.d(LOG_TAG, mfall.toString());
         }
+        cursor_ergebnis.close();
+
         return mfall;
 
         //Stammdaten und Sani fehlen
+    }
+    public GlobaleDaten selectCckStammdaten(){
+        String[] columns={FalleingabeContract.Tbl_Einsatz.COL_HILFSSTELLE, FalleingabeContract.Tbl_Einsatz.COL_MOSAN_TEAM,
+                FalleingabeContract.Tbl_Einsatz.COL_SAN_WACHE};
+        GlobaleDaten mfall=new GlobaleDaten();
+        Cursor cursor_einsatz=database.query(FalleingabeContract.Tbl_Einsatz.TABLE_NAME,
+                columns, null, null, null, null, "1");
+        if(cursor_einsatz.getCount()>=1&cursor_einsatz.moveToFirst()){
+            mfall.setEin_hilfs(cursor_einsatz.getInt(0));
+            mfall.setEin_mosan(cursor_einsatz.getInt(1));
+            mfall.setEin_sanw(cursor_einsatz.getInt(2));
+        }
+        cursor_einsatz.close();
+        return mfall;
     }
     /*  von Vivien Stumpe, 23.05.16
         Funktion, die einen Cursor in ein Objekt vom Typ GlobaleDaten umwandelt
