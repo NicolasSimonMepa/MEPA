@@ -211,25 +211,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         //clicked element mit dem geklickten Button belegen
         //Nicolas Simon, übernommen von Vivien Stumpe, 17.04.16
         int ce = v.getId();
-        //Ein Intent erzeugen, wenn der Button geklickt wurde
-        //Das Intent stellt eine Verbindung zur angegebenen Activity (Bildschirmseite) her und ruft diese auf
-        //eingefügt von Nicolas Simon 17.04.16
-        if (ce == R.id.btn_speichern_fallueb) {
-           /*
-            //werden die Buttons eingeblendet
-            lnl_buttons.setVisibility(View.VISIBLE);
-            //muss aufgerufen werden, um die View zu aktualisieren
-            lnl_buttons.invalidate();
-            */
-        }
-        if (ce == R.id.btn_loeschen_fallueb) {
-            /*
-            //werden die Buttons eingeblendet
-            lnl_buttons.setVisibility(View.VISIBLE);
-            //muss aufgerufen werden, um die View zu aktualisieren
-            lnl_buttons.invalidate();
-            */
-        }
+
     }
 
     private void selectItemFromDrawer(int position){
@@ -267,13 +249,9 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
     }
-    /* von Vivien Stumpe, 21.05.16
-    Prozedur, die die Select Anweisungen zum ausgewählten Fall ausführt,
-    damit die gespeicherten Werte in den Screens angezeigt werden können
 
-     */
     /* von Vivien Stumpe, 23.05.16
-    Prozedur, die die Daten zum Fall lädt
+    Prozedur, die die Daten zum ausgewählten Fall lädt
     */
     public void ladeFallDaten(int id){
         dataSource.open();
@@ -281,8 +259,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mpat=dataSource.selectPat(id);
         patientendatenSpeichern(mpat);
         mfall=(GlobaleDaten)getApplication();
-        // Hier würden eigentlich die Falldaten geladen
-       mfalldaten=dataSource.selectFall(id);
+        mfalldaten=dataSource.selectFall(id);
         fallDatenSpeichern(mfalldaten);
     }
     /* von Vivien Stumpe, 27.05.16
@@ -310,7 +287,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     /*  von Vivien Stumpe, 27.05.16
         Prozedur, die die Daten aus der DB zum gewählten Fall übernimmt
         und diese dann zwischenspeichert,
-        damit sie im Screen angezeigt werden
+        damit sie in den Screens angezeigt werden
      */
     private void fallDatenSpeichern(GlobaleDaten meinsatz){
         mfall=(GlobaleDaten)getApplication();
@@ -403,7 +380,6 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mfall.setErst_pupille_re(meinsatz.getErst_pupille_re());
 
         //Übergabe
-        //Ergebnis_zeit?
         mfall.setErg_wertsachen(meinsatz.getErg_wertsachen());
         mfall.setBem_bemerkung(meinsatz.getBem_bemerkung());
         mfall.setErg_funkruf(meinsatz.getErg_funkruf());
@@ -424,6 +400,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mfall.setErg_nachforderung_rth(meinsatz.getErg_nachforderung_rth());
         mfall.setErg_nachforderung_feuerwehr(meinsatz.getErg_nachforderung_feuerwehr());
         mfall.setErg_nachforderung_polizei(meinsatz.getErg_nachforderung_polizei());
+        mfall.setErg_ergebnis_zeit(meinsatz.getErg_ergebnis_zeit());
 
         //Einsatz
         mfall.setEin_mosan(meinsatz.getEin_mosan());
@@ -432,8 +409,6 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mfall.setEin_zugef(meinsatz.getEin_zugef());
         mfall.setEin_fundort(meinsatz.getEin_fundort());
         mfall.setNotf_notfallsituation(meinsatz.getNotf_notfallsituation());
-
-        //Stammdaten??
     }
 
 }
