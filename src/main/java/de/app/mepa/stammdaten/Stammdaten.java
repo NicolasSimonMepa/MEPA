@@ -132,7 +132,6 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         buttons=(LinearLayout)findViewById(R.id.lnl_stammdaten_buttons);
         buttons.setVisibility(buttons.GONE);
         etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband);
-
       
         etxt_ort=(EditText)findViewById(R.id.etxt_ort);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
@@ -309,6 +308,9 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         */
         setWerte();
         dataSource=new FalleingabeDataSource(this);
+        Log.d("Fall", mfall.getEin_hilfs()+" Hilfs");
+        Log.d("Fall", mfall.getEin_mosan()+" MOSAN");
+        Log.d("Fall", mfall.getEin_sanw()+" Sanw");
     }
 
 
@@ -523,7 +525,7 @@ Prozedur, die die eingegebenen Daten in den Variablen speichert
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        //speichereEingaben();
     }
 
     /* von Vivien Stumpe, 16.05.16
@@ -531,7 +533,6 @@ Prozedur, die die eingegebenen Daten in den Variablen speichert
      */
     public void setWerte(){
         mfall=(GlobaleDaten)getApplication();
-
         if((mfall.getVer_name()!=null)){
             etxt_veranstaltung.setText(mfall.getVer_name());
         }
