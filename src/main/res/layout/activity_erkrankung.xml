@@ -4,11 +4,16 @@
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.app.mepa.erkrankung.Erkrankung"
     android:id="@+id/drawerLayout_Erkrankung"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <!-- von Emile Yoncaova, 15.04.16-->
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="de.app.mepa.erkrankung.Erkrankung"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/verlauf">
