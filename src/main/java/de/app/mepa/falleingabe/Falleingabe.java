@@ -255,7 +255,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         View die animiert werden soll zur Variable zuordnen
         View unsichtbar machen
          */
-        viewToAnimate=(View)findViewById(R.id.imgv_animation);
+        viewToAnimate=findViewById(R.id.imgv_animation);
         viewToAnimate.setVisibility(viewToAnimate.GONE);
 
         /* von Vivien Stumpe, 06.05.16
@@ -291,6 +291,9 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             img_plus.setVisibility(img_plus.VISIBLE);
             img_plus.setOnClickListener(this);
         }
+        Log.d("Fall", mfall.getEin_hilfs() + " Hilfs");
+        Log.d("Fall", mfall.getEin_mosan() + " MOSAN");
+        Log.d("Fall", mfall.getEin_sanw()+" Sanw");
 
     }
 
@@ -372,7 +375,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                     //Wenn nicht wird eine Fehlermeldung ausgegebeben
                     new AlertDialog.Builder(this)
                             .setTitle("Patientendaten fehlen")
-                            .setMessage("Geben Sie erst die Daten Ihres Patienten ein")
+                            .setMessage("Geben Sie erst die persönlichen Daten Ihres Patienten ein")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
 
@@ -667,7 +670,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
                 mfall.getErg_ersthelfermassn(),
                 mfall.getErg_nachforderung_ktw(), mfall.getErg_nachforderung_rtw(), mfall.getErg_nachforderung_nef(), mfall.getErg_nachforderung_naw(),
                 mfall.getErg_nachforderung_rth(), mfall.getErg_nachforderung_feuerwehr(), mfall.getErg_nachforderung_polizei());
-
+        dataSource.close();
         /*  von Vivien Stumpe, 30.05.16
             XML Dokument mit Patientendaten erzeugen
          */
@@ -676,7 +679,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
-       eingabenZuruecksetzen();
+        eingabenZuruecksetzen();
         IconsStart();
         lnl_buttons.setVisibility(lnl_buttons.GONE);
         //Die View wird wieder unsichtbar -> Animation
@@ -717,12 +720,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         mfall = (GlobaleDaten) getApplication();
         // Wurde übersprungen?
         if (!mfall.getUebersprungen()) {
-            GlobaleDaten mverband, mveranstaltung, msani;
+            GlobaleDaten mverband, mveranstaltung, msani, meinsatz;
             dataSource=new FalleingabeDataSource(this);
             dataSource.open();
             mverband=dataSource.selectVerband();
             mveranstaltung=dataSource.selectVeranstaltung();
             msani=dataSource.selectSani();
+            meinsatz=dataSource.selectCckStammdaten();
             dataSource.close();
             mfall.setVerb_ID(mverband.getVerbandID());
             mfall.setVerb_kreisv(mverband.getVerb_kreisv());
@@ -733,6 +737,9 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             mfall.setSan_name(msani.getSan_name());
             mfall.setSan_vorname(msani.getSan_vorname());
             mfall.setSani_IDm(msani.getSaniID());
+            mfall.setEin_mosan(meinsatz.getEin_mosan());
+            mfall.setEin_sanw(meinsatz.getEin_sanw());
+            mfall.setEin_hilfs(meinsatz.getEin_hilfs());
             //wenn nicht -> Gibt es Stammdaten zum Fall?
             if(!((mfall.getVer_name()!=null&mfall.getVer_ort()!=null&mfall.getVer_date()!=null)
                     &(mfall.getSan_name()!=null&mfall.getSan_vorname()!=null)
