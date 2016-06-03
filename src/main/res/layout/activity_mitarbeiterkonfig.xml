@@ -3,6 +3,8 @@
 <!-- zuletzt geändert von Nathalie Horn, 02.05.16-->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig"
     android:id="@+id/drawerLayout_Mitarbeiterkonfig"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,9 +12,9 @@
     <!-- von Nathalie Horn am 18.04.16 -->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig"
         android:background="@drawable/verlauf">
 
         <!-- Layout für die Toolbar -->
@@ -80,7 +82,8 @@
                     android:inputType="textCapSentences|textMultiLine"
                     android:singleLine="false"
                     android:maxLines="2"
-                    android:maxLength="55" />
+                    android:maxLength="55"
+                    android:enabled="false"/>
             </TableRow>
 
             <TableRow
@@ -109,7 +112,8 @@
                     android:inputType="textCapSentences|textMultiLine"
                     android:singleLine="false"
                     android:maxLines="2"
-                    android:maxLength="55"/>
+                    android:maxLength="55"
+                    android:enabled="false"/>
             </TableRow>
 
         </TableLayout>
