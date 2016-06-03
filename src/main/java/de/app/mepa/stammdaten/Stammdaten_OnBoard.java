@@ -31,6 +31,7 @@ import android.app.DatePickerDialog;
         import de.app.mepa.OnBoarding;
         import de.app.mepa.falleingabe.Falleingabe;
         import de.app.mepa.mepa.R;
+import de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig_OnBoard;
 
 /**
  * Created by vivienstumpe on 16.05.16.
@@ -499,11 +500,14 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             dataSource.open();
             dataSource.insertVerband(mfall.getVerbandID(), mfall.getVerb_kreisv(), mfall.getVerb_ortsv());
             dataSource.insertVeranstaltung(mfall.getVer_name(), mfall.getVer_ort(), mfall.getVer_date(), mfall.getVerbandID());
+            dataSource.close();
             buttons.setVisibility(buttons.GONE);
             if (mfall.getFall_angelegt()) {
                 mfall.setUebersprungen(false);
-                Intent fallein = new Intent(Stammdaten_OnBoard.this, Falleingabe.class);
-                startActivity(fallein);
+            }
+            if (mfall.getVer_vorh()&&mfall.getVerb_vorh()){
+                Intent mitarbeit = new Intent(Stammdaten_OnBoard.this, Mitarbeiterkonfig_OnBoard.class);
+                startActivity(mitarbeit);
             }
         }
     }
