@@ -4,16 +4,18 @@
 <!-- DrawerLayout für das Hamburger Menü -->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.app.mepa.einstellungen.Einstellungen"
     android:id="@+id/drawerLayout_Einstellungen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- von Vivien Stumpe am 01.04.16 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.app.mepa.einstellungen.Einstellungen"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    tools:context="de.app.mepa.einstellungen.Einstellungen"
     android:background="@drawable/verlauf">
     <!-- von Vivien Stumpe, 12.04.16 -->
     <!-- Layout für die Toolbar hinzufügen -->
@@ -56,18 +58,7 @@
         android:gravity="center">
 <!--von Vivien Stumpe, 14.04.16 -->
 <!-- Kachel Menü -->
-        <TextView
-            android:id="@+id/txtv_einst_mitarbeiter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/mitarbeiter_konf"
-            android:text="@string/txtv_mitarbeiter_konfig"
-            android:layout_marginBottom="20dp"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:clickable="true" />
+
         <!-- von Vivien Stumpe, 25.04.16
         Stammdaten als Option bei den Einstellungen-->
         <TextView
@@ -82,7 +73,18 @@
             android:gravity="center_horizontal"
             android:textStyle="bold"
             android:clickable="true" />
-
+        <TextView
+            android:id="@+id/txtv_einst_mitarbeiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/mitarbeiter_konf"
+            android:text="@string/txtv_mitarbeiter_konfig"
+            android:layout_marginBottom="20dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:clickable="true" />
         <TextView
             android:id="@+id/txtv_einst_loeschen"
             android:layout_width="wrap_content"
