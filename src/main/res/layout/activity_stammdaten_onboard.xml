@@ -2,16 +2,13 @@
 <!-- Zuletzt geändert von Vivien Stumpe, 01.05.16 -->
 <!-- von Vivien Stumoe, 10.04.16 -->
 
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     tools:context="de.app.mepa.stammdaten.Stammdaten_OnBoard"
     android:background="@drawable/verlauf">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent">
         <!-- von Vivien Stumpe, 12.04.16 -->
         <!-- Layout für die Toolbar hinzufügen -->
         <LinearLayout
@@ -162,7 +159,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:src="@drawable/veranstaltung"
+                    android:src="@drawable/birthday"
                     android:id="@+id/imgv_veranstaltung_onb" />
 
                 <EditText
@@ -188,7 +185,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:src="@drawable/birthday"
+                    android:src="@drawable/veranstaltung"
                     android:id="@+id/imgv_veranstaltung_datum_onb" />
 
                 <EditText
@@ -278,4 +275,3 @@
                 android:layout_weight="1" />
         </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
