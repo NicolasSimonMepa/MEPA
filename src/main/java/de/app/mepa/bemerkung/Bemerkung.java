@@ -57,7 +57,7 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     Timer deklarieren mit der Zeit DELAY in Millisekunden
     */
     private Timer timer = new Timer();
-    private final long DELAY = 3000; // in ms
+    private final long DELAY = 5000; // in ms
     private TextWatcher tw;
 
     @Override
@@ -221,7 +221,9 @@ public class Bemerkung extends AppCompatActivity implements AdapterView.OnItemCl
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        if(!mfall.getFallAusgewaehlt()){
+            speichereEingaben();
+        }
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
