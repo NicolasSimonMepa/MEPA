@@ -595,6 +595,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
                     etxt_gebdat.setText(dateString);
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            datepicker.getDatePicker().setMaxDate(System.currentTimeMillis());
             datepicker.show();
         }
 
