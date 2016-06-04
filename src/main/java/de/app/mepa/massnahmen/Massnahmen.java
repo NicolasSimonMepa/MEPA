@@ -283,7 +283,9 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        if(!mfall.getFallAusgewaehlt()){
+            speichereEingaben();
+        }
     }
     public void speichereEingaben() {
         mfall = (GlobaleDaten) getApplication();
