@@ -278,8 +278,9 @@ public class Erkrankung extends AppCompatActivity implements AdapterView.OnItemC
     }
     public void onPause(){
         super.onPause();
-        //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        if(!mfall.getFallAusgewaehlt()){
+            speichereEingaben();
+        }
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
