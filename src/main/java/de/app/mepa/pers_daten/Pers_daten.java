@@ -679,7 +679,9 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+         if(!mfall.getFallAusgewaehlt()) {
+            speichereEingaben();
+        }
     }
 
     /* von Vivien Stumpe, 15.05.16
