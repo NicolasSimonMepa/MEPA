@@ -234,7 +234,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_str());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, STR);
 
@@ -243,7 +243,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_plz());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, PLZ);
 
@@ -252,7 +252,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_ort());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ORT);
 
@@ -350,7 +350,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_land());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, LAND);
 
@@ -359,7 +359,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_krankenkasse());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, KRANKENK);
 
@@ -368,7 +368,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_versnr());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, KRKNR);
 
@@ -377,7 +377,7 @@ public class XMLCreator {
                 serializer.text(fall.getPat_versichertennr());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, VERSNR);
 
@@ -406,7 +406,7 @@ public class XMLCreator {
                 serializer.text(fall.getEin_zugef());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ZUGEF);
 
@@ -442,7 +442,7 @@ public class XMLCreator {
                 serializer.text(fall.getEin_fundort());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, FUNDORT);
 
@@ -451,7 +451,7 @@ public class XMLCreator {
                 serializer.text(fall.getNotf_notfallsituation());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, NOTF);
 
@@ -550,7 +550,7 @@ public class XMLCreator {
                 serializer.text(fall.getMas_sonstiges_text());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, SONSTTXT);
 
@@ -565,7 +565,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_schaedel_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, SCHAEDLG);
 
@@ -574,7 +574,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_gesicht_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, GESIG);
 
@@ -583,7 +583,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_hws_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, HWSG);
 
@@ -592,7 +592,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_brustkorb_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BRUSTG);
 
@@ -602,7 +602,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_bauch_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BAUCHG);
 
@@ -611,7 +611,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_bws_lws_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BWSG);
 
@@ -620,7 +620,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_becken_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BECKENG);
 
@@ -629,7 +629,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_arme_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ARMEG);
 
@@ -638,7 +638,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_beine_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BEINEG);
 
@@ -647,7 +647,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_weichteile_grad());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, WEICHTG);
 
@@ -656,7 +656,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_schaedel_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, SCHAEDLA);
 
@@ -665,7 +665,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_gesicht_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, GESIA);
 
@@ -674,7 +674,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_hws_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, HWSA);
 
@@ -683,7 +683,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_brustkorb_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BRUSTA);
 
@@ -692,7 +692,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_bauch_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BAUCHA);
 
@@ -701,7 +701,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_bws_lws_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BWSA);
 
@@ -710,7 +710,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_becken_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BECKENA);
 
@@ -719,7 +719,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_arme_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ARMEA);
 
@@ -728,7 +728,7 @@ public class XMLCreator {
                 serializer.text(fall.getVerl_beine_art());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BEINEA);
 
@@ -736,7 +736,7 @@ public class XMLCreator {
             if(fall.getVerl_weichteile_art()!=null) {
                 serializer.text(fall.getVerl_weichteile_art());
             } else {
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, WEICHTA);
 
@@ -849,7 +849,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_bewusstsein());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BEW);
 
@@ -858,7 +858,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_schmerzen());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, SCHM);
 
@@ -867,7 +867,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_kreislauf());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, KREISL);
 
@@ -876,7 +876,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_ekg());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, EKG);
 
@@ -885,7 +885,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_atmung());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ATM);
 
@@ -894,7 +894,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_rr_sys());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, RRSYS);
 
@@ -903,7 +903,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_rr_dia());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, RRDIA);
 
@@ -912,7 +912,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_puls());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, PULS);
 
@@ -921,7 +921,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_af());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, AF);
 
@@ -930,7 +930,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_spo());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, SPO);
 
@@ -939,7 +939,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_bz());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BZ);
 
@@ -948,7 +948,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_pupille_li());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, PUPILLI);
 
@@ -957,7 +957,7 @@ public class XMLCreator {
                 serializer.text(fall.getErst_pupille_re());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, PUPILRE);
 
@@ -972,7 +972,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_zustand());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ZUSTVERB);
 
@@ -981,7 +981,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_ergebnis_zeit());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ERGZ);
 
@@ -990,7 +990,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_wertsachen());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, WERTS);
             /*
@@ -1036,7 +1036,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_funkruf());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, FUNK);
             /*
@@ -1054,7 +1054,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_zeuge());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ZEUG);
             /*
@@ -1076,7 +1076,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_transport_sonstiges());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, TRNSSONST);
 
@@ -1085,7 +1085,7 @@ public class XMLCreator {
                 serializer.text(fall.getErg_ersthelfermassn());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, ERSTH);
 
@@ -1094,7 +1094,7 @@ public class XMLCreator {
                 serializer.text(fall.getBem_bemerkung());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, BEM);
             /*
@@ -1146,7 +1146,7 @@ public class XMLCreator {
                 serializer.text(fall.getVer_ort());
             }
             else{
-                serializer.text("keine Angabe");
+                serializer.text("");
             }
             serializer.endTag(null, VERORT);
 
