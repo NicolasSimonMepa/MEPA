@@ -346,7 +346,9 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        if(!mfall.getFallAusgewaehlt()){
+            speichereEingaben();
+        }
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
