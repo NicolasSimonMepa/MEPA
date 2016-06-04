@@ -254,6 +254,7 @@ public class GlobaleDaten extends Application {
     public void setErg_entlassung_ev(Integer entlassung_ev){this.erg_entlassung_ev=entlassung_ev;}
     public void setErg_zeuge(String zeuge){this.erg_zeuge=zeuge;}
     public void setErg_ergebnis_zeit(String ergebnis_zeit){this.erg_ergebnis_zeit=ergebnis_zeit;}
+   
     public String getErg_ersthelfermassn(){return erg_ersthelfermassn;}
     public String getErg_zustand(){return erg_zustand;}
     public String getErg_transport(){return erg_transport;}
@@ -275,6 +276,7 @@ public class GlobaleDaten extends Application {
     public Integer getErg_entlassung_ev(){return erg_entlassung_ev;}
     public String getErg_zeuge(){return erg_zeuge;}
     public String getErg_ergebnis_zeit(){return erg_ergebnis_zeit;}
+  
 
     public Boolean Erg_spinner_notNull(){
         return ((getErg_ersthelfermassn()!=null)|(getErg_zustand()!=null)|(getErg_transport()!=null)|
@@ -773,6 +775,7 @@ public class GlobaleDaten extends Application {
         setPat_versichertennr(null);
         setPat_sex(null);
         setPat_sani(null);
+        setPat_IDm(0);
     }
 
     //Einsatz - Dienste
@@ -809,6 +812,7 @@ public class GlobaleDaten extends Application {
     public void loescheEin(){
         setEin_zugef(null);
         setEin_fundort(null);
+        setEin_ID(0);
     }
 
     //Stammdaten - Dienste
@@ -855,6 +859,7 @@ public class GlobaleDaten extends Application {
     public void loescheSan(){
         setSan_name(null);
         setSan_vorname(null);
+        setSani_IDm(0);
      //   setSan_vorh();
     }
     //Verband - Dienste
@@ -884,6 +889,7 @@ public class GlobaleDaten extends Application {
     public void loescheVerb(){
         setVerb_ortsv(null);
         setVerb_kreisv(null);
+        setVerb_ID(0);
        // setVerb_vorh();
     }
 
