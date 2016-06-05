@@ -106,12 +106,14 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             public void onSwipeLeft() {
                 Intent intent = new Intent(Massnahmen.this, Erstbefund.class);
                 startActivity(intent);
+                finish();
             }
 
             public void onSwipeRight() {
                 drawerlayout_massnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Massnahmen.this, Erkrankung.class);
                 startActivity(intent);
+                finish();
             }
         });
         toolbar=(Toolbar)findViewById(R.id.toolbar);
@@ -230,31 +232,32 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
     private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        if(position==0) {
-            Intent intent = new Intent(Massnahmen.this, Falleingabe.class);
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Massnahmen.this, Falluebersicht.class);
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
-            Intent intent = new Intent(Massnahmen.this, Upload.class);
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Massnahmen.this, Einstellungen.class);
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Massnahmen.this, Impressum.class);
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
         drawerlayout_massnahmen.closeDrawers();
@@ -525,5 +528,14 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             cck_massnahmen_wundversorgung.setEnabled(false);
             edtxt_massnahmen_sonstiges.setEnabled(false);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zur Erkrankung beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Erkrankung.class);
+        startActivity(intent);
+        finish();
     }
 }
