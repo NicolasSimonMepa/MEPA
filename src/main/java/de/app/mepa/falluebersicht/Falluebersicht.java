@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe 27.05.16
+//Zuletzt geändert von Vivien Stumpe 05.06.16
 package de.app.mepa.falluebersicht;
 
 
@@ -215,30 +215,29 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     }
 
     private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        if(position==0) {
-            Intent intent = new Intent(Falluebersicht.this, Falleingabe.class);
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Falluebersicht.this, Falluebersicht.class);
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
-            Intent intent = new Intent(Falluebersicht.this, Upload.class);
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Falluebersicht.this, Einstellungen.class);
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Falluebersicht.this, Impressum.class);
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
 
@@ -248,6 +247,7 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
 
     /* von Vivien Stumpe, 23.05.16
@@ -410,5 +410,13 @@ public class Falluebersicht extends AppCompatActivity implements View.OnClickLis
         mfall.setEin_fundort(meinsatz.getEin_fundort());
         mfall.setNotf_notfallsituation(meinsatz.getNotf_notfallsituation());
     }
-
+    /*  von Vivien Stumpe, 05.06.16
+    zurück zur Falleingabe beim Drücken des Zurückpfeils des Smartphones
+ */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        startActivity(intent);
+        finish();
+    }
 }
