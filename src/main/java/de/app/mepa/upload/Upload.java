@@ -290,35 +290,45 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt (Drawer/Hamburger Menü)
         selectItemFromDrawer(position);
+        finish();
     }
 
     // geändert von Nathalie Horn, 25.04.16
     private void selectItemFromDrawer(int position){
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if(position==0) {
-            Intent intent = new Intent(Upload.this, Falleingabe.class);
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Upload.this, Falluebersicht.class);
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
-            Intent intent = new Intent(Upload.this, Upload.class);
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Upload.this, Einstellungen.class);
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Upload.this, Impressum.class);
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zur Falleingabe beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        startActivity(intent);
+        finish();
     }
 }
