@@ -2,6 +2,7 @@
 //Zuletzt geändert von Nathalie Horn, 31.05.16
 package de.app.mepa.upload;
 
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -162,6 +163,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             popupWindow = new PopupWindow(container, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT,true);
             popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+            popupWindow.update(450, 680);
 
             container.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -312,24 +314,17 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         emailversand.setType("*/*");
         emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
 
-        //Von Nathalie Horn, 17.05.16
-        // Erhält die Liste an Intents, die E-Mails verschicken können.
-        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversand, 0);
-        if (!resInfo.isEmpty()) {
-            for (ResolveInfo info : resInfo) {
-                if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
-                        info.activityInfo.name.toLowerCase().contains("mail")) {
-                    emailversand.setPackage(info.activityInfo.packageName);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                return;
-            }
-            //startet den Intent
-            startActivity(Intent.createChooser(emailversand, "Select"));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            emailversand.setType(null); // If we're using a selector, then clear the type to null. I don't know why this is needed, but it doesn't work without it.
+
+            final Intent restrictIntent = new Intent(Intent.ACTION_SENDTO);
+            Uri data = Uri.parse("mailto:");
+            restrictIntent.setData(data);
+            emailversand.setSelector(restrictIntent);
         }
+            //startet den Intent
+            startActivity(Intent.createChooser(emailversand, "E-Mail verschicken"));
+
     }
     /*  von Vivien Stumpe, 05.06.16
         Email mit Foto und XML als Anhang
@@ -338,42 +333,44 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         mfall = (GlobaleDaten) getApplication();
         boolean found;
         found = false;
-        // Intent anlegen der die Funktion "Action_Send_Multiple" aufruft.
+        // Intent anlegen der die Funktion "Action_Send_Multiple" aufruft, um mehrere Datein zu verschicken
         Intent emailversandm = new Intent(Intent.ACTION_SEND_MULTIPLE);
 
         // Fügt der E-Mail Eigenschaften und unseren Text hinzu
         emailversandm.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
         emailversandm.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
         emailversandm.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
+        
+        emailversandm.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        emailversandm.setType("*/*");
-        //Von Nathalie Horn, 17.05.16
-        // Erhält die Liste an Intents, die E-Mails verschicken können.
-        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversandm, 0);
-        if (!resInfo.isEmpty()) {
-            for (ResolveInfo info : resInfo) {
-                if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
-                        info.activityInfo.name.toLowerCase().contains("mail")) {
-                    emailversandm.setPackage(info.activityInfo.packageName);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                return;
-            }
-            //Arraylist für die Uris der Anhänge
-            ArrayList<Uri> uris = new ArrayList<>();
-            //Uri der XML-Datei
-            uris.add(Uri.parse("file://" + file.getAbsolutePath()));
-            //Uri des Fotos
-            uris.add(Uri.parse("file://" + foto.getAbsolutePath()));
-            //Intent die Anhänge anfügen
-            emailversandm.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        // Fügt der E-Mail Eigenschaften und unseren Text hinzu
+        emailversandm.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
+        emailversandm.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+        emailversandm.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        emailversandm.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
 
-            //Intent sarten
-            startActivity(Intent.createChooser(emailversandm, "Select"));
+        emailversandm.setType("message/rfc822");
+
+        //Arraylist für die Uris der Anhänge
+        ArrayList<Uri> uris = new ArrayList<>();
+        //Uri der XML-Datei
+        uris.add(Uri.parse("file://" + file.getAbsolutePath()));
+        //Uri des Fotos
+        uris.add(Uri.parse("file://" + foto.getAbsolutePath()));
+        //Intent die Anhänge anfügen
+        emailversandm.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            emailversandm.setType(null); // If we're using a selector, then clear the type to null. I don't know why this is needed, but it doesn't work without it.
+
+            final Intent restrictIntent = new Intent(Intent.ACTION_SENDTO);
+            Uri data = Uri.parse("mailto:");
+            restrictIntent.setData(data);
+            emailversandm.setSelector(restrictIntent);
         }
+        //Intent sarten
+        startActivity(Intent.createChooser(emailversandm, "E-Mail verschicken"));
+
     }
     //von Nathalie Horn am 02.05.16
     private void bluetooth(){
