@@ -227,12 +227,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
             public void onSwipeLeft() {
                 Intent intent = new Intent(Verletzung.this, Erkrankung.class);
                 startActivity(intent);
+                finish();
             }
 
             public void onSwipeRight() {
                 drawerlayout_verletzung.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Verletzung.this, Pers_daten.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -288,32 +290,33 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
     //Nicolas Simon, übernommen von Vivien Stumpe, 15.04.16
     private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        if(position==0) {
-            Intent intent = new Intent(Verletzung.this, Falleingabe.class);
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Verletzung.this, Falluebersicht.class);
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
-            Intent intent = new Intent(Verletzung.this, Upload.class);
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Verletzung.this, Einstellungen.class);
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Verletzung.this, Impressum.class);
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
         //Menü schließen
@@ -849,5 +852,14 @@ public class Verletzung extends AppCompatActivity implements AdapterView.OnItemS
             spin_hws_grad.setEnabled(false);
             spin_weichteile_grad.setEnabled(false);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zu den persönlichen Daten beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Pers_daten.class);
+        startActivity(intent);
+        finish();
     }
 }
