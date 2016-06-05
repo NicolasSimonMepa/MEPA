@@ -284,4 +284,13 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
         //Buttons wieder ausblenden
         lnl_buttons.setVisibility(lnl_buttons.GONE);
     }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zum onBoarding beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+        startActivity(intent);
+        finish();
+    }
 }
