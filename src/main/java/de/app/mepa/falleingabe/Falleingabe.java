@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 30.05.2016
+//Zuletzt geändert von Vivien Stumpe am 05.06.2016
 package de.app.mepa.falleingabe;
 
 import android.content.DialogInterface;
@@ -611,12 +611,13 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         mfall=(GlobaleDaten)getApplication();
 
-        //if(!(mfall.getFallID()!=0)) {
+          //Pat- bzw. Fall-ID nur neu berechnen, wenn sie nicht schon erzeugt wurde
+        if((mfall.getFallID()==0)) {
             mfall.setFallID(true);
-        //}
-       //  if(!(mfall.getPatID()!=0)){
+        }
+        if((mfall.getPatID()==0)){
              mfall.setPatID(true);
-//         }
+        }
         //Toast.makeText(Falleingabe.this, "ID Hash: " + mfall.getFallID(), Toast.LENGTH_LONG).show(); //Zum Testen, dass sie erzeugt wird
         
         //Animation
