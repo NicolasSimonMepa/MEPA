@@ -1,11 +1,13 @@
-//Zuletzt geändert von Vivien Stumpe, 10.04.16
+//Zuletzt geändert von Vivien Stumpe, 05.06.16
 //Zuletzt geändert von Nathalie Horn, 17.05.16
 package de.app.mepa.upload;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +19,12 @@ import android.widget.TextView;
 import android.net.Uri;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.app.mepa.GlobaleDaten;
@@ -70,10 +68,10 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Verbindung zwischen Variable und TextView in der Activity herstellen
         //von Nathalie Horn, 25.04.16
         //geändert am 02.05.16
-        txtv_email = (TextView)findViewById(R.id.txtv_upload_email);
-        txtv_bluetooth = (TextView)findViewById(R.id.txtv_upload_bluetooth);
-        txtv_usb = (TextView)findViewById(R.id.txtv_upload_usb);
-        txtv_upload = (TextView)findViewById(R.id.txtv_upload_upload);
+        txtv_email = (TextView) findViewById(R.id.txtv_upload_email);
+        txtv_bluetooth = (TextView) findViewById(R.id.txtv_upload_bluetooth);
+        txtv_usb = (TextView) findViewById(R.id.txtv_upload_usb);
+        txtv_upload = (TextView) findViewById(R.id.txtv_upload_upload);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Nathalie Horn, 25.04.16
@@ -97,9 +95,9 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         ActionBarDrawerToggle initialisieren
         DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
         */
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_upload, toolbar, R.string.drawer_open, R.string.drawer_close);
+        actionbardrawertoggle = new ActionBarDrawerToggle(this, drawerlayout_upload, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_upload.addDrawerListener(actionbardrawertoggle);
     }
 
@@ -116,172 +114,60 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Deklaration und Initialisierung der Hilfsvariablen ce, die die ID des geklickten Elements enthält
         int ce = v.getId();
 
-        //Upload durch E-Mail
-        //von Nathalie Horn am 27.04.16
-        if(ce == R.id.txtv_upload_email){
-
-            //von Nathalie Horn, 17.05.16
-            //Variablen, die nötig sind um Apps zu filtern
-            boolean found;
-            found = false;
-
-            mfall=(GlobaleDaten)getApplication();
-
-            String adresse = "patient@krankenhaus.de";
-            String adressarray[] = { adresse };
-            String nachricht = "Anbei die Daten zu Fall [Fall-ID] vom "+mfall.getVer_date()
-                    +".\n\nViele Grüße\n" +
-                    mfall.getSan_vorname()+" "+mfall.getSan_name();
-
-            //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
-            File ordner;
-            ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
-            if (!ordner.exists()) {
-                ordner.mkdirs();
-            }
-            //Der Dateiname besteht aus 'Text' und der Zeit in Millisekunden
-            //Erstellung einer URI zur Datei
-            /* File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
-            Uri u = Uri.fromFile(f);
-            */
-
-            /*  von Vivien Stumpe, 30.05.16
-                XML-Datei zu einer Fall-ID wird als Anhang versandt
-                !! muss noch durch einen Parameter ersetzt werden !!
-             */
+        /*  verändert von Vivien Stumpe, 05.06.16
+            wenn es ein Foto gibt, wird die Mail mit Foto und XML verschickt
+            sonst nur die XML-Datei
+            und wenn gar nichts zu der Fall-ID verfügbar ist, kommt eine Fehlermeldung
+         */
+        mfall=(GlobaleDaten)getApplication();
+        if (ce == R.id.txtv_upload_email) {
             File root = Environment.getExternalStorageDirectory();
-            File file = new File( root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1225716742+".xml" );
+            //Fall-ID muss hier eingesetzt werden!!!
+            File foto = new File(root.getAbsolutePath() + File.separator + "mepa", 1200749037 + ".jpeg");
+            File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1115010924 + ".xml");
+            String adresse = "patient@krankenhaus.de";
+            String adressarray[] = {adresse};
+            //Fall-ID muss hier eingesetzt werden!!!
+            String subject="Informationen zu Fall: [Fall-ID]";
+            //Fall-ID muss hier eingesetzt werden!!!
+            String nachricht = "Anbei die Daten zu Fall [Fall-ID] vom " + mfall.getVer_date()
+                    + ".\n\nViele Grüße\n" +
+                    mfall.getSan_vorname() + " " + mfall.getSan_name();
 
-            File foto = new File( root.getAbsolutePath() + File.separator + "mepa", 373788354+".jpeg" );
-
-
-            /*
-            //von Nathalie Horn, 02.05.16
-            //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
-            FileOutputStream fileOut = null;
-            try {
-                fileOut = new FileOutputStream(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
+            if(file.exists()&&foto.exists()) {
+                emailMultipleAttachments(file, foto, adressarray, nachricht, subject);
             }
-            OutputStreamWriter writer = new OutputStreamWriter(fileOut);
-            try {
-                writer.write(nachricht);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
-            // Intent anlegen der die Funktion "Action_Send" aufruft.
-            Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
-
-            // Fügt der E-Mail Eigenschaften und unseren Text hinzu
-            emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
-            emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, "Informationen zu Fall: [Fall-ID]");
-            emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
-
-            //Durch EXTRA_STREAM wird eine Datei versendet.
-            emailversand.setType("*/*");
-            //emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
-            //emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + foto.getAbsolutePath()));
-
-
-            //Von Nathalie Horn, 17.05.16
-            // Erhält die Liste an Intents, die E-Mails verschicken können.
-            List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversand, 0);
-            if (!resInfo.isEmpty()) {
-                for (ResolveInfo info : resInfo) {
-                    if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
-                            info.activityInfo.name.toLowerCase().contains("mail")) {
-                        emailversand.setPackage(info.activityInfo.packageName);
-                        found = true;
-                        break;
-                    }
+            else{
+                //wenn es die XML-Datei gibt, wird diese versandt
+                if(file.exists()){
+                    email(file, adressarray, nachricht, subject);
                 }
-                if (!found) {
-                    return;
+                else{
+                    //Wenn nicht wird eine Fehlermeldung ausgegebeben
+                    new AlertDialog.Builder(this)
+                            .setTitle("Keine Dateien verfügbar")
+                            .setMessage("Zu diesem Fall gibt es keine Anhänge, die verschickt werden können")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
-                //startet den Intent
-                startActivity(Intent.createChooser(emailversand, "Select"));
             }
         }
 
         //von Nathalie Horn am 02.05.16
-        if(ce == R.id.txtv_upload_bluetooth){
-
-            //von Nathalie Horn, 17.05.16
-            //Variablen, die nötig sind um Apps zu filtern
-            boolean found;
-            found = false;
-
-            String nachricht = "Anbei die Daten zu Fall [Fall-ID].'\n'Viele Grüße'\n" +
-                    "[Sani Vorname und Nachname]";
-
-            //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
-            File ordner;
-            ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
-            if (!ordner.exists()) {
-                ordner.mkdirs();
-            }
-            //Der Dateiname besteht aus 'Text' und der Zeit in Millisekunden
-            //Erstellung einer URI zur Datei
-            File f = new File( ordner, "Text" + System.currentTimeMillis() + ".txt" );
-            Uri u = Uri.fromFile(f);
-            /*  von Vivien Stumpe, 30.05.16
-                XML-Datei zu einer Fall-ID wird als Anhang versandt
-                !! muss noch durch einen Parameter ersetzt werden !!
-             */
-            File root = Environment.getExternalStorageDirectory();
-            File file = new File( root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1225716742+".xml" );
-
-            //von Nathalie Horn, 02.05.16
-            //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
-            FileOutputStream fileOut = null;
-            try {
-                fileOut = new FileOutputStream(f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            OutputStreamWriter writer = new OutputStreamWriter(fileOut);
-            try {
-                writer.write(nachricht);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Intent anlegen der die Funktion "Action_Send" aufruft.
-            Intent bluetoothversand = new Intent(android.content.Intent.ACTION_SEND);
-            //Durch EXTRA_STREAM wird eine Datei versendet.
-            bluetoothversand.setType("*/*");
-            //bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
-            bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
-
-            //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
-
-            //Von Nathalie Horn, 17.05.16
-            // Erhält die Liste an Intents, die E-Mails verschicken können.
-            List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(bluetoothversand, 0);
-            if (!resInfo.isEmpty()) {
-                for (ResolveInfo info : resInfo) {
-                    if (info.activityInfo.packageName.toLowerCase().contains("bluetooth") ||
-                            info.activityInfo.name.toLowerCase().contains("bluetooth")) {
-                        bluetoothversand.setPackage(info.activityInfo.packageName);
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    return;
-                }
-                //startet den Intent
-                startActivity(Intent.createChooser(bluetoothversand, "Select"));
-            }
+        if (ce == R.id.txtv_upload_bluetooth) {
+            bluethooth();
         }
 
-        if(ce == R.id.txtv_upload_usb){
+        if (ce == R.id.txtv_upload_usb) {
             Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
         }
 
-        if(ce == R.id.txtv_upload_upload){
+        if (ce == R.id.txtv_upload_upload) {
             Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
         }
     }
@@ -294,7 +180,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     }
 
     // geändert von Nathalie Horn, 25.04.16
-    private void selectItemFromDrawer(int position){
+    private void selectItemFromDrawer(int position) {
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
         if (position == 0) {
@@ -322,6 +208,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             startActivity(intent);
         }
     }
+
     /*  von Vivien Stumpe, 05.06.16
         zurück zur Falleingabe beim Drücken des Zurückpfeils des Smartphones
     */
@@ -330,5 +217,158 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
         startActivity(intent);
         finish();
+    }
+    //Upload durch E-Mail
+    //von Nathalie Horn am 27.04.16
+    private void email(File file, String[] adressarray, String nachricht, String subject) {
+        //von Nathalie Horn, 17.05.16
+        //Variablen, die nötig sind um Apps zu filtern
+        boolean found;
+        found = false;
+
+        // Intent anlegen der die Funktion "Action_Send" aufruft.
+        Intent emailversand = new Intent(android.content.Intent.ACTION_SEND);
+
+        // Fügt der E-Mail Eigenschaften und unseren Text hinzu
+        emailversand.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
+        emailversand.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        emailversand.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
+
+        //Durch EXTRA_STREAM wird eine Datei versendet.
+        emailversand.setType("*/*");
+        emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
+
+        //Von Nathalie Horn, 17.05.16
+        // Erhält die Liste an Intents, die E-Mails verschicken können.
+        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversand, 0);
+        if (!resInfo.isEmpty()) {
+            for (ResolveInfo info : resInfo) {
+                if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
+                        info.activityInfo.name.toLowerCase().contains("mail")) {
+                    emailversand.setPackage(info.activityInfo.packageName);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return;
+            }
+            //startet den Intent
+            startActivity(Intent.createChooser(emailversand, "Select"));
+        }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        Email mit Foto und XML als Anhang
+     */
+    private void emailMultipleAttachments(File file, File foto, String[] adressarray, String nachricht, String subject) {
+        mfall = (GlobaleDaten) getApplication();
+        boolean found;
+        found = false;
+        // Intent anlegen der die Funktion "Action_Send_Multiple" aufruft.
+        Intent emailversandm = new Intent(Intent.ACTION_SEND_MULTIPLE);
+
+        // Fügt der E-Mail Eigenschaften und unseren Text hinzu
+        emailversandm.putExtra(android.content.Intent.EXTRA_EMAIL, adressarray);
+        emailversandm.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        emailversandm.putExtra(android.content.Intent.EXTRA_TEXT, nachricht);
+
+        emailversandm.setType("*/*");
+        //Von Nathalie Horn, 17.05.16
+        // Erhält die Liste an Intents, die E-Mails verschicken können.
+        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(emailversandm, 0);
+        if (!resInfo.isEmpty()) {
+            for (ResolveInfo info : resInfo) {
+                if (info.activityInfo.packageName.toLowerCase().contains("mail") ||
+                        info.activityInfo.name.toLowerCase().contains("mail")) {
+                    emailversandm.setPackage(info.activityInfo.packageName);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return;
+            }
+            //Arraylist für die Uris der Anhänge
+            ArrayList<Uri> uris = new ArrayList<>();
+            //Uri der XML-Datei
+            uris.add(Uri.parse("file://" + file.getAbsolutePath()));
+            //Uri des Fotos
+            uris.add(Uri.parse("file://" + foto.getAbsolutePath()));
+            //Intent die Anhänge anfügen
+            emailversandm.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+
+            //Intent sarten
+            startActivity(Intent.createChooser(emailversandm, "Select"));
+        }
+    }
+    //von Nathalie Horn am 02.05.16
+    private void bluethooth(){
+        //von Nathalie Horn, 17.05.16
+        //Variablen, die nötig sind um Apps zu filtern
+        boolean found;
+        found = false;
+
+        String nachricht = "Anbei die Daten zu Fall [Fall-ID].'\n'Viele Grüße'\n" +
+                "[Sani Vorname und Nachname]";
+
+        //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
+        File ordner;
+        ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
+        if (!ordner.exists()) {
+            ordner.mkdirs();
+        }
+        //Der Dateiname besteht aus 'Text' und der Zeit in Millisekunden
+        //Erstellung einer URI zur Datei
+        File f = new File(ordner, "Text" + System.currentTimeMillis() + ".txt");
+        Uri u = Uri.fromFile(f);
+            /*  von Vivien Stumpe, 30.05.16
+                XML-Datei zu einer Fall-ID wird als Anhang versandt
+                !! muss noch durch einen Parameter ersetzt werden !!
+             */
+        File root = Environment.getExternalStorageDirectory();
+        File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1225716742 + ".xml");
+
+        //von Nathalie Horn, 02.05.16
+        //Schreibt etwas in die Textdatei, sodass sie versendet werden kann
+        FileOutputStream fileOut = null;
+        try {
+            fileOut = new FileOutputStream(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        OutputStreamWriter writer = new OutputStreamWriter(fileOut);
+        try {
+            writer.write(nachricht);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Intent anlegen der die Funktion "Action_Send" aufruft.
+        Intent bluetoothversand = new Intent(android.content.Intent.ACTION_SEND);
+        //Durch EXTRA_STREAM wird eine Datei versendet.
+        bluetoothversand.setType("*/*");
+        //bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+        bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
+
+        //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
+
+        //Von Nathalie Horn, 17.05.16
+        // Erhält die Liste an Intents, die E-Mails verschicken können.
+        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(bluetoothversand, 0);
+        if (!resInfo.isEmpty()) {
+            for (ResolveInfo info : resInfo) {
+                if (info.activityInfo.packageName.toLowerCase().contains("bluetooth") ||
+                        info.activityInfo.name.toLowerCase().contains("bluetooth")) {
+                    bluetoothversand.setPackage(info.activityInfo.packageName);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return;
+            }
+            //startet den Intent
+            startActivity(Intent.createChooser(bluetoothversand, "Select"));
+        }
     }
 }
