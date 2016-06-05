@@ -1,4 +1,4 @@
-// zuletzt geändert von Vivien Stumpe, 29.05.16
+// zuletzt geändert von Vivien Stumpe, 05.06.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Context;
@@ -65,7 +65,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     Toolbar toolbar;
 
     private EditText edtxt_uebergabe_zeit;
-    Button aktualisieren;
     private String[] uhrzeit = new String[1];
 
     private String[]ersthelfermassnahmen={"-----","keine","suffizient","insuffizient","AED"};
@@ -157,12 +156,8 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
         //von Nathalie Horn, 01.05.16
         //Systemzeit anzeigen, Deklaration und Initialisierung der Variablen
-
-
         edtxt_uebergabe_zeit = (EditText) findViewById(R.id.edtxt_uebergabe_zeit);
-        aktualisieren = (Button) findViewById(R.id.aktualisieren);
-
-        aktualisieren.setOnClickListener(new View.OnClickListener() {
+        edtxt_uebergabe_zeit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.GERMANY);
@@ -226,12 +221,14 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
             public void onSwipeLeft() {
                 Intent intent = new Intent(Ersthelfermassnahmen.this, notfallsituation.class);
                 startActivity(intent);
+                finish();
             }
 
             public void onSwipeRight() {
                 drawerlayout_ersthelfermassnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Ersthelfermassnahmen.this, Erstbefund.class);
                 startActivity(intent);
+                finish();
             }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -376,31 +373,32 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Ersthelfermassnahmen der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
     private void selectItemFromDrawer(int position) {
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
+        //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
         if (position == 0) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Falleingabe.class);
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
+        //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
         if (position == 1) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Falluebersicht.class);
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
+        //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
         if (position == 2) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Upload.class);
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
         if (position == 3) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Einstellungen.class);
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
+        //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
         if (position == 4) {
-            Intent intent = new Intent(Ersthelfermassnahmen.this, Impressum.class);
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
         drawerlayout_ersthelfermassnahmen.closeDrawers();
@@ -421,6 +419,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         if (ce == R.id.imgv_before_uebergabe) {
             Intent intent = new Intent(Ersthelfermassnahmen.this, Falleingabe.class);
             startActivity(intent);
+            finish();
         }
         if(ce == R.id.imgv_menu){
             drawerlayout_ersthelfermassnahmen.openDrawer(GravityCompat.START);
@@ -735,8 +734,16 @@ wenn ein Fall in der Fallübersicht ausgewählt wurde
             edtxt_funkruf.setEnabled(false);
             edtxt_uebergabe_zeit.setEnabled(false);
             edtxt_wertsachen.setEnabled(false);
-            aktualisieren.setEnabled(false);
             button.setEnabled(false);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zum Erstbefund beim Drücken des Zurückpfeils des Smartphones
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Erstbefund.class);
+        startActivity(intent);
+        finish();
     }
 }
