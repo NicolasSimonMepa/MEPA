@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 05.06.16
 package de.app.mepa.notfallsituation;
 
 import android.content.Context;
@@ -110,6 +110,7 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
             public void onSwipeLeft() {
                 Intent intent = new Intent(notfallsituation.this, Bemerkung.class);
                 startActivity(intent);
+                finish();
             }
 
             /* von Vivien Stumpe, 26.04.16
@@ -120,6 +121,7 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
                 drawerlayout_notfall.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(notfallsituation.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
+                finish();
             }
         });
         /* von Vivien Stumpe, 22.02.16
@@ -201,6 +203,7 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
     // von Vivien Stumpe, 01.05.16 aktualisiert
     private void selectItemFromDrawer(int position){
@@ -283,5 +286,14 @@ public class notfallsituation extends AppCompatActivity implements View.OnClickL
         if(mfall.getFallAusgewaehlt()) {
             etxt_notfallsituation.setEnabled(false);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zu den Ersthelfermaßnahmen beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Ersthelfermassnahmen.class);
+        startActivity(intent);
+        finish();
     }
 }
