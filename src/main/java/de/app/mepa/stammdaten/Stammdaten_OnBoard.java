@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 01.06.16
+//Zuletzt geändert von Vivien Stumpe, 05.06.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
@@ -510,5 +510,14 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
                 startActivity(mitarbeit);
             }
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zum onBoarding beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+        startActivity(intent);
+        finish();
     }
 }
