@@ -1,24 +1,32 @@
 //Zuletzt geändert von Vivien Stumpe, 05.06.16
-//Zuletzt geändert von Nathalie Horn, 17.05.16
+//Zuletzt geändert von Nathalie Horn, 31.05.16
 package de.app.mepa.upload;
 
+import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ActionBarOverlayLayout;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.net.Uri;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,6 +35,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.app.mepa.Adapter_Falluebersicht;
+import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.einstellungen.Einstellungen;
@@ -60,6 +70,16 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
     private GlobaleDaten mfall;
 
+    //von Nathalie Horn, 31.05.16
+    //Variablen für Fallauswahl
+    private PopupWindow popupWindow;
+    private LayoutInflater layoutInflater;
+    private RelativeLayout relativeLayout;
+    //von Nathalie Horn, 30.05.16
+    ListView falluebersichtListView;
+    FalleingabeDataSource dataSource;
+    String[] patList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +88,13 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Verbindung zwischen Variable und TextView in der Activity herstellen
         //von Nathalie Horn, 25.04.16
         //geändert am 02.05.16
-        txtv_email = (TextView) findViewById(R.id.txtv_upload_email);
-        txtv_bluetooth = (TextView) findViewById(R.id.txtv_upload_bluetooth);
-        txtv_usb = (TextView) findViewById(R.id.txtv_upload_usb);
-        txtv_upload = (TextView) findViewById(R.id.txtv_upload_upload);
+        txtv_email = (TextView)findViewById(R.id.txtv_upload_email);
+        txtv_bluetooth = (TextView)findViewById(R.id.txtv_upload_bluetooth);
+        txtv_usb = (TextView)findViewById(R.id.txtv_upload_usb);
+        txtv_upload = (TextView)findViewById(R.id.txtv_upload_upload);
+
+        //von Nathalie Horn, 31.05.16
+        relativeLayout = (RelativeLayout)findViewById(R.id.relative);
 
         //Click Event abfangen und den OnClickListener für die aktuelle View aufrufen
         //von Nathalie Horn, 25.04.16
@@ -95,10 +118,11 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         ActionBarDrawerToggle initialisieren
         DrawerListener setzen, damit registriert wird, welchen Status der Drawer hat
         */
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        actionbardrawertoggle = new ActionBarDrawerToggle(this, drawerlayout_upload, toolbar, R.string.drawer_open, R.string.drawer_close);
+        actionbardrawertoggle=new ActionBarDrawerToggle(this, drawerlayout_upload, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerlayout_upload.addDrawerListener(actionbardrawertoggle);
+
     }
 
     @Override
@@ -109,65 +133,122 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     }
 
 
+    public void showAllListEntriesNeu () {
+        patList = dataSource.getAllPat();
+        ArrayAdapter<String> faelleAdapterNeu=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                patList);
+         falluebersichtListView.setAdapter(faelleAdapterNeu);
+    }
+
     @Override
     public void onClick(View v) {
         //Deklaration und Initialisierung der Hilfsvariablen ce, die die ID des geklickten Elements enthält
         int ce = v.getId();
 
-        /*  verändert von Vivien Stumpe, 05.06.16
-            wenn es ein Foto gibt, wird die Mail mit Foto und XML verschickt
-            sonst nur die XML-Datei
-            und wenn gar nichts zu der Fall-ID verfügbar ist, kommt eine Fehlermeldung
-         */
-        mfall=(GlobaleDaten)getApplication();
-        if (ce == R.id.txtv_upload_email) {
-            File root = Environment.getExternalStorageDirectory();
-            //Fall-ID muss hier eingesetzt werden!!!
-            File foto = new File(root.getAbsolutePath() + File.separator + "mepa", 1200749037 + ".jpeg");
-            File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1115010924 + ".xml");
-            String adresse = "patient@krankenhaus.de";
-            String adressarray[] = {adresse};
-            //Fall-ID muss hier eingesetzt werden!!!
-            String subject="Informationen zu Fall: [Fall-ID]";
-            //Fall-ID muss hier eingesetzt werden!!!
-            String nachricht = "Anbei die Daten zu Fall [Fall-ID] vom " + mfall.getVer_date()
-                    + ".\n\nViele Grüße\n" +
-                    mfall.getSan_vorname() + " " + mfall.getSan_name();
+        //Upload durch E-Mail
+        //von Nathalie Horn am 27.04.16
+        if(ce == R.id.txtv_upload_email){
 
-            //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
-            if(file.exists()&&foto.exists()) {
-                emailMultipleAttachments(file, foto, adressarray, nachricht, subject);
-            }
-            else{
-                //wenn es die XML-Datei gibt, wird diese versandt
-                if(file.exists()){
-                    email(file, adressarray, nachricht, subject);
+            //Dies ist der erste Weg für das Pop-Up, eine neue Activity. Es erscheint allerdings nichts.
+            //startActivity(new Intent(Upload.this, Upload_Falluebersicht.class));
+            //Intent popup = new Intent(Upload.this,Upload_Falluebersicht.class);
+            //startActivity(popup);
+
+            //Dies ist der zweite Weg, das Popup-Widget.
+            //von Nathalie Horn, 31.05.16
+            //Erzeugen des PopUpWindows zur Fallauswahl
+            layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+            ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.activity_upload_falluebersicht, null);
+
+            popupWindow = new PopupWindow(container, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT,true);
+            popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+
+            container.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    popupWindow.dismiss();
+                    return true;
                 }
-                else{
-                    //Wenn nicht wird eine Fehlermeldung ausgegebeben
-                    new AlertDialog.Builder(this)
-                            .setTitle("Keine Dateien verfügbar")
-                            .setMessage("Zu diesem Fall gibt es keine Anhänge, die verschickt werden können")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
+            });
+
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+            
+            //Hier soll der Inhalt der Falluebersicht angezeigt werden. Ich bin mir nicht sicher ob das der richtige Weg ist.
+            popupWindow.setContentView(falluebersichtListView);
+            falluebersichtListView = (ListView)container.findViewById(R.id.list_upload_falluebersicht);
+
+            showAllListEntriesNeu();
+            falluebersichtListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   
+                    // von Vivien Stumpe, 23.05.16
+                    //Teilt den String bei einem Leerzeichen
+                    String string = patList[position];
+                    String[] parts = string.split("\\s+");
+                    String prot_id_string = parts[0];
+
+                    Log.d("Fall", prot_id_string + " Übergebene Fall-ID aus der Listview");
+                    String name = parts[1];
+                    Log.d("Fall", name + " Übergebener Nachname aus der Listview");
+                    //prot_id enthält die ID des ausgewählten Falls
+                    mfall=(GlobaleDaten)getApplication();
+                    /*  verändert von Vivien Stumpe, 05.06.16
+                         wenn es ein Foto gibt, wird die Mail mit Foto und XML verschickt
+                         sonst nur die XML-Datei
+                         und wenn gar nichts zu der Fall-ID verfügbar ist, kommt eine Fehlermeldung
+                     */
+                    File root = Environment.getExternalStorageDirectory();
+                    //Fall-ID muss hier eingesetzt werden!!!
+                    File foto = new File(root.getAbsolutePath() + File.separator + "mepa", prot_id_string + ".jpeg");
+                    File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", prot_id_string + ".xml");
+                    String adresse = "patient@krankenhaus.de";
+                    String adressarray[] = {adresse};
+                    //Fall-ID muss hier eingesetzt werden!!!
+                    String subject="Informationen zu Fall: "+ prot_id_string;
+                    //Fall-ID muss hier eingesetzt werden!!!
+                    String nachricht = "Anbei die Daten zu Fall "+prot_id_string+" vom " + mfall.getVer_date()
+                            + ".\n\nViele Grüße\n" +
+                            mfall.getSan_vorname() + " " + mfall.getSan_name();
+
+                    //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
+                    if(file.exists()&&foto.exists()) {
+                        emailMultipleAttachments(file, foto, adressarray, nachricht, subject);
+                    }
+                    else{
+                        //wenn es die XML-Datei gibt, wird diese versandt
+                        if(file.exists()){
+                            email(file, adressarray, nachricht, subject);
+                        }
+                        else{
+                            //Wenn nicht wird eine Fehlermeldung ausgegebeben
+                            new AlertDialog.Builder(getApplicationContext())
+                                    .setTitle("Keine Dateien verfügbar")
+                                    .setMessage("Zu diesem Fall gibt es keine Anhänge, die verschickt werden können")
+                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                        }
+                    }
                 }
-            }
+            });
+            dataSource.close();
         }
 
         //von Nathalie Horn am 02.05.16
-        if (ce == R.id.txtv_upload_bluetooth) {
-            bluethooth();
+        if(ce == R.id.txtv_upload_bluetooth){
+                bluethooth();
         }
 
-        if (ce == R.id.txtv_upload_usb) {
+        if(ce == R.id.txtv_upload_usb){
             Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
         }
 
-        if (ce == R.id.txtv_upload_upload) {
+        if(ce == R.id.txtv_upload_upload){
             Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
         }
     }
