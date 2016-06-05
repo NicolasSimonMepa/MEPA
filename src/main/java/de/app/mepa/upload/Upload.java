@@ -223,15 +223,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
                         }
                         else{
                             //Wenn nicht wird eine Fehlermeldung ausgegebeben
-                            new AlertDialog.Builder(getApplicationContext())
-                                    .setTitle("Keine Dateien verfügbar")
-                                    .setMessage("Zu diesem Fall gibt es keine Anhänge, die verschickt werden können")
-                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                        }
-                                    })
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .show();
+                            Toast.makeText(getApplicationContext(), "Keine Dateien verfügbar", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 }
