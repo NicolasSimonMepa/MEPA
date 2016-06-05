@@ -16,7 +16,8 @@
         tools:context="de.app.mepa.upload.Upload"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/verlauf">
+        android:background="@drawable/verlauf"
+        android:id="@+id/relative">
 
         <!-- Layout für die Toolbar -->
         <LinearLayout
