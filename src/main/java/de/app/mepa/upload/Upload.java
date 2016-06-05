@@ -234,7 +234,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
         //von Nathalie Horn am 02.05.16
         if(ce == R.id.txtv_upload_bluetooth){
-                bluethooth();
+                bluetooth();
         }
 
         if(ce == R.id.txtv_upload_usb){
@@ -376,7 +376,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         }
     }
     //von Nathalie Horn am 02.05.16
-    private void bluethooth(){
+    private void bluetooth(){
         //von Nathalie Horn, 17.05.16
         //Variablen, die nötig sind um Apps zu filtern
         boolean found;
