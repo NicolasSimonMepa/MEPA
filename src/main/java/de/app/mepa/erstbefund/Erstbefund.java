@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
+//Zuletzt bearbeitet von Vivien Stumpe, 05.06.16
 package de.app.mepa.erstbefund;
 
 import android.content.Context;
@@ -185,11 +185,13 @@ protected void onCreate(Bundle savedInstanceState){
             public void onSwipeLeft() {
                 Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
+                finish();
             }
             public void onSwipeRight() {
                 drawerlayout_erstbefund.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Erstbefund.this, Massnahmen.class);
                 startActivity(intent);
+                finish();
             }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -287,34 +289,35 @@ public void onNothingSelected(AdapterView<?>parent){
 public void onItemClick(AdapterView<?>parent,View view,int position,long id){
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+    finish();
         }
 
 private void selectItemFromDrawer(int position){
-        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
-        if(position==0) {
-                Intent intent = new Intent(Erstbefund.this, Falleingabe.class);
-                startActivity(intent);
-        }
-        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
-        if(position==1) {
-                Intent intent = new Intent(Erstbefund.this, Falluebersicht.class);
-                startActivity(intent);
-        }
-        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
-        if(position==2) {
-                Intent intent = new Intent(Erstbefund.this, Upload.class);
-                startActivity(intent);
-        }
-        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
-        if(position==3) {
-                Intent intent = new Intent(Erstbefund.this, Einstellungen.class);
-                startActivity(intent);
-        }
-        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==4) {
-                Intent intent = new Intent(Erstbefund.this, Impressum.class);
-                startActivity(intent);
-        }
+    //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
+    if (position == 0) {
+        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        startActivity(intent);
+    }
+    //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
+    if (position == 1) {
+        Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
+        startActivity(intent);
+    }
+    //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
+    if (position == 2) {
+        Intent intent = new Intent(getApplicationContext(), Upload.class);
+        startActivity(intent);
+    }
+    //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
+    if (position == 3) {
+        Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
+        startActivity(intent);
+    }
+    //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
+    if (position == 4) {
+        Intent intent = new Intent(getApplicationContext(), Impressum.class);
+        startActivity(intent);
+    }
         drawerlayout_erstbefund.closeDrawers();
     }
         @Override
@@ -598,5 +601,14 @@ private void selectItemFromDrawer(int position){
             edtxt_rr_diastolisch.setEnabled(false);
             edtxt_rr_systolisch.setEnabled(false);
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+    zurück zu den Maßnahmen beim Drücken des Zurückpfeils des Smartphones
+ */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Massnahmen.class);
+        startActivity(intent);
+        finish();
     }
 }
