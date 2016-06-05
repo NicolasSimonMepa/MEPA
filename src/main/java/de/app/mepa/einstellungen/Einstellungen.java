@@ -156,10 +156,12 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         if (ce == R.id.txtv_einst_mitarbeiter){
             Intent intent = new Intent(Einstellungen.this, Mitarbeiterkonfig.class);
             startActivity(intent);
+
         }
         if (ce == R.id.txtv_einst_stammdaten){
             Intent intent = new Intent(Einstellungen.this, Stammdaten.class);
             startActivity(intent);
+
         }
         //wenn "Lokale Daten löschen" ausgewählt wurde
         if (ce == R.id.txtv_einst_loeschen){
@@ -193,30 +195,29 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
 
     // von Vivien Stumpe, 25.04.16 aktualisiert
     private void selectItemFromDrawer(int position){
-
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if(position==0) {
-            Intent intent = new Intent(Einstellungen.this, Falleingabe.class);
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Einstellungen.this, Falluebersicht.class);
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
-            Intent intent = new Intent(Einstellungen.this, Upload.class);
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Einstellungen.this, Einstellungen.class);
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Einstellungen.this, Impressum.class);
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
     }
@@ -272,5 +273,14 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
         lnl_buttons.setVisibility(View.GONE);
         //muss aufgerufen werden, um die View zu aktualisieren
         lnl_buttons.invalidate();
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zum Erstbefund beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        startActivity(intent);
+        finish();
     }
 }
