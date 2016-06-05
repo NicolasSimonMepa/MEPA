@@ -3,6 +3,7 @@ package de.app.mepa.falleingabe;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -316,38 +317,46 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Aufrufen der Activity mittels Intent
         //von Vivien Stumpe, 14.04.16
         if (ce == R.id.txtv_fallein_pers) {
-            Intent intent = new Intent(Falleingabe.this, Pers_daten.class);
+            Intent intent = new Intent(getApplicationContext(), Pers_daten.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_notfall) {
-            Intent intent = new Intent(Falleingabe.this, notfallsituation.class);
+            Intent intent = new Intent(getApplicationContext(), notfallsituation.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_verletzung) {
-            Intent intent = new Intent(Falleingabe.this, Verletzung.class);
+            Intent intent = new Intent(getApplicationContext(), Verletzung.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_erkrankung) {
-            Intent intent = new Intent(Falleingabe.this, Erkrankung.class);
+            Intent intent = new Intent(getApplicationContext(), Erkrankung.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_maßnahmen) {
-            Intent intent = new Intent(Falleingabe.this, Massnahmen.class);
+            Intent intent = new Intent(getApplicationContext(), Massnahmen.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_erstbef) {
-            Intent intent = new Intent(Falleingabe.this, Erstbefund.class);
-
+            Intent intent = new Intent(getApplicationContext(), Erstbefund.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_bemerkung) {
-            Intent intent = new Intent(Falleingabe.this, Bemerkung.class);
+            Intent intent = new Intent(getApplicationContext(), Bemerkung.class);
             startActivity(intent);
+            finish();
         }
         if (ce == R.id.txtv_fallein_uebergabe) {
-            Intent intent = new Intent(Falleingabe.this, Ersthelfermassnahmen.class);
+            Intent intent = new Intent(getApplicationContext(), Ersthelfermassnahmen.class);
             startActivity(intent);
+            finish();
         }
+
         /*Übergabe Seite ist Ersthelfermaßnahmen Seite
         */
         // von Vivien Stumpe, 02.05.16
@@ -404,6 +413,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             img_plus.setVisibility(img_plus.INVISIBLE);
 
         }
+
     }
 
     //von Vivien Stumpe, 08.04.16
@@ -412,6 +422,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
 
     // von Vivien Stumpe, 25.04.16 aktualisiert
@@ -419,27 +430,27 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
         if (position == 0) {
-            Intent intent = new Intent(Falleingabe.this, Falleingabe.class);
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
         if (position == 1) {
-            Intent intent = new Intent(Falleingabe.this, Falluebersicht.class);
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
         if (position == 2) {
-            Intent intent = new Intent(Falleingabe.this, Upload.class);
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
         if (position == 3) {
-            Intent intent = new Intent(Falleingabe.this, Einstellungen.class);
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
         if (position == 4) {
-            Intent intent = new Intent(Falleingabe.this, Impressum.class);
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
     }
@@ -612,7 +623,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         //Daten speichern in der DB
         //Icons zurücksetzen
         // Die View wird sichtbar -> Animation
-        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        Animation in = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
         viewToAnimate.startAnimation(in);
         viewToAnimate.setVisibility(View.VISIBLE);
 
@@ -675,7 +686,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             XML Dokument mit Patientendaten erzeugen
          */
         XMLCreator xml=new XMLCreator();
-        xml.schreibeXML(mfall);
+        xml.writeXML(mfall);
 
         // von Vivien Stumpe, 02.05.16
         //Icons zurücksetzen & Speichern Verwerfen-Buttons ausblenden
@@ -755,4 +766,5 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             }
         }
     }
+
 }
