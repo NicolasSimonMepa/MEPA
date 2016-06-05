@@ -174,7 +174,7 @@ public class XMLCreator {
         erwartet wird ein aktueller Fall -> Objekt vom Typ GlobaleDaten
         bearbeitet von Vivien Stumpe, 30.05.16
      */
-    public void schreibeXML(GlobaleDaten fall) {
+    public void writeXML(GlobaleDaten fall) {
 
         /*  von Vivien Stumpe, 29.05.16
             XML-Datei im MEPA_Dateiordner mit der Fall-ID als Namen anlegen
