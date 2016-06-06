@@ -1,12 +1,13 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 05.06.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 package de.app.mepa.erstbefund;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -18,7 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -173,25 +174,161 @@ protected void onCreate(Bundle savedInstanceState){
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+    edtxt_rr_systolisch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                if(edtxt_rr_systolisch.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    int a = Integer.parseInt(edtxt_rr_systolisch.getText().toString());
+                    if (a>140) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Hoher Blutdruck!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                    if (a<100) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Niedriger Blutdruck!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+                }
+            }
+                // code to execute when EditText loses focus
+            }
+
+    );
+
+    edtxt_rr_diastolisch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                if(edtxt_rr_diastolisch.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    int b = Integer.parseInt(edtxt_rr_diastolisch.getText().toString());
+                    if (b>100) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Hoher Blutdruck!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                    if (b<70) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Niedriger Blutdruck!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            }
+        }
+        // code to execute when EditText loses focus
+    }
+
+    );
+
+    edtxt_spo2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                if(edtxt_spo2.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    int c = Integer.parseInt(edtxt_spo2.getText().toString());
+                    if (c<90) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Niedrige Sauerstoffsättigung!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            }
+        }
+        // code to execute when EditText loses focus
+    }
+
+    );
+    edtxt_blutzucker.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                if(edtxt_blutzucker.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    int d = Integer.parseInt(edtxt_blutzucker.getText().toString());
+                    if (d>120) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Hoher Blutzucker!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                    if (d<50) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Niedriger Blutzucker!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            }
+        }
+        // code to execute when EditText loses focus
+    }
+
+    );
+    edtxt_atemfrequenz.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                if(edtxt_atemfrequenz.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    int e = Integer.parseInt(edtxt_atemfrequenz.getText().toString());
+                    if (e<11) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Niedrige Atemfrequenz!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                    if (e>20) {Context context = getApplicationContext();
+                        CharSequence text = "Achtung! Hohe Atemfrequenz!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            }
+        }
+        // code to execute when EditText loses focus
+    }
+
+    );
+
+
+
 
                  // von Vivien Stumpe, 11.04.16
                  //Hauptelement der Activity finden und der Variable zuweisen
                  //Wechseln der Aktivität mittels Swipe
                  //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
                  //wenn nach links gewischt wird, wird die nächste Seite mittels Intent geöffnet
-        view=(View) findViewById(R.id.scrV_erstbefund);
+        view= findViewById(R.id.scrV_erstbefund);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public void onSwipeLeft() {
                 Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
-                finish();
             }
             public void onSwipeRight() {
                 drawerlayout_erstbefund.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Erstbefund.this, Massnahmen.class);
                 startActivity(intent);
-                finish();
             }
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -229,6 +366,15 @@ protected void onCreate(Bundle savedInstanceState){
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                /*if (edtxt_rr_diastolisch.getText().length()==3){
+                    // Get instance of Vibrator from current Context
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    // Vibrate for 300 milliseconds
+                    v.vibrate(300);
+                }*/
+
+
+
 
             }
 
@@ -254,6 +400,8 @@ protected void onCreate(Bundle savedInstanceState){
                         }
                     }, DELAY);
                 }
+
+
             }
         };
         edtxt_rr_diastolisch.addTextChangedListener(tw);
@@ -263,6 +411,8 @@ protected void onCreate(Bundle savedInstanceState){
         edtxt_blutzucker.addTextChangedListener(tw);
         edtxt_spo2.addTextChangedListener(tw);
     }
+
+
 @Override
 public void onItemSelected(AdapterView<?>parent,View view,int position,long id){
         switch(position){
@@ -289,35 +439,34 @@ public void onNothingSelected(AdapterView<?>parent){
 public void onItemClick(AdapterView<?>parent,View view,int position,long id){
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
-    finish();
         }
 
 private void selectItemFromDrawer(int position){
-    //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-    if (position == 0) {
-        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
-        startActivity(intent);
-    }
-    //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-    if (position == 1) {
-        Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
-        startActivity(intent);
-    }
-    //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-    if (position == 2) {
-        Intent intent = new Intent(getApplicationContext(), Upload.class);
-        startActivity(intent);
-    }
-    //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-    if (position == 3) {
-        Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
-        startActivity(intent);
-    }
-    //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-    if (position == 4) {
-        Intent intent = new Intent(getApplicationContext(), Impressum.class);
-        startActivity(intent);
-    }
+        //Wenn das erste Element im Menü geklickt wurde, wird zurück zum Start navigiert
+        if(position==0) {
+                Intent intent = new Intent(Erstbefund.this, Falleingabe.class);
+                startActivity(intent);
+        }
+        //Wenn das zweite Element im Menü geklickt wurde, werden die Einstellungen aufgerufen
+        if(position==1) {
+                Intent intent = new Intent(Erstbefund.this, Falluebersicht.class);
+                startActivity(intent);
+        }
+        //Wenn das dritte Element im Menü geklickt wurde, wird die Falleingabe aufgerufen
+        if(position==2) {
+                Intent intent = new Intent(Erstbefund.this, Upload.class);
+                startActivity(intent);
+        }
+        //Wenn das vierte Element im Menü geklickt wurde, wird die Fallübersicht geöffnet
+        if(position==3) {
+                Intent intent = new Intent(Erstbefund.this, Einstellungen.class);
+                startActivity(intent);
+        }
+        //Wenn das fünfte Element im Menü geklickt wurde, wird der Upload geöffnet
+        if(position==4) {
+                Intent intent = new Intent(Erstbefund.this, Impressum.class);
+                startActivity(intent);
+        }
         drawerlayout_erstbefund.closeDrawers();
     }
         @Override
@@ -344,9 +493,7 @@ private void selectItemFromDrawer(int position){
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        if(!mfall.getFallAusgewaehlt()){
-            speichereEingaben();
-        }
+        speichereEingaben();
     }
     public void speichereEingaben(){
         mfall=(GlobaleDaten)getApplication();
@@ -602,13 +749,5 @@ private void selectItemFromDrawer(int position){
             edtxt_rr_systolisch.setEnabled(false);
         }
     }
-    /*  von Vivien Stumpe, 05.06.16
-    zurück zu den Maßnahmen beim Drücken des Zurückpfeils des Smartphones
- */
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), Massnahmen.class);
-        startActivity(intent);
-        finish();
-    }
+
 }
