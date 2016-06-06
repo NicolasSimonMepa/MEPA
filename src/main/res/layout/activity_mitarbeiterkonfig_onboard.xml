@@ -82,7 +82,7 @@
                     android:typeface="normal"
                     android:ems="10"
                     android:inputType="textCapSentences|textMultiLine"
-                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ,.;\n: /?\\"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ-,.;\n: /?\\"
                     android:singleLine="false"
                     android:maxLines="2"
                     android:maxLength="55" />
@@ -111,7 +111,7 @@
                     android:typeface="normal"
                     android:ems="10"
                     android:inputType="textCapSentences|textMultiLine"
-                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ,.;\n: /?\\"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ-,.;\n: /?\\"
                     android:singleLine="false"
                     android:maxLines="2"
                     android:maxLength="55"/>
