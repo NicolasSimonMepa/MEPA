@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe am 31.05.16
+//Zuletzt geändert von Vivien Stumpe am 06.06.16
 package de.app.mepa.einstellungen;
 
 import android.content.Intent;
@@ -22,6 +22,7 @@ import de.app.mepa.FalleingabeDataSource;
 import de.app.mepa.GlobaleDaten;
 import de.app.mepa.MyAdapter;
 import de.app.mepa.XMLCreator;
+import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.falleingabe.Falleingabe;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.impressum.Impressum;
@@ -255,10 +256,14 @@ public class Einstellungen extends AppCompatActivity implements View.OnClickList
             /*  von Vivien Stumpe, 31.05.16
                 Löschen von allen Dokumenten im MEPA_Dateiordner
              */
-        Boolean geloescht=false;
+        Boolean geloescht;
         XMLCreator xml=new XMLCreator();
         geloescht=xml.deleteAllXML();
-
+            /*  von Vivien Stumpe, 06.06.16
+                Foto des Falls wird ebenfalls gelöscht wenn eins existiert
+            */
+        Ersthelfermassnahmen ersth=new Ersthelfermassnahmen();
+        ersth.deleteAllJPG();
         if (geloescht){
             // Die View wird sichtbar -> Animation
             Animation in = AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left);
