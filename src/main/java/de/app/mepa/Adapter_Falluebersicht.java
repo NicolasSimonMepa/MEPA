@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 31.05.16
+//Zuletzt geändert von Vivien Stumpe, 06.06.16
 package de.app.mepa;
 
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.app.mepa.ersthelfermassnahmen.Ersthelfermassnahmen;
 import de.app.mepa.falluebersicht.Falluebersicht;
 import de.app.mepa.mepa.R;
 
@@ -97,6 +98,11 @@ public class Adapter_Falluebersicht extends ArrayAdapter<String> {
                                  */
                                 XMLCreator xml=new XMLCreator();
                                 xml.deleteXML(prot_id_string);
+                                /*  von Vivien Stumpe, 06.06.16
+                                    Foto des Falls wird ebenfalls gelöscht
+                                 */
+                                Ersthelfermassnahmen ersth=new Ersthelfermassnahmen();
+                                ersth.deleteJPG(prot_id_string);
                                // Fallübersicht neu laden, damit der gelöschte Fall aus der Übersicht verschwendet
                                 Intent intent=new Intent(ctx.getApplicationContext(), Falluebersicht.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
