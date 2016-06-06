@@ -156,6 +156,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             popupWindow = new PopupWindow(container, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT,true);
             popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+            //Größe des PopUps festlegen
             popupWindow.update(450, 680);
 
             container.setOnTouchListener(new View.OnTouchListener() {
@@ -195,14 +196,12 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
                          und wenn gar nichts zu der Fall-ID verfügbar ist, kommt eine Fehlermeldung
                      */
                     File root = Environment.getExternalStorageDirectory();
-                    //Fall-ID muss hier eingesetzt werden!!!
                     File foto = new File(root.getAbsolutePath() + File.separator + "mepa", prot_id_string + ".jpeg");
                     File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", prot_id_string + ".xml");
                     String adresse = "patient@krankenhaus.de";
                     String adressarray[] = {adresse};
-                    //Fall-ID muss hier eingesetzt werden!!!
                     String subject="Informationen zu Fall: "+ prot_id_string;
-                    //Fall-ID muss hier eingesetzt werden!!!
+
                     String nachricht = "Anbei die Daten zu Fall "+prot_id_string+" vom " + mfall.getVer_date()
                             + ".\n\nViele Grüße\n" +
                             mfall.getSan_vorname() + " " + mfall.getSan_name();
@@ -236,6 +235,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
             popupWindow = new PopupWindow(container, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT,true);
             popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+            //Größe des PopUps festlegen
             popupWindow.update(450, 680);
 
             container.setOnTouchListener(new View.OnTouchListener() {
@@ -271,11 +271,10 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
                     mfall = (GlobaleDaten) getApplication();
 
                     File root = Environment.getExternalStorageDirectory();
-                    //Fall-ID muss hier eingesetzt werden!!!
-                    File foto = new File(root.getAbsolutePath() + File.separator + "mepa", 229670116 + ".jpeg");
-                    File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1360885741 + ".xml");
+                    File foto = new File(root.getAbsolutePath() + File.separator + "mepa", prot_id_string + ".jpeg");
+                    File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", prot_id_string + ".xml");
 
-                    //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
+                    //wenn es die XML-Datei und ein Foto gibt, wird beides verschickt
                     if (file.exists() && foto.exists()) {
                         bluetoothMultipleAttachments(file, foto);
                     } else {
@@ -304,7 +303,6 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt (Drawer/Hamburger Menü)
         selectItemFromDrawer(position);
         finish();
@@ -363,7 +361,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Durch EXTRA_STREAM wird eine Datei versendet.
         emailversand.setType("*/*");
         emailversand.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
-
+        //Mail Programme filtern
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             emailversand.setType(null); // If we're using a selector, then clear the type to null. I don't know why this is needed, but it doesn't work without it.
 
@@ -408,7 +406,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         uris.add(Uri.parse("file://" + foto.getAbsolutePath()));
         //Intent die Anhänge anfügen
         emailversandm.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-
+        //Mail Programme filtern
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             emailversandm.setType(null); // If we're using a selector, then clear the type to null. I don't know why this is needed, but it doesn't work without it.
 
@@ -429,28 +427,15 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         boolean found;
         found = false;
 
-        //Zugriff auf, bzw Erstellung einer Datei im Verzeichnis MEPA_Dateiordner, das über den Dateimanager zu finden ist
-        File ordner;
-        ordner = new File(Environment.getExternalStorageDirectory(), "MEPA_Dateiordner");
-        if (!ordner.exists()) {
-            ordner.mkdirs();
-        }
-            /*  von Vivien Stumpe, 30.05.16
-                XML-Datei zu einer Fall-ID wird als Anhang versandt
-                !! muss noch durch einen Parameter ersetzt werden !!
-             */
-
         // Intent anlegen der die Funktion "Action_Send" aufruft um eine Datei zu versenden
         Intent bluetoothversand = new Intent(android.content.Intent.ACTION_SEND);
-        //Durch EXTRA_STREAM wird eine Datei versendet.
+        //Durch EXTRA_STREAM wird eine Datei versendet
         bluetoothversand.setType("*/*");
-        //bluetoothversand.putExtra(android.content.Intent.EXTRA_STREAM, u);
+        //übergebene XML-Datei wird angehängt
         bluetoothversand.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
 
-        //startActivity(Intent.createChooser(bluetoothversand, "Protokoll senden"));
-
         //Von Nathalie Horn, 17.05.16
-        // Erhält die Liste an Intents, die E-Mails verschicken können.
+        // Erhält die Liste an Intents, die Bluetooth verschicken können.
         List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(bluetoothversand, 0);
         if (!resInfo.isEmpty()) {
             for (ResolveInfo info : resInfo) {
@@ -464,7 +449,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             if (!found) {
                 return;
             }
-            //startet den Intent
+            //Intent starten
             startActivity(Intent.createChooser(bluetoothversand, "Select"));
         }
     }
@@ -477,7 +462,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Variablen, die nötig sind um Apps zu filtern
         boolean found;
         found = false;
-        // Intent anlegen der die Funktion "Action_Send_Multiple" aufruft, um mehrere Datein zu verschicken
+        // Intent anlegen der die Funktion "Action_Send_Multiple" aufruft, um mehrere Dateien zu verschicken
         Intent bluetoothversandm = new Intent(Intent.ACTION_SEND_MULTIPLE);
 
         bluetoothversandm.setType("*/*");
@@ -490,7 +475,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
         //Intent die Anhänge anfügen
         bluetoothversandm.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
         //Von Nathalie Horn, 17.05.16
-        // Erhält die Liste an Intents, die E-Mails verschicken können.
+        // Erhält die Liste an Intents, die Bluetooth verschicken können.
         List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(bluetoothversandm, 0);
         if (!resInfo.isEmpty()) {
             for (ResolveInfo info : resInfo) {
@@ -504,7 +489,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
             if (!found) {
                 return;
             }
-            //startet den Intent
+            //Intent starten
             startActivity(Intent.createChooser(bluetoothversandm, "Select"));
         }
     }
