@@ -3,9 +3,9 @@
 <!-- zuletzt geändert von Vivien Stumpe, 16.05.16-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig_OnBoard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context="de.app.mepa.mitarbeiterkonfig.Mitarbeiterkonfig_OnBoard"
         android:background="@drawable/verlauf">
         <!-- Layout für die Toolbar -->
         <LinearLayout
@@ -82,6 +82,7 @@
                     android:typeface="normal"
                     android:ems="10"
                     android:inputType="textCapSentences|textMultiLine"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ,.;\n: /?\\"
                     android:singleLine="false"
                     android:maxLines="2"
                     android:maxLength="55" />
@@ -110,6 +111,7 @@
                     android:typeface="normal"
                     android:ems="10"
                     android:inputType="textCapSentences|textMultiLine"
+                    android:digits="aãâáàbcçdeéfghiíjklmnoõôóòpqrstuvwxyzAÃÂÁÀBCÇDEÉFGHIÍJKLMNOÕÔÓÒPQRSTUVWXYZäüöÄÜÖ,.;\n: /?\\"
                     android:singleLine="false"
                     android:maxLines="2"
                     android:maxLength="55"/>
