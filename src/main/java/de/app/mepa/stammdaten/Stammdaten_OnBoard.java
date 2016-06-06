@@ -135,34 +135,36 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         if(mfall.getVerb_kreisv()==null){
             etxt_kreisverband.setFilters(new InputFilter[] {
                     new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
+                        public CharSequence filter(CharSequence source, int start, int end,
+                                                   Spanned dest, int dstart, int dend) {
+                            for (int i = start; i < end; i++) {
+                                if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                    return "";
+                                }
                             }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+                            return null;
                         }
                     }
-            });
-        }
+                    });
+           }
+
+        // InputFilter filter = new InputFilter() {
+
+      //  etxt_kreisverband.setFilters(new InputFilter[]{filter});
 
 
         if(mfall.getVer_ort()==null){
             etxt_ort.setFilters(new InputFilter[] {
                     new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
+                        public CharSequence filter(CharSequence source, int start, int end,
+                                                   Spanned dest, int dstart, int dend) {
+                            for (int i = start; i < end; i++) {
+                                if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                    return "";
+                                }
                             }
-                            if(src.toString().matches("[a-zA-Z  ]+")){
-                                return src;
-                            }
-                            return "";
-                        }
+                            return null;
+                    }
                     }
             });
         }
@@ -170,15 +172,14 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         if(mfall.getVerb_ortsv()==null){
             etxt_ortsverein.setFilters(new InputFilter[] {
                     new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
+                        public CharSequence filter(CharSequence source, int start, int end,
+                                                   Spanned dest, int dstart, int dend) {
+                            for (int i = start; i < end; i++) {
+                                if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                    return "";
+                                }
                             }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+                            return null;
                         }
                     }
             });
@@ -187,15 +188,14 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         if(mfall.getVer_name()==null){
             etxt_veranstaltung.setFilters(new InputFilter[] {
                     new InputFilter() {
-                        public CharSequence filter(CharSequence src, int start,
-                                                   int end, Spanned dst, int dstart, int dend) {
-                            if(src.equals("")){ // for backspace
-                                return src;
+                        public CharSequence filter(CharSequence source, int start, int end,
+                                                   Spanned dest, int dstart, int dend) {
+                            for (int i = start; i < end; i++) {
+                                if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                    return "";
+                                }
                             }
-                            if(src.toString().matches("[a-zA-Z ]+")){
-                                return src;
-                            }
-                            return "";
+                            return null;
                         }
                     }
             });
