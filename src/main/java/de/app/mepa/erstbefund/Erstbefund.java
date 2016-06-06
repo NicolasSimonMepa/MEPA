@@ -4,6 +4,7 @@ package de.app.mepa.erstbefund;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -222,7 +223,9 @@ protected void onCreate(Bundle savedInstanceState){
                     if (b<70) {Context context = getApplicationContext();
                         CharSequence text = "Achtung! Niedriger Blutdruck!";
                         int duration = Toast.LENGTH_SHORT;
-
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
