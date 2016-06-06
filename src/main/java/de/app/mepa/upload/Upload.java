@@ -228,26 +228,71 @@ public class Upload extends AppCompatActivity implements View.OnClickListener, A
 
         //von Nathalie Horn am 02.05.16
         if(ce == R.id.txtv_upload_bluetooth){
-            File root = Environment.getExternalStorageDirectory();
-            //Fall-ID muss hier eingesetzt werden!!!
-            File foto = new File(root.getAbsolutePath() + File.separator + "mepa", 229670116 + ".jpeg");
-            File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1360885741 + ".xml");
 
-            //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
-            if(file.exists()&&foto.exists()) {
-                bluetoothMultipleAttachments(file, foto);
-            }
-            else{
-                //wenn es die XML-Datei gibt, wird diese versandt
-                if(file.exists()){
-                    bluetooth(file);
+            //von Nathalie Horn, 31.05.16
+            //Erzeugen des PopUpWindows zur Fallauswahl
+            layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+            ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.activity_upload_falluebersicht, null);
+
+            popupWindow = new PopupWindow(container, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT,true);
+            popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+            popupWindow.update(450, 680);
+
+            container.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    popupWindow.dismiss();
+                    return true;
                 }
-                else{
-                    //Wenn nicht wird eine Fehlermeldung ausgegebeben
-                    Toast.makeText(getApplicationContext(), "Keine Dateien verfügbar", Toast.LENGTH_LONG).show();
+            });
+
+            dataSource = new FalleingabeDataSource(this);
+            dataSource.open();
+
+            //Hier soll der Inhalt der Falluebersicht angezeigt werden. Ich bin mir nicht sicher ob das der richtige Weg ist.
+            popupWindow.setContentView(falluebersichtListView);
+            falluebersichtListView = (ListView)container.findViewById(R.id.list_upload_falluebersicht);
+
+            showAllListEntriesNeu();
+            falluebersichtListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    // von Vivien Stumpe, 23.05.16
+                    //Teilt den String bei einem Leerzeichen
+                    String string = patList[position];
+                    String[] parts = string.split("\\s+");
+                    String prot_id_string = parts[0];
+
+                    Log.d("Fall", prot_id_string + " Übergebene Fall-ID aus der Listview");
+                    String name = parts[1];
+                    Log.d("Fall", name + " Übergebener Nachname aus der Listview");
+                    //prot_id enthält die ID des ausgewählten Falls
+                    mfall = (GlobaleDaten) getApplication();
+
+                    File root = Environment.getExternalStorageDirectory();
+                    //Fall-ID muss hier eingesetzt werden!!!
+                    File foto = new File(root.getAbsolutePath() + File.separator + "mepa", 229670116 + ".jpeg");
+                    File file = new File(root.getAbsolutePath() + File.separator + "MEPA_Dateiordner", 1360885741 + ".xml");
+
+                    //wenn es die XML-Datei und ein Foto gibt, wird beides versandt
+                    if (file.exists() && foto.exists()) {
+                        bluetoothMultipleAttachments(file, foto);
+                    } else {
+                        //wenn es die XML-Datei gibt, wird diese versandt
+                        if (file.exists()) {
+                            bluetooth(file);
+                        } else {
+                            //Wenn nicht wird eine Fehlermeldung ausgegebeben
+                            Toast.makeText(getApplicationContext(), "Keine Dateien verfügbar", Toast.LENGTH_LONG).show();
+                        }
+                    }
                 }
-            }
+
+            });
+            dataSource.close();
         }
+
 
         if(ce == R.id.txtv_upload_usb){
             Toast.makeText(this, "Funktion noch nicht verfügbar", Toast.LENGTH_LONG).show();
