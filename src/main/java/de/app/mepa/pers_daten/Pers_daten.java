@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe, 05.06.16
+//Zuletzt bearbeitet von Vivien Stumpe, 29.05.16
 
 package de.app.mepa.pers_daten;
 
@@ -112,7 +112,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     Timer deklarieren mit der Zeit DELAY in Millisekunden
     */
     private Timer timer = new Timer();
-    private final long DELAY = 4000; // in ms
+    private final long DELAY = 2000; // in ms
     private TextWatcher tw;
 
     @Override
@@ -140,7 +140,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             public void onSwipeLeft() {
             Intent intent = new Intent(Pers_daten.this, Verletzung.class);
                startActivity(intent);
-                finish();
             }
             /* von Vivien Stumpe, 26.04.16
             Bei einem Swipe nach rechts wird die vorherige Aktivität geöffnet
@@ -148,9 +147,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             public void onSwipeRight() {
                 Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
                 startActivity(intent);
-                finish();
             }
-
         });
 
         /*von Vivien Stumpe, 12.04.16
@@ -202,17 +199,16 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         /* von Indra Marcheel, 09.05.2016
         es können nur character eingegeben werden
          */
-        etxt_name_pers_daten.setFilters(new InputFilter[] {
+        etxt_name_pers_daten.setFilters(new InputFilter[]{
                 new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                return "";
+                            }
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
+                        return null;
                     }
                 }
         });
@@ -228,17 +224,16 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             etxt_vorname_pers_daten.setError( "Bitte gib den Vornamen der Person ein" );
         }
 
-        etxt_vorname_pers_daten.setFilters(new InputFilter[] {
+        etxt_vorname_pers_daten.setFilters(new InputFilter[]{
                 new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                return "";
+                            }
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
+                        return null;
                     }
                 }
         });
@@ -265,36 +260,46 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
         etxt_fundort_pers_daten.setFilters(new InputFilter[]{filter});
 
         etxt_ort_pers_daten=(EditText) findViewById(R.id.etxt_ort_pers_daten);
-        etxt_ort_pers_daten.setFilters(new InputFilter[]{filter});
+        etxt_ort_pers_daten.setFilters(new InputFilter[]{
+                new InputFilter() {
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                return "";
+                            }
+                        }
+                        return null;
+                    }
+                }
+        });
 
         etxt_land_pers_daten=(EditText) findViewById(R.id.etxt_land_pers_daten);
-        etxt_land_pers_daten.setFilters(new InputFilter[] {
+        etxt_land_pers_daten.setFilters(new InputFilter[]{
                 new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                return "";
+                            }
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
+                        return null;
                     }
                 }
         });
 
         etxt_krankenkasse_pers_daten=(EditText) findViewById(R.id.etxt_krankenkasse_pers_daten);
-        etxt_krankenkasse_pers_daten.setFilters(new InputFilter[] {
+        etxt_krankenkasse_pers_daten.setFilters(new InputFilter[]{
                 new InputFilter() {
-                    public CharSequence filter(CharSequence src, int start,
-                                               int end, Spanned dst, int dstart, int dend) {
-                        if(src.equals("")){ // for backspace
-                            return src;
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        for (int i = start; i < end; i++) {
+                            if ( !Character.isLetter(source.charAt(i)) & !Character.toString(source.charAt(i)) .equals(" ") & !Character.toString(source.charAt(i)) .equals("-")) {
+                                return "";
+                            }
                         }
-                        if(src.toString().matches("[a-zA-Z ]+")){
-                            return src;
-                        }
-                        return "";
+                        return null;
                     }
                 }
         });
@@ -442,34 +447,33 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
-        finish();
     }
     // von Vivien Stumpe, 25.04.16 aktualisiert
     private void selectItemFromDrawer(int position){
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if (position == 0) {
-            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        if(position==0) {
+            Intent intent = new Intent(Pers_daten.this, Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if (position == 1) {
-            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
+        if(position==1) {
+            Intent intent = new Intent(Pers_daten.this, Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if (position == 2) {
-            Intent intent = new Intent(getApplicationContext(), Upload.class);
+        if(position==2) {
+            Intent intent = new Intent(Pers_daten.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if (position == 3) {
-            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
+        if(position==3) {
+            Intent intent = new Intent(Pers_daten.this, Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if (position == 4) {
-            Intent intent = new Intent(getApplicationContext(), Impressum.class);
+        if(position==4) {
+            Intent intent = new Intent(Pers_daten.this, Impressum.class);
             startActivity(intent);
         }
         //Menü schließen
@@ -599,7 +603,6 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
                     etxt_gebdat.setText(dateString);
                 }
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-            datepicker.getDatePicker().setMaxDate(System.currentTimeMillis());
             datepicker.show();
         }
 
@@ -683,9 +686,7 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-         if(!mfall.getFallAusgewaehlt()) {
-            speichereEingaben();
-        }
+        speichereEingaben();
     }
 
     /* von Vivien Stumpe, 15.05.16
@@ -788,14 +789,5 @@ public class Pers_daten extends AppCompatActivity implements View.OnClickListene
             rbtn_weibl.setEnabled(false);
             spin_zugef.setEnabled(false);
         }
-    }
-    /*  von Vivien Stumpe, 05.06.16
-    	zurück zur Falleingabe beim Drücken des Zurückpfeils des Smartphones
- 	*/
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
-        startActivity(intent);
-        finish();
     }
 }
