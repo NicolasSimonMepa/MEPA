@@ -452,12 +452,10 @@
                     android:textSize="20sp"/>
 			</TableRow>
 		<TableRow>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/btn_foto"
-                    android:id="@+id/btn_foto"/>
+			<ImageView
+				android:id="@+id/foto_vorschau"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content" />
             	</TableRow>
 		
 			<TableRow>
