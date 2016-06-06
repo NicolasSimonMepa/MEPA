@@ -174,7 +174,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+                //lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
             }
         };
 
@@ -240,33 +240,34 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
         selectItemFromDrawer(position);
+        finish();
     }
     // geändert von Nathalie Horn, 25.04.16
     private void selectItemFromDrawer(int position){
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if(position==0) {
-            Intent intent = new Intent(Mitarbeiterkonfig.this, Falleingabe.class);
+        if (position == 0) {
+            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if(position==1) {
-            Intent intent = new Intent(Mitarbeiterkonfig.this, Falluebersicht.class);
+        if (position == 1) {
+            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if(position==2) {
-            Intent intent = new Intent(Mitarbeiterkonfig.this, Upload.class);
+        if (position == 2) {
+            Intent intent = new Intent(getApplicationContext(), Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if(position==3) {
-            Intent intent = new Intent(Mitarbeiterkonfig.this, Einstellungen.class);
+        if (position == 3) {
+            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if(position==4) {
-            Intent intent = new Intent(Mitarbeiterkonfig.this, Impressum.class);
+        if (position == 4) {
+            Intent intent = new Intent(getApplicationContext(), Impressum.class);
             startActivity(intent);
         }
     }
@@ -289,7 +290,7 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        speichereEingaben();
+        //speichereEingaben();
     }
 
     /* von Vivien Stumpe, 16.05.16
@@ -304,5 +305,14 @@ public class Mitarbeiterkonfig extends AppCompatActivity implements View.OnClick
         if((mfall.getSan_vorname()!=null)){
             etxt_mitarbeiter_vorname.setText(mfall.getSan_vorname());
         }
+    }
+    /*  von Vivien Stumpe, 05.06.16
+        zurück zu den Einstellungen beim Drücken des Zurückpfeils des Smartphones
+    */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
+        startActivity(intent);
+        finish();
     }
 }
