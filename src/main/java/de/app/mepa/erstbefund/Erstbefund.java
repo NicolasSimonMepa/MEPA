@@ -186,14 +186,18 @@ protected void onCreate(Bundle savedInstanceState){
                     if (a>140) {Context context = getApplicationContext();
                         CharSequence text = "Achtung! Hoher Blutdruck!";
                         int duration = Toast.LENGTH_SHORT;
-
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
                     if (a<100) {Context context = getApplicationContext();
                         CharSequence text = "Achtung! Niedriger Blutdruck!";
                         int duration = Toast.LENGTH_SHORT;
-
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
@@ -216,7 +220,9 @@ protected void onCreate(Bundle savedInstanceState){
                     if (b>100) {Context context = getApplicationContext();
                         CharSequence text = "Achtung! Hoher Blutdruck!";
                         int duration = Toast.LENGTH_SHORT;
-
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
@@ -246,6 +252,9 @@ protected void onCreate(Bundle savedInstanceState){
                 } else {
                     int c = Integer.parseInt(edtxt_spo2.getText().toString());
                     if (c<90) {Context context = getApplicationContext();
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         CharSequence text = "Achtung! Niedrige Sauerstoffsättigung!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
@@ -267,12 +276,17 @@ protected void onCreate(Bundle savedInstanceState){
                 } else {
                     int d = Integer.parseInt(edtxt_blutzucker.getText().toString());
                     if (d>120) {Context context = getApplicationContext();
-                        CharSequence text = "Achtung! Hoher Blutzucker!";
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);CharSequence text = "Achtung! Hoher Blutzucker!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
                     if (d<50) {Context context = getApplicationContext();
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         CharSequence text = "Achtung! Niedriger Blutzucker!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
@@ -289,17 +303,25 @@ protected void onCreate(Bundle savedInstanceState){
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
-                if(edtxt_atemfrequenz.getText().toString().isEmpty()) {
+                if (edtxt_atemfrequenz.getText().toString().isEmpty()) {
                     // editText is empty
                 } else {
                     int e = Integer.parseInt(edtxt_atemfrequenz.getText().toString());
-                    if (e<11) {Context context = getApplicationContext();
+                    if (e < 11) {
+                        Context context = getApplicationContext();
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         CharSequence text = "Achtung! Niedrige Atemfrequenz!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
-                    if (e>20) {Context context = getApplicationContext();
+                    if (e > 20) {
+                        Context context = getApplicationContext();
+                        Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        vib.vibrate(500);
                         CharSequence text = "Achtung! Hohe Atemfrequenz!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
@@ -308,15 +330,47 @@ protected void onCreate(Bundle savedInstanceState){
                 }
             }
         }
-        // code to execute when EditText loses focus
-    }
+                                                    // code to execute when EditText loses focus
+                                                }
 
     );
+            edtxt_puls.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                                                    @Override
+                                                    public void onFocusChange(View v, boolean hasFocus) {
+                                                        if (!hasFocus) {
+                                                            if (edtxt_puls.getText().toString().isEmpty()) {
+                                                                // editText is empty
+                                                            } else {
+                                                                int e = Integer.parseInt(edtxt_puls.getText().toString());
+                                                                if (e < 45) {
+                                                                    Context context = getApplicationContext();
+                                                                    Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                                                                    // Vibrate for 500 milliseconds
+                                                                    vib.vibrate(500);
+                                                                    CharSequence text = "Achtung! Niedriger Puls!";
+                                                                    int duration = Toast.LENGTH_SHORT;
+                                                                    Toast toast = Toast.makeText(context, text, duration);
+                                                                    toast.show();
+                                                                }
+                                                                if (e > 85) {
+                                                                    Context context = getApplicationContext();
+                                                                    Vibrator vib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                                                                    // Vibrate for 500 milliseconds
+                                                                    vib.vibrate(500);
+                                                                    CharSequence text = "Achtung! Hoher Puls!";
+                                                                    int duration = Toast.LENGTH_SHORT;
+                                                                    Toast toast = Toast.makeText(context, text, duration);
+                                                                    toast.show();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    // code to execute when EditText loses focus
+                                                }
 
+            );
 
-
-
-                 // von Vivien Stumpe, 11.04.16
+                // von Vivien Stumpe, 11.04.16
                  //Hauptelement der Activity finden und der Variable zuweisen
                  //Wechseln der Aktivität mittels Swipe
                  //Darauf den OnTouchListener setzen, damit auf Berührungen reagiert wird
@@ -328,6 +382,7 @@ protected void onCreate(Bundle savedInstanceState){
                 Intent intent = new Intent(Erstbefund.this, Ersthelfermassnahmen.class);
                 startActivity(intent);
             }
+
             public void onSwipeRight() {
                 drawerlayout_erstbefund.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 Intent intent = new Intent(Erstbefund.this, Massnahmen.class);
@@ -336,7 +391,7 @@ protected void onCreate(Bundle savedInstanceState){
         });
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        imgv_before = (ImageView)findViewById(R.id.imgv_before_erstbefund);
+            imgv_before = (ImageView)findViewById(R.id.imgv_before_erstbefund);
         imgv_before.setOnClickListener(this);
         imgv_menü=(ImageView)findViewById(R.id.imgv_menu);
         imgv_menü.setOnClickListener(this);
@@ -375,10 +430,6 @@ protected void onCreate(Bundle savedInstanceState){
                     // Vibrate for 300 milliseconds
                     v.vibrate(300);
                 }*/
-
-
-
-
             }
 
 
@@ -752,5 +803,4 @@ private void selectItemFromDrawer(int position){
             edtxt_rr_systolisch.setEnabled(false);
         }
     }
-
 }
