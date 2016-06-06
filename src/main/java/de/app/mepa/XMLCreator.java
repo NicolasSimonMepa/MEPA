@@ -233,26 +233,17 @@ public class XMLCreator {
             if(fall.getPat_str()!=null) {
                 serializer.text(fall.getPat_str());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, STR);
 
             serializer.startTag(null, PLZ);
             if(fall.getPat_plz()!=null) {
                 serializer.text(fall.getPat_plz());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, PLZ);
 
             serializer.startTag(null, ORT);
             if(fall.getPat_ort()!=null) {
                 serializer.text(fall.getPat_ort());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, ORT);
 
@@ -349,17 +340,11 @@ public class XMLCreator {
             if(fall.getPat_land()!=null) {
                 serializer.text(fall.getPat_land());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, LAND);
 
             serializer.startTag(null, KRANKENK);
             if(fall.getPat_krankenkasse()!=null) {
                 serializer.text(fall.getPat_krankenkasse());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, KRANKENK);
 
@@ -367,17 +352,11 @@ public class XMLCreator {
             if(fall.getPat_versnr()!=null) {
                 serializer.text(fall.getPat_versnr());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, KRKNR);
 
             serializer.startTag(null, VERSNR);
             if(fall.getPat_versichertennr()!=null) {
                 serializer.text(fall.getPat_versichertennr());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, VERSNR);
 
@@ -404,9 +383,6 @@ public class XMLCreator {
             serializer.startTag(null, ZUGEF);
             if(fall.getEin_zugef()!=null) {
                 serializer.text(fall.getEin_zugef());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, ZUGEF);
 
@@ -441,17 +417,11 @@ public class XMLCreator {
             if(fall.getEin_fundort()!=null) {
                 serializer.text(fall.getEin_fundort());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, FUNDORT);
 
             serializer.startTag(null, NOTF);
             if(fall.getNotf_notfallsituation()!=null) {
                 serializer.text(fall.getNotf_notfallsituation());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, NOTF);
 
@@ -462,95 +432,134 @@ public class XMLCreator {
             serializer.attribute(null, "id", "massnahmen");
 
             serializer.startTag(null, STBSEIT);
-            serializer.text(String.valueOf(fall.getMas_stb_seitenlage()));
+            if(fall.getMas_stb_seitenlage()!=null) {
+                serializer.text(String.valueOf(fall.getMas_stb_seitenlage()));
+            }
             serializer.endTag(null, STBSEIT);
 
             serializer.startTag(null, OBERKHOCH);
-            serializer.text(String.valueOf(fall.getMas_oberkoerperhochlage()));
+            if(fall.getMas_oberkoerperhochlage()!=null) {
+                serializer.text(String.valueOf(fall.getMas_oberkoerperhochlage()));
+            }
             serializer.endTag(null, OBERKHOCH);
 
             serializer.startTag(null, FLACHL);
-            serializer.text(String.valueOf(fall.getMas_flachlagerung()));
+            if(fall.getMas_flachlagerung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_flachlagerung()));
+            }
             serializer.endTag(null, FLACHL);
 
             serializer.startTag(null, SCHOCKL);
-            serializer.text(String.valueOf(fall.getMas_schocklagerung()));
+            if(fall.getMas_schocklagerung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_schocklagerung()));
+            }
             serializer.endTag(null, SCHOCKL);
 
             serializer.startTag(null, VAKUUM);
-            serializer.text(String.valueOf(fall.getMas_vakuummatratze()));
+            if(fall.getMas_vakuummatratze()!=null) {
+                serializer.text(String.valueOf(fall.getMas_vakuummatratze()));
+            }
             serializer.endTag(null, VAKUUM);
 
             serializer.startTag(null, HWSST);
-            serializer.text(String.valueOf(fall.getMas_hws_stuetzkragen()));
+            if(fall.getMas_hws_stuetzkragen()!=null) {
+                serializer.text(String.valueOf(fall.getMas_hws_stuetzkragen()));
+            }
             serializer.endTag(null, HWSST);
 
             serializer.startTag(null, MEDI);
-            serializer.text(String.valueOf(fall.getMas_medikamente()));
+            if(fall.getMas_medikamente()!=null) {
+                serializer.text(String.valueOf(fall.getMas_medikamente()));
+            }
             serializer.endTag(null, MEDI);
 
             serializer.startTag(null, EXTRSCH);
-            serializer.text(String.valueOf(fall.getMas_extr_schienung()));
+            if(fall.getMas_extr_schienung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_extr_schienung()));
+            }
             serializer.endTag(null, EXTRSCH);
 
             serializer.startTag(null, WUNDV);
-            serializer.text(String.valueOf(fall.getMas_wundversorgung()));
+            if(fall.getMas_wundversorgung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_wundversorgung()));
+            }
             serializer.endTag(null, WUNDV);
 
             serializer.startTag(null, EKG);
-            serializer.text(String.valueOf(fall.getMas_ekg()));
+            if(fall.getMas_ekg()!=null) {
+                serializer.text(String.valueOf(fall.getMas_ekg()));
+            }
             serializer.endTag(null, EKG);
 
             serializer.startTag(null, VENZUG);
-            serializer.text(String.valueOf(fall.getMas_ven_zugang()));
+            if(fall.getMas_ven_zugang()!=null) {
+                serializer.text(String.valueOf(fall.getMas_ven_zugang()));
+            }
             serializer.endTag(null, VENZUG);
 
             serializer.startTag(null, INF);
-            serializer.text(String.valueOf(fall.getMas_infusion()));
+            if(fall.getMas_infusion()!=null) {
+                serializer.text(String.valueOf(fall.getMas_infusion()));
+            }
             serializer.endTag(null, INF);
 
             serializer.startTag(null, ATEMW);
-            serializer.text(String.valueOf(fall.getMas_atemwege_freim()));
+            if(fall.getMas_atemwege_freim()!=null) {
+                serializer.text(String.valueOf(fall.getMas_atemwege_freim()));
+            }
             serializer.endTag(null, ATEMW);
 
             serializer.startTag(null, NOTK);
-            serializer.text(String.valueOf(fall.getMas_notkompetenz()));
+            if(fall.getMas_notkompetenz()!=null) {
+                serializer.text(String.valueOf(fall.getMas_notkompetenz()));
+            }
             serializer.endTag(null, NOTK);
 
             serializer.startTag(null, SAUERST);
-            serializer.text(String.valueOf(fall.getMas_sauerstoffgabe()));
+            if(fall.getMas_sauerstoffgabe()!=null) {
+                serializer.text(String.valueOf(fall.getMas_sauerstoffgabe()));
+            }
             serializer.endTag(null, SAUERST);
 
             serializer.startTag(null, INT);
-            serializer.text(String.valueOf(fall.getMas_intubation()));
+            if(fall.getMas_intubation()!=null) {
+                serializer.text(String.valueOf(fall.getMas_intubation()));
+            }
             serializer.endTag(null, INT);
 
             serializer.startTag(null, BEATM);
-            serializer.text(String.valueOf(fall.getMas_beatmung()));
+            if(fall.getMas_beatmung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_beatmung()));
+            }
             serializer.endTag(null, BEATM);
 
             serializer.startTag(null, HERZDM);
-            serializer.text(String.valueOf(fall.getMas_herzdruckmassage()));
+            if(fall.getMas_herzdruckmassage()!=null) {
+                serializer.text(String.valueOf(fall.getMas_herzdruckmassage()));
+            }
             serializer.endTag(null, HERZDM);
 
             serializer.startTag(null, ERSTDEF);
-            serializer.text(String.valueOf(fall.getMas_erstdefibrillation()));
+            if(fall.getMas_erstdefibrillation()!=null) {
+                serializer.text(String.valueOf(fall.getMas_erstdefibrillation()));
+            }
             serializer.endTag(null, ERSTDEF);
 
             serializer.startTag(null, BETR);
-            serializer.text(String.valueOf(fall.getMas_betreuung()));
+            if(fall.getMas_betreuung()!=null) {
+                serializer.text(String.valueOf(fall.getMas_betreuung()));
+            }
             serializer.endTag(null, BETR);
 
             serializer.startTag(null, SONST);
-            serializer.text(String.valueOf(fall.getMas_sonstiges()));
+            if(fall.getMas_sonstiges()!=null) {
+                serializer.text(String.valueOf(fall.getMas_sonstiges()));
+            }
             serializer.endTag(null, SONST);
 
             serializer.startTag(null, SONSTTXT);
             if(fall.getMas_sonstiges_text() != null) {
                 serializer.text(fall.getMas_sonstiges_text());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, SONSTTXT);
 
@@ -564,17 +573,11 @@ public class XMLCreator {
             if(fall.getVerl_schaedel_grad()!=null) {
                 serializer.text(fall.getVerl_schaedel_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, SCHAEDLG);
 
             serializer.startTag(null, GESIG);
             if(fall.getVerl_gesicht_grad()!=null) {
                 serializer.text(fall.getVerl_gesicht_grad());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, GESIG);
 
@@ -582,27 +585,17 @@ public class XMLCreator {
             if(fall.getVerl_hws_grad()!=null) {
                 serializer.text(fall.getVerl_hws_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, HWSG);
 
             serializer.startTag(null, BRUSTG);
             if(fall.getVerl_brustkorb_grad()!=null) {
                 serializer.text(fall.getVerl_brustkorb_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BRUSTG);
 
             serializer.startTag(null, BAUCHG);
-            //serializer.text(fall.getVerl_bauch_grad());
             if(fall.getVerl_bauch_grad()!=null) {
                 serializer.text(fall.getVerl_bauch_grad());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BAUCHG);
 
@@ -610,17 +603,11 @@ public class XMLCreator {
             if(fall.getVerl_bws_lws_grad()!=null) {
                 serializer.text(fall.getVerl_bws_lws_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BWSG);
 
             serializer.startTag(null, BECKENG);
             if(fall.getVerl_becken_grad()!=null) {
                 serializer.text(fall.getVerl_becken_grad());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BECKENG);
 
@@ -628,17 +615,11 @@ public class XMLCreator {
             if(fall.getVerl_arme_grad()!=null) {
                 serializer.text(fall.getVerl_arme_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ARMEG);
 
             serializer.startTag(null, BEINEG);
             if(fall.getVerl_beine_grad()!=null) {
                 serializer.text(fall.getVerl_beine_grad());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BEINEG);
 
@@ -646,17 +627,11 @@ public class XMLCreator {
             if(fall.getVerl_weichteile_grad()!=null) {
                 serializer.text(fall.getVerl_weichteile_grad());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, WEICHTG);
 
             serializer.startTag(null, SCHAEDLA);
             if(fall.getVerl_schaedel_art()!=null) {
                 serializer.text(fall.getVerl_schaedel_art());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, SCHAEDLA);
 
@@ -664,17 +639,11 @@ public class XMLCreator {
             if(fall.getVerl_gesicht_art()!=null) {
                 serializer.text(fall.getVerl_gesicht_art());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, GESIA);
 
             serializer.startTag(null, HWSA);
             if(fall.getVerl_hws_art()!=null) {
                 serializer.text(fall.getVerl_hws_art());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, HWSA);
 
@@ -682,17 +651,11 @@ public class XMLCreator {
             if(fall.getVerl_brustkorb_art()!=null) {
                 serializer.text(fall.getVerl_brustkorb_art());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BRUSTA);
 
             serializer.startTag(null, BAUCHA);
             if(fall.getVerl_bauch_art()!=null) {
                 serializer.text(fall.getVerl_bauch_art());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BAUCHA);
 
@@ -700,17 +663,11 @@ public class XMLCreator {
             if(fall.getVerl_bws_lws_art()!=null) {
                 serializer.text(fall.getVerl_bws_lws_art());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BWSA);
 
             serializer.startTag(null, BECKENA);
             if(fall.getVerl_becken_art()!=null) {
                 serializer.text(fall.getVerl_becken_art());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BECKENA);
 
@@ -718,50 +675,54 @@ public class XMLCreator {
             if(fall.getVerl_arme_art()!=null) {
                 serializer.text(fall.getVerl_arme_art());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ARMEA);
 
             serializer.startTag(null, BEINEA);
             if(fall.getVerl_beine_art()!=null) {
                 serializer.text(fall.getVerl_beine_art());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BEINEA);
 
             serializer.startTag(null, WEICHTA);
             if(fall.getVerl_weichteile_art()!=null) {
                 serializer.text(fall.getVerl_weichteile_art());
-            } else {
-                serializer.text("");
             }
             serializer.endTag(null, WEICHTA);
 
             serializer.startTag(null, VERBR);
-            serializer.text(String.valueOf(fall.getVerl_verbrennung()));
+            if(fall.getVerl_verbrennung()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_verbrennung()));
+            }
             serializer.endTag(null, VERBR);
 
             serializer.startTag(null, ELEKTRO);
-            serializer.text(String.valueOf(fall.getVerl_elektrounfall()));
+            if(fall.getVerl_elektrounfall()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_elektrounfall()));
+            }
             serializer.endTag(null, ELEKTRO);
 
             serializer.startTag(null, INHALAT);
-            serializer.text(String.valueOf(fall.getVerl_inhalationstrauma()));
+            if(fall.getVerl_inhalationstrauma()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_inhalationstrauma()));
+            }
             serializer.endTag(null, INHALAT);
 
             serializer.startTag(null, WUND);
-            serializer.text(String.valueOf(fall.getVerl_wunde_verletzung()));
+            if(fall.getVerl_wunde_verletzung()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_wunde_verletzung()));
+            }
             serializer.endTag(null, WUND);
 
             serializer.startTag(null, PRELL);
-            serializer.text(String.valueOf(fall.getVerl_prellung_verletzung()));
+            if(fall.getVerl_prellung_verletzung()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_prellung_verletzung()));
+            }
             serializer.endTag(null, PRELL);
 
             serializer.startTag(null, SONST);
-            serializer.text(String.valueOf(fall.getVerl_sonstiges()));
+            if(fall.getVerl_sonstiges()!=null) {
+                serializer.text(String.valueOf(fall.getVerl_sonstiges()));
+            }
             serializer.endTag(null, SONST);
 
             serializer.endTag(null, SEC);
@@ -771,71 +732,105 @@ public class XMLCreator {
             serializer.attribute(null, "id", "erkrankung");
 
             serializer.startTag(null, ATM);
-            serializer.text(String.valueOf(fall.getErk_atmung()));
+            if(fall.getErk_atmung()!=null) {
+                serializer.text(String.valueOf(fall.getErk_atmung()));
+            }
             serializer.endTag(null, ATM);
 
             serializer.startTag(null, HERZK);
-            serializer.text(String.valueOf(fall.getErk_herzkreislauf()));
+            if(fall.getErk_herzkreislauf()!=null) {
+                serializer.text(String.valueOf(fall.getErk_herzkreislauf()));
+            }
             serializer.endTag(null, HERZK);
 
             serializer.startTag(null, BAUCHE);
-            serializer.text(String.valueOf(fall.getErk_baucherkrankung()));
+            if(fall.getErk_baucherkrankung()!=null) {
+                serializer.text(String.valueOf(fall.getErk_baucherkrankung()));
+            }
             serializer.endTag(null, BAUCHE);
 
             serializer.startTag(null, STOFFW);
-            serializer.text(String.valueOf(fall.getErk_stoffwechsel()));
+            if(fall.getErk_stoffwechsel()!=null) {
+                serializer.text(String.valueOf(fall.getErk_stoffwechsel()));
+            }
             serializer.endTag(null, STOFFW);
 
             serializer.startTag(null, HITZS);
-            serializer.text(String.valueOf(fall.getErk_hitzeschlag()));
+            if(fall.getErk_hitzeschlag()!=null) {
+                serializer.text(String.valueOf(fall.getErk_hitzeschlag()));
+            }
             serializer.endTag(null, HITZS);
 
             serializer.startTag(null, VERG);
-            serializer.text(String.valueOf(fall.getErk_vergiftung()));
+            if(fall.getErk_vergiftung()!=null) {
+                serializer.text(String.valueOf(fall.getErk_vergiftung()));
+            }
             serializer.endTag(null, VERG);
 
             serializer.startTag(null, UNTERK);
-            serializer.text(String.valueOf(fall.getErk_unterkuehlung()));
+            if(fall.getErk_unterkuehlung()!=null) {
+                serializer.text(String.valueOf(fall.getErk_unterkuehlung()));
+            }
             serializer.endTag(null, UNTERK);
 
             serializer.startTag(null, GYN);
-            serializer.text(String.valueOf(fall.getErk_gynaekologie()));
+            if(fall.getErk_gynaekologie()!=null) {
+                serializer.text(String.valueOf(fall.getErk_gynaekologie()));
+            }
             serializer.endTag(null, GYN);
 
             serializer.startTag(null, GEBURT);
-            serializer.text(String.valueOf(fall.getErk_geburtshilfe()));
+            if(fall.getErk_geburtshilfe()!=null) {
+                serializer.text(String.valueOf(fall.getErk_geburtshilfe()));
+            }
             serializer.endTag(null, GEBURT);
 
             serializer.startTag(null, HITZE);
-            serializer.text(String.valueOf(fall.getErk_hitzeerschoepfung()));
+            if(fall.getErk_hitzeerschoepfung()!=null) {
+                serializer.text(String.valueOf(fall.getErk_hitzeerschoepfung()));
+            }
             serializer.endTag(null, HITZE);
 
             serializer.startTag(null, KIND);
-            serializer.text(String.valueOf(fall.getErk_kindernotfall()));
+            if(fall.getErk_kindernotfall()!=null) {
+                serializer.text(String.valueOf(fall.getErk_kindernotfall()));
+            }
             serializer.endTag(null, KIND);
 
             serializer.startTag(null, NEURO);
-            serializer.text(String.valueOf(fall.getErk_neurologie()));
+            if(fall.getErk_neurologie()!=null) {
+                serializer.text(String.valueOf(fall.getErk_neurologie()));
+            }
             serializer.endTag(null, NEURO);
 
             serializer.startTag(null, PSYCH);
-            serializer.text(String.valueOf(fall.getErk_psychatrie()));
+            if(fall.getErk_psychatrie()!=null) {
+                serializer.text(String.valueOf(fall.getErk_psychatrie()));
+            }
             serializer.endTag(null, PSYCH);
 
             serializer.startTag(null, ALK);
-            serializer.text(String.valueOf(fall.getErk_alkoholisiert()));
+            if(fall.getErk_alkoholisiert()!=null) {
+                serializer.text(String.valueOf(fall.getErk_alkoholisiert()));
+            }
             serializer.endTag(null, ALK);
 
             serializer.startTag(null, ERBR);
-            serializer.text(String.valueOf(fall.getErk_erbrechen()));
+            if(fall.getErk_erbrechen()!=null) {
+                serializer.text(String.valueOf(fall.getErk_erbrechen()));
+            }
             serializer.endTag(null, ERBR);
 
             serializer.startTag(null, SCHW);
-            serializer.text(String.valueOf(fall.getErk_schwindel()));
+            if(fall.getErk_schwindel()!=null) {
+                serializer.text(String.valueOf(fall.getErk_schwindel()));
+            }
             serializer.endTag(null, SCHW);
 
             serializer.startTag(null, SONST);
-            serializer.text(String.valueOf(fall.getErk_sonstiges()));
+            if(fall.getErk_sonstiges()!=null) {
+                serializer.text(String.valueOf(fall.getErk_sonstiges()));
+            }
             serializer.endTag(null, SONST);
 
             serializer.endTag(null, SEC);
@@ -848,17 +843,11 @@ public class XMLCreator {
             if(fall.getErst_bewusstsein()!=null) {
                 serializer.text(fall.getErst_bewusstsein());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BEW);
 
             serializer.startTag(null, SCHM);
             if(fall.getErst_schmerzen()!=null) {
                 serializer.text(fall.getErst_schmerzen());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, SCHM);
 
@@ -866,17 +855,11 @@ public class XMLCreator {
             if(fall.getErst_kreislauf()!=null) {
                 serializer.text(fall.getErst_kreislauf());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, KREISL);
 
             serializer.startTag(null, EKG);
             if(fall.getErst_ekg()!=null) {
                 serializer.text(fall.getErst_ekg());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, EKG);
 
@@ -884,17 +867,11 @@ public class XMLCreator {
             if(fall.getErst_atmung()!=null) {
                 serializer.text(fall.getErst_atmung());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ATM);
 
             serializer.startTag(null, RRSYS);
             if(fall.getErst_rr_sys()!=null) {
                 serializer.text(fall.getErst_rr_sys());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, RRSYS);
 
@@ -902,17 +879,11 @@ public class XMLCreator {
             if(fall.getErst_rr_dia()!=null) {
                 serializer.text(fall.getErst_rr_dia());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, RRDIA);
 
             serializer.startTag(null, PULS);
             if(fall.getErst_puls()!=null) {
                 serializer.text(fall.getErst_puls());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, PULS);
 
@@ -920,17 +891,11 @@ public class XMLCreator {
             if(fall.getErst_af()!=null) {
                 serializer.text(fall.getErst_af());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, AF);
 
             serializer.startTag(null, SPO);
             if(fall.getErst_spo()!=null) {
                 serializer.text(fall.getErst_spo());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, SPO);
 
@@ -938,26 +903,17 @@ public class XMLCreator {
             if(fall.getErst_bz()!=null) {
                 serializer.text(fall.getErst_bz());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, BZ);
 
             serializer.startTag(null, PUPILLI);
             if(fall.getErst_pupille_li()!=null) {
                 serializer.text(fall.getErst_pupille_li());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, PUPILLI);
 
             serializer.startTag(null, PUPILRE);
             if(fall.getErst_pupille_re()!=null) {
                 serializer.text(fall.getErst_pupille_re());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, PUPILRE);
 
@@ -971,26 +927,17 @@ public class XMLCreator {
             if(fall.getErg_zustand()!=null) {
                 serializer.text(fall.getErg_zustand());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ZUSTVERB);
 
             serializer.startTag(null, ERGZ);
             if(fall.getErg_ergebnis_zeit()!=null) {
                 serializer.text(fall.getErg_ergebnis_zeit());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ERGZ);
 
             serializer.startTag(null, WERTS);
             if(fall.getErg_wertsachen()!=null) {
                 serializer.text(fall.getErg_wertsachen());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, WERTS);
             /*
@@ -1004,39 +951,50 @@ public class XMLCreator {
             serializer.endTag(null, ZEITN);
             */
             serializer.startTag(null, KTWN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_ktw()));
+            if(fall.getErg_nachforderung_ktw()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_ktw()));
+            }
             serializer.endTag(null, KTWN);
 
             serializer.startTag(null, RTWN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_rtw()));
+            if(fall.getErg_nachforderung_rtw()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_rtw()));
+            }
             serializer.endTag(null, RTWN);
 
             serializer.startTag(null, NEFN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_nef()));
+            if(fall.getErg_nachforderung_nef()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_nef()));
+            }
             serializer.endTag(null, NEFN);
 
             serializer.startTag(null, NAWN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_naw()));
+            if(fall.getErg_nachforderung_naw()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_naw()));
+            }
             serializer.endTag(null, NAWN);
 
             serializer.startTag(null, RTHN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_rth()));
+            if(fall.getErg_nachforderung_rth()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_rth()));
+            }
             serializer.endTag(null, RTHN);
 
             serializer.startTag(null, FEUERWN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_feuerwehr()));
+            if(fall.getErg_nachforderung_feuerwehr()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_feuerwehr()));
+            }
             serializer.endTag(null, FEUERWN);
 
             serializer.startTag(null, POLN);
-            serializer.text(String.valueOf(fall.getErg_nachforderung_polizei()));
+            if(fall.getErg_nachforderung_polizei()!=null) {
+                serializer.text(String.valueOf(fall.getErg_nachforderung_polizei()));
+            }
             serializer.endTag(null, POLN);
 
             serializer.startTag(null, FUNK);
             if(fall.getErg_funkruf()!=null) {
                 serializer.text(fall.getErg_funkruf());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, FUNK);
             /*
@@ -1046,15 +1004,14 @@ public class XMLCreator {
             serializer.endTag(null, FUNKZ);
             */
             serializer.startTag(null, EV);
-            serializer.text(String.valueOf(fall.getErg_entlassung_ev()));
+            if(fall.getErg_entlassung_ev()!=null) {
+                serializer.text(String.valueOf(fall.getErg_entlassung_ev()));
+            }
             serializer.endTag(null, EV);
 
             serializer.startTag(null, ZEUG);
             if(fall.getErg_zeuge()!=null) {
                 serializer.text(fall.getErg_zeuge());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, ZEUG);
             /*
@@ -1064,19 +1021,20 @@ public class XMLCreator {
             serializer.endTag(null, ZUST);
             */
             serializer.startTag(null, HAUSA);
-            serializer.text(String.valueOf(fall.getErg_hausarzt_informiert()));
+            if(fall.getErg_hausarzt_informiert()!=null) {
+                serializer.text(String.valueOf(fall.getErg_hausarzt_informiert()));
+            }
             serializer.endTag(null, HAUSA);
 
             serializer.startTag(null, TOD);
-            serializer.text(String.valueOf(fall.getErg_tod()));
+            if(fall.getErg_tod()!=null) {
+                serializer.text(String.valueOf(fall.getErg_tod()));
+            }
             serializer.endTag(null, TOD);
 
             serializer.startTag(null, TRNSSONST);
             if(fall.getErg_transport_sonstiges()!=null) {
                 serializer.text(fall.getErg_transport_sonstiges());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, TRNSSONST);
 
@@ -1084,17 +1042,11 @@ public class XMLCreator {
             if(fall.getErg_ersthelfermassn()!=null) {
                 serializer.text(fall.getErg_ersthelfermassn());
             }
-            else{
-                serializer.text("");
-            }
             serializer.endTag(null, ERSTH);
 
             serializer.startTag(null, BEM);
             if(fall.getBem_bemerkung()!=null) {
                 serializer.text(fall.getBem_bemerkung());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, BEM);
             /*
@@ -1144,9 +1096,6 @@ public class XMLCreator {
             serializer.startTag(null, VERORT);
             if(fall.getVer_ort()!=null) {
                 serializer.text(fall.getVer_ort());
-            }
-            else{
-                serializer.text("");
             }
             serializer.endTag(null, VERORT);
 
