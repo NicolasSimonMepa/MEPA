@@ -1,10 +1,11 @@
-// zuletzt geändert von Vivien Stumpe, 05.06.16
+// zuletzt geändert von Vivien Stumpe, 06.06.16
 package de.app.mepa.ersthelfermassnahmen;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -280,15 +282,15 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
 
     private File getFile() {
         File folder = new File("sdcard/mepa");
-        mfall.setPatID(true);
-        String PatID = String.valueOf(mfall.getPatID());
+        mfall.setFallID(true);
+        String FallID = String.valueOf(mfall.getFallID());
 
         if (!folder.exists())
         {
             folder.mkdir();
         }
 
-        File image_file = new File(folder, PatID + ".jpeg");
+        File image_file = new File(folder, FallID + ".jpeg");
         return image_file;
     }
 
@@ -745,5 +747,30 @@ wenn ein Fall in der Fallübersicht ausgewählt wurde
         Intent intent = new Intent(getApplicationContext(), Erstbefund.class);
         startActivity(intent);
         finish();
+    }
+    /*  von Vivien Stumpe, 06.06.16
+       Funktion zum Löschen eines Fotos
+    */
+    public Boolean deleteJPG(String id){
+        File file=new File(Environment.getExternalStorageDirectory() + File.separator + "mepa" + File.separator + id + ".jpeg");
+        if(file.exists()) {
+            return file.delete();
+        }
+        else {
+            Log.d("Fall", "Foto existiert nicht");
+            return false;
+        }
+    }
+    /*  von Vivien Stumpe, 06.06.16
+    Funktion zum Löschen aller Dokumente im Ordner "mepa"
+    */
+    public Boolean deleteAllJPG() {
+        File dir = new File(Environment.getExternalStorageDirectory() + File.separator + "mepa");
+        Boolean geloescht=false;
+        for(File tempFile : dir.listFiles()) {
+            if( tempFile.delete())
+                geloescht=true;
+        }
+        return geloescht;
     }
 }
