@@ -1,8 +1,12 @@
 // zuletzt geändert von Vivien Stumpe, 06.06.16
 package de.app.mepa.ersthelfermassnahmen;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -49,7 +54,7 @@ import de.app.mepa.upload.Upload;
 
 
 public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener{
-    Button button;
+
     static final int CAM_REQUEST = 1;
     private ImageView imgv_before;
     private ImageView imgv_menü;
@@ -91,6 +96,7 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private EditText edtxt_entlassung_sonstiges;
     private GlobaleDaten mfall;
 
+
     //von Vivien Stumpe, 11.04.16
     //View für das Hauptelement der Aktivität - zum Wechseln mittels Swipe
 
@@ -105,6 +111,11 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
     private Timer timer = new Timer();
     private final long DELAY = 2000; // in ms
     private TextWatcher tw;
+    private File file;
+    private Uri imageUri;
+
+    ImageView foto_vorschau;
+    File root = Environment.getExternalStorageDirectory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -209,6 +220,8 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         cck_polizei.setOnClickListener(this);
         cck_entlassungsrevers.setOnClickListener(this);
 
+        foto_vorschau = (ImageView) findViewById(R.id.foto_vorschau);
+
         setWerte();
 
         // von Vivien Stumpe, 19.04.16
@@ -241,18 +254,6 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         imgv_menü.setOnClickListener(this);
 
         drawerlayout_ersthelfermassnahmen.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-        button = (Button) findViewById(R.id.btn_foto);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                File file = getFile();
-                camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(camera_intent, CAM_REQUEST);
-            }
-        });
-
 
          /* von Indra Marcheel, 18.05.2016
         es können nur character eingegeben werden
@@ -423,8 +424,21 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
             startActivity(intent);
             finish();
         }
-        if(ce == R.id.imgv_menu){
+        if (ce == R.id.imgv_menu) {
             drawerlayout_ersthelfermassnahmen.openDrawer(GravityCompat.START);
+        }
+
+
+
+
+        if (ce == R.id.cck_entlassungsrevers) {
+            if (cck_entlassungsrevers.isChecked()) {
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                file = getFile();
+                imageUri = Uri.fromFile(file);
+                camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(camera_intent, CAM_REQUEST);
+            }
         }
     }
     public void onPause(){
@@ -688,6 +702,9 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
         if(mfall.getErg_entlassung_ev()!=null) {
             if (mfall.getErg_entlassung_ev() == 1) {
                 cck_entlassungsrevers.setChecked(true);
+
+                File foto = new File(root.getAbsolutePath() + File.separator + "mepa", mfall.getFallID() + ".jpeg");
+                loadJPG(foto);
             }
         }
         if((mfall.getErg_wertsachen()!=null)){
@@ -709,6 +726,8 @@ public class Ersthelfermassnahmen extends AppCompatActivity implements AdapterVi
             edtxt_uebergabe_zeit.setText(mfall.getErg_ergebnis_zeit());
         }
     }
+
+
     /*  von Vivien Stumpe, 29.05.16
 Prozedur, die alle Felder sperrt,
 wenn ein Fall in der Fallübersicht ausgewählt wurde
@@ -736,7 +755,6 @@ wenn ein Fall in der Fallübersicht ausgewählt wurde
             edtxt_funkruf.setEnabled(false);
             edtxt_uebergabe_zeit.setEnabled(false);
             edtxt_wertsachen.setEnabled(false);
-            button.setEnabled(false);
         }
     }
     /*  von Vivien Stumpe, 05.06.16
@@ -772,5 +790,54 @@ wenn ein Fall in der Fallübersicht ausgewählt wurde
                 geloescht=true;
         }
         return geloescht;
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        switch (requestCode) {
+
+            //Request Code der Kamera
+            case CAM_REQUEST:
+
+                // Wenn das Ergebnis OK ist
+                if (resultCode == Activity.RESULT_OK) {
+                    File foto = new File(root.getAbsolutePath() + File.separator + "mepa", mfall.getFallID() + ".jpeg");
+                    loadJPG(foto);
+                }
+                break;
+
+        }
+    }
+
+
+
+    private void loadJPG(File foto){
+        imageUri = Uri.fromFile(foto);
+        Uri selectedImage = imageUri;
+
+        getContentResolver().notifyChange(selectedImage, null);
+        ContentResolver cr = getContentResolver();
+        Bitmap bitmap;
+        try {
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+
+            //Miniaturbild der Bilddatei erstellen.
+            //Je größer der Faktor (inSampleSize), desto kleiner die Miniatur
+            options.inSampleSize = 10;
+            bitmap = BitmapFactory.decodeFile(selectedImage.getPath(), options);
+
+            //Laden des Miniaturbildes in die ImageView
+            foto_vorschau.setImageBitmap(bitmap);
+
+        } catch (Exception e) {
+            //Im Fehlerfall Meldung und LogCat Ausgabe
+            Toast.makeText(this, "Fehler beim Laden des Bildes", Toast.LENGTH_SHORT).show();
+            Log.e("Camera", e.toString());
+        }
     }
 }
