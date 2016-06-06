@@ -1,4 +1,4 @@
-//Zuletzt bearbeitet von Vivien Stumpe am 05.06.16
+//Zuletzt bearbeitet von Vivien Stumpe am 20.05.16
 package de.app.mepa.stammdaten;
 
 import android.app.DatePickerDialog;
@@ -132,7 +132,8 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         buttons=(LinearLayout)findViewById(R.id.lnl_stammdaten_buttons);
         buttons.setVisibility(buttons.GONE);
         etxt_kreisverband=(EditText)findViewById(R.id.etxt_kreisverband);
-      
+
+
         etxt_ort=(EditText)findViewById(R.id.etxt_ort);
         etxt_ortsverein=(EditText)findViewById(R.id.etxt_ortsverein);
 
@@ -145,7 +146,9 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
                 }
                 if (etxt_ortsverein.getText().toString().length() == 0){
                     etxt_ortsverein.setError("Bitte gib deinen Ortsverein ein");
-
+                }
+                if (etxt_ort.getText().toString().length() == 0){
+                     etxt_ort.setError("Bitte gib deinen Ort ein");
                 }
                 if (etxt_veranstaltung.getText().toString().length() == 0){
                     etxt_veranstaltung.setError("Bitte gib die Veranstaltung ein");
@@ -255,7 +258,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                //buttons.setVisibility(buttons.VISIBLE);
+                buttons.setVisibility(buttons.VISIBLE);
 
 
                 //Timer erst starten nachdem 3 Zeichen eingegeben wurden
@@ -308,9 +311,6 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         */
         setWerte();
         dataSource=new FalleingabeDataSource(this);
-        Log.d("Fall", mfall.getEin_hilfs()+" Hilfs");
-        Log.d("Fall", mfall.getEin_mosan()+" MOSAN");
-        Log.d("Fall", mfall.getEin_sanw()+" Sanw");
     }
 
 
@@ -449,34 +449,33 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //Aufruf der Prozedur mit Übergabe der Position des geklickten Items/Menüpunkt
             selectItemFromDrawer(position);
-            finish();
         }
     // von Vivien Stumpe, 25.04.16 aktualisiert
     private void selectItemFromDrawer(int position){
 
         //Wenn das erste Element im Menü geklickt wurde, werden die Falleingabe aufgerufen
-        if (position == 0) {
-            Intent intent = new Intent(getApplicationContext(), Falleingabe.class);
+        if(position==0) {
+            Intent intent = new Intent(Stammdaten.this, Falleingabe.class);
             startActivity(intent);
         }
         //Wenn das zweite Element im Menü geklickt wurde, wird die Falluebersicht aufgerufen
-        if (position == 1) {
-            Intent intent = new Intent(getApplicationContext(), Falluebersicht.class);
+        if(position==1) {
+            Intent intent = new Intent(Stammdaten.this, Falluebersicht.class);
             startActivity(intent);
         }
         //Wenn das dritte Element im Menü geklickt wurde, wird der Upload geöffnet
-        if (position == 2) {
-            Intent intent = new Intent(getApplicationContext(), Upload.class);
+        if(position==2) {
+            Intent intent = new Intent(Stammdaten.this, Upload.class);
             startActivity(intent);
         }
         //Wenn das vierte Element im Menü geklickt wurde, werden die Einstellungen geöffnet
-        if (position == 3) {
-            Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
+        if(position==3) {
+            Intent intent = new Intent(Stammdaten.this, Einstellungen.class);
             startActivity(intent);
         }
         //Wenn das fünfte Element im Menü geklickt wurde, wird das Impressum geöffnet
-        if (position == 4) {
-            Intent intent = new Intent(getApplicationContext(), Impressum.class);
+        if(position==4) {
+            Intent intent = new Intent(Stammdaten.this, Impressum.class);
             startActivity(intent);
         }
         }
@@ -526,7 +525,7 @@ Prozedur, die die eingegebenen Daten in den Variablen speichert
     public void onPause(){
         super.onPause();
         //Eingaben werden lokal gespeichert
-        //speichereEingaben();
+        speichereEingaben();
     }
 
     /* von Vivien Stumpe, 16.05.16
@@ -534,6 +533,7 @@ Prozedur, die die eingegebenen Daten in den Variablen speichert
      */
     public void setWerte(){
         mfall=(GlobaleDaten)getApplication();
+
         if((mfall.getVer_name()!=null)){
             etxt_veranstaltung.setText(mfall.getVer_name());
         }
@@ -564,14 +564,5 @@ Prozedur, die die eingegebenen Daten in den Variablen speichert
                 cck_sanw.setChecked(true);
             }
         }
-    }
-    /*  von Vivien Stumpe, 05.06.16
-        zurück zu den Einstellungen beim Drücken des Zurückpfeils des Smartphones
-    */
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), Einstellungen.class);
-        startActivity(intent);
-        finish();
     }
 }
