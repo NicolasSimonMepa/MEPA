@@ -248,6 +248,7 @@ public class Stammdaten extends AppCompatActivity implements View.OnClickListene
                 if (etxt_date.getText().toString().length() == 0){
                     etxt_date.setError("Bitte gib das Datum der Veranstaltung an");
                 }
+
             }
 
             @Override
