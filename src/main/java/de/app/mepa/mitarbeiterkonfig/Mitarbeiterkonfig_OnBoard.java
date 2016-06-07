@@ -53,10 +53,10 @@ public class Mitarbeiterkonfig_OnBoard extends AppCompatActivity implements View
     private GlobaleDaten mfall;
     private ImageView imgv_back;
     /* von Vivien Stumpe, 20.05.16
-Timer deklarieren mit der Zeit DELAY in Millisekunden
-*/
+        Timer deklarieren mit der Zeit DELAY in Millisekunden
+    */
     private Timer timer = new Timer();
-    private final long DELAY = 2000; // in ms
+    private final long DELAY = 3000; // in ms
     private FalleingabeDataSource dataSource;
 
 
@@ -159,7 +159,7 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
+                buttonsSichtbar();
                 // von Vivien Stumpe, 20.05.16
                 // Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
@@ -251,12 +251,12 @@ Timer deklarieren mit der Zeit DELAY in Millisekunden
 
     }
     /*  von Vivien Stumpe, 01.06.16
-        Prozedur, die die Buttons zum Speichern & Verwerfen einblendet,
-        wenn die geforderten Eingaben gemacht wurden
-     */
-    private void buttonsSichtbar(){
-        if((etxt_mitarbeiter_name.getText()!=null&&etxt_mitarbeiter_name.getText().length()>0)
-                &&(etxt_mitarbeiter_vorname.getText()!=null&&etxt_mitarbeiter_vorname.getText().length()>0)){
+      Prozedur, die die Buttons zum Speichern & Verwerfen einblendet,
+      wenn die geforderten Eingaben gemacht wurden
+   */
+    private void buttonsSichtbar() {
+        if ((etxt_mitarbeiter_name.getText() != null && etxt_mitarbeiter_name.getText().length() > 0)
+                && (etxt_mitarbeiter_vorname.getText() != null && etxt_mitarbeiter_vorname.getText().length() > 0)) {
             lnl_buttons.setVisibility(lnl_buttons.VISIBLE);
         }
     }
