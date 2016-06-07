@@ -694,10 +694,20 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
         eingabenZuruecksetzen();
         IconsStart();
         lnl_buttons.setVisibility(lnl_buttons.GONE);
+        //07.06.16
+        GlobaleDaten meinsatz;
+        dataSource=new FalleingabeDataSource(this);
+        dataSource.open();
+        meinsatz=dataSource.selectCckStammdaten();
+        dataSource.close();
+        mfall.setEin_mosan(meinsatz.getEin_mosan());
+        mfall.setEin_sanw(meinsatz.getEin_sanw());
+        mfall.setEin_hilfs(meinsatz.getEin_hilfs());
         //Die View wird wieder unsichtbar -> Animation
         Animation out = AnimationUtils.makeOutAnimation(this, true);
         viewToAnimate.startAnimation(out);
         viewToAnimate.setVisibility(View.INVISIBLE);
+
     }
     /* von Vivien Stumpe, 02.05.16
     Prozedur, die beim Betätigen des Verwerfen-Buttons aufgerufen wird
@@ -738,7 +748,7 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             mverband=dataSource.selectVerband();
             mveranstaltung=dataSource.selectVeranstaltung();
             msani=dataSource.selectSani();
-            meinsatz=dataSource.selectCckStammdaten();
+            //meinsatz=dataSource.selectCckStammdaten();
             dataSource.close();
             mfall.setVerb_ID(mverband.getVerbandID());
             mfall.setVerb_kreisv(mverband.getVerb_kreisv());
@@ -749,9 +759,10 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             mfall.setSan_name(msani.getSan_name());
             mfall.setSan_vorname(msani.getSan_vorname());
             mfall.setSani_IDm(msani.getSaniID());
-            mfall.setEin_mosan(meinsatz.getEin_mosan());
+           /* mfall.setEin_mosan(meinsatz.getEin_mosan());
             mfall.setEin_sanw(meinsatz.getEin_sanw());
             mfall.setEin_hilfs(meinsatz.getEin_hilfs());
+            */
             //wenn nicht -> Gibt es Stammdaten zum Fall?
             if(!((mfall.getVer_name()!=null&mfall.getVer_ort()!=null&mfall.getVer_date()!=null)
                     &(mfall.getSan_name()!=null&mfall.getSan_vorname()!=null)
@@ -767,5 +778,4 @@ public class Falleingabe extends AppCompatActivity implements View.OnClickListen
             }
         }
     }
-
 }
