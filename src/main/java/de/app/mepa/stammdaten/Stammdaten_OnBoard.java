@@ -1,4 +1,4 @@
-//Zuletzt geändert von Vivien Stumpe, 24.05.16
+//Zuletzt geändert von Vivien Stumpe, 07.06.16
 package de.app.mepa.stammdaten;
 
         import android.app.DatePickerDialog;
@@ -231,7 +231,7 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             @Override
             public void afterTextChanged(Editable s) {
                 // Buttons speichern & verwerfen sind sichtbar
-                buttons.setVisibility(buttons.VISIBLE);
+                buttonsSichtbar();
                 // von Vivien Stumpe, 20.05.16
                 // Timer erst starten nachdem 3 Zeichen eingegeben wurden
                 if (s.length() >= 3) {
@@ -412,6 +412,17 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
             }
         }
     }
+    /*  von Vivien Stumpe, 01.06.16
+     Prozedur, die die Buttons zum Speichern & Verwerfen einblendet,
+     wenn die geforderten Eingaben gemacht wurden
+  */
+    private void buttonsSichtbar(){
+        if((etxt_kreisverband.getText()!=null&&etxt_kreisverband.getText().length()>0)
+                &&(etxt_ortsverein.getText()!=null&&etxt_ortsverein.getText().length()>0)
+                &&(etxt_veranstaltung.getText()!=null&&etxt_veranstaltung.getText().length()>0)){
+            buttons.setVisibility(View.VISIBLE);
+        }
+    }
     // Was soll geschehen, wenn verworfen wird?
     private void verwerfen(){
         mfall.loescheVer();
@@ -423,6 +434,9 @@ public class Stammdaten_OnBoard extends AppCompatActivity implements View.OnClic
         etxt_veranstaltung.setText("");
         etxt_ort.setText("");
         etxt_date.setText("");
+        cck_hilfs.setChecked(false);
+        cck_mosan.setChecked(false);
+        cck_sanw.setChecked(false);
         //Buttons werden ausgeblendet
         buttons.setVisibility(buttons.GONE);
     }
