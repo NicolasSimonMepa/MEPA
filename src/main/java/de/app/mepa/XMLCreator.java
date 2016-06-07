@@ -387,15 +387,21 @@ public class XMLCreator {
             serializer.endTag(null, ZUGEF);
 
             serializer.startTag(null, HILFS);
-            serializer.text(String.valueOf(fall.getEin_hilfs()));
+            if(fall.getEin_hilfs()!=null) {
+                serializer.text(String.valueOf(fall.getEin_hilfs()));
+            }
             serializer.endTag(null, HILFS);
 
             serializer.startTag(null, MOSAN);
-            serializer.text(String.valueOf(fall.getEin_mosan()));
+            if(fall.getEin_mosan()!=null) {
+                serializer.text(String.valueOf(fall.getEin_mosan()));
+            }
             serializer.endTag(null, MOSAN);
 
             serializer.startTag(null, SANW);
-            serializer.text(String.valueOf(fall.getEin_sanw()));
+            if(fall.getEin_sanw()!=null) {
+                serializer.text(String.valueOf(fall.getEin_sanw()));
+            }
             serializer.endTag(null, SANW);
 
             /*
